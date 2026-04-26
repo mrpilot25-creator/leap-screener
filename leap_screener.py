@@ -35,7 +35,6 @@ warnings.filterwarnings("ignore")
 # ─────────────────────────────────────────────
 
 WATCHLIST = [
-    sp500_tickers = [
     "A", "AAPL", "ABBV", "ABNB", "ABT", "ACN", "ADBE", "ADI", "ADM", "ADP", 
     "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", "ALB", 
     "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", 
