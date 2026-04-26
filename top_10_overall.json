@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated_at": "2026-04-26T11:48:31.923098Z",
+    "generated_at": "2026-04-26T12:01:54.427245Z",
     "sp500_universe": 99,
-    "tickers_passed": 37,
+    "tickers_passed": 41,
     "tickers_list": [
       "AAPL",
       "MSFT",
@@ -15,6 +15,7 @@
       "MA",
       "AVGO",
       "COST",
+      "ABBV",
       "PEP",
       "BAC",
       "CSCO",
@@ -32,13 +33,16 @@
       "PLD",
       "ISRG",
       "ADI",
+      "CL",
       "BSX",
       "WM",
       "AON",
+      "HUM",
       "ANET",
       "KLAC",
       "LRCX",
       "PANW",
+      "MCHP",
       "ICE",
       "CME"
     ],
@@ -65,7 +69,8 @@
       "bb_position": 0.1,
       "delta": 0.2,
       "iv_percentile": 0.16
-    }
+    },
+    "note": "EPS growth data is missing for some tickers in Yahoo Finance. When missing, the ticker is included with an EPS score of 0 rather than excluded, to avoid false negatives."
   },
   "top_10_overall": [
     {
