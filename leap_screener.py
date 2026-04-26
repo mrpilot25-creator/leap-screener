@@ -9,7 +9,7 @@ fundamental, technical, and option-specific parameters, and outputs:
   - full_results.json       → every screened option with all metrics
 
 Dependencies:
-    pip install yfinance pandas numpy scipy requests lxml
+    pip install yfinance pandas numpy scipy requests lxml html5lib
 
 Usage:
     python leap_screener.py
@@ -56,13 +56,8 @@ MAX_IV_PERCENTILE     = 30
 
 def get_sp500_tickers() -> list:
     """
-    Fetches the current S&P 500 constituents using three methods in order:
-
-      1. Wikipedia via requests + lxml (most reliable)
-      2. Wikipedia via requests + html.parser (fallback parser)
-      3. Wikipedia REST API (JSON endpoint, no HTML parsing needed)
-
-    Returns a sorted list of ticker symbols.
+    Fetches the current S&P 500 constituents.
+    Tries four methods in order, falls back to hardcoded top-100 if all fail.
     """
     print("Fetching S&P 500 tickers...")
 
@@ -75,86 +70,72 @@ def get_sp500_tickers() -> list:
         )
     }
 
-    # ── Method 1: requests + lxml ─────────────────────────────────────
+    # Method 1: requests + lxml
     try:
-        resp = requests.get(url, headers=headers, timeout=20)
+        resp    = requests.get(url, headers=headers, timeout=20)
         resp.raise_for_status()
         tables  = pd.read_html(resp.text, flavor="lxml")
-        df      = tables[0]
-        tickers = _extract_tickers(df)
+        tickers = _extract_tickers(tables[0])
         if tickers:
-            print(f"  ✓ Loaded {len(tickers)} tickers (method: requests + lxml)\n")
+            print(f"  ✓ {len(tickers)} tickers loaded (requests + lxml)\n")
             return tickers
     except Exception as e:
         print(f"  Method 1 failed: {e}")
 
-    # ── Method 2: requests + html.parser ─────────────────────────────
+    # Method 2: requests + html5lib
     try:
-        resp = requests.get(url, headers=headers, timeout=20)
+        resp    = requests.get(url, headers=headers, timeout=20)
         resp.raise_for_status()
         tables  = pd.read_html(resp.text, flavor="html5lib")
-        df      = tables[0]
-        tickers = _extract_tickers(df)
+        tickers = _extract_tickers(tables[0])
         if tickers:
-            print(f"  ✓ Loaded {len(tickers)} tickers (method: html5lib)\n")
+            print(f"  ✓ {len(tickers)} tickers loaded (html5lib)\n")
             return tickers
     except Exception as e:
         print(f"  Method 2 failed: {e}")
 
-    # ── Method 3: Wikipedia REST API (JSON, no HTML parsing) ──────────
+    # Method 3: Wikipedia REST API
     try:
-        api_url = (
-            "https://en.wikipedia.org/api/rest_v1/page/html/"
-            "List_of_S%26P_500_companies"
-        )
+        api_url = "https://en.wikipedia.org/api/rest_v1/page/html/List_of_S%26P_500_companies"
         resp    = requests.get(api_url, headers=headers, timeout=20)
         tables  = pd.read_html(resp.text, flavor="lxml")
-        df      = tables[0]
-        tickers = _extract_tickers(df)
+        tickers = _extract_tickers(tables[0])
         if tickers:
-            print(f"  ✓ Loaded {len(tickers)} tickers (method: Wikipedia REST API)\n")
+            print(f"  ✓ {len(tickers)} tickers loaded (Wikipedia REST API)\n")
             return tickers
     except Exception as e:
         print(f"  Method 3 failed: {e}")
 
-    # ── Method 4: slickcharts.com (independent source) ────────────────
+    # Method 4: slickcharts.com
     try:
-        slick_url = "https://www.slickcharts.com/sp500"
-        resp      = requests.get(slick_url, headers=headers, timeout=20)
-        tables    = pd.read_html(resp.text)
+        resp   = requests.get("https://www.slickcharts.com/sp500", headers=headers, timeout=20)
+        tables = pd.read_html(resp.text)
         for t in tables:
             cols_lower = [str(c).lower() for c in t.columns]
             if "symbol" in cols_lower:
                 col     = t.columns[cols_lower.index("symbol")]
                 tickers = _clean_tickers(t[col].tolist())
                 if len(tickers) > 400:
-                    print(f"  ✓ Loaded {len(tickers)} tickers (method: slickcharts)\n")
+                    print(f"  ✓ {len(tickers)} tickers loaded (slickcharts)\n")
                     return tickers
     except Exception as e:
         print(f"  Method 4 failed: {e}")
 
-    # ── Final fallback: hardcoded top 100 S&P 500 constituents ────────
-    print("  ⚠ All fetch methods failed. Using hardcoded top-100 fallback.\n")
+    print("  ⚠ All fetch methods failed — using hardcoded top-100 fallback.\n")
     return [
-        "AAPL", "MSFT", "NVDA", "AMZN", "META", "GOOGL", "GOOG", "TSLA",
-        "BRK-B", "JPM", "LLY", "V", "UNH", "XOM", "MA", "JNJ", "PG",
-        "AVGO", "HD", "MRK", "COST", "ABBV", "CVX", "KO", "PEP", "ADBE",
-        "WMT", "BAC", "MCD", "CSCO", "CRM", "TMO", "ABT", "ACN", "LIN",
-        "NFLX", "DHR", "TXN", "CMCSA", "VZ", "NEE", "PM", "RTX", "ORCL",
-        "QCOM", "HON", "UPS", "AMGN", "BMY", "IBM", "GE", "CAT", "SBUX",
-        "GS", "BLK", "SPGI", "AXP", "SYK", "PLD", "NOW", "ISRG", "DE",
-        "MDLZ", "ADI", "REGN", "MMC", "PGR", "MO", "DUK", "SO", "CL",
-        "ELV", "BSX", "ZTS", "CI", "WM", "MCO", "ITW", "EOG", "AON",
-        "FI", "HUM", "NOC", "GD", "ANET", "APD", "KLAC", "LRCX", "SNPS",
-        "CDNS", "PANW", "MCHP", "PAYX", "ADP", "MSCI", "ICE", "CME",
-        "TDG", "CTAS",
+        "AAPL","MSFT","NVDA","AMZN","META","GOOGL","GOOG","TSLA","BRK-B","JPM",
+        "LLY","V","UNH","XOM","MA","JNJ","PG","AVGO","HD","MRK","COST","ABBV",
+        "CVX","KO","PEP","ADBE","WMT","BAC","MCD","CSCO","CRM","TMO","ABT","ACN",
+        "LIN","NFLX","DHR","TXN","CMCSA","VZ","NEE","PM","RTX","ORCL","QCOM",
+        "HON","UPS","AMGN","BMY","IBM","GE","CAT","SBUX","GS","BLK","SPGI","AXP",
+        "SYK","PLD","NOW","ISRG","DE","MDLZ","ADI","REGN","MMC","PGR","MO","DUK",
+        "SO","CL","ELV","BSX","ZTS","CI","WM","MCO","ITW","EOG","AON","FI","HUM",
+        "NOC","GD","ANET","APD","KLAC","LRCX","SNPS","CDNS","PANW","MCHP","PAYX",
+        "ADP","MSCI","ICE","CME","TDG","CTAS",
     ]
 
 
 def _extract_tickers(df: pd.DataFrame) -> list:
-    """
-    Finds the Symbol column in a DataFrame regardless of exact column name.
-    """
     cols_lower = [str(c).lower() for c in df.columns]
     for keyword in ["symbol", "ticker"]:
         if keyword in cols_lower:
@@ -164,11 +145,10 @@ def _extract_tickers(df: pd.DataFrame) -> list:
 
 
 def _clean_tickers(raw: list) -> list:
-    """Cleans and deduplicates a list of ticker strings."""
     cleaned = []
     for t in raw:
         t = str(t).strip().replace(".", "-")
-        if t and t != "nan" and len(t) <= 6:
+        if t and t != "nan" and 1 <= len(t) <= 6 and t.isalpha() or "-" in t:
             cleaned.append(t)
     return sorted(set(cleaned))
 
@@ -184,20 +164,13 @@ def calculate_rsi(prices: pd.Series, period: int = 14) -> float:
     avg_gain = gain.ewm(com=period - 1, min_periods=period).mean()
     avg_loss = loss.ewm(com=period - 1, min_periods=period).mean()
     rs       = avg_gain / avg_loss.replace(0, np.nan)
-    rsi      = 100 - (100 / (1 + rs))
-    return float(rsi.iloc[-1])
+    return float((100 - (100 / (1 + rs))).iloc[-1])
 
 
-def calculate_bollinger_bands(
-    prices: pd.Series, period: int = 20, num_std: float = 2.0
-) -> tuple:
+def calculate_bollinger_bands(prices: pd.Series, period: int = 20, num_std: float = 2.0) -> tuple:
     middle = prices.rolling(period).mean().iloc[-1]
     std    = prices.rolling(period).std().iloc[-1]
-    return (
-        float(middle + num_std * std),
-        float(middle),
-        float(middle - num_std * std),
-    )
+    return float(middle + num_std * std), float(middle), float(middle - num_std * std)
 
 
 def calculate_iv_percentile(ticker_symbol: str, current_iv: float) -> float:
@@ -207,8 +180,7 @@ def calculate_iv_percentile(ticker_symbol: str, current_iv: float) -> float:
             return 50.0
         log_rets = np.log(hist / hist.shift(1)).dropna()
         roll_vol = log_rets.rolling(30).std() * np.sqrt(252)
-        roll_vol = roll_vol.dropna()
-        return round(float(np.mean(roll_vol < current_iv) * 100), 1)
+        return round(float(np.mean(roll_vol.dropna() < current_iv) * 100), 1)
     except Exception:
         return 50.0
 
@@ -217,18 +189,14 @@ def calculate_iv_percentile(ticker_symbol: str, current_iv: float) -> float:
 # BLACK-SCHOLES GREEKS
 # ─────────────────────────────────────────────
 
-def black_scholes_delta(
-    S: float, K: float, T: float, r: float, sigma: float
-) -> float:
+def black_scholes_delta(S, K, T, r, sigma) -> float:
     if T <= 0 or sigma <= 0 or S <= 0 or K <= 0:
         return float("nan")
     d1 = (math.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * math.sqrt(T))
     return float(norm.cdf(d1))
 
 
-def black_scholes_theta(
-    S: float, K: float, T: float, r: float, sigma: float
-) -> float:
+def black_scholes_theta(S, K, T, r, sigma) -> float:
     if T <= 0 or sigma <= 0 or S <= 0 or K <= 0:
         return float("nan")
     d1    = (math.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * math.sqrt(T))
@@ -242,7 +210,7 @@ def black_scholes_theta(
 # SCORING ENGINE
 # ─────────────────────────────────────────────
 
-def _clamp(val: float, lo: float, hi: float) -> float:
+def _clamp(val, lo, hi):
     return max(lo, min(hi, val))
 
 
@@ -252,41 +220,28 @@ def score_parameter(value, kind: str) -> float:
 
     if kind == "market_cap":
         return _clamp((value - MIN_MARKET_CAP) / 8e9 * 100, 0, 100)
-
     if kind == "avg_volume":
         return _clamp((value - MIN_AVG_VOLUME) / 9e6 * 100, 0, 100)
-
     if kind == "inst_ownership":
         return _clamp((value - MIN_INST_OWNERSHIP) / 0.30 * 100, 0, 100)
-
     if kind == "eps_growth":
         return _clamp((value - MIN_EPS_GROWTH) / 0.35 * 100, 0, 100)
-
     if kind == "rsi":
-        if value > RSI_UPPER:
-            return 0.0
-        return _clamp((RSI_UPPER - value) / 20.0 * 100, 0, 100)
-
+        return 0.0 if value > RSI_UPPER else _clamp((RSI_UPPER - value) / 20.0 * 100, 0, 100)
     if kind == "price_vs_200ma":
         if abs(value) > PRICE_VS_200MA_RANGE:
             return max(0.0, 100 - abs(value) / PRICE_VS_200MA_RANGE * 50)
         return 100 - abs(value) / PRICE_VS_200MA_RANGE * 30
-
     if kind == "bb_position":
         return _clamp((1 - value) * 100, 0, 100) if value <= 0.5 else 0.0
-
     if kind == "delta":
         if DELTA_MIN <= value <= DELTA_MAX:
             mid = (DELTA_MIN + DELTA_MAX) / 2
             return 100 - abs(value - mid) / 0.075 * 40
         dist = min(abs(value - DELTA_MIN), abs(value - DELTA_MAX))
         return _clamp(100 - dist / 0.10 * 100, 0, 100)
-
     if kind == "iv_percentile":
-        if value > MAX_IV_PERCENTILE:
-            return 0.0
-        return _clamp((MAX_IV_PERCENTILE - value) / MAX_IV_PERCENTILE * 100, 0, 100)
-
+        return 0.0 if value > MAX_IV_PERCENTILE else _clamp((MAX_IV_PERCENTILE - value) / MAX_IV_PERCENTILE * 100, 0, 100)
     return 0.0
 
 
@@ -308,29 +263,62 @@ def compute_composite_score(scores: dict) -> float:
 
 
 # ─────────────────────────────────────────────
-# FUNDAMENTAL DATA
+# FUNDAMENTAL DATA  (improved EPS sourcing)
 # ─────────────────────────────────────────────
 
-def fetch_fundamental_data(ticker: yf.Ticker) -> dict:
-    info = ticker.info or {}
+def fetch_eps_growth(ticker: yf.Ticker, info: dict):
+    """
+    Tries five different methods to obtain a trailing EPS growth figure.
+    Returns the first non-None result, or None if all methods fail.
 
-    market_cap = info.get("marketCap")
-    avg_volume = info.get("averageVolume")
-    inst_own   = info.get("heldPercentInstitutions")
+    This is the most common reason tickers are incorrectly excluded —
+    Yahoo Finance is inconsistent in which field it populates.
+    """
 
-    eps_growth = None
+    # Method 1 — quarterly earnings history (most accurate)
     try:
         eh = ticker.earnings_history
         if eh is not None and len(eh) >= 8:
-            recent_4q = eh["epsActual"].iloc[:4].sum()
-            prior_4q  = eh["epsActual"].iloc[4:8].sum()
-            if prior_4q and abs(prior_4q) > 0.001:
-                eps_growth = (recent_4q - prior_4q) / abs(prior_4q)
+            recent = eh["epsActual"].iloc[:4].sum()
+            prior  = eh["epsActual"].iloc[4:8].sum()
+            if prior and abs(prior) > 0.001:
+                return (recent - prior) / abs(prior)
     except Exception:
         pass
 
-    if eps_growth is None:
-        eps_growth = info.get("earningsGrowth")
+    # Method 2 — earningsGrowth field (trailing twelve months)
+    val = info.get("earningsGrowth")
+    if val is not None:
+        return float(val)
+
+    # Method 3 — earningsQuarterlyGrowth (YoY most recent quarter)
+    val = info.get("earningsQuarterlyGrowth")
+    if val is not None:
+        return float(val)
+
+    # Method 4 — derive from trailingEps vs forwardEps
+    try:
+        trailing = info.get("trailingEps")
+        forward  = info.get("forwardEps")
+        if trailing and forward and abs(trailing) > 0.001:
+            return (forward - trailing) / abs(trailing)
+    except Exception:
+        pass
+
+    # Method 5 — revenueGrowth as a proxy (weakest signal)
+    val = info.get("revenueGrowth")
+    if val is not None:
+        return float(val)
+
+    return None
+
+
+def fetch_fundamental_data(ticker: yf.Ticker) -> dict:
+    info       = ticker.info or {}
+    market_cap = info.get("marketCap")
+    avg_volume = info.get("averageVolume")
+    inst_own   = info.get("heldPercentInstitutions")
+    eps_growth = fetch_eps_growth(ticker, info)
 
     return {
         "market_cap":     market_cap,
@@ -340,17 +328,37 @@ def fetch_fundamental_data(ticker: yf.Ticker) -> dict:
     }
 
 
-def passes_fundamental_screen(fund: dict) -> bool:
+def passes_fundamental_screen(fund: dict) -> tuple:
+    """
+    Returns (passes: bool, fail_reason: str).
+
+    Key rule change vs previous version:
+      - Market cap, avg volume, and inst. ownership are HARD fails
+        even when data is missing (these are always available for S&P 500 stocks).
+      - EPS growth is only a hard fail if we HAVE data showing it is
+        below the threshold. If data is unavailable (None), the ticker
+        is allowed through with a score of 0 for that parameter rather
+        than being excluded entirely.
+    """
     mc = fund.get("market_cap")
     av = fund.get("avg_volume")
     io = fund.get("inst_ownership")
     eg = fund.get("eps_growth")
 
-    if mc is None or mc < MIN_MARKET_CAP:   return False
-    if av is None or av < MIN_AVG_VOLUME:   return False
-    if io is None or io < MIN_INST_OWNERSHIP: return False
-    if eg is None or eg < MIN_EPS_GROWTH:   return False
-    return True
+    if mc is None or mc < MIN_MARKET_CAP:
+        return False, f"MarketCap {'no data' if mc is None else f'${mc/1e9:.1f}B < $2B'}"
+
+    if av is None or av < MIN_AVG_VOLUME:
+        return False, f"AvgVol {'no data' if av is None else f'{av/1e6:.1f}M < 1M'}"
+
+    if io is None or io < MIN_INST_OWNERSHIP:
+        return False, f"InstOwn {'no data' if io is None else f'{io*100:.0f}% < 50%'}"
+
+    # EPS growth: only hard-fail if data exists AND is below threshold
+    if eg is not None and eg < MIN_EPS_GROWTH:
+        return False, f"EPSGrowth {eg*100:.0f}% < 15%"
+
+    return True, ""
 
 
 # ─────────────────────────────────────────────
@@ -359,21 +367,14 @@ def passes_fundamental_screen(fund: dict) -> bool:
 
 def analyze_ticker(symbol: str, idx: int, total: int) -> list:
     print(f"  [{idx:>3}/{total}] {symbol:<8}", end="", flush=True)
-    results = []
 
     try:
         ticker = yf.Ticker(symbol)
+        fund   = fetch_fundamental_data(ticker)
+        passed, reason = passes_fundamental_screen(fund)
 
-        # ── Fundamentals first ─────────────────────────────────────────
-        fund = fetch_fundamental_data(ticker)
-        if not passes_fundamental_screen(fund):
-            mc = fund.get("market_cap")
-            io = fund.get("inst_ownership")
-            eg = fund.get("eps_growth")
-            mc_s = f"${mc/1e9:.0f}B" if mc else "?"
-            io_s = f"{io*100:.0f}%" if io else "?"
-            eg_s = f"+{eg*100:.0f}%" if eg else "?"
-            print(f" ✗  MCap={mc_s}  InstOwn={io_s}  EPSGrowth={eg_s}")
+        if not passed:
+            print(f" ✗  {reason}")
             return []
 
         # ── Price history ──────────────────────────────────────────────
@@ -381,16 +382,17 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
         if hist.empty or len(hist) < 30:
             print(" ✗  Insufficient price history")
             return []
+
         close         = hist["Close"]
         current_price = float(close.iloc[-1])
 
         # ── Technical indicators ───────────────────────────────────────
-        rsi_val = calculate_rsi(close)
+        rsi_val                    = calculate_rsi(close)
         bb_upper, bb_middle, bb_lower = calculate_bollinger_bands(close)
-        ma_200  = float(close.rolling(200).mean().iloc[-1]) if len(close) >= 200 else float(close.mean())
-        bb_width = (bb_upper - bb_lower) or 1
-        bb_pos   = (current_price - bb_lower) / bb_width
-        price_vs_200ma = (current_price - ma_200) / ma_200
+        ma_200                     = float(close.rolling(200).mean().iloc[-1]) if len(close) >= 200 else float(close.mean())
+        bb_width                   = (bb_upper - bb_lower) or 1
+        bb_pos                     = (current_price - bb_lower) / bb_width
+        price_vs_200ma             = (current_price - ma_200) / ma_200
 
         # ── Options chain (longest expiry = LEAP) ─────────────────────
         expirations = ticker.options
@@ -423,6 +425,7 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
             "bb_position":    score_parameter(bb_pos,                 "bb_position"),
         }
 
+        results = []
         for _, opt in calls.iterrows():
             strike = float(opt["strike"])
             iv     = float(opt["impliedVolatility"])
@@ -450,10 +453,9 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
 
             param_scores = {
                 **param_scores_base,
-                "delta":         score_parameter(delta,       "delta"),
+                "delta":         score_parameter(delta,      "delta"),
                 "iv_percentile": score_parameter(opt_iv_pct, "iv_percentile"),
             }
-            composite = compute_composite_score(param_scores)
 
             results.append({
                 "ticker":   symbol,
@@ -487,12 +489,12 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
                 "breakeven_price":     round(breakeven, 2),
 
                 "scores":          {k: round(v, 1) for k, v in param_scores.items()},
-                "composite_score": composite,
+                "composite_score": compute_composite_score(param_scores),
             })
 
         results.sort(key=lambda x: x["composite_score"], reverse=True)
-        mc_s = f"${fund['market_cap']/1e9:.0f}B" if fund["market_cap"] else "?"
-        print(f" ✓  {len(results)} options  MCap={mc_s}  Expiry={expiry}")
+        eg_s = f"+{fund['eps_growth']*100:.0f}%" if fund["eps_growth"] is not None else "no data"
+        print(f" ✓  {len(results)} options  Expiry={expiry}  EPSGrowth={eg_s}")
         time.sleep(DELAY_SECONDS)
         return results
 
@@ -524,12 +526,14 @@ def main():
 
     watchlist = get_sp500_tickers()
     total     = len(watchlist)
-
     print(f"Screening {total} tickers...\n")
 
     all_results    = []
     per_stock      = {}
     passed_tickers = []
+
+    # Track why tickers fail for the summary
+    fail_reasons   = {"MarketCap": 0, "AvgVol": 0, "InstOwn": 0, "EPSGrowth": 0, "Other": 0}
 
     for idx, symbol in enumerate(watchlist, 1):
         options = analyze_ticker(symbol, idx, total)
@@ -557,9 +561,16 @@ def main():
             "max_iv_percentile":      MAX_IV_PERCENTILE,
         },
         "score_weights": WEIGHTS,
+        "note": (
+            "EPS growth data is missing for some tickers in Yahoo Finance. "
+            "When missing, the ticker is included with an EPS score of 0 "
+            "rather than excluded, to avoid false negatives."
+        ),
     }
 
-    print(f"\n{len(passed_tickers)}/{total} tickers passed fundamental screen.")
+    print(f"\n{'='*65}")
+    print(f"  {len(passed_tickers)} / {total} tickers passed fundamental screen")
+    print(f"{'='*65}")
     print("Saving output files...")
 
     save_json({"meta": run_meta, "top_10_per_stock":     per_stock},      "top_10_per_stock.json")
