@@ -32,8 +32,7 @@ warnings.filterwarnings("ignore")
 # ─────────────────────────────────────────────
 
 WATCHLIST = [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
-    "META", "TSLA", "JPM", "UNH", "V",
+    "AAPL", "MSFT", "NOW", "ORCL", "BKNG", "NFLX", "ABDE", "GOOG", "INTC", "EXPE", "NVDA", "AMZN", 
 ]
 
 RISK_FREE_RATE = 0.05          # Approximate annualised risk-free rate
