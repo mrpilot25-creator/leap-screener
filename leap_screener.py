@@ -35,6 +35,7 @@ warnings.filterwarnings("ignore")
 # ─────────────────────────────────────────────
 
 WATCHLIST = [
+    sp500_tickers = [
     "A", "AAPL", "ABBV", "ABNB", "ABT", "ACN", "ADBE", "ADI", "ADM", "ADP", 
     "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", "ALB", 
     "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", 
@@ -87,6 +88,7 @@ WATCHLIST = [
     "WMT", "WRB", "WST", "WTW", "WY", "WYNN", "XEL", "XOM", "XYL", "YUM", 
     "ZBH", "ZBRA", "ZTS",
 ]
+]
 
 # ─────────────────────────────────────────────
 # CONFIG
@@ -94,7 +96,7 @@ WATCHLIST = [
 
 RISK_FREE_RATE = 0.05
 OUTPUT_DIR     = "."
-DELAY_SECONDS  = 0.3
+DELAY_SECONDS  = 0.2          # Reduced from 0.3 to speed up large watchlists
 
 # ── Screening thresholds ──────────────────────────────────────────────
 MIN_MARKET_CAP        = 2e9
@@ -135,12 +137,16 @@ def calculate_bollinger_bands(
     )
 
 
-def calculate_iv_percentile(ticker_symbol: str, current_iv: float) -> float:
+def calculate_iv_percentile(close_prices: pd.Series, current_iv: float) -> float:
+    """
+    Calculates IV percentile from an existing price series.
+    Called ONCE per ticker using already-fetched price history —
+    no additional API call needed.
+    """
     try:
-        hist     = yf.Ticker(ticker_symbol).history(period="1y")["Close"]
-        if len(hist) < 30:
+        if len(close_prices) < 30:
             return 50.0
-        log_rets = np.log(hist / hist.shift(1)).dropna()
+        log_rets = np.log(close_prices / close_prices.shift(1)).dropna()
         roll_vol = log_rets.rolling(30).std() * np.sqrt(252)
         return round(float(np.mean(roll_vol.dropna() < current_iv) * 100), 1)
     except Exception:
@@ -269,7 +275,7 @@ def passes_fundamental_screen(fund: dict) -> tuple:
     """
     Only hard-fails a ticker when data EXISTS and is confirmed below threshold.
     Missing data (None) scores 0 but does not exclude the ticker.
-    Exception: missing market cap is always a hard fail.
+    Exception: missing or sub-threshold market cap is always a hard fail.
     """
     mc = fund.get("market_cap")
     av = fund.get("avg_volume")
@@ -283,7 +289,7 @@ def passes_fundamental_screen(fund: dict) -> tuple:
     if io is not None and io < MIN_INST_OWNERSHIP:
         return False, f"InstOwn {io*100:.0f}% < 50%"
     if eg is not None and eg < MIN_EPS_GROWTH:
-        return False, f"EPSGrowth {eg*100:.0f}% < 15%"
+        return False, f"EPSGrowth {eg*100:.1f}% < 15%"
     return True, ""
 
 
@@ -296,13 +302,15 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
 
     try:
         ticker = yf.Ticker(symbol)
-        fund   = fetch_fundamental_data(ticker)
-        passed, reason = passes_fundamental_screen(fund)
 
+        # ── Fundamentals ───────────────────────────────────────────────
+        fund = fetch_fundamental_data(ticker)
+        passed, reason = passes_fundamental_screen(fund)
         if not passed:
             print(f" ✗  {reason}")
             return []
 
+        # ── Price history (fetched once, reused for all calculations) ──
         hist = ticker.history(period="1y")
         if hist.empty or len(hist) < 30:
             print(" ✗  Insufficient price history")
@@ -311,6 +319,7 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
         close         = hist["Close"]
         current_price = float(close.iloc[-1])
 
+        # ── Technical indicators ───────────────────────────────────────
         rsi_val                       = calculate_rsi(close)
         bb_upper, bb_middle, bb_lower = calculate_bollinger_bands(close)
         ma_200         = float(close.rolling(200).mean().iloc[-1]) if len(close) >= 200 else float(close.mean())
@@ -318,6 +327,7 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
         bb_pos         = (current_price - bb_lower) / bb_width
         price_vs_200ma = (current_price - ma_200) / ma_200
 
+        # ── Options chain (longest expiry = LEAP) ─────────────────────
         expirations = ticker.options
         if not expirations:
             print(" ✗  No options data")
@@ -335,9 +345,12 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
         dte      = max((exp_date - date.today()).days, 1)
         T        = dte / 365.0
 
+        # ── IV percentile — calculated ONCE using median IV and the
+        #    already-fetched price history. No extra API calls. ─────────
         mid_iv        = float(calls["impliedVolatility"].median())
-        iv_percentile = calculate_iv_percentile(symbol, mid_iv)
+        iv_percentile = calculate_iv_percentile(close, mid_iv)
 
+        # ── Base scores (same for every strike on this ticker) ─────────
         param_scores_base = {
             "market_cap":     score_parameter(fund["market_cap"],    "market_cap"),
             "avg_volume":     score_parameter(fund["avg_volume"],     "avg_volume"),
@@ -346,8 +359,10 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
             "rsi":            score_parameter(rsi_val,                "rsi"),
             "price_vs_200ma": score_parameter(price_vs_200ma,         "price_vs_200ma"),
             "bb_position":    score_parameter(bb_pos,                 "bb_position"),
+            "iv_percentile":  score_parameter(iv_percentile,          "iv_percentile"),
         }
 
+        # ── Process each call strike ────────────────────────────────────
         results = []
         for _, opt in calls.iterrows():
             strike = float(opt["strike"])
@@ -368,16 +383,9 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
             leverage_ratio = delta * (current_price / prem) if prem != 0 else float("nan")
             breakeven      = strike + 2 * prem
 
-            opt_iv_pct = (
-                calculate_iv_percentile(symbol, iv)
-                if abs(iv - mid_iv) > 0.01
-                else iv_percentile
-            )
-
             param_scores = {
                 **param_scores_base,
-                "delta":         score_parameter(delta,      "delta"),
-                "iv_percentile": score_parameter(opt_iv_pct, "iv_percentile"),
+                "delta": score_parameter(delta, "delta"),
             }
 
             results.append({
@@ -401,7 +409,7 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
 
                 "premium":                round(prem, 2),
                 "implied_volatility_pct": round(iv * 100, 2),
-                "iv_percentile":          round(opt_iv_pct, 1),
+                "iv_percentile":          round(iv_percentile, 1),
                 "dte":                    dte,
 
                 "delta":       round(delta, 4),
@@ -416,7 +424,10 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
             })
 
         results.sort(key=lambda x: x["composite_score"], reverse=True)
-        print(f" ✓  {len(results)} options  Expiry={expiry}")
+
+        eg_s = f"EPSGrowth={fund['eps_growth']*100:.0f}%" if fund["eps_growth"] is not None else "EPSGrowth=?"
+        print(f" ✓  {len(results)} options  {eg_s}  IVPct={iv_percentile}%  Expiry={expiry}")
+
         time.sleep(DELAY_SECONDS)
         return results
 
@@ -444,7 +455,7 @@ def main():
     print("=" * 65)
     print("  LEAP CALL OPTIONS SCREENER")
     print(f"  Run date : {date.today()}")
-    print(f"  Watchlist: {', '.join(WATCHLIST)}")
+    print(f"  Tickers  : {len(WATCHLIST)}")
     print("=" * 65 + "\n")
 
     total = len(WATCHLIST)
