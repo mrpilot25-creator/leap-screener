@@ -55,13 +55,8 @@ MAX_IV_PERCENTILE     = 30
 # ─────────────────────────────────────────────
 
 def get_sp500_tickers() -> list:
-    """
-    Fetches the current S&P 500 constituents.
-    Tries four methods in order, falls back to hardcoded top-100 if all fail.
-    """
     print("Fetching S&P 500 tickers...")
 
-    url     = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
     headers = {
         "User-Agent": (
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -69,32 +64,20 @@ def get_sp500_tickers() -> list:
             "Chrome/120.0.0.0 Safari/537.36"
         )
     }
+    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
 
-    # Method 1: requests + lxml
-    try:
-        resp    = requests.get(url, headers=headers, timeout=20)
-        resp.raise_for_status()
-        tables  = pd.read_html(resp.text, flavor="lxml")
-        tickers = _extract_tickers(tables[0])
-        if tickers:
-            print(f"  ✓ {len(tickers)} tickers loaded (requests + lxml)\n")
-            return tickers
-    except Exception as e:
-        print(f"  Method 1 failed: {e}")
+    for flavor in ["lxml", "html5lib"]:
+        try:
+            resp    = requests.get(url, headers=headers, timeout=20)
+            resp.raise_for_status()
+            tables  = pd.read_html(resp.text, flavor=flavor)
+            tickers = _extract_tickers(tables[0])
+            if tickers:
+                print(f"  ✓ {len(tickers)} tickers loaded (requests + {flavor})\n")
+                return tickers
+        except Exception as e:
+            print(f"  {flavor} failed: {e}")
 
-    # Method 2: requests + html5lib
-    try:
-        resp    = requests.get(url, headers=headers, timeout=20)
-        resp.raise_for_status()
-        tables  = pd.read_html(resp.text, flavor="html5lib")
-        tickers = _extract_tickers(tables[0])
-        if tickers:
-            print(f"  ✓ {len(tickers)} tickers loaded (html5lib)\n")
-            return tickers
-    except Exception as e:
-        print(f"  Method 2 failed: {e}")
-
-    # Method 3: Wikipedia REST API
     try:
         api_url = "https://en.wikipedia.org/api/rest_v1/page/html/List_of_S%26P_500_companies"
         resp    = requests.get(api_url, headers=headers, timeout=20)
@@ -104,9 +87,8 @@ def get_sp500_tickers() -> list:
             print(f"  ✓ {len(tickers)} tickers loaded (Wikipedia REST API)\n")
             return tickers
     except Exception as e:
-        print(f"  Method 3 failed: {e}")
+        print(f"  Wikipedia REST API failed: {e}")
 
-    # Method 4: slickcharts.com
     try:
         resp   = requests.get("https://www.slickcharts.com/sp500", headers=headers, timeout=20)
         tables = pd.read_html(resp.text)
@@ -119,7 +101,7 @@ def get_sp500_tickers() -> list:
                     print(f"  ✓ {len(tickers)} tickers loaded (slickcharts)\n")
                     return tickers
     except Exception as e:
-        print(f"  Method 4 failed: {e}")
+        print(f"  slickcharts failed: {e}")
 
     print("  ⚠ All fetch methods failed — using hardcoded top-100 fallback.\n")
     return [
@@ -148,7 +130,7 @@ def _clean_tickers(raw: list) -> list:
     cleaned = []
     for t in raw:
         t = str(t).strip().replace(".", "-")
-        if t and t != "nan" and 1 <= len(t) <= 6 and t.isalpha() or "-" in t:
+        if t and t != "nan" and len(t) <= 6:
             cleaned.append(t)
     return sorted(set(cleaned))
 
@@ -217,7 +199,6 @@ def _clamp(val, lo, hi):
 def score_parameter(value, kind: str) -> float:
     if value is None or (isinstance(value, float) and math.isnan(value)):
         return 0.0
-
     if kind == "market_cap":
         return _clamp((value - MIN_MARKET_CAP) / 8e9 * 100, 0, 100)
     if kind == "avg_volume":
@@ -263,19 +244,13 @@ def compute_composite_score(scores: dict) -> float:
 
 
 # ─────────────────────────────────────────────
-# FUNDAMENTAL DATA  (improved EPS sourcing)
+# FUNDAMENTAL DATA
 # ─────────────────────────────────────────────
 
 def fetch_eps_growth(ticker: yf.Ticker, info: dict):
-    """
-    Tries five different methods to obtain a trailing EPS growth figure.
-    Returns the first non-None result, or None if all methods fail.
+    """Tries five sources for EPS growth. Returns first non-None value."""
 
-    This is the most common reason tickers are incorrectly excluded —
-    Yahoo Finance is inconsistent in which field it populates.
-    """
-
-    # Method 1 — quarterly earnings history (most accurate)
+    # 1. Quarterly earnings history
     try:
         eh = ticker.earnings_history
         if eh is not None and len(eh) >= 8:
@@ -286,17 +261,17 @@ def fetch_eps_growth(ticker: yf.Ticker, info: dict):
     except Exception:
         pass
 
-    # Method 2 — earningsGrowth field (trailing twelve months)
+    # 2. earningsGrowth (TTM)
     val = info.get("earningsGrowth")
     if val is not None:
         return float(val)
 
-    # Method 3 — earningsQuarterlyGrowth (YoY most recent quarter)
+    # 3. earningsQuarterlyGrowth (YoY)
     val = info.get("earningsQuarterlyGrowth")
     if val is not None:
         return float(val)
 
-    # Method 4 — derive from trailingEps vs forwardEps
+    # 4. Derive from trailingEps vs forwardEps
     try:
         trailing = info.get("trailingEps")
         forward  = info.get("forwardEps")
@@ -305,7 +280,7 @@ def fetch_eps_growth(ticker: yf.Ticker, info: dict):
     except Exception:
         pass
 
-    # Method 5 — revenueGrowth as a proxy (weakest signal)
+    # 5. revenueGrowth as a proxy
     val = info.get("revenueGrowth")
     if val is not None:
         return float(val)
@@ -315,46 +290,48 @@ def fetch_eps_growth(ticker: yf.Ticker, info: dict):
 
 def fetch_fundamental_data(ticker: yf.Ticker) -> dict:
     info       = ticker.info or {}
-    market_cap = info.get("marketCap")
-    avg_volume = info.get("averageVolume")
-    inst_own   = info.get("heldPercentInstitutions")
-    eps_growth = fetch_eps_growth(ticker, info)
-
     return {
-        "market_cap":     market_cap,
-        "avg_volume":     avg_volume,
-        "inst_ownership": inst_own,
-        "eps_growth":     eps_growth,
+        "market_cap":     info.get("marketCap"),
+        "avg_volume":     info.get("averageVolume"),
+        "inst_ownership": info.get("heldPercentInstitutions"),
+        "eps_growth":     fetch_eps_growth(ticker, info),
     }
 
 
 def passes_fundamental_screen(fund: dict) -> tuple:
     """
-    Returns (passes: bool, fail_reason: str).
+    ── KEY RULE ──────────────────────────────────────────────────────────
+    A ticker only FAILS a criterion when we have ACTUAL DATA confirming
+    it is below the threshold.
 
-    Key rule change vs previous version:
-      - Market cap, avg volume, and inst. ownership are HARD fails
-        even when data is missing (these are always available for S&P 500 stocks).
-      - EPS growth is only a hard fail if we HAVE data showing it is
-        below the threshold. If data is unavailable (None), the ticker
-        is allowed through with a score of 0 for that parameter rather
-        than being excluded entirely.
+    If Yahoo Finance returns None for a field, that criterion is treated
+    as neutral (score = 0) rather than a hard fail. This is essential
+    because Yahoo Finance routinely omits fields for valid large-cap stocks.
+
+    The only exception is Market Cap — if that is None or below $2B,
+    we skip the ticker since it is a core liquidity requirement and
+    virtually always available for S&P 500 constituents.
+    ──────────────────────────────────────────────────────────────────────
     """
     mc = fund.get("market_cap")
     av = fund.get("avg_volume")
     io = fund.get("inst_ownership")
     eg = fund.get("eps_growth")
 
+    # Market cap: hard fail on None or below threshold
     if mc is None or mc < MIN_MARKET_CAP:
-        return False, f"MarketCap {'no data' if mc is None else f'${mc/1e9:.1f}B < $2B'}"
+        label = "no data" if mc is None else f"${mc/1e9:.1f}B < $2B"
+        return False, f"MarketCap {label}"
 
-    if av is None or av < MIN_AVG_VOLUME:
-        return False, f"AvgVol {'no data' if av is None else f'{av/1e6:.1f}M < 1M'}"
+    # Average volume: hard fail only if data exists AND is below threshold
+    if av is not None and av < MIN_AVG_VOLUME:
+        return False, f"AvgVol {av/1e6:.1f}M < 1M"
 
-    if io is None or io < MIN_INST_OWNERSHIP:
-        return False, f"InstOwn {'no data' if io is None else f'{io*100:.0f}% < 50%'}"
+    # Institutional ownership: hard fail only if data exists AND is below threshold
+    if io is not None and io < MIN_INST_OWNERSHIP:
+        return False, f"InstOwn {io*100:.0f}% < 50%"
 
-    # EPS growth: only hard-fail if data exists AND is below threshold
+    # EPS growth: hard fail only if data exists AND is below threshold
     if eg is not None and eg < MIN_EPS_GROWTH:
         return False, f"EPSGrowth {eg*100:.0f}% < 15%"
 
@@ -387,12 +364,12 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
         current_price = float(close.iloc[-1])
 
         # ── Technical indicators ───────────────────────────────────────
-        rsi_val                    = calculate_rsi(close)
+        rsi_val                       = calculate_rsi(close)
         bb_upper, bb_middle, bb_lower = calculate_bollinger_bands(close)
-        ma_200                     = float(close.rolling(200).mean().iloc[-1]) if len(close) >= 200 else float(close.mean())
-        bb_width                   = (bb_upper - bb_lower) or 1
-        bb_pos                     = (current_price - bb_lower) / bb_width
-        price_vs_200ma             = (current_price - ma_200) / ma_200
+        ma_200         = float(close.rolling(200).mean().iloc[-1]) if len(close) >= 200 else float(close.mean())
+        bb_width       = (bb_upper - bb_lower) or 1
+        bb_pos         = (current_price - bb_lower) / bb_width
+        price_vs_200ma = (current_price - ma_200) / ma_200
 
         # ── Options chain (longest expiry = LEAP) ─────────────────────
         expirations = ticker.options
@@ -493,8 +470,12 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
             })
 
         results.sort(key=lambda x: x["composite_score"], reverse=True)
-        eg_s = f"+{fund['eps_growth']*100:.0f}%" if fund["eps_growth"] is not None else "no data"
-        print(f" ✓  {len(results)} options  Expiry={expiry}  EPSGrowth={eg_s}")
+
+        # Build a concise status line showing which fields had data
+        io_s = f"{fund['inst_ownership']*100:.0f}%" if fund["inst_ownership"] else "io=?"
+        eg_s = f"{fund['eps_growth']*100:.0f}%"     if fund["eps_growth"] else "eg=?"
+        print(f" ✓  {len(results)} opts  {io_s}  {eg_s}  {expiry}")
+
         time.sleep(DELAY_SECONDS)
         return results
 
@@ -527,13 +508,13 @@ def main():
     watchlist = get_sp500_tickers()
     total     = len(watchlist)
     print(f"Screening {total} tickers...\n")
+    print(f"  NOTE: Missing Yahoo Finance data fields score 0 but do")
+    print(f"  NOT cause a hard fail. Only confirmed-below-threshold")
+    print(f"  values (and missing market cap) cause exclusion.\n")
 
     all_results    = []
     per_stock      = {}
     passed_tickers = []
-
-    # Track why tickers fail for the summary
-    fail_reasons   = {"MarketCap": 0, "AvgVol": 0, "InstOwn": 0, "EPSGrowth": 0, "Other": 0}
 
     for idx, symbol in enumerate(watchlist, 1):
         options = analyze_ticker(symbol, idx, total)
@@ -561,11 +542,6 @@ def main():
             "max_iv_percentile":      MAX_IV_PERCENTILE,
         },
         "score_weights": WEIGHTS,
-        "note": (
-            "EPS growth data is missing for some tickers in Yahoo Finance. "
-            "When missing, the ticker is included with an EPS score of 0 "
-            "rather than excluded, to avoid false negatives."
-        ),
     }
 
     print(f"\n{'='*65}")
