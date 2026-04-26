@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-04-26T12:01:54.427245Z",
+    "generated_at": "2026-04-26T12:28:50.645586Z",
     "sp500_universe": 99,
     "tickers_passed": 41,
     "tickers_list": [
@@ -69,8 +69,7 @@
       "bb_position": 0.1,
       "delta": 0.2,
       "iv_percentile": 0.16
-    },
-    "note": "EPS growth data is missing for some tickers in Yahoo Finance. When missing, the ticker is included with an EPS score of 0 rather than excluded, to avoid false negatives."
+    }
   },
   "all_screened_options": [
     {
