@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated_at": "2026-04-26T11:33:54.870555Z",
-    "sp500_universe": 50,
-    "tickers_passed": 21,
+    "generated_at": "2026-04-26T11:48:31.923098Z",
+    "sp500_universe": 99,
+    "tickers_passed": 37,
     "tickers_list": [
       "AAPL",
       "MSFT",
@@ -24,7 +24,23 @@
       "NEE",
       "RTX",
       "AMGN",
-      "BMY"
+      "BMY",
+      "GS",
+      "SPGI",
+      "AXP",
+      "SYK",
+      "PLD",
+      "ISRG",
+      "ADI",
+      "BSX",
+      "WM",
+      "AON",
+      "ANET",
+      "KLAC",
+      "LRCX",
+      "PANW",
+      "ICE",
+      "CME"
     ],
     "screening_parameters": {
       "min_market_cap_usd": 2000000000.0,
