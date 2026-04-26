@@ -2,8 +2,11 @@ name: Refresh LEAP Data
 
 on:
   schedule:
-    - cron: "0 12 * * 1-5"   # 12:00 UTC Mon–Fri (before US market open)
-  workflow_dispatch:           # Allow manual trigger from GitHub UI
+    - cron: "0 12 * * 1-5"   # 12:00 UTC Mon–Fri
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   run:
@@ -11,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -29,4 +34,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add top_10_per_stock.json top_10_overall.json full_results.json
           git diff --staged --quiet || git commit -m "chore: refresh LEAP data $(date -u +%Y-%m-%d)"
-          git push
+          git push origin main
