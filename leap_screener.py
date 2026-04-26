@@ -87,7 +87,6 @@ WATCHLIST = [
     "WMT", "WRB", "WST", "WTW", "WY", "WYNN", "XEL", "XOM", "XYL", "YUM", 
     "ZBH", "ZBRA", "ZTS",
 ]
-]
 
 # ─────────────────────────────────────────────
 # CONFIG
