@@ -1,18 +1,20 @@
 """
 LEAP Call Options Screener
 ==========================
-Automatically fetches every ticker in the S&P 500, screens them against
-fundamental, technical, and option-specific parameters, and outputs:
+Screens a manual watchlist of stocks for the best LEAP call options
+based on fundamental, technical, and option-specific parameters.
 
+Outputs:
   - top_10_per_stock.json   → best 10 options for each ticker
   - top_10_overall.json     → best 10 options across all tickers
   - full_results.json       → every screened option with all metrics
 
 Dependencies:
-    pip install yfinance pandas numpy scipy requests lxml html5lib
+    pip install yfinance pandas numpy scipy
 
 Usage:
-    python leap_screener.py
+    1. Edit WATCHLIST below with your desired tickers.
+    2. Run: python leap_screener.py
 """
 
 import json
@@ -23,11 +25,19 @@ from datetime import datetime, date
 
 import numpy as np
 import pandas as pd
-import requests
 import yfinance as yf
 from scipy.stats import norm
 
 warnings.filterwarnings("ignore")
+
+# ─────────────────────────────────────────────
+# WATCHLIST  –  Edit this list with your tickers
+# ─────────────────────────────────────────────
+
+WATCHLIST = [
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
+    "META", "TSLA", "JPM", "UNH", "V",
+]
 
 # ─────────────────────────────────────────────
 # CONFIG
@@ -51,91 +61,6 @@ MAX_IV_PERCENTILE     = 30
 
 
 # ─────────────────────────────────────────────
-# FETCH S&P 500 TICKERS
-# ─────────────────────────────────────────────
-
-def get_sp500_tickers() -> list:
-    print("Fetching S&P 500 tickers...")
-
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/120.0.0.0 Safari/537.36"
-        )
-    }
-    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
-
-    for flavor in ["lxml", "html5lib"]:
-        try:
-            resp    = requests.get(url, headers=headers, timeout=20)
-            resp.raise_for_status()
-            tables  = pd.read_html(resp.text, flavor=flavor)
-            tickers = _extract_tickers(tables[0])
-            if tickers:
-                print(f"  ✓ {len(tickers)} tickers loaded (requests + {flavor})\n")
-                return tickers
-        except Exception as e:
-            print(f"  {flavor} failed: {e}")
-
-    try:
-        api_url = "https://en.wikipedia.org/api/rest_v1/page/html/List_of_S%26P_500_companies"
-        resp    = requests.get(api_url, headers=headers, timeout=20)
-        tables  = pd.read_html(resp.text, flavor="lxml")
-        tickers = _extract_tickers(tables[0])
-        if tickers:
-            print(f"  ✓ {len(tickers)} tickers loaded (Wikipedia REST API)\n")
-            return tickers
-    except Exception as e:
-        print(f"  Wikipedia REST API failed: {e}")
-
-    try:
-        resp   = requests.get("https://www.slickcharts.com/sp500", headers=headers, timeout=20)
-        tables = pd.read_html(resp.text)
-        for t in tables:
-            cols_lower = [str(c).lower() for c in t.columns]
-            if "symbol" in cols_lower:
-                col     = t.columns[cols_lower.index("symbol")]
-                tickers = _clean_tickers(t[col].tolist())
-                if len(tickers) > 400:
-                    print(f"  ✓ {len(tickers)} tickers loaded (slickcharts)\n")
-                    return tickers
-    except Exception as e:
-        print(f"  slickcharts failed: {e}")
-
-    print("  ⚠ All fetch methods failed — using hardcoded top-100 fallback.\n")
-    return [
-        "AAPL","MSFT","NVDA","AMZN","META","GOOGL","GOOG","TSLA","BRK-B","JPM",
-        "LLY","V","UNH","XOM","MA","JNJ","PG","AVGO","HD","MRK","COST","ABBV",
-        "CVX","KO","PEP","ADBE","WMT","BAC","MCD","CSCO","CRM","TMO","ABT","ACN",
-        "LIN","NFLX","DHR","TXN","CMCSA","VZ","NEE","PM","RTX","ORCL","QCOM",
-        "HON","UPS","AMGN","BMY","IBM","GE","CAT","SBUX","GS","BLK","SPGI","AXP",
-        "SYK","PLD","NOW","ISRG","DE","MDLZ","ADI","REGN","MMC","PGR","MO","DUK",
-        "SO","CL","ELV","BSX","ZTS","CI","WM","MCO","ITW","EOG","AON","FI","HUM",
-        "NOC","GD","ANET","APD","KLAC","LRCX","SNPS","CDNS","PANW","MCHP","PAYX",
-        "ADP","MSCI","ICE","CME","TDG","CTAS",
-    ]
-
-
-def _extract_tickers(df: pd.DataFrame) -> list:
-    cols_lower = [str(c).lower() for c in df.columns]
-    for keyword in ["symbol", "ticker"]:
-        if keyword in cols_lower:
-            col = df.columns[cols_lower.index(keyword)]
-            return _clean_tickers(df[col].tolist())
-    return []
-
-
-def _clean_tickers(raw: list) -> list:
-    cleaned = []
-    for t in raw:
-        t = str(t).strip().replace(".", "-")
-        if t and t != "nan" and len(t) <= 6:
-            cleaned.append(t)
-    return sorted(set(cleaned))
-
-
-# ─────────────────────────────────────────────
 # TECHNICAL INDICATORS
 # ─────────────────────────────────────────────
 
@@ -149,10 +74,16 @@ def calculate_rsi(prices: pd.Series, period: int = 14) -> float:
     return float((100 - (100 / (1 + rs))).iloc[-1])
 
 
-def calculate_bollinger_bands(prices: pd.Series, period: int = 20, num_std: float = 2.0) -> tuple:
+def calculate_bollinger_bands(
+    prices: pd.Series, period: int = 20, num_std: float = 2.0
+) -> tuple:
     middle = prices.rolling(period).mean().iloc[-1]
     std    = prices.rolling(period).std().iloc[-1]
-    return float(middle + num_std * std), float(middle), float(middle - num_std * std)
+    return (
+        float(middle + num_std * std),
+        float(middle),
+        float(middle - num_std * std),
+    )
 
 
 def calculate_iv_percentile(ticker_symbol: str, current_iv: float) -> float:
@@ -249,8 +180,6 @@ def compute_composite_score(scores: dict) -> float:
 
 def fetch_eps_growth(ticker: yf.Ticker, info: dict):
     """Tries five sources for EPS growth. Returns first non-None value."""
-
-    # 1. Quarterly earnings history
     try:
         eh = ticker.earnings_history
         if eh is not None and len(eh) >= 8:
@@ -260,18 +189,10 @@ def fetch_eps_growth(ticker: yf.Ticker, info: dict):
                 return (recent - prior) / abs(prior)
     except Exception:
         pass
-
-    # 2. earningsGrowth (TTM)
-    val = info.get("earningsGrowth")
-    if val is not None:
-        return float(val)
-
-    # 3. earningsQuarterlyGrowth (YoY)
-    val = info.get("earningsQuarterlyGrowth")
-    if val is not None:
-        return float(val)
-
-    # 4. Derive from trailingEps vs forwardEps
+    for key in ["earningsGrowth", "earningsQuarterlyGrowth"]:
+        val = info.get(key)
+        if val is not None:
+            return float(val)
     try:
         trailing = info.get("trailingEps")
         forward  = info.get("forwardEps")
@@ -279,17 +200,14 @@ def fetch_eps_growth(ticker: yf.Ticker, info: dict):
             return (forward - trailing) / abs(trailing)
     except Exception:
         pass
-
-    # 5. revenueGrowth as a proxy
     val = info.get("revenueGrowth")
     if val is not None:
         return float(val)
-
     return None
 
 
 def fetch_fundamental_data(ticker: yf.Ticker) -> dict:
-    info       = ticker.info or {}
+    info = ticker.info or {}
     return {
         "market_cap":     info.get("marketCap"),
         "avg_volume":     info.get("averageVolume"),
@@ -300,41 +218,23 @@ def fetch_fundamental_data(ticker: yf.Ticker) -> dict:
 
 def passes_fundamental_screen(fund: dict) -> tuple:
     """
-    ── KEY RULE ──────────────────────────────────────────────────────────
-    A ticker only FAILS a criterion when we have ACTUAL DATA confirming
-    it is below the threshold.
-
-    If Yahoo Finance returns None for a field, that criterion is treated
-    as neutral (score = 0) rather than a hard fail. This is essential
-    because Yahoo Finance routinely omits fields for valid large-cap stocks.
-
-    The only exception is Market Cap — if that is None or below $2B,
-    we skip the ticker since it is a core liquidity requirement and
-    virtually always available for S&P 500 constituents.
-    ──────────────────────────────────────────────────────────────────────
+    Only hard-fails a ticker when data EXISTS and is confirmed below threshold.
+    Missing data (None) scores 0 but does not exclude the ticker.
+    Exception: missing market cap is always a hard fail.
     """
     mc = fund.get("market_cap")
     av = fund.get("avg_volume")
     io = fund.get("inst_ownership")
     eg = fund.get("eps_growth")
 
-    # Market cap: hard fail on None or below threshold
     if mc is None or mc < MIN_MARKET_CAP:
-        label = "no data" if mc is None else f"${mc/1e9:.1f}B < $2B"
-        return False, f"MarketCap {label}"
-
-    # Average volume: hard fail only if data exists AND is below threshold
+        return False, f"MarketCap {'no data' if mc is None else f'${mc/1e9:.1f}B < $2B'}"
     if av is not None and av < MIN_AVG_VOLUME:
         return False, f"AvgVol {av/1e6:.1f}M < 1M"
-
-    # Institutional ownership: hard fail only if data exists AND is below threshold
     if io is not None and io < MIN_INST_OWNERSHIP:
         return False, f"InstOwn {io*100:.0f}% < 50%"
-
-    # EPS growth: hard fail only if data exists AND is below threshold
     if eg is not None and eg < MIN_EPS_GROWTH:
         return False, f"EPSGrowth {eg*100:.0f}% < 15%"
-
     return True, ""
 
 
@@ -354,7 +254,6 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
             print(f" ✗  {reason}")
             return []
 
-        # ── Price history ──────────────────────────────────────────────
         hist = ticker.history(period="1y")
         if hist.empty or len(hist) < 30:
             print(" ✗  Insufficient price history")
@@ -363,7 +262,6 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
         close         = hist["Close"]
         current_price = float(close.iloc[-1])
 
-        # ── Technical indicators ───────────────────────────────────────
         rsi_val                       = calculate_rsi(close)
         bb_upper, bb_middle, bb_lower = calculate_bollinger_bands(close)
         ma_200         = float(close.rolling(200).mean().iloc[-1]) if len(close) >= 200 else float(close.mean())
@@ -371,7 +269,6 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
         bb_pos         = (current_price - bb_lower) / bb_width
         price_vs_200ma = (current_price - ma_200) / ma_200
 
-        # ── Options chain (longest expiry = LEAP) ─────────────────────
         expirations = ticker.options
         if not expirations:
             print(" ✗  No options data")
@@ -470,12 +367,7 @@ def analyze_ticker(symbol: str, idx: int, total: int) -> list:
             })
 
         results.sort(key=lambda x: x["composite_score"], reverse=True)
-
-        # Build a concise status line showing which fields had data
-        io_s = f"{fund['inst_ownership']*100:.0f}%" if fund["inst_ownership"] else "io=?"
-        eg_s = f"{fund['eps_growth']*100:.0f}%"     if fund["eps_growth"] else "eg=?"
-        print(f" ✓  {len(results)} opts  {io_s}  {eg_s}  {expiry}")
-
+        print(f" ✓  {len(results)} options  Expiry={expiry}")
         time.sleep(DELAY_SECONDS)
         return results
 
@@ -501,22 +393,19 @@ def save_json(data, filename: str):
 
 def main():
     print("=" * 65)
-    print("  LEAP CALL OPTIONS SCREENER  —  Full S&P 500")
-    print(f"  Run date: {date.today()}")
+    print("  LEAP CALL OPTIONS SCREENER")
+    print(f"  Run date : {date.today()}")
+    print(f"  Watchlist: {', '.join(WATCHLIST)}")
     print("=" * 65 + "\n")
 
-    watchlist = get_sp500_tickers()
-    total     = len(watchlist)
+    total = len(WATCHLIST)
     print(f"Screening {total} tickers...\n")
-    print(f"  NOTE: Missing Yahoo Finance data fields score 0 but do")
-    print(f"  NOT cause a hard fail. Only confirmed-below-threshold")
-    print(f"  values (and missing market cap) cause exclusion.\n")
 
     all_results    = []
     per_stock      = {}
     passed_tickers = []
 
-    for idx, symbol in enumerate(watchlist, 1):
+    for idx, symbol in enumerate(WATCHLIST, 1):
         options = analyze_ticker(symbol, idx, total)
         if options:
             passed_tickers.append(symbol)
@@ -528,7 +417,7 @@ def main():
 
     run_meta = {
         "generated_at":   datetime.utcnow().isoformat() + "Z",
-        "sp500_universe": total,
+        "watchlist":      WATCHLIST,
         "tickers_passed": len(passed_tickers),
         "tickers_list":   passed_tickers,
         "screening_parameters": {
@@ -544,9 +433,7 @@ def main():
         "score_weights": WEIGHTS,
     }
 
-    print(f"\n{'='*65}")
-    print(f"  {len(passed_tickers)} / {total} tickers passed fundamental screen")
-    print(f"{'='*65}")
+    print(f"\n{len(passed_tickers)}/{total} tickers passed fundamental screen.")
     print("Saving output files...")
 
     save_json({"meta": run_meta, "top_10_per_stock":     per_stock},      "top_10_per_stock.json")
