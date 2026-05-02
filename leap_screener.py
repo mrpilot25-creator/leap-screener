@@ -3,8 +3,8 @@
 # Screens a manual watchlist of stocks for the best LEAP call options.
 #
 # Outputs:
-#   top_10_per_stock.json  - best 10 options for each ticker
-#   top_10_overall.json    - best 10 options across all tickers
+#   top_20_per_stock.json  - best 20 options for each ticker
+#   top_20_overall.json    - best 20 options across all tickers
 #   full_results.json      - every screened option with all metrics
 #
 # Install: pip install yfinance pandas numpy scipy
@@ -442,7 +442,7 @@ def main():
     print("=================================================================")
     print("")
     print("Fundamental criteria:")
-    print("  Market Cap       > $2B")
+    print("  Market Cap       > $25B")
     print("  Avg Volume       > 1M shares/day")
     print("  Inst. Ownership  > 50%")
     print("  EPS Growth       > +15%")
@@ -462,11 +462,11 @@ def main():
         options = analyze_ticker(symbol, idx, total)
         if options:
             passed_tickers.append(symbol)
-            per_stock[symbol] = options[:10]
+            per_stock[symbol] = options[:20]
             all_results.extend(options)
 
     all_results.sort(key=lambda x: x["composite_score"], reverse=True)
-    top_10_overall = all_results[:10]
+    top_10_overall = all_results[:20]
 
     run_meta = {
         "generated_at":   datetime.utcnow().isoformat() + "Z",
