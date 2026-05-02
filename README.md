@@ -29,7 +29,7 @@ For every ticker in the watchlist, the screener:
 
 | Parameter | Threshold | Notes |
 |---|---|---|
-| Market Cap | Greater than $2B | Hard fail if missing or below threshold |
+| Market Cap | Greater than $25B | Hard fail if missing or below threshold |
 | Average Daily Volume | Greater than 1M shares | Only fails if data exists and is below threshold |
 | Institutional Ownership | Greater than 50% | Only fails if data exists and is below threshold |
 | EPS Growth | Greater than +15% | Only fails if data exists and is below threshold |
