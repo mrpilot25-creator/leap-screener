@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-02T10:29:47.601572Z",
+    "generated_at": "2026-05-02T10:33:43.943790Z",
     "watchlist": [
       "AAPL",
       "MSFT",
@@ -23465,15 +23465,15 @@
       "bb_middle": 266.36,
       "bb_upper": 280.06,
       "bb_position_pct": 100.3,
-      "premium": 233.5,
+      "premium": 227.0,
       "implied_volatility_pct": 0.0,
       "iv_percentile": 100.0,
       "dte": 958,
       "delta": 1.0,
       "theta_daily": -0.0042,
-      "required_stock_move": 233.5,
-      "leverage_ratio": 1.2,
-      "breakeven_price": 502.0,
+      "required_stock_move": 227.0,
+      "leverage_ratio": 1.23,
+      "breakeven_price": 489.0,
       "scores": {
         "market_cap": 100,
         "avg_volume": 100,
