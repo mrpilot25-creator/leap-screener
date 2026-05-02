@@ -28,7 +28,7 @@ warnings.filterwarnings("ignore")
 # ------------------------------------------------------------------
 
 WATCHLIST = [
-    "A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
+"A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
     "ALB", "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", "AMZN", "ANET", "ANSS", "AON", "AOS", "APA", "APD", "APH", "APO", 
     "ARE", "ATO", "AVB", "AVGO", "AVY", "AWK", "AXON", "AXP", "AYI", "AZO", "BA", "BAC", "BALL", "BAX", "BBWI", "BBY", "BDX", "BEN", "BF-B", "BG", 
     "BIIB", "BIO", "BK", "BKNG", "BKR", "BLK", "BMY", "BR", "BRK-B", "BSX", "BWA", "BX", "BXP", "C", "CAG", "CAH", "CARR", "CAT", "CB", "CBOE", 
@@ -64,7 +64,7 @@ OUTPUT_DIR     = "."
 DELAY_SECONDS  = 0.2
 
 # Fundamental thresholds
-MIN_MARKET_CAP     = 25e9   # $2 Billion
+MIN_MARKET_CAP     = 25e9   # $25 Billion
 MIN_AVG_VOLUME     = 1e6   # 1 Million shares/day
 MIN_INST_OWNERSHIP = 0.50  # 50%
 MIN_EPS_GROWTH     = 0.15  # +15%
