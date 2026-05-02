@@ -16,7 +16,7 @@ pip install yfinance pandas numpy scipy
 Usage:
 1. Edit WATCHLIST below with your desired tickers.
 2. Run: python leap_screener.py
-"""
+“””
 
 import json
 import math
