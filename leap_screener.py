@@ -6,9 +6,9 @@ based on fundamental, technical, and option-specific parameters.
 
 Outputs:
 
-- top_10_per_stock.json   → best 10 options for each ticker
-- top_10_overall.json     → best 10 options across all tickers
-- full_results.json       → every screened option with all metrics
+- top_10_per_stock.json    best 10 options for each ticker
+- top_10_overall.json      best 10 options across all tickers
+- full_results.json        every screened option with all metrics
 
 Dependencies:
 pip install yfinance pandas numpy scipy
