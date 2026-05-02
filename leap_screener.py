@@ -442,7 +442,7 @@ def main():
             all_results.extend(options)
 
     all_results.sort(key=lambda x: x["composite_score"], reverse=True)
-    top_10_overall = all_results[:20]
+    top_20_overall = all_results[:20]
 
     run_meta = {
         "generated_at":   datetime.utcnow().isoformat() + "Z",
