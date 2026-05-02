@@ -1,22 +1,24 @@
-# “””
-LEAP Call Options Screener
+# LEAP Call Options Screener
 
-Screens a manual watchlist of stocks for the best LEAP call options
-based on fundamental, technical, and option-specific parameters.
+# ==========================
 
-Outputs:
+# Screens a manual watchlist of stocks for the best LEAP call options.
 
-- top_10_per_stock.json  : best 10 options for each ticker
-- top_10_overall.json    : best 10 options across all tickers
-- full_results.json      : every screened option with all metrics
+# 
 
-Dependencies:
-pip install yfinance pandas numpy scipy
+# Outputs:
 
-Usage:
-1. Edit WATCHLIST below with your desired tickers.
-2. Run: python leap_screener.py
-“””
+# top_10_per_stock.json  - best 10 options for each ticker
+
+# top_10_overall.json    - best 10 options across all tickers
+
+# full_results.json      - every screened option with all metrics
+
+# 
+
+# Install: pip install yfinance pandas numpy scipy
+
+# Run:     python leap_screener.py
 
 import json
 import math
@@ -31,22 +33,22 @@ from scipy.stats import norm
 
 warnings.filterwarnings(“ignore”)
 
-# ———————————————————————
+# ——————————————————————
 
-# WATCHLIST  -  Edit this list with your tickers
+# WATCHLIST - Edit this list with your tickers
 
-# ———————————————————————
+# ——————————————————————
 
 WATCHLIST = [
 “AAPL”, “MSFT”, “GOOGL”, “AMZN”, “NVDA”,
 “META”, “TSLA”, “JPM”, “UNH”, “V”,
 ]
 
-# ———————————————————————
+# ——————————————————————
 
 # CONFIG
 
-# ———————————————————————
+# ——————————————————————
 
 RISK_FREE_RATE = 0.05
 OUTPUT_DIR     = “.”
@@ -73,11 +75,11 @@ DELTA_MIN         = 0.70
 DELTA_MAX         = 0.85
 MAX_IV_PERCENTILE = 30
 
-# ———————————————————————
+# ——————————————————————
 
 # TECHNICAL INDICATORS
 
-# ———————————————————————
+# ——————————————————————
 
 def calculate_rsi(prices, period=14):
 delta    = prices.diff()
@@ -107,11 +109,11 @@ return round(float(np.mean(roll_vol.dropna() < current_iv) * 100), 1)
 except Exception:
 return 50.0
 
-# ———————————————————————
+# ——————————————————————
 
 # BLACK-SCHOLES GREEKS
 
-# ———————————————————————
+# ——————————————————————
 
 def black_scholes_delta(S, K, T, r, sigma):
 if T <= 0 or sigma <= 0 or S <= 0 or K <= 0:
@@ -128,11 +130,11 @@ term1 = -(S * norm.pdf(d1) * sigma) / (2 * math.sqrt(T))
 term2 = r * K * math.exp(-r * T) * norm.cdf(d2)
 return float((term1 - term2) / 365)
 
-# ———————————————————————
+# ——————————————————————
 
 # SCORING ENGINE
 
-# ———————————————————————
+# ——————————————————————
 
 def clamp(val, lo, hi):
 return max(lo, min(hi, val))
@@ -140,55 +142,41 @@ return max(lo, min(hi, val))
 def score_parameter(value, kind):
 if value is None or (isinstance(value, float) and math.isnan(value)):
 return 0.0
-
-```
-if kind == "market_cap":
-    return clamp((value - MIN_MARKET_CAP) / 8e9 * 100, 0, 100)
-
-if kind == "avg_volume":
-    return clamp((value - MIN_AVG_VOLUME) / 9e6 * 100, 0, 100)
-
-if kind == "inst_ownership":
-    return clamp((value - MIN_INST_OWNERSHIP) / 0.30 * 100, 0, 100)
-
-if kind == "eps_growth":
-    return clamp((value - MIN_EPS_GROWTH) / 0.35 * 100, 0, 100)
-
-if kind == "revenue_growth":
-    return clamp((value - MIN_REVENUE_GROWTH) / 0.32 * 100, 0, 100)
-
-if kind == "ebitda_margin":
-    return clamp((value - MIN_EBITDA_MARGIN) / 0.30 * 100, 0, 100)
-
-if kind == "rsi":
-    if value > RSI_UPPER:
-        return 0.0
-    return clamp((RSI_UPPER - value) / 20.0 * 100, 0, 100)
-
-if kind == "price_vs_200ma":
-    if abs(value) > PRICE_VS_200MA_RANGE:
-        return max(0.0, 100 - abs(value) / PRICE_VS_200MA_RANGE * 50)
-    return 100 - abs(value) / PRICE_VS_200MA_RANGE * 30
-
-if kind == "bb_position":
-    if value <= 0.5:
-        return clamp((1 - value) * 100, 0, 100)
-    return 0.0
-
-if kind == "delta":
-    if DELTA_MIN <= value <= DELTA_MAX:
-        mid = (DELTA_MIN + DELTA_MAX) / 2
-        return 100 - abs(value - mid) / 0.075 * 40
-    dist = min(abs(value - DELTA_MIN), abs(value - DELTA_MAX))
-    return clamp(100 - dist / 0.10 * 100, 0, 100)
-
-if kind == "iv_percentile":
-    if value > MAX_IV_PERCENTILE:
-        return 0.0
-    return clamp((MAX_IV_PERCENTILE - value) / MAX_IV_PERCENTILE * 100, 0, 100)
-
+if kind == “market_cap”:
+return clamp((value - MIN_MARKET_CAP) / 8e9 * 100, 0, 100)
+if kind == “avg_volume”:
+return clamp((value - MIN_AVG_VOLUME) / 9e6 * 100, 0, 100)
+if kind == “inst_ownership”:
+return clamp((value - MIN_INST_OWNERSHIP) / 0.30 * 100, 0, 100)
+if kind == “eps_growth”:
+return clamp((value - MIN_EPS_GROWTH) / 0.35 * 100, 0, 100)
+if kind == “revenue_growth”:
+return clamp((value - MIN_REVENUE_GROWTH) / 0.32 * 100, 0, 100)
+if kind == “ebitda_margin”:
+return clamp((value - MIN_EBITDA_MARGIN) / 0.30 * 100, 0, 100)
+if kind == “rsi”:
+if value > RSI_UPPER:
 return 0.0
-```
+return clamp((RSI_UPPER - value) / 20.0 * 100, 0, 100)
+if kind == “price_vs_200ma”:
+if abs(value) > PRICE_VS_200MA_RANGE:
+return max(0.0, 100 - abs(value) / PRICE_VS_200MA_RANGE * 50)
+return 100 - abs(value) / PRICE_VS_200MA_RANGE * 30
+if kind == “bb_position”:
+if value <= 0.5:
+return clamp((1 - value) * 100, 0, 100)
+return 0.0
+if kind == “delta”:
+if DELTA_MIN <= value <= DELTA_MAX:
+mid = (DELTA_MIN + DELTA_MAX) / 2
+return 100 - abs(value - mid) / 0.075 * 40
+dist = min(abs(value - DELTA_MIN), abs(value - DELTA_MAX))
+return clamp(100 - dist / 0.10 * 100, 0, 100)
+if kind == “iv_percentile”:
+if value > MAX_IV_PERCENTILE:
+return 0.0
+return clamp((MAX_IV_PERCENTILE - value) / MAX_IV_PERCENTILE * 100, 0, 100)
+return 0.0
 
 WEIGHTS = {
 “market_cap”:      0.06,
@@ -207,11 +195,11 @@ WEIGHTS = {
 def compute_composite_score(scores):
 return round(sum(WEIGHTS[k] * scores.get(k, 0) for k in WEIGHTS), 2)
 
-# ———————————————————————
+# ——————————————————————
 
 # FUNDAMENTAL DATA
 
-# ———————————————————————
+# ——————————————————————
 
 def fetch_eps_growth(ticker, info):
 try:
@@ -264,12 +252,6 @@ return {
 }
 
 def passes_fundamental_screen(fund):
-“””
-Returns (passed, reason).
-Only hard-fails when data EXISTS and is confirmed below threshold.
-Missing data scores 0 but does not exclude the ticker.
-Exception: Market Cap missing or below $2B is always a hard fail.
-“””
 mc = fund.get(“market_cap”)
 av = fund.get(“avg_volume”)
 io = fund.get(“inst_ownership”)
@@ -281,33 +263,28 @@ em = fund.get(“ebitda_margin”)
 if mc is None or mc < MIN_MARKET_CAP:
     label = "no data" if mc is None else ("$" + str(round(mc / 1e9, 1)) + "B < $2B")
     return False, "MarketCap " + label
-
 if av is not None and av < MIN_AVG_VOLUME:
     return False, "AvgVol " + str(round(av / 1e6, 1)) + "M < 1M"
-
 if io is not None and io < MIN_INST_OWNERSHIP:
-    return False, "InstOwn " + str(round(io * 100, 0)) + "% < 50%"
-
+    return False, "InstOwn " + str(round(io * 100)) + "% < 50%"
 if eg is not None and eg < MIN_EPS_GROWTH:
     return False, "EPSGrowth " + str(round(eg * 100, 1)) + "% < 15%"
-
 if rg is not None and rg < MIN_REVENUE_GROWTH:
     return False, "RevenueGrowth " + str(round(rg * 100, 1)) + "% < 8%"
-
 if em is not None and em < MIN_EBITDA_MARGIN:
     return False, "EBITDAMargin " + str(round(em * 100, 1)) + "% < 15%"
-
 return True, ""
 ```
 
-# ———————————————————————
+# ——————————————————————
 
 # MAIN ANALYSIS FUNCTION
 
-# ———————————————————————
+# ——————————————————————
 
 def analyze_ticker(symbol, idx, total):
-print(”  [” + str(idx).rjust(3) + “/” + str(total) + “] “ + symbol.ljust(8), end=””, flush=True)
+prefix = “  [” + str(idx).rjust(3) + “/” + str(total) + “] “ + symbol.ljust(8)
+print(prefix, end=””, flush=True)
 
 ```
 try:
@@ -429,9 +406,9 @@ try:
 
     results.sort(key=lambda x: x["composite_score"], reverse=True)
 
-    rg_s = (str(round(fund["revenue_growth"] * 100, 0)) + "%") if fund["revenue_growth"] is not None else "?"
-    em_s = (str(round(fund["ebitda_margin"] * 100, 0)) + "%")  if fund["ebitda_margin"]  is not None else "?"
-    print(" PASS  " + str(len(results)) + " options  RevGrowth=" + rg_s + "  EBITDA=" + em_s + "  " + expiry)
+    rg_s = str(round(fund["revenue_growth"] * 100)) + "%" if fund["revenue_growth"] is not None else "?"
+    em_s = str(round(fund["ebitda_margin"] * 100)) + "%"  if fund["ebitda_margin"]  is not None else "?"
+    print(" PASS  " + str(len(results)) + " opts  RevGrowth=" + rg_s + "  EBITDA=" + em_s + "  " + expiry)
 
     time.sleep(DELAY_SECONDS)
     return results
@@ -441,11 +418,11 @@ except Exception as e:
     return []
 ```
 
-# ———————————————————————
+# ——————————————————————
 
 # OUTPUT HELPERS
 
-# ———————————————————————
+# ——————————————————————
 
 def save_json(data, filename):
 path = OUTPUT_DIR + “/” + filename
@@ -453,11 +430,11 @@ with open(path, “w”) as f:
 json.dump(data, f, indent=2, default=str)
 print(”  Saved: “ + path)
 
-# ———————————————————————
+# ——————————————————————
 
 # ENTRY POINT
 
-# ———————————————————————
+# ——————————————————————
 
 def main():
 print(”=================================================================”)
@@ -465,7 +442,7 @@ print(”  LEAP CALL OPTIONS SCREENER”)
 print(”  Run date : “ + str(date.today()))
 print(”  Tickers  : “ + str(len(WATCHLIST)))
 print(”=================================================================”)
-print()
+print(””)
 print(“Fundamental criteria:”)
 print(”  Market Cap       > $2B”)
 print(”  Avg Volume       > 1M shares/day”)
@@ -473,12 +450,12 @@ print(”  Inst. Ownership  > 50%”)
 print(”  EPS Growth       > +15%”)
 print(”  Revenue Growth   > +8%”)
 print(”  EBITDA Margin    > 15%”)
-print()
+print(””)
 
 ```
 total = len(WATCHLIST)
 print("Screening " + str(total) + " tickers...")
-print()
+print("")
 
 all_results    = []
 per_stock      = {}
@@ -514,39 +491,29 @@ run_meta = {
     "score_weights": WEIGHTS,
 }
 
-print()
-print(str(len(passed_tickers)) + "/" + str(total) + " tickers passed fundamental screen.")
+print("")
+print(str(len(passed_tickers)) + "/" + str(total) + " tickers passed.")
 print("Saving output files...")
 
 save_json({"meta": run_meta, "top_10_per_stock":     per_stock},      "top_10_per_stock.json")
 save_json({"meta": run_meta, "top_10_overall":       top_10_overall}, "top_10_overall.json")
 save_json({"meta": run_meta, "all_screened_options": all_results},    "full_results.json")
 
-print()
+print("")
 print("=================================================================")
-print("  TOP 10 OVERALL (by composite score)")
+print("  TOP 10 OVERALL")
 print("=================================================================")
-header = ("  #  Ticker    Strike  Expiry        Prem    Delta   "
-          "IV%   IVPct   RSI   Score")
-print(header)
-print("-----------------------------------------------------------------")
 for i, opt in enumerate(top_10_overall, 1):
-    line = (
-        str(i).ljust(4) +
-        opt["ticker"].ljust(8) +
-        str(round(opt["strike"], 2)).rjust(8) + "  " +
-        opt["expiry"].ljust(12) +
-        ("$" + str(round(opt["premium"], 2))).rjust(7) + "  " +
-        str(round(opt["delta"], 4)).rjust(7) + "  " +
-        str(round(opt["implied_volatility_pct"], 1)).rjust(5) + "%  " +
-        str(round(opt["iv_percentile"], 1)).rjust(5) + "%  " +
-        str(round(opt["rsi"], 1)).rjust(5) + "  " +
-        str(round(opt["composite_score"], 1)).rjust(6)
+    print(
+        str(i) + ". " + opt["ticker"] +
+        "  Strike=" + str(opt["strike"]) +
+        "  Expiry=" + opt["expiry"] +
+        "  Prem=$" + str(opt["premium"]) +
+        "  Delta=" + str(opt["delta"]) +
+        "  Score=" + str(opt["composite_score"])
     )
-    print("  " + line)
 print("=================================================================")
 print("Done.")
-print()
 ```
 
 if **name** == “**main**”:
