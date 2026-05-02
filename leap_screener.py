@@ -65,7 +65,7 @@ OUTPUT_DIR     = "."
 DELAY_SECONDS  = 0.2
 
 # Fundamental thresholds
-MIN_MARKET_CAP     = 2e9   # $2 Billion
+MIN_MARKET_CAP     = 25e9   # $25 Billion
 MIN_AVG_VOLUME     = 1e6   # 1 Million shares/day
 MIN_INST_OWNERSHIP = 0.50  # 50%
 MIN_EPS_GROWTH     = 0.15  # +15%
