@@ -1,84 +1,123 @@
 # LEAP Call Options Screener
 
-A Python script that screens a watchlist of stocks for the best **LEAP call options** based on a multi-factor scoring model.
+A Python-based screening tool that evaluates stocks against a set of fundamental, technical, and options-specific criteria to identify the best LEAP call option opportunities.
+
+Results are automatically saved as JSON files and can be displayed on a live website powered by Base44.
 
 ---
 
-## What it does
+## What It Does
 
-For every ticker in your watchlist, the screener:
+For every ticker in the watchlist, the screener:
 
-1. Pulls **1 year of daily price history** and computes RSI, Bollinger Bands, and 200-day MA.
-2. Fetches **fundamental data** (market cap, average volume, institutional ownership, EPS growth).
-3. Selects the **longest available call option expiry** (the LEAP).
-4. Computes **Black-Scholes Delta and Theta** for every strike in that expiry.
-5. Approximates the **IV Percentile** from rolling realised volatility.
-6. Calculates **additional metrics**: required stock move, leverage ratio (Omega), and break-even price.
-7. Scores every option on **9 parameters** (0–100 each) and combines them into a **weighted composite score**.
-8. Outputs the **top 10 options per stock** and **top 10 options overall** as JSON files.
+1. Fetches one year of daily price history
+2. Pulls fundamental data from Yahoo Finance
+3. Applies six fundamental filters - tickers that fail are skipped immediately
+4. Computes RSI, Bollinger Bands, and 200-day Moving Average
+5. Identifies the longest available call option expiry (the LEAP)
+6. Calculates Black-Scholes Delta and Theta for every strike
+7. Estimates IV Percentile from rolling realised volatility
+8. Calculates additional metrics including leverage ratio, break-even price, and required stock move
+9. Scores every option across 11 parameters and produces a weighted composite score
+10. Saves the top 10 options per stock and the top 10 overall as JSON files
 
 ---
 
-## Screening Parameters
+## Screening Criteria
 
-| Category | Parameter | Threshold |
+### Fundamental Filters
+
+| Parameter | Threshold | Notes |
 |---|---|---|
-| **Fundamental** | Market Cap | > $2 B |
-| | Average Volume | > 1 M shares |
-| | Institutional Ownership | > 50% |
-| | EPS Growth | > +15% (trailing) |
-| **Technical** | RSI (14-day) | < 40 |
-| | Price vs 200-day MA | Near / slightly above |
-| | Bollinger Bands | Touching / near lower band |
-| **Option-Specific** | Delta (Black-Scholes) | 0.70 – 0.85 |
-| | IV Percentile | < 30% |
+| Market Cap | Greater than $2B | Hard fail if missing or below threshold |
+| Average Daily Volume | Greater than 1M shares | Only fails if data exists and is below threshold |
+| Institutional Ownership | Greater than 50% | Only fails if data exists and is below threshold |
+| EPS Growth | Greater than +15% | Only fails if data exists and is below threshold |
+| Revenue Growth | Greater than +8% | Only fails if data exists and is below threshold |
+| EBITDA Margin | Greater than 15% | Only fails if data exists and is below threshold |
 
----
+### Technical Filters (used for scoring, not hard exclusion)
 
-## Additional Calculated Metrics
-
-| Metric | Formula |
+| Parameter | Target |
 |---|---|
-| Required Stock Move | `Premium / Delta` |
-| Leverage Ratio (Omega) | `Delta × (Stock Price / Option Price)` |
-| Break-Even Price | `Strike + (2 × Premium)` |
-| Daily Theta | Black-Scholes Theta ÷ 365 |
+| RSI (14-day) | Below 40 |
+| Price vs 200-Day MA | Near or just above |
+| Bollinger Band Position | Near lower band |
+
+### Option Filters (used for scoring, not hard exclusion)
+
+| Parameter | Target |
+|---|---|
+| Delta (Black-Scholes) | 0.70 to 0.85 |
+| IV Percentile | Below 30% |
 
 ---
 
-## Score Weights
+## Composite Score Weights
+
+Each parameter is scored from 0 to 100 and combined into a weighted composite score.
 
 | Parameter | Weight |
 |---|---|
 | Delta | 20% |
-| IV Percentile | 16% |
 | RSI | 12% |
-| EPS Growth | 10% |
-| Price vs 200 MA | 10% |
-| Bollinger Position | 10% |
-| Market Cap | 8% |
-| Institutional Ownership | 8% |
-| Average Volume | 6% |
+| IV Percentile | 12% |
+| Price vs 200-Day MA | 10% |
+| Bollinger Band Position | 10% |
+| EPS Growth | 7% |
+| Market Cap | 6% |
+| Institutional Ownership | 6% |
+| Revenue Growth | 6% |
+| EBITDA Margin | 6% |
+| Average Volume | 5% |
 
 ---
 
-## Installation
+## Output Fields
 
-```bash
-pip install yfinance pandas numpy scipy
-```
+Each screened option record contains the following fields:
 
----
+### Identification
+- ticker
+- expiry
+- strike
+- contract
 
-## Usage
+### Stock Metrics
+- current_price
+- market_cap
+- avg_volume
+- inst_ownership
+- eps_growth_pct
+- revenue_growth_pct
+- ebitda_margin_pct
 
-1. Edit `WATCHLIST` at the top of `leap_screener.py`.
-2. Optionally adjust `RISK_FREE_RATE` and the threshold constants.
-3. Run:
+### Technical Metrics
+- rsi
+- price_vs_200ma_pct
+- bb_lower
+- bb_middle
+- bb_upper
+- bb_position_pct
 
-```bash
-python leap_screener.py
-```
+### Option Metrics
+- premium
+- implied_volatility_pct
+- iv_percentile
+- dte (days to expiry)
+
+### Greeks
+- delta
+- theta_daily
+
+### Derived Metrics
+- required_stock_move
+- leverage_ratio
+- breakeven_price
+
+### Scores
+- scores (individual score for each parameter)
+- composite_score (weighted total out of 100)
 
 ---
 
@@ -86,103 +125,106 @@ python leap_screener.py
 
 | File | Contents |
 |---|---|
-| `top_10_per_stock.json` | Best 10 call options for each ticker |
-| `top_10_overall.json` | Best 10 call options across all tickers |
-| `full_results.json` | Every screened option with all metrics |
+| top_10_per_stock.json | Best 10 call options for each ticker in the watchlist |
+| top_10_overall.json | Best 10 call options ranked across all tickers |
+| full_results.json | Every screened option with all metrics and scores |
 
 ---
 
-## JSON Schema (per option record)
+## Installation
 
-```json
-{
-  "ticker": "AAPL",
-  "expiry": "2027-01-15",
-  "strike": 170.00,
-  "contract": "AAPL270115C00170000",
-  "current_price": 182.50,
-  "market_cap": 2800000000000,
-  "avg_volume": 55000000,
-  "inst_ownership": 61.2,
-  "eps_growth_pct": 18.5,
-  "rsi": 36.4,
-  "price_vs_200ma_pct": 1.2,
-  "bb_lower": 168.30,
-  "bb_middle": 179.10,
-  "bb_upper": 189.90,
-  "bb_position_pct": 65.1,
-  "premium": 22.40,
-  "implied_volatility_pct": 28.6,
-  "iv_percentile": 21.3,
-  "dte": 630,
-  "delta": 0.7312,
-  "theta_daily": -0.0148,
-  "required_stock_move": 30.63,
-  "leverage_ratio": 5.95,
-  "breakeven_price": 214.80,
-  "scores": {
-    "market_cap": 100.0,
-    "avg_volume": 100.0,
-    "inst_ownership": 37.3,
-    "eps_growth": 10.0,
-    "rsi": 17.8,
-    "price_vs_200ma": 76.0,
-    "bb_position": 0.0,
-    "delta": 89.2,
-    "iv_percentile": 28.9
-  },
-  "composite_score": 62.4
-}
+```
+pip install yfinance pandas numpy scipy
 ```
 
 ---
 
-## Deploying to Base44 via GitHub
+## Usage
 
-1. Push this repository to GitHub.
-2. In **Base44**, create a new project and connect it to your GitHub repo.
-3. Point Base44 to the JSON files (`top_10_overall.json`, `top_10_per_stock.json`) as your data source.
-4. Build your UI components to read and display the JSON fields listed above.
+1. Open leap_screener.py
+2. Edit the WATCHLIST at the top of the file with your desired tickers
+3. Run the script:
 
-> **Tip:** Run `leap_screener.py` on a schedule (e.g. GitHub Actions cron, daily before market open) to keep the JSON files fresh. Commit and push the updated JSON; Base44 will pick up the changes automatically.
+```
+python leap_screener.py
+```
+
+The script will print a live progress log showing each ticker, whether it passed or failed the fundamental screen, and the reason for any failure.
 
 ---
 
-## GitHub Actions – Auto-Refresh (Optional)
+## Editing the Watchlist
 
-Create `.github/workflows/refresh.yml`:
+Open leap_screener.py and update the WATCHLIST variable near the top of the file:
 
-```yaml
-name: Refresh LEAP Data
+```python
+WATCHLIST = [
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
+    "META", "TSLA", "JPM", "UNH", "V",
+]
+```
 
-on:
-  schedule:
-    - cron: "0 12 * * 1-5"   # 12:00 UTC Mon–Fri (pre-market US)
-  workflow_dispatch:
+Add or remove any ticker symbols as needed. Tickers must match the format used by Yahoo Finance (for example BRK-B not BRK.B).
 
-jobs:
-  run:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - run: pip install yfinance pandas numpy scipy
-      - run: python leap_screener.py
-      - name: Commit updated data
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add top_10_per_stock.json top_10_overall.json full_results.json
-          git diff --staged --quiet || git commit -m "chore: refresh LEAP data $(date -u +%Y-%m-%d)"
-          git push
+---
+
+## Editing the Thresholds
+
+All thresholds are defined at the top of leap_screener.py and can be adjusted:
+
+```python
+MIN_MARKET_CAP     = 2e9   # $2 Billion
+MIN_AVG_VOLUME     = 1e6   # 1 Million shares/day
+MIN_INST_OWNERSHIP = 0.50  # 50%
+MIN_EPS_GROWTH     = 0.15  # +15%
+MIN_REVENUE_GROWTH = 0.08  # +8%
+MIN_EBITDA_MARGIN  = 0.15  # 15%
+RSI_UPPER          = 40
+DELTA_MIN          = 0.70
+DELTA_MAX          = 0.85
+MAX_IV_PERCENTILE  = 30
 ```
 
 ---
 
-## Notes
+## Automated Refresh via GitHub Actions
 
-- **Data source:** [yfinance](https://github.com/ranaroussi/yfinance) (Yahoo Finance). No API key required.
-- **IV Percentile** is approximated from 30-day rolling realised volatility — a proxy for the true IV percentile.
-- This tool is for **research and educational purposes only** and does not constitute financial advice.
+The repository includes a workflow file at .github/workflows/refresh.yml that automatically runs the screener Monday to Friday at 12:00 UTC and commits the updated JSON files back to the repository.
+
+### Setup
+
+1. Go to your repository on GitHub
+2. Click Settings then Actions then General
+3. Under Workflow permissions, select Read and write permissions
+4. Click Save
+
+The workflow will then run on schedule automatically. You can also trigger it manually from the Actions tab at any time.
+
+---
+
+## Connecting to Base44
+
+The JSON output files are designed to be read directly by a Base44 web application. Once the workflow has run and the JSON files exist in the repository, point Base44 to the following raw GitHub URLs:
+
+```
+https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/top_10_overall.json
+https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/top_10_per_stock.json
+```
+
+Replace YOUR_USERNAME and YOUR_REPO with your actual GitHub username and repository name.
+
+The Base44 app fetches fresh data on every page load, so it will always reflect the most recent screener run.
+
+---
+
+## Data Source
+
+All data is sourced from Yahoo Finance via the yfinance library. No API key is required.
+
+Note: Yahoo Finance does not always populate every data field for every stock. When a field such as institutional ownership or EPS growth is missing, the ticker is still included in results but scores 0 for that parameter rather than being excluded. The only exception is market cap - if that is missing the ticker is skipped.
+
+---
+
+## Disclaimer
+
+This tool is for research and educational purposes only. It does not constitute financial advice. Always conduct your own research before making any investment decisions.
