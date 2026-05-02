@@ -3,8 +3,8 @@
 # Screens a manual watchlist of stocks for the best LEAP call options.
 #
 # Outputs:
-#   top_10_per_stock.json  - best 10 options for each ticker
-#   top_10_overall.json    - best 10 options across all tickers
+#   top_20_per_stock.json  - best 20 options for each ticker
+#   top_20_overall.json    - best 20 options across all tickers
 #   full_results.json      - every screened option with all metrics
 #
 # Install: pip install yfinance pandas numpy scipy
@@ -41,7 +41,7 @@ OUTPUT_DIR     = "."
 DELAY_SECONDS  = 0.2
 
 # Fundamental thresholds
-MIN_MARKET_CAP     = 2e9   # $2 Billion
+MIN_MARKET_CAP     = 25e9   # $2 Billion
 MIN_AVG_VOLUME     = 1e6   # 1 Million shares/day
 MIN_INST_OWNERSHIP = 0.50  # 50%
 MIN_EPS_GROWTH     = 0.15  # +15%
@@ -418,7 +418,7 @@ def main():
     print("=================================================================")
     print("")
     print("Fundamental criteria:")
-    print("  Market Cap       > $2B")
+    print("  Market Cap       > $25B")
     print("  Avg Volume       > 1M shares/day")
     print("  Inst. Ownership  > 50%")
     print("  EPS Growth       > +15%")
@@ -469,7 +469,7 @@ def main():
     print("Saving output files...")
 
     save_json({"meta": run_meta, "top_20_per_stock":     per_stock},      "top_20_per_stock.json")
-    save_json({"meta": run_meta, "top_20_overall":       top_10_overall}, "top_20_overall.json")
+    save_json({"meta": run_meta, "top_20_overall":       top_20_overall}, "top_20_overall.json")
     save_json({"meta": run_meta, "all_screened_options": all_results},    "full_results.json")
 
     print("")
