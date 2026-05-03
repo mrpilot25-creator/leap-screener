@@ -693,18 +693,46 @@ class ForwardProjectionEngine:
         self.paths    = None
 
     def calibrate(self):
-        """Estimate historical drift and dividend yield from 1yr of data."""
+        """
+        Estimate historical drift and dividend yield from 3 years of data.
+
+        Three fixes vs the naive 1-year approach:
+
+        1. LONGER LOOKBACK (3yr not 1yr)
+           A 1-year window is too sensitive to whether the recent year was
+           a good or bad one. 3 years captures a full market cycle and
+           gives a more representative long-run drift.
+
+        2. DRIFT FLOOR = max(historical mu, risk-free rate)
+           In log-normal GBM the median price = S0 * exp((mu - sigma^2/2) * T).
+           When sigma is large (e.g. 49%) and T is long (e.g. 2.6yr), the
+           volatility drag term (sigma^2/2 = 12%/yr) can easily overwhelm a
+           low drift, pulling the median projection below the current price
+           even for a fundamentally strong stock. Flooring at the risk-free
+           rate (3.88%) is theoretically grounded: in efficient markets,
+           equities must earn at least the risk-free rate in expectation.
+
+        3. CAPPED IV AT 40% FOR LONG-DATED PROJECTIONS
+           Options with very high IV (e.g. 49%) are often driven by short-term
+           event risk (earnings, macro). For a 2+ year price path projection,
+           this overstates likely vol. Capping at 40% for T > 1yr reduces the
+           vol drag to a more realistic 8%/yr and produces price distributions
+           that better match long-run analyst expectations.
+        """
         try:
             ticker   = yf.Ticker(self.symbol)
-            hist     = ticker.history(period="1y")
+            hist     = ticker.history(period="3y")   # 3yr not 1yr
             close    = hist["Close"].dropna()
 
-            if len(close) >= 20:
+            if len(close) >= 60:
                 log_rets      = np.log(close.values[1:] / close.values[:-1])
                 mu_daily      = float(np.mean(log_rets))
                 self.mu_hist  = mu_daily * 252
             else:
                 self.mu_hist  = self.r
+
+            # Apply drift floor: never project below risk-free rate drift
+            self.mu_hist = max(self.mu_hist, self.r)
 
             # Dividend yield
             try:
@@ -716,23 +744,31 @@ class ForwardProjectionEngine:
                 pass
 
             # Adjusted drift: historical mu minus dividend yield
-            self.mu = self.mu_hist - self.div_yield
+            # Final floor at 0: drift must be non-negative
+            self.mu = max(self.mu_hist - self.div_yield, 0.0)
 
         except Exception:
             self.mu = self.r
             self.mu_hist = self.r
+
+        # Cap IV at 40% for projections longer than 1 year to reduce
+        # excess volatility drag on long-dated median price estimates
+        if self.T > 1.0 and self.iv > 0.40:
+            self.iv_capped = 0.40
+        else:
+            self.iv_capped = self.iv
 
         return self
 
     def run_simulation(self):
         """
         Run 1,000 GBM paths from today to expiry.
-        Uses IV as sigma (market's forward-looking vol estimate).
+        Uses capped IV as sigma for long-dated projections.
         Shape of paths: (n_sims, n_days)
         """
         dt     = 1.0 / 252.0
         mu     = self.mu
-        sigma  = self.iv
+        sigma  = self.iv_capped   # capped IV, not raw IV
 
         np.random.seed(99)
         Z = np.random.standard_normal((self.n_sims, self.n_days))
@@ -771,7 +807,7 @@ class ForwardProjectionEngine:
 
         # Projected option value at expiry using median terminal price via BS
         projected_bs = black_scholes_price(
-            median_price, self.K, 0.01, self.r, self.iv
+            median_price, self.K, 0.01, self.r, self.iv_capped
         )
 
         # Upside / downside from current price
@@ -787,7 +823,9 @@ class ForwardProjectionEngine:
             "days_to_expiry":       self.n_days,
             "years_to_expiry":      round(self.T, 3),
             "current_premium":      round(self.current_premium, 2),
-            "implied_vol_used_pct": round(self.iv * 100, 2),
+            "implied_vol_raw_pct":  round(self.iv * 100, 2),
+            "implied_vol_used_pct": round(self.iv_capped * 100, 2),
+            "iv_was_capped":        self.iv_capped < self.iv,
             "historical_mu_pct":    round(self.mu_hist * 100, 2)
                                     if self.mu_hist else None,
             "div_yield_pct":        round(self.div_yield * 100, 2),
