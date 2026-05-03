@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-03T02:41:14.021873Z",
+    "generated_at": "2026-05-03T02:54:31.370001Z",
     "training_years": 3,
     "validation_years": 2,
     "n_simulations": 1000,
@@ -312,7 +312,7 @@
       "reality_check": {
         "actual_terminal_price": 414.44,
         "median_simulated_terminal": 567.91,
-        "sim_terminal_5th_pct": 319.59,
+        "sim_terminal_5th_pct": 319.6,
         "sim_terminal_95th_pct": 965.52,
         "terminal_price_error_pct": 37.03,
         "sim_avg_max_drawdown_pct": -26.41,
