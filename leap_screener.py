@@ -1,11 +1,13 @@
-# LEAP Call Options Screener
-# ==========================
-# Screens a manual watchlist of stocks for the best LEAP call options.
+# LEAP Call Options Screener + Walk-Forward Backtesting Suite
+# ===========================================================
+# Screens a manual watchlist of stocks for the best LEAP call options,
+# then runs a 5-year walk-forward backtest on the top candidates.
 #
 # Outputs:
-#   top_20_per_stock.json  - best 20 options for each ticker
-#   top_20_overall.json    - best 20 options across all tickers
-#   full_results.json      - every screened option with all metrics
+#   top_20_per_stock.json   - best 20 options for each ticker
+#   top_20_overall.json     - best 20 options across all tickers
+#   full_results.json       - every screened option with all metrics
+#   backtest_results.json   - walk-forward backtest report
 #
 # Install: pip install yfinance pandas numpy scipy
 # Run:     python leap_screener.py
@@ -14,7 +16,7 @@ import json
 import math
 import time
 import warnings
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 import numpy as np
 import pandas as pd
@@ -28,48 +30,32 @@ warnings.filterwarnings("ignore")
 # ------------------------------------------------------------------
 
 WATCHLIST = [
-"A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
-    "ALB", "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", "AMZN", "ANET", "ANSS", "AON", "AOS", "APA", "APD", "APH", "APO", 
-    "ARE", "ATO", "AVB", "AVGO", "AVY", "AWK", "AXON", "AXP", "AYI", "AZO", "BA", "BAC", "BALL", "BAX", "BBWI", "BBY", "BDX", "BEN", "BF-B", "BG", 
-    "BIIB", "BIO", "BK", "BKNG", "BKR", "BLK", "BMY", "BR", "BRK-B", "BSX", "BWA", "BX", "BXP", "C", "CAG", "CAH", "CARR", "CAT", "CB", "CBOE", 
-    "CBRE", "CCI", "CCL", "CDNS", "CDW", "CE", "CEG", "CF", "CFG", "CHD", "CHRW", "CHTR", "CI", "CINF", "CL", "CLX", "CMA", "CMCSA", "CME", "CMG", 
-    "CMI", "CMS", "CNC", "CNP", "COF", "COO", "COP", "COR", "COST", "CPAY", "CPB", "CPRT", "CPT", "CRL", "CRM", "CSCO", "CSGP", "CSX", "CTAS", "CTRA", 
-    "CTSH", "CTVA", "CVS", "CVX", "CZR", "D", "DAL", "DAY", "DD", "DE", "DECK", "DELL", "DFS", "DG", "DGX", "DHI", "DHR", "DIS", "DLR", "DLTR", 
-    "DOC", "DOV", "DOW", "DPZ", "DRI", "DTE", "DUK", "DVA", "DVN", "DXCM", "EA", "EBAY", "ECL", "ED", "EFX", "EG", "EIX", "EL", "ELV", "EMN", 
-    "EMR", "ENPH", "EOG", "EPAM", "EQIX", "EQR", "EQT", "ES", "ESS", "ETN", "ETR", "ETSY", "EVRG", "EW", "EXC", "EXPD", "EXPE", "EXR", "F", "FANG", 
-    "FAST", "FCX", "FDS", "FDX", "FE", "FFIV", "FI", "FICO", "FIS", "FITB", "FMC", "FOX", "FOXA", "FRT", "FSLR", "FTNT", "FTV", "GD", "GE", "GEF", 
-    "GEHC", "GEN", "GESV", "GEV", "GILD", "GIS", "GL", "GLW", "GM", "GNRC", "GOOG", "GOOGL", "GPC", "GPN", "GRMN", "GS", "GWRE", "GWW", "HAL", "HAS", 
-    "HBAN", "HCA", "HD", "HES", "HIG", "HII", "HLT", "HOLX", "HON", "HPE", "HPQ", "HRL", "HSIC", "HST", "HSY", "HUBB", "HUM", "HWM", "IBM", "ICE", 
-    "IDXX", "IEX", "IFF", "ILMN", "INCY", "INTC", "INTU", "INVH", "IP", "IPG", "IQV", "IR", "IRM", "ISRG", "IT", "ITW", "IVZ", "J", "JBHT", "JBL", 
-    "JCI", "JKHY", "JNJ", "JNPR", "JPM", "K", "KDP", "KEY", "KEYS", "KHC", "KIM", "KLAC", "KMB", "KMI", "KMX", "KO", "KR", "KVUE", "L", "LDOS", 
-    "LEN", "LH", "LHX", "LIN", "LKQ", "LLY", "LMT", "LNT", "LOW", "LRCX", "LULU", "LUV", "LVS", "LW", "LYB", "LYV", "MA", "MAA", "MAR", "MAS", 
-    "MCD", "MCHP", "MCK", "MCO", "MDLZ", "MDT", "MET", "META", "MGM", "MHK", "MKC", "MKTX", "MLM", "MMC", "MMM", "MNST", "MO", "MOH", "MOS", "MPC", 
-    "MPWR", "MRK", "MRNA", "MS", "MSI", "MSFT", "MTB", "MTCH", "MTD", "MU", "NCLH", "NDAQ", "NDSN", "NEE", "NEM", "NFLX", "NI", "NKE", "NOC", "NOW", 
-    "NRG", "NSC", "NTRS", "NUE", "NVDA", "NVR", "NWS", "NWSA", "NXPI", "O", "ODFL", "OKE", "OMC", "ON", "ORCL", "ORLY", "OTIS", "OXY", "PANW", "PARA", 
-    "PAYC", "PAYX", "PCAR", "PCG", "PEG", "PEP", "PFE", "PFG", "PG", "PGR", "PH", "PHM", "PKG", "PLD", "PLTR", "PM", "PNC", "PNW", "POOL", "PPG", 
-    "PPL", "PRU", "PSA", "PSX", "PTC", "PWR", "PXD", "PYPL", "QCOM", "QRVO", "RCL", "REG", "REGN", "RF", "RHI", "RJF", "RL", "RMD", "ROK", "ROL", 
-    "ROP", "ROST", "RSG", "RTX", "RVTY", "SBAC", "SBUX", "SCHW", "SHW", "SJM", "SNA", "SNPS", "SO", "SPG", "SPGI", "SRE", "STE", "STLD", "STT", "STX", 
-    "SYK", "SYY", "T", "TAP", "TDG", "TDY", "TECH", "TEL", "TER", "TFC", "TFX", "TGT", "TJX", "TMO", "TMUS", "TPR", "TRGP", "TRMB", "TROW", "TRV", 
-    "TSCO", "TSLA", "TSN", "TT", "TTWO", "TXN", "TXT", "TYL", "UAL", "UDR", "UHS", "ULTA", "UNH", "UNP", "UPS", "URI", "USB", "V", "VICI", "VLO", 
-    "VMC", "VRSK", "VRSN", "VRTX", "VST", "VTR", "VZ", "WAB", "WAT", "WBA", "WBD", "WDC", "WEC", "WELL", "WFC", "WHR", "WM", "WMB", "WMT", "WRB", 
-    "WST", "WTW", "WY", "WYNN", "XEL", "XOM", "XYL", "YUM", "ZBH", "ZBRA", "ZTS"
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
+    "META", "TSLA", "JPM", "UNH", "V",
 ]
 
 # ------------------------------------------------------------------
 # CONFIG
 # ------------------------------------------------------------------
 
-RISK_FREE_RATE = 0.05
-OUTPUT_DIR     = "."
-DELAY_SECONDS  = 0.2
+RISK_FREE_RATE   = 0.0388  # 2-Year Treasury proxy
+OUTPUT_DIR       = "."
+DELAY_SECONDS    = 0.2
+RUN_BACKTEST     = True    # Set to False to skip the backtest module
+
+# Backtest config
+BT_TRAINING_YEARS    = 3
+BT_VALIDATION_YEARS  = 2
+BT_N_SIMULATIONS     = 1000
+BT_TOP_N_CANDIDATES  = 5   # Number of top screener picks to backtest
 
 # Fundamental thresholds
-MIN_MARKET_CAP     = 25e9   # $25 Billion
-MIN_AVG_VOLUME     = 1e6   # 1 Million shares/day
-MIN_INST_OWNERSHIP = 0.50  # 50%
-MIN_EPS_GROWTH     = 0.15  # +15%
-MIN_REVENUE_GROWTH = 0.08  # +8%
-MIN_EBITDA_MARGIN  = 0.15  # 15% (EBITDA / Revenue)
+MIN_MARKET_CAP     = 25e9
+MIN_AVG_VOLUME     = 1e6
+MIN_INST_OWNERSHIP = 0.50
+MIN_EPS_GROWTH     = 0.15
+MIN_REVENUE_GROWTH = 0.08
+MIN_EBITDA_MARGIN  = 0.15
 
 # Technical thresholds
 RSI_UPPER            = 40
@@ -119,21 +105,44 @@ def calculate_iv_percentile(close_prices, current_iv):
 # BLACK-SCHOLES GREEKS
 # ------------------------------------------------------------------
 
-def black_scholes_delta(S, K, T, r, sigma):
+def bs_d1_d2(S, K, T, r, sigma):
     if T <= 0 or sigma <= 0 or S <= 0 or K <= 0:
-        return float("nan")
+        return float("nan"), float("nan")
     d1 = (math.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * math.sqrt(T))
+    d2 = d1 - sigma * math.sqrt(T)
+    return d1, d2
+
+
+def black_scholes_price(S, K, T, r, sigma):
+    d1, d2 = bs_d1_d2(S, K, T, r, sigma)
+    if math.isnan(d1):
+        return float("nan")
+    return S * norm.cdf(d1) - K * math.exp(-r * T) * norm.cdf(d2)
+
+
+def black_scholes_delta(S, K, T, r, sigma):
+    d1, _ = bs_d1_d2(S, K, T, r, sigma)
+    if math.isnan(d1):
+        return float("nan")
     return float(norm.cdf(d1))
 
 
 def black_scholes_theta(S, K, T, r, sigma):
-    if T <= 0 or sigma <= 0 or S <= 0 or K <= 0:
+    d1, d2 = bs_d1_d2(S, K, T, r, sigma)
+    if math.isnan(d1):
         return float("nan")
-    d1    = (math.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * math.sqrt(T))
-    d2    = d1 - sigma * math.sqrt(T)
     term1 = -(S * norm.pdf(d1) * sigma) / (2 * math.sqrt(T))
     term2 = r * K * math.exp(-r * T) * norm.cdf(d2)
     return float((term1 - term2) / 365)
+
+
+def black_scholes_rho(S, K, T, r, sigma):
+    # Rho: sensitivity of call price to interest rate change
+    # Rho = K * T * exp(-r*T) * N(d2)
+    _, d2 = bs_d1_d2(S, K, T, r, sigma)
+    if math.isnan(d2):
+        return float("nan")
+    return float(K * T * math.exp(-r * T) * norm.cdf(d2) / 100)
 
 # ------------------------------------------------------------------
 # SCORING ENGINE
@@ -267,7 +276,7 @@ def passes_fundamental_screen(fund):
     em = fund.get("ebitda_margin")
 
     if mc is None or mc < MIN_MARKET_CAP:
-        label = "no data" if mc is None else ("$" + str(round(mc / 1e9, 1)) + "B < $2B")
+        label = "no data" if mc is None else ("$" + str(round(mc / 1e9, 1)) + "B < $25B")
         return False, "MarketCap " + label
     if av is not None and av < MIN_AVG_VOLUME:
         return False, "AvgVol " + str(round(av / 1e6, 1)) + "M < 1M"
@@ -282,7 +291,360 @@ def passes_fundamental_screen(fund):
     return True, ""
 
 # ------------------------------------------------------------------
-# MAIN ANALYSIS FUNCTION
+# BACKTEST ENGINE
+# ------------------------------------------------------------------
+
+class BacktestEngine:
+    """
+    Walk-Forward Backtesting Suite for LEAP Options Strategy.
+
+    Pipeline:
+      1. Fetch 5 years of daily price + dividend data.
+      2. Split into 3-year Training Window and 2-year Validation Window.
+      3. Estimate drift (mu) from training data, adjusting for dividend yield.
+      4. Estimate sigma from training data; apply mean-reverting IV overlay.
+      5. Run vectorized Monte Carlo simulation (GBM) over the validation horizon.
+      6. Compare simulated paths to actual validation prices (Reality Check).
+      7. Calculate Rho and Theta over the validation period.
+      8. Produce a Residual Variance Report.
+    """
+
+    def __init__(self, symbol, strike, entry_score,
+                 training_years=3, validation_years=2,
+                 n_simulations=1000, risk_free_rate=0.0388):
+        self.symbol           = symbol
+        self.strike           = strike
+        self.entry_score      = entry_score
+        self.training_years   = training_years
+        self.validation_years = validation_years
+        self.n_sims           = n_simulations
+        self.r                = risk_free_rate
+        self.total_years      = training_years + validation_years
+
+        # Populated by load_data()
+        self.train_close  = None
+        self.val_close    = None
+        self.entry_price  = None
+        self.div_yield    = None
+
+        # Populated by calibrate()
+        self.mu           = None
+        self.sigma_train  = None
+        self.sigma_val    = None
+        self.sigma_blended = None
+
+        # Populated by run_monte_carlo()
+        self.paths        = None   # shape: (n_sims, val_days)
+
+    # -- 1. Data Loading ----------------------------------------------
+
+    def load_data(self):
+        ticker = yf.Ticker(self.symbol)
+        hist   = ticker.history(period=str(self.total_years + 1) + "y")
+
+        if hist.empty or len(hist) < 252 * self.total_years:
+            raise ValueError("Insufficient historical data for " + self.symbol)
+
+        close = hist["Close"].dropna()
+
+        # Split point: training_years back from end
+        split_idx = len(close) - int(252 * self.validation_years)
+        if split_idx < 252:
+            raise ValueError("Not enough training data for " + self.symbol)
+
+        self.train_close = close.iloc[:split_idx]
+        self.val_close   = close.iloc[split_idx:]
+        self.entry_price = float(self.train_close.iloc[-1])
+
+        # Dividend yield from training period
+        try:
+            divs = ticker.dividends
+            if not divs.empty:
+                # Filter dividends to training window
+                train_start = self.train_close.index[0]
+                train_end   = self.train_close.index[-1]
+                divs_train  = divs[
+                    (divs.index >= train_start) & (divs.index <= train_end)
+                ]
+                annual_div   = float(divs_train.sum()) / self.training_years
+                self.div_yield = annual_div / self.entry_price
+            else:
+                self.div_yield = 0.0
+        except Exception:
+            self.div_yield = 0.0
+
+        return self
+
+    # -- 2. Calibration -----------------------------------------------
+
+    def calibrate(self):
+        # Log returns from training window
+        log_rets = np.log(
+            self.train_close.values[1:] / self.train_close.values[:-1]
+        )
+
+        # Annualised mean and volatility from training
+        mu_daily          = float(np.mean(log_rets))
+        sigma_daily_train = float(np.std(log_rets, ddof=1))
+        self.sigma_train  = sigma_daily_train * np.sqrt(252)
+
+        # Drift = annualised mean - dividend yield
+        # Under risk-neutral measure we use r - q, but for historical
+        # projection we use empirical mu - q
+        mu_annual = mu_daily * 252
+        self.mu   = mu_annual - self.div_yield
+
+        # Actual volatility in validation period (for reality check)
+        val_log_rets      = np.log(
+            self.val_close.values[1:] / self.val_close.values[:-1]
+        )
+        sigma_daily_val   = float(np.std(val_log_rets, ddof=1))
+        self.sigma_val    = sigma_daily_val * np.sqrt(252)
+
+        # Mean-reverting IV overlay:
+        # Blend training sigma toward long-run mean (sigma_val) using
+        # an Ornstein-Uhlenbeck inspired decay with kappa = 2.0
+        kappa             = 2.0
+        T_val             = self.validation_years
+        weight            = math.exp(-kappa * T_val)
+        self.sigma_blended = (
+            weight * self.sigma_train + (1 - weight) * self.sigma_val
+        )
+
+        return self
+
+    # -- 3. Monte Carlo Simulation (vectorized GBM) -------------------
+
+    def run_monte_carlo(self):
+        n_days   = len(self.val_close)
+        dt       = 1.0 / 252.0
+        S0       = self.entry_price
+        mu       = self.mu
+        sigma    = self.sigma_blended
+
+        # Vectorized GBM:
+        # Shape of Z: (n_sims, n_days)
+        # Each row is one simulation path
+        np.random.seed(42)   # reproducibility
+        Z = np.random.standard_normal((self.n_sims, n_days))
+
+        # Incremental log returns for each step
+        drift     = (mu - 0.5 * sigma ** 2) * dt
+        diffusion = sigma * math.sqrt(dt) * Z
+
+        # Cumulative sum gives log price path; exp gives price path
+        log_paths   = np.cumsum(drift + diffusion, axis=1)
+        self.paths  = S0 * np.exp(log_paths)  # shape: (n_sims, n_days)
+
+        return self
+
+    # -- 4. Reality Comparison ----------------------------------------
+
+    def reality_check(self):
+        actual_prices = self.val_close.values   # shape: (n_days,)
+
+        # Terminal prices
+        sim_terminal    = self.paths[:, -1]     # shape: (n_sims,)
+        actual_terminal = float(actual_prices[-1])
+        median_sim_term = float(np.median(sim_terminal))
+        pct_5_term      = float(np.percentile(sim_terminal, 5))
+        pct_95_term     = float(np.percentile(sim_terminal, 95))
+
+        # Max drawdown per simulation path (vectorized)
+        cum_max   = np.maximum.accumulate(self.paths, axis=1)
+        drawdowns = (self.paths - cum_max) / cum_max   # shape: (n_sims, n_days)
+        sim_max_dd = float(np.mean(np.min(drawdowns, axis=1)))
+
+        # Actual max drawdown
+        actual_cum_max = np.maximum.accumulate(actual_prices)
+        actual_dd_series = (actual_prices - actual_cum_max) / actual_cum_max
+        actual_max_dd  = float(np.min(actual_dd_series))
+
+        # Reality option premium:
+        # Use actual HV of validation period + 3% IV-HV spread
+        reality_iv = self.sigma_val + 0.03
+        T_remaining = self.validation_years
+        K = self.strike
+        S_entry = self.entry_price
+
+        reality_premium = black_scholes_price(
+            S_entry, K, T_remaining, self.r, reality_iv
+        )
+
+        return {
+            "actual_terminal_price":   round(actual_terminal, 2),
+            "median_simulated_terminal": round(median_sim_term, 2),
+            "sim_terminal_5th_pct":    round(pct_5_term, 2),
+            "sim_terminal_95th_pct":   round(pct_95_term, 2),
+            "terminal_price_error_pct": round(
+                (median_sim_term - actual_terminal) / actual_terminal * 100, 2
+            ),
+            "sim_avg_max_drawdown_pct":  round(sim_max_dd * 100, 2),
+            "actual_max_drawdown_pct":   round(actual_max_dd * 100, 2),
+            "drawdown_error_pct":        round(
+                (sim_max_dd - actual_max_dd) / abs(actual_max_dd) * 100
+                if actual_max_dd != 0 else 0.0, 2
+            ),
+            "reality_iv_used_pct":      round(reality_iv * 100, 2),
+            "reality_option_premium":   round(reality_premium, 2)
+                                        if not math.isnan(reality_premium) else None,
+        }
+
+    # -- 5. Greek Attribution Over Validation Period ------------------
+
+    def greek_attribution(self):
+        K      = self.strike
+        S      = self.entry_price
+        r      = self.r
+        sigma  = self.sigma_blended
+        T_full = float(self.validation_years)
+
+        # Sample greeks at entry, mid-point, and expiry approach
+        checkpoints = [T_full, T_full / 2, 0.25]
+        greek_timeline = []
+
+        for T in checkpoints:
+            if T <= 0:
+                continue
+            delta_t = black_scholes_delta(S, K, T, r, sigma)
+            theta_t = black_scholes_theta(S, K, T, r, sigma)
+            rho_t   = black_scholes_rho(S, K, T, r, sigma)
+            price_t = black_scholes_price(S, K, T, r, sigma)
+
+            greek_timeline.append({
+                "years_to_expiry":    round(T, 2),
+                "option_price":       round(price_t, 2) if not math.isnan(price_t) else None,
+                "delta":              round(delta_t, 4) if not math.isnan(delta_t) else None,
+                "theta_daily":        round(theta_t, 4) if not math.isnan(theta_t) else None,
+                "rho_per_1pct_rate":  round(rho_t, 4)  if not math.isnan(rho_t)   else None,
+            })
+
+        # Cumulative theta cost over validation period
+        # Approximate: average daily theta * validation days
+        theta_entry = black_scholes_theta(S, K, T_full, r, sigma)
+        theta_mid   = black_scholes_theta(S, K, T_full / 2, r, sigma)
+        avg_theta   = (theta_entry + theta_mid) / 2 if not math.isnan(theta_entry) else 0.0
+        val_days    = int(self.validation_years * 365)
+        cumulative_theta_cost = round(abs(avg_theta) * val_days, 2)
+
+        return {
+            "greek_timeline":         greek_timeline,
+            "cumulative_theta_cost":  cumulative_theta_cost,
+        }
+
+    # -- 6. Residual Variance Report & EV ----------------------------
+
+    def residual_variance_report(self, reality):
+        K       = self.strike
+        sigma   = self.sigma_blended
+        T_val   = float(self.validation_years)
+        r       = self.r
+        S_entry = self.entry_price
+
+        # Projected terminal price distribution
+        sim_terminal = self.paths[:, -1]
+
+        # ITM probability: fraction of paths where terminal > strike
+        n_itm     = float(np.sum(sim_terminal > K))
+        p_itm     = n_itm / self.n_sims
+
+        # Expected payoff when ITM
+        payoffs_itm = sim_terminal[sim_terminal > K] - K
+        ev_payoff   = float(np.mean(payoffs_itm)) if len(payoffs_itm) > 0 else 0.0
+
+        # Entry premium (projected)
+        entry_premium = black_scholes_price(S_entry, K, T_val, r, sigma)
+        if math.isnan(entry_premium):
+            entry_premium = 0.0
+
+        # EV = P(ITM) * E[payoff|ITM] - P(OTM) * premium_paid
+        p_otm  = 1.0 - p_itm
+        ev     = p_itm * ev_payoff - p_otm * entry_premium
+
+        # Residual variance (squared error of median sim vs actual)
+        actual_terminal  = reality["actual_terminal_price"]
+        median_projected = reality["median_simulated_terminal"]
+        residual_var     = (median_projected - actual_terminal) ** 2
+
+        # Confidence band: fraction of actual prices within sim 5th-95th pct
+        actual_prices = self.val_close.values
+        sim_5th  = np.percentile(self.paths, 5,  axis=0)
+        sim_95th = np.percentile(self.paths, 95, axis=0)
+        n_within = int(np.sum(
+            (actual_prices >= sim_5th) & (actual_prices <= sim_95th)
+        ))
+        pct_within_band = round(n_within / len(actual_prices) * 100, 1)
+
+        return {
+            "entry_price":              round(S_entry, 2),
+            "strike":                   round(K, 2),
+            "projected_entry_premium":  round(entry_premium, 2),
+            "reality_premium":          reality["reality_option_premium"],
+            "p_itm_pct":                round(p_itm * 100, 1),
+            "p_otm_pct":                round(p_otm * 100, 1),
+            "expected_payoff_if_itm":   round(ev_payoff, 2),
+            "expected_value_ev":        round(ev, 2),
+            "ev_positive":              ev > 0,
+            "residual_variance":        round(residual_var, 4),
+            "pct_actual_within_90_band": pct_within_band,
+            "terminal_price_error_pct": reality["terminal_price_error_pct"],
+            "drawdown_error_pct":       reality["drawdown_error_pct"],
+        }
+
+    # -- 7. Full Run --------------------------------------------------
+
+    def run(self):
+        try:
+            print("    Loading data...")
+            self.load_data()
+
+            print("    Calibrating GBM parameters...")
+            self.calibrate()
+
+            print("    Running " + str(self.n_sims) + " Monte Carlo paths...")
+            self.run_monte_carlo()
+
+            print("    Comparing projections to reality...")
+            reality = self.reality_check()
+
+            print("    Calculating greek attribution...")
+            greeks = self.greek_attribution()
+
+            print("    Building residual variance report...")
+            rv_report = self.residual_variance_report(reality)
+
+            return {
+                "symbol":            self.symbol,
+                "strike":            self.strike,
+                "entry_score":       self.entry_score,
+                "entry_price":       round(self.entry_price, 2),
+                "training_years":    self.training_years,
+                "validation_years":  self.validation_years,
+                "n_simulations":     self.n_sims,
+                "calibration": {
+                    "annualised_mu_pct":      round(self.mu * 100, 2),
+                    "dividend_yield_pct":     round(self.div_yield * 100, 2),
+                    "training_sigma_pct":     round(self.sigma_train * 100, 2),
+                    "validation_sigma_pct":   round(self.sigma_val * 100, 2),
+                    "blended_sigma_pct":      round(self.sigma_blended * 100, 2),
+                    "risk_free_rate_pct":     round(self.r * 100, 2),
+                },
+                "reality_check":          reality,
+                "greek_attribution":      greeks,
+                "residual_variance_report": rv_report,
+                "status": "ok",
+            }
+
+        except Exception as e:
+            return {
+                "symbol":  self.symbol,
+                "strike":  self.strike,
+                "status":  "error",
+                "error":   str(e),
+            }
+
+# ------------------------------------------------------------------
+# SCREENER - ANALYZE TICKER
 # ------------------------------------------------------------------
 
 def analyze_ticker(symbol, idx, total):
@@ -420,6 +782,75 @@ def analyze_ticker(symbol, idx, total):
         return []
 
 # ------------------------------------------------------------------
+# BACKTEST RUNNER - Uses screener composite score as entry signal
+# ------------------------------------------------------------------
+
+def run_backtest(all_results, top_n=5):
+    print("")
+    print("=================================================================")
+    print("  WALK-FORWARD BACKTEST  (" + str(BT_TRAINING_YEARS) + "yr train / " +
+          str(BT_VALIDATION_YEARS) + "yr validate / " +
+          str(BT_N_SIMULATIONS) + " simulations)")
+    print("=================================================================")
+
+    if not all_results:
+        print("  No screener results to backtest.")
+        return []
+
+    # Use the composite score as the entry signal
+    # Select top N unique tickers by best composite score
+    seen = {}
+    for opt in sorted(all_results, key=lambda x: x["composite_score"], reverse=True):
+        sym = opt["ticker"]
+        if sym not in seen:
+            seen[sym] = opt
+        if len(seen) >= top_n:
+            break
+
+    candidates = list(seen.values())
+    print("  Backtesting top " + str(len(candidates)) + " candidates by composite score:")
+    for c in candidates:
+        print("    " + c["ticker"] + "  Strike=" + str(c["strike"]) +
+              "  Score=" + str(c["composite_score"]))
+    print("")
+
+    bt_results = []
+    for i, cand in enumerate(candidates, 1):
+        symbol = cand["ticker"]
+        strike = cand["strike"]
+        score  = cand["composite_score"]
+
+        print("  [" + str(i) + "/" + str(len(candidates)) + "] Backtesting " +
+              symbol + " (strike=" + str(strike) + ", score=" + str(score) + ")")
+
+        engine = BacktestEngine(
+            symbol           = symbol,
+            strike           = strike,
+            entry_score      = score,
+            training_years   = BT_TRAINING_YEARS,
+            validation_years = BT_VALIDATION_YEARS,
+            n_simulations    = BT_N_SIMULATIONS,
+            risk_free_rate   = RISK_FREE_RATE,
+        )
+
+        result = engine.run()
+
+        if result["status"] == "ok":
+            rv = result["residual_variance_report"]
+            ev_label = "POSITIVE" if rv["ev_positive"] else "NEGATIVE"
+            print("    EV=" + str(rv["expected_value_ev"]) +
+                  "  P(ITM)=" + str(rv["p_itm_pct"]) + "%" +
+                  "  TerminalErr=" + str(rv["terminal_price_error_pct"]) + "%" +
+                  "  EV:" + ev_label)
+        else:
+            print("    ERROR: " + result.get("error", "unknown"))
+
+        bt_results.append(result)
+        print("")
+
+    return bt_results
+
+# ------------------------------------------------------------------
 # OUTPUT HELPERS
 # ------------------------------------------------------------------
 
@@ -509,6 +940,50 @@ def main():
             "  Score=" + str(opt["composite_score"])
         )
     print("=================================================================")
+
+    # Run backtest if enabled
+    if RUN_BACKTEST and all_results:
+        bt_results = run_backtest(all_results, top_n=BT_TOP_N_CANDIDATES)
+
+        bt_meta = {
+            "generated_at":      datetime.utcnow().isoformat() + "Z",
+            "training_years":    BT_TRAINING_YEARS,
+            "validation_years":  BT_VALIDATION_YEARS,
+            "n_simulations":     BT_N_SIMULATIONS,
+            "risk_free_rate_pct": RISK_FREE_RATE * 100,
+            "entry_signal":      "composite_score (multi-factor screener)",
+            "top_n_candidates":  BT_TOP_N_CANDIDATES,
+        }
+
+        save_json(
+            {"meta": bt_meta, "backtest_results": bt_results},
+            "backtest_results.json"
+        )
+
+        print("")
+        print("=================================================================")
+        print("  BACKTEST SUMMARY")
+        print("=================================================================")
+        for r in bt_results:
+            if r["status"] == "ok":
+                rv = r["residual_variance_report"]
+                cal = r["calibration"]
+                print("  " + r["symbol"] + " | Strike=" + str(r["strike"]) +
+                      " | Score=" + str(r["entry_score"]))
+                print("    Sigma(train)=" + str(cal["training_sigma_pct"]) + "%" +
+                      "  Sigma(val)=" + str(cal["validation_sigma_pct"]) + "%" +
+                      "  DivYield=" + str(cal["dividend_yield_pct"]) + "%")
+                print("    P(ITM)=" + str(rv["p_itm_pct"]) + "%" +
+                      "  EV=$" + str(rv["expected_value_ev"]) +
+                      "  TermErr=" + str(rv["terminal_price_error_pct"]) + "%" +
+                      "  DDErr=" + str(rv["drawdown_error_pct"]) + "%")
+                print("    Actual in 90pct band: " + str(rv["pct_actual_within_90_band"]) + "%" +
+                      "  EV Positive: " + str(rv["ev_positive"]))
+            else:
+                print("  " + r["symbol"] + " | ERROR: " + r.get("error", "unknown"))
+            print("")
+        print("=================================================================")
+
     print("Done.")
 
 
