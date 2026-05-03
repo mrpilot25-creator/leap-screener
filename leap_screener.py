@@ -7,7 +7,8 @@
 #   top_20_per_stock.json   - best 20 options for each ticker
 #   top_20_overall.json     - best 20 options across all tickers
 #   full_results.json       - every screened option with all metrics
-#   backtest_results.json   - walk-forward backtest report
+#   backtest_results.json     - walk-forward backtest report
+#   forward_projections.json  - forward price projections to expiry
 #
 # Install: pip install yfinance pandas numpy scipy
 # Run:     python leap_screener.py
@@ -30,31 +31,8 @@ warnings.filterwarnings("ignore")
 # ------------------------------------------------------------------
 
 WATCHLIST = [
-    "A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
-    "ALB", "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", "AMZN", "ANET", "ANSS", "AON", "AOS", "APA", "APD", "APH", "APO", 
-    "ARE", "ATO", "AVB", "AVGO", "AVY", "AWK", "AXON", "AXP", "AYI", "AZO", "BA", "BAC", "BALL", "BAX", "BBWI", "BBY", "BDX", "BEN", "BF-B", "BG", 
-    "BIIB", "BIO", "BK", "BKNG", "BKR", "BLK", "BMY", "BR", "BRK-B", "BSX", "BWA", "BX", "BXP", "C", "CAG", "CAH", "CARR", "CAT", "CB", "CBOE", 
-    "CBRE", "CCI", "CCL", "CDNS", "CDW", "CE", "CEG", "CF", "CFG", "CHD", "CHRW", "CHTR", "CI", "CINF", "CL", "CLX", "CMA", "CMCSA", "CME", "CMG", 
-    "CMI", "CMS", "CNC", "CNP", "COF", "COO", "COP", "COR", "COST", "CPAY", "CPB", "CPRT", "CPT", "CRL", "CRM", "CSCO", "CSGP", "CSX", "CTAS", "CTRA", 
-    "CTSH", "CTVA", "CVS", "CVX", "CZR", "D", "DAL", "DAY", "DD", "DE", "DECK", "DELL", "DFS", "DG", "DGX", "DHI", "DHR", "DIS", "DLR", "DLTR", 
-    "DOC", "DOV", "DOW", "DPZ", "DRI", "DTE", "DUK", "DVA", "DVN", "DXCM", "EA", "EBAY", "ECL", "ED", "EFX", "EG", "EIX", "EL", "ELV", "EMN", 
-    "EMR", "ENPH", "EOG", "EPAM", "EQIX", "EQR", "EQT", "ES", "ESS", "ETN", "ETR", "ETSY", "EVRG", "EW", "EXC", "EXPD", "EXPE", "EXR", "F", "FANG", 
-    "FAST", "FCX", "FDS", "FDX", "FE", "FFIV", "FI", "FICO", "FIS", "FITB", "FMC", "FOX", "FOXA", "FRT", "FSLR", "FTNT", "FTV", "GD", "GE", "GEF", 
-    "GEHC", "GEN", "GESV", "GEV", "GILD", "GIS", "GL", "GLW", "GM", "GNRC", "GOOG", "GOOGL", "GPC", "GPN", "GRMN", "GS", "GWRE", "GWW", "HAL", "HAS", 
-    "HBAN", "HCA", "HD", "HES", "HIG", "HII", "HLT", "HOLX", "HON", "HPE", "HPQ", "HRL", "HSIC", "HST", "HSY", "HUBB", "HUM", "HWM", "IBM", "ICE", 
-    "IDXX", "IEX", "IFF", "ILMN", "INCY", "INTC", "INTU", "INVH", "IP", "IPG", "IQV", "IR", "IRM", "ISRG", "IT", "ITW", "IVZ", "J", "JBHT", "JBL", 
-    "JCI", "JKHY", "JNJ", "JNPR", "JPM", "K", "KDP", "KEY", "KEYS", "KHC", "KIM", "KLAC", "KMB", "KMI", "KMX", "KO", "KR", "KVUE", "L", "LDOS", 
-    "LEN", "LH", "LHX", "LIN", "LKQ", "LLY", "LMT", "LNT", "LOW", "LRCX", "LULU", "LUV", "LVS", "LW", "LYB", "LYV", "MA", "MAA", "MAR", "MAS", 
-    "MCD", "MCHP", "MCK", "MCO", "MDLZ", "MDT", "MET", "META", "MGM", "MHK", "MKC", "MKTX", "MLM", "MMC", "MMM", "MNST", "MO", "MOH", "MOS", "MPC", 
-    "MPWR", "MRK", "MRNA", "MS", "MSI", "MSFT", "MTB", "MTCH", "MTD", "MU", "NCLH", "NDAQ", "NDSN", "NEE", "NEM", "NFLX", "NI", "NKE", "NOC", "NOW", 
-    "NRG", "NSC", "NTRS", "NUE", "NVDA", "NVR", "NWS", "NWSA", "NXPI", "O", "ODFL", "OKE", "OMC", "ON", "ORCL", "ORLY", "OTIS", "OXY", "PANW", "PARA", 
-    "PAYC", "PAYX", "PCAR", "PCG", "PEG", "PEP", "PFE", "PFG", "PG", "PGR", "PH", "PHM", "PKG", "PLD", "PLTR", "PM", "PNC", "PNW", "POOL", "PPG", 
-    "PPL", "PRU", "PSA", "PSX", "PTC", "PWR", "PXD", "PYPL", "QCOM", "QRVO", "RCL", "REG", "REGN", "RF", "RHI", "RJF", "RL", "RMD", "ROK", "ROL", 
-    "ROP", "ROST", "RSG", "RTX", "RVTY", "SBAC", "SBUX", "SCHW", "SHW", "SJM", "SNA", "SNPS", "SO", "SPG", "SPGI", "SRE", "STE", "STLD", "STT", "STX", 
-    "SYK", "SYY", "T", "TAP", "TDG", "TDY", "TECH", "TEL", "TER", "TFC", "TFX", "TGT", "TJX", "TMO", "TMUS", "TPR", "TRGP", "TRMB", "TROW", "TRV", 
-    "TSCO", "TSLA", "TSN", "TT", "TTWO", "TXN", "TXT", "TYL", "UAL", "UDR", "UHS", "ULTA", "UNH", "UNP", "UPS", "URI", "USB", "V", "VICI", "VLO", 
-    "VMC", "VRSK", "VRSN", "VRTX", "VST", "VTR", "VZ", "WAB", "WAT", "WBA", "WBD", "WDC", "WEC", "WELL", "WFC", "WHR", "WM", "WMB", "WMT", "WRB", 
-    "WST", "WTW", "WY", "WYNN", "XEL", "XOM", "XYL", "YUM", "ZBH", "ZBRA", "ZTS"
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
+    "META", "TSLA", "JPM", "UNH", "V",
 ]
 
 # ------------------------------------------------------------------
@@ -64,13 +42,15 @@ WATCHLIST = [
 RISK_FREE_RATE   = 0.0388  # 2-Year Treasury proxy
 OUTPUT_DIR       = "."
 DELAY_SECONDS    = 0.2
-RUN_BACKTEST     = True    # Set to False to skip the backtest module
+RUN_BACKTEST          = True    # Set to False to skip the backtest module
+RUN_FORWARD_PROJECTION = True  # Set to False to skip forward projections
 
 # Backtest config
 BT_TRAINING_YEARS    = 3
 BT_VALIDATION_YEARS  = 2
 BT_N_SIMULATIONS     = 1000
 BT_TOP_N_CANDIDATES  = 5   # Number of top screener picks to backtest
+FP_N_SIMULATIONS     = 1000  # Monte Carlo paths for forward projection
 
 # Fundamental thresholds
 MIN_MARKET_CAP     = 25e9
@@ -670,6 +650,251 @@ class BacktestEngine:
 # SCREENER - ANALYZE TICKER
 # ------------------------------------------------------------------
 
+# ------------------------------------------------------------------
+# FORWARD PROJECTION ENGINE
+# ------------------------------------------------------------------
+
+class ForwardProjectionEngine:
+    """
+    Projects the stock price from TODAY to the option expiry date
+    using Geometric Brownian Motion calibrated on 1 year of recent
+    price history, with implied volatility as the simulation sigma.
+
+    This is entirely forward-looking and completely separate from
+    the walk-forward backtest (which is historical validation).
+
+    For each option that passes the screener, the engine:
+      1. Fetches 1yr of price history to estimate historical drift (mu).
+      2. Uses the option's implied volatility as sigma (most current
+         market estimate of future price movement).
+      3. Runs 1,000 vectorized GBM paths from today to expiry.
+      4. Reports the projected price distribution at expiry,
+         P(ITM), projected option value, and Expected Value (EV).
+    """
+
+    def __init__(self, symbol, current_price, strike, expiry_str,
+                 implied_vol, current_premium,
+                 risk_free_rate=0.0388, n_simulations=1000):
+        self.symbol          = symbol
+        self.S0              = current_price
+        self.K               = strike
+        self.expiry_str      = expiry_str
+        self.iv              = implied_vol
+        self.current_premium = current_premium
+        self.r               = risk_free_rate
+        self.n_sims          = n_simulations
+
+        exp_date   = datetime.strptime(expiry_str, "%Y-%m-%d").date()
+        self.T     = max((exp_date - date.today()).days, 1) / 365.0
+        self.n_days = max((exp_date - date.today()).days, 1)
+
+        self.mu       = None
+        self.div_yield = 0.0
+        self.paths    = None
+
+    def calibrate(self):
+        """Estimate historical drift and dividend yield from 1yr of data."""
+        try:
+            ticker   = yf.Ticker(self.symbol)
+            hist     = ticker.history(period="1y")
+            close    = hist["Close"].dropna()
+
+            if len(close) >= 20:
+                log_rets      = np.log(close.values[1:] / close.values[:-1])
+                mu_daily      = float(np.mean(log_rets))
+                self.mu_hist  = mu_daily * 252
+            else:
+                self.mu_hist  = self.r
+
+            # Dividend yield
+            try:
+                divs       = ticker.dividends
+                if not divs.empty:
+                    annual_div = float(divs.tail(4).sum())
+                    self.div_yield = annual_div / self.S0
+            except Exception:
+                pass
+
+            # Adjusted drift: historical mu minus dividend yield
+            self.mu = self.mu_hist - self.div_yield
+
+        except Exception:
+            self.mu = self.r
+            self.mu_hist = self.r
+
+        return self
+
+    def run_simulation(self):
+        """
+        Run 1,000 GBM paths from today to expiry.
+        Uses IV as sigma (market's forward-looking vol estimate).
+        Shape of paths: (n_sims, n_days)
+        """
+        dt     = 1.0 / 252.0
+        mu     = self.mu
+        sigma  = self.iv
+
+        np.random.seed(99)
+        Z = np.random.standard_normal((self.n_sims, self.n_days))
+
+        drift     = (mu - 0.5 * sigma ** 2) * dt
+        diffusion = sigma * math.sqrt(dt) * Z
+
+        log_paths  = np.cumsum(drift + diffusion, axis=1)
+        self.paths = self.S0 * np.exp(log_paths)
+        return self
+
+    def projection_report(self):
+        """Build the full forward projection report."""
+        terminal = self.paths[:, -1]   # price at expiry for each path
+
+        median_price = float(np.median(terminal))
+        pct5         = float(np.percentile(terminal, 5))
+        pct25        = float(np.percentile(terminal, 25))
+        pct75        = float(np.percentile(terminal, 75))
+        pct95        = float(np.percentile(terminal, 95))
+
+        # P(ITM): fraction of paths ending above strike
+        n_itm = int(np.sum(terminal > self.K))
+        p_itm = n_itm / self.n_sims
+
+        # Expected payoff when ITM (intrinsic value at expiry)
+        payoffs_itm = terminal[terminal > self.K] - self.K
+        ev_payoff   = float(np.mean(payoffs_itm)) if len(payoffs_itm) > 0 else 0.0
+
+        # Discount payoff back to today (present value)
+        pv_payoff   = ev_payoff * math.exp(-self.r * self.T)
+
+        # EV = P(ITM) * E[payoff|ITM] - P(OTM) * premium paid
+        p_otm = 1.0 - p_itm
+        ev    = p_itm * pv_payoff - p_otm * self.current_premium
+
+        # Projected option value at expiry using median terminal price via BS
+        projected_bs = black_scholes_price(
+            median_price, self.K, 0.01, self.r, self.iv
+        )
+
+        # Upside / downside from current price
+        upside_median = (median_price - self.S0) / self.S0 * 100
+        upside_pct95  = (pct95 - self.S0) / self.S0 * 100
+        downside_pct5 = (pct5 - self.S0) / self.S0 * 100
+
+        return {
+            "symbol":               self.symbol,
+            "current_price":        round(self.S0, 2),
+            "strike":               round(self.K, 2),
+            "expiry":               self.expiry_str,
+            "days_to_expiry":       self.n_days,
+            "years_to_expiry":      round(self.T, 3),
+            "current_premium":      round(self.current_premium, 2),
+            "implied_vol_used_pct": round(self.iv * 100, 2),
+            "historical_mu_pct":    round(self.mu_hist * 100, 2)
+                                    if self.mu_hist else None,
+            "div_yield_pct":        round(self.div_yield * 100, 2),
+            "calibrated_drift_pct": round(self.mu * 100, 2)
+                                    if self.mu else None,
+            "n_simulations":        self.n_sims,
+            "projected_prices": {
+                "median":   round(median_price, 2),
+                "pct_5":    round(pct5, 2),
+                "pct_25":   round(pct25, 2),
+                "pct_75":   round(pct75, 2),
+                "pct_95":   round(pct95, 2),
+            },
+            "upside_downside": {
+                "median_change_pct":  round(upside_median, 1),
+                "pct95_change_pct":   round(upside_pct95, 1),
+                "pct5_change_pct":    round(downside_pct5, 1),
+            },
+            "p_itm_pct":                round(p_itm * 100, 1),
+            "p_otm_pct":                round(p_otm * 100, 1),
+            "expected_payoff_if_itm":   round(ev_payoff, 2),
+            "pv_expected_payoff":       round(pv_payoff, 2),
+            "expected_value_ev":        round(ev, 2),
+            "ev_positive":              ev > 0,
+            "projected_option_value":   round(projected_bs, 2)
+                                        if not math.isnan(projected_bs) else None,
+            "status": "ok",
+        }
+
+    def run(self):
+        try:
+            self.calibrate()
+            self.run_simulation()
+            return self.projection_report()
+        except Exception as e:
+            return {
+                "symbol":  self.symbol,
+                "strike":  self.K,
+                "expiry":  self.expiry_str,
+                "status":  "error",
+                "error":   str(e),
+            }
+
+# ------------------------------------------------------------------
+# FORWARD PROJECTION RUNNER
+# ------------------------------------------------------------------
+
+def run_forward_projections(all_results):
+    """
+    For each ticker that passed the screener, take its single
+    highest-scoring option and run a forward price projection
+    from today to the option's expiry date.
+    """
+    print("")
+    print("=================================================================")
+    print("  FORWARD PRICE PROJECTIONS  (today to expiry via Monte Carlo)")
+    print("=================================================================")
+
+    if not all_results:
+        print("  No screener results to project.")
+        return []
+
+    # Pick the best option per ticker (highest composite score)
+    best_per_ticker = {}
+    for opt in sorted(all_results, key=lambda x: x["composite_score"],
+                      reverse=True):
+        sym = opt["ticker"]
+        if sym not in best_per_ticker:
+            best_per_ticker[sym] = opt
+
+    projections = []
+    tickers = list(best_per_ticker.keys())
+
+    for i, sym in enumerate(tickers, 1):
+        opt = best_per_ticker[sym]
+        print("  [" + str(i).rjust(2) + "/" + str(len(tickers)) + "] " +
+              sym.ljust(8) + " Strike=" + str(opt["strike"]) +
+              "  Expiry=" + opt["expiry"] +
+              "  DTE=" + str(opt["dte"]) + " days",
+              end="", flush=True)
+
+        engine = ForwardProjectionEngine(
+            symbol          = sym,
+            current_price   = opt["current_price"],
+            strike          = opt["strike"],
+            expiry_str      = opt["expiry"],
+            implied_vol     = opt["implied_volatility_pct"] / 100.0,
+            current_premium = opt["premium"],
+            risk_free_rate  = RISK_FREE_RATE,
+            n_simulations   = FP_N_SIMULATIONS,
+        )
+
+        result = engine.run()
+
+        if result["status"] == "ok":
+            ev_label = "EV+" if result["ev_positive"] else "EV-"
+            print("  DONE  Median=$" + str(result["projected_prices"]["median"]) +
+                  "  P(ITM)=" + str(result["p_itm_pct"]) + "%" +
+                  "  " + ev_label)
+        else:
+            print("  ERROR  " + result.get("error", "unknown"))
+
+        projections.append(result)
+        time.sleep(DELAY_SECONDS)
+
+    return projections
+
 def analyze_ticker(symbol, idx, total):
     prefix = "  [" + str(idx).rjust(3) + "/" + str(total) + "] " + symbol.ljust(8)
     print(prefix, end="", flush=True)
@@ -1007,7 +1232,50 @@ def main():
             print("")
         print("=================================================================")
 
-    print("Done.")
+
+    # Run forward projections if enabled
+    if RUN_FORWARD_PROJECTION and all_results:
+        fp_results = run_forward_projections(all_results)
+
+        fp_meta = {
+            "generated_at":      datetime.utcnow().isoformat() + "Z",
+            "projection_date":   str(date.today()),
+            "n_simulations":     FP_N_SIMULATIONS,
+            "risk_free_rate_pct": RISK_FREE_RATE * 100,
+            "note": ("Forward projections run from today to each option expiry "
+                     "using implied volatility as sigma and historical mu as drift. "
+                     "One projection per ticker using the highest-scoring option."),
+        }
+
+        save_json(
+            {"meta": fp_meta, "forward_projections": fp_results},
+            "forward_projections.json"
+        )
+
+        print("")
+        print("=================================================================")
+        print("  FORWARD PROJECTION SUMMARY")
+        print("=================================================================")
+        for r in fp_results:
+            if r["status"] == "ok":
+                pp = r["projected_prices"]
+                ud = r["upside_downside"]
+                ev_label = "EV POSITIVE" if r["ev_positive"] else "EV NEGATIVE"
+                print("  " + r["symbol"] +
+                      " | Strike=$" + str(r["strike"]) +
+                      " | Expiry=" + r["expiry"])
+                print("    Current=$" + str(r["current_price"]) +
+                      "  Median Proj=$" + str(pp["median"]) +
+                      "  (" + str(ud["median_change_pct"]) + "%)")
+                print("    90% Range: $" + str(pp["pct_5"]) +
+                      " to $" + str(pp["pct_95"]) +
+                      "  |  P(ITM)=" + str(r["p_itm_pct"]) + "%" +
+                      "  |  EV=$" + str(r["expected_value_ev"]) +
+                      "  |  " + ev_label)
+            else:
+                print("  " + r["symbol"] + " | ERROR: " + r.get("error", ""))
+            print("")
+        print("=================================================================")
 
 
 if __name__ == "__main__":
