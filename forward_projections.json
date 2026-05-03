@@ -1,0 +1,249 @@
+{
+  "meta": {
+    "generated_at": "2026-05-03T02:41:17.885807Z",
+    "projection_date": "2026-05-03",
+    "n_simulations": 1000,
+    "risk_free_rate_pct": 3.88,
+    "note": "Forward projections run from today to each option expiry using implied volatility as sigma and historical mu as drift. One projection per ticker using the highest-scoring option."
+  },
+  "forward_projections": [
+    {
+      "symbol": "META",
+      "current_price": 608.75,
+      "strike": 510.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 957,
+      "years_to_expiry": 2.622,
+      "current_premium": 221.47,
+      "implied_vol_used_pct": 48.96,
+      "historical_mu_pct": 2.28,
+      "div_yield_pct": 0.34,
+      "calibrated_drift_pct": 1.93,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 393.85,
+        "pct_5": 84.98,
+        "pct_25": 207.98,
+        "pct_75": 802.99,
+        "pct_95": 1958.02
+      },
+      "upside_downside": {
+        "median_change_pct": -35.3,
+        "pct95_change_pct": 221.6,
+        "pct5_change_pct": -86.0
+      },
+      "p_itm_pct": 38.9,
+      "p_otm_pct": 61.1,
+      "expected_payoff_if_itm": 744.04,
+      "pv_expected_payoff": 672.07,
+      "expected_value_ev": 126.12,
+      "ev_positive": true,
+      "projected_option_value": 0.0,
+      "status": "ok"
+    },
+    {
+      "symbol": "V",
+      "current_price": 328.03,
+      "strike": 280.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 957,
+      "years_to_expiry": 2.622,
+      "current_premium": 93.2,
+      "implied_vol_used_pct": 35.52,
+      "historical_mu_pct": -5.09,
+      "div_yield_pct": 0.77,
+      "calibrated_drift_pct": -5.86,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 198.78,
+        "pct_5": 65.34,
+        "pct_25": 125.08,
+        "pct_75": 333.3,
+        "pct_95": 636.31
+      },
+      "upside_downside": {
+        "median_change_pct": -39.4,
+        "pct95_change_pct": 94.0,
+        "pct5_change_pct": -80.1
+      },
+      "p_itm_pct": 31.8,
+      "p_otm_pct": 68.2,
+      "expected_payoff_if_itm": 205.76,
+      "pv_expected_payoff": 185.86,
+      "expected_value_ev": -4.46,
+      "ev_positive": false,
+      "projected_option_value": 0.0,
+      "status": "ok"
+    },
+    {
+      "symbol": "NVDA",
+      "current_price": 198.45,
+      "strike": 165.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 957,
+      "years_to_expiry": 2.622,
+      "current_premium": 79.6,
+      "implied_vol_used_pct": 54.12,
+      "historical_mu_pct": 55.46,
+      "div_yield_pct": 0.02,
+      "calibrated_drift_pct": 55.44,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 880.56,
+        "pct_5": 161.64,
+        "pct_25": 434.73,
+        "pct_75": 1935.26,
+        "pct_95": 5183.74
+      },
+      "upside_downside": {
+        "median_change_pct": 343.7,
+        "pct95_change_pct": 2512.1,
+        "pct5_change_pct": -18.5
+      },
+      "p_itm_pct": 94.9,
+      "p_otm_pct": 5.1,
+      "expected_payoff_if_itm": 1515.81,
+      "pv_expected_payoff": 1369.19,
+      "expected_value_ev": 1295.3,
+      "ev_positive": true,
+      "projected_option_value": 715.62,
+      "status": "ok"
+    },
+    {
+      "symbol": "GOOGL",
+      "current_price": 385.69,
+      "strike": 255.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 957,
+      "years_to_expiry": 2.622,
+      "current_premium": 176.5,
+      "implied_vol_used_pct": 50.55,
+      "historical_mu_pct": 86.53,
+      "div_yield_pct": 0.22,
+      "calibrated_drift_pct": 86.31,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 5957.35,
+        "pct_5": 1222.97,
+        "pct_25": 3081.32,
+        "pct_75": 12430.15,
+        "pct_95": 31199.91
+      },
+      "upside_downside": {
+        "median_change_pct": 1444.6,
+        "pct95_change_pct": 7989.4,
+        "pct5_change_pct": 217.1
+      },
+      "p_itm_pct": 100.0,
+      "p_otm_pct": 0.0,
+      "expected_payoff_if_itm": 9809.9,
+      "pv_expected_payoff": 8861.02,
+      "expected_value_ev": 8861.02,
+      "ev_positive": true,
+      "projected_option_value": 5702.45,
+      "status": "ok"
+    },
+    {
+      "symbol": "MSFT",
+      "current_price": 414.44,
+      "strike": 345.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 957,
+      "years_to_expiry": 2.622,
+      "current_premium": 134.25,
+      "implied_vol_used_pct": 40.7,
+      "historical_mu_pct": -4.18,
+      "div_yield_pct": 0.84,
+      "calibrated_drift_pct": -5.02,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 239.21,
+        "pct_5": 66.86,
+        "pct_25": 140.69,
+        "pct_75": 432.48,
+        "pct_95": 907.33
+      },
+      "upside_downside": {
+        "median_change_pct": -42.3,
+        "pct95_change_pct": 118.9,
+        "pct5_change_pct": -83.9
+      },
+      "p_itm_pct": 32.8,
+      "p_otm_pct": 67.2,
+      "expected_payoff_if_itm": 319.83,
+      "pv_expected_payoff": 288.89,
+      "expected_value_ev": 4.54,
+      "ev_positive": true,
+      "projected_option_value": 0.0,
+      "status": "ok"
+    },
+    {
+      "symbol": "AMZN",
+      "current_price": 268.26,
+      "strike": 220.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 957,
+      "years_to_expiry": 2.622,
+      "current_premium": 98.88,
+      "implied_vol_used_pct": 48.15,
+      "historical_mu_pct": 34.78,
+      "div_yield_pct": 0.0,
+      "calibrated_drift_pct": 34.78,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 613.91,
+        "pct_5": 135.87,
+        "pct_25": 327.63,
+        "pct_75": 1236.99,
+        "pct_95": 2972.12
+      },
+      "upside_downside": {
+        "median_change_pct": 128.8,
+        "pct95_change_pct": 1007.9,
+        "pct5_change_pct": -49.4
+      },
+      "p_itm_pct": 87.2,
+      "p_otm_pct": 12.8,
+      "expected_payoff_if_itm": 893.77,
+      "pv_expected_payoff": 807.32,
+      "expected_value_ev": 691.33,
+      "ev_positive": true,
+      "projected_option_value": 394.0,
+      "status": "ok"
+    },
+    {
+      "symbol": "AAPL",
+      "current_price": 280.14,
+      "strike": 190.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 957,
+      "years_to_expiry": 2.622,
+      "current_premium": 117.97,
+      "implied_vol_used_pct": 44.12,
+      "historical_mu_pct": 31.74,
+      "div_yield_pct": 0.37,
+      "calibrated_drift_pct": 31.37,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 607.18,
+        "pct_5": 152.46,
+        "pct_25": 341.52,
+        "pct_75": 1153.74,
+        "pct_95": 2576.0
+      },
+      "upside_downside": {
+        "median_change_pct": 116.7,
+        "pct95_change_pct": 819.5,
+        "pct5_change_pct": -45.6
+      },
+      "p_itm_pct": 91.5,
+      "p_otm_pct": 8.5,
+      "expected_payoff_if_itm": 791.41,
+      "pv_expected_payoff": 714.86,
+      "expected_value_ev": 644.07,
+      "ev_positive": true,
+      "projected_option_value": 417.25,
+      "status": "ok"
+    }
+  ]
+}
