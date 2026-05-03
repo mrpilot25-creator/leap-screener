@@ -31,31 +31,8 @@ warnings.filterwarnings("ignore")
 # ------------------------------------------------------------------
 
 WATCHLIST = [
-"A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
-    "ALB", "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", "AMZN", "ANET", "ANSS", "AON", "AOS", "APA", "APD", "APH", "APO", 
-    "ARE", "ATO", "AVB", "AVGO", "AVY", "AWK", "AXON", "AXP", "AYI", "AZO", "BA", "BAC", "BALL", "BAX", "BBWI", "BBY", "BDX", "BEN", "BF-B", "BG", 
-    "BIIB", "BIO", "BK", "BKNG", "BKR", "BLK", "BMY", "BR", "BRK-B", "BSX", "BWA", "BX", "BXP", "C", "CAG", "CAH", "CARR", "CAT", "CB", "CBOE", 
-    "CBRE", "CCI", "CCL", "CDNS", "CDW", "CE", "CEG", "CF", "CFG", "CHD", "CHRW", "CHTR", "CI", "CINF", "CL", "CLX", "CMA", "CMCSA", "CME", "CMG", 
-    "CMI", "CMS", "CNC", "CNP", "COF", "COO", "COP", "COR", "COST", "CPAY", "CPB", "CPRT", "CPT", "CRL", "CRM", "CSCO", "CSGP", "CSX", "CTAS", "CTRA", 
-    "CTSH", "CTVA", "CVS", "CVX", "CZR", "D", "DAL", "DAY", "DD", "DE", "DECK", "DELL", "DFS", "DG", "DGX", "DHI", "DHR", "DIS", "DLR", "DLTR", 
-    "DOC", "DOV", "DOW", "DPZ", "DRI", "DTE", "DUK", "DVA", "DVN", "DXCM", "EA", "EBAY", "ECL", "ED", "EFX", "EG", "EIX", "EL", "ELV", "EMN", 
-    "EMR", "ENPH", "EOG", "EPAM", "EQIX", "EQR", "EQT", "ES", "ESS", "ETN", "ETR", "ETSY", "EVRG", "EW", "EXC", "EXPD", "EXPE", "EXR", "F", "FANG", 
-    "FAST", "FCX", "FDS", "FDX", "FE", "FFIV", "FI", "FICO", "FIS", "FITB", "FMC", "FOX", "FOXA", "FRT", "FSLR", "FTNT", "FTV", "GD", "GE", "GEF", 
-    "GEHC", "GEN", "GESV", "GEV", "GILD", "GIS", "GL", "GLW", "GM", "GNRC", "GOOG", "GOOGL", "GPC", "GPN", "GRMN", "GS", "GWRE", "GWW", "HAL", "HAS", 
-    "HBAN", "HCA", "HD", "HES", "HIG", "HII", "HLT", "HOLX", "HON", "HPE", "HPQ", "HRL", "HSIC", "HST", "HSY", "HUBB", "HUM", "HWM", "IBM", "ICE", 
-    "IDXX", "IEX", "IFF", "ILMN", "INCY", "INTC", "INTU", "INVH", "IP", "IPG", "IQV", "IR", "IRM", "ISRG", "IT", "ITW", "IVZ", "J", "JBHT", "JBL", 
-    "JCI", "JKHY", "JNJ", "JNPR", "JPM", "K", "KDP", "KEY", "KEYS", "KHC", "KIM", "KLAC", "KMB", "KMI", "KMX", "KO", "KR", "KVUE", "L", "LDOS", 
-    "LEN", "LH", "LHX", "LIN", "LKQ", "LLY", "LMT", "LNT", "LOW", "LRCX", "LULU", "LUV", "LVS", "LW", "LYB", "LYV", "MA", "MAA", "MAR", "MAS", 
-    "MCD", "MCHP", "MCK", "MCO", "MDLZ", "MDT", "MET", "META", "MGM", "MHK", "MKC", "MKTX", "MLM", "MMC", "MMM", "MNST", "MO", "MOH", "MOS", "MPC", 
-    "MPWR", "MRK", "MRNA", "MS", "MSI", "MSFT", "MTB", "MTCH", "MTD", "MU", "NCLH", "NDAQ", "NDSN", "NEE", "NEM", "NFLX", "NI", "NKE", "NOC", "NOW", 
-    "NRG", "NSC", "NTRS", "NUE", "NVDA", "NVR", "NWS", "NWSA", "NXPI", "O", "ODFL", "OKE", "OMC", "ON", "ORCL", "ORLY", "OTIS", "OXY", "PANW", "PARA", 
-    "PAYC", "PAYX", "PCAR", "PCG", "PEG", "PEP", "PFE", "PFG", "PG", "PGR", "PH", "PHM", "PKG", "PLD", "PLTR", "PM", "PNC", "PNW", "POOL", "PPG", 
-    "PPL", "PRU", "PSA", "PSX", "PTC", "PWR", "PXD", "PYPL", "QCOM", "QRVO", "RCL", "REG", "REGN", "RF", "RHI", "RJF", "RL", "RMD", "ROK", "ROL", 
-    "ROP", "ROST", "RSG", "RTX", "RVTY", "SBAC", "SBUX", "SCHW", "SHW", "SJM", "SNA", "SNPS", "SO", "SPG", "SPGI", "SRE", "STE", "STLD", "STT", "STX", 
-    "SYK", "SYY", "T", "TAP", "TDG", "TDY", "TECH", "TEL", "TER", "TFC", "TFX", "TGT", "TJX", "TMO", "TMUS", "TPR", "TRGP", "TRMB", "TROW", "TRV", 
-    "TSCO", "TSLA", "TSN", "TT", "TTWO", "TXN", "TXT", "TYL", "UAL", "UDR", "UHS", "ULTA", "UNH", "UNP", "UPS", "URI", "USB", "V", "VICI", "VLO", 
-    "VMC", "VRSK", "VRSN", "VRTX", "VST", "VTR", "VZ", "WAB", "WAT", "WBA", "WBD", "WDC", "WEC", "WELL", "WFC", "WHR", "WM", "WMB", "WMT", "WRB", 
-    "WST", "WTW", "WY", "WYNN", "XEL", "XOM", "XYL", "YUM", "ZBH", "ZBRA", "ZTS"
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
+    "META", "TSLA", "JPM", "UNH", "V",
 ]
 
 # ------------------------------------------------------------------
@@ -72,7 +49,7 @@ RUN_FORWARD_PROJECTION = True  # Set to False to skip forward projections
 BT_TRAINING_YEARS    = 3
 BT_VALIDATION_YEARS  = 2
 BT_N_SIMULATIONS     = 1000
-BT_TOP_N_CANDIDATES  = 5   # Number of top screener picks to backtest
+BT_TOP_N_CANDIDATES  = 999  # Backtest ALL passing tickers (one per ticker, best option)
 FP_N_SIMULATIONS     = 1000  # Monte Carlo paths for forward projection
 
 # Fundamental thresholds
@@ -1094,30 +1071,30 @@ def analyze_ticker(symbol, idx, total):
 # BACKTEST RUNNER - Uses screener composite score as entry signal
 # ------------------------------------------------------------------
 
-def run_backtest(all_results, top_n=5):
+def run_backtest(all_results):
     print("")
     print("=================================================================")
     print("  WALK-FORWARD BACKTEST  (" + str(BT_TRAINING_YEARS) + "yr train / " +
           str(BT_VALIDATION_YEARS) + "yr validate / " +
           str(BT_N_SIMULATIONS) + " simulations)")
+    print("  Backtesting best option for EVERY passing ticker")
     print("=================================================================")
 
     if not all_results:
         print("  No screener results to backtest.")
         return []
 
-    # Use the composite score as the entry signal
-    # Select top N unique tickers by best composite score
+    # For each unique ticker that passed the screen, select the single
+    # option with the highest composite score. This is the entry signal.
     seen = {}
     for opt in sorted(all_results, key=lambda x: x["composite_score"], reverse=True):
         sym = opt["ticker"]
         if sym not in seen:
             seen[sym] = opt
-        if len(seen) >= top_n:
-            break
+    # No top_n limit - backtest every ticker that passed the screen
 
     candidates = list(seen.values())
-    print("  Backtesting top " + str(len(candidates)) + " candidates by composite score:")
+    print("  Tickers to backtest: " + str(len(candidates)))
     for c in candidates:
         print("    " + c["ticker"] + "  Strike=" + str(c["strike"]) +
               "  Score=" + str(c["composite_score"]))
@@ -1129,8 +1106,8 @@ def run_backtest(all_results, top_n=5):
         strike = cand["strike"]
         score  = cand["composite_score"]
 
-        print("  [" + str(i) + "/" + str(len(candidates)) + "] Backtesting " +
-              symbol + " (strike=" + str(strike) + ", score=" + str(score) + ")")
+        print("  [" + str(i).rjust(2) + "/" + str(len(candidates)) + "] " +
+              symbol + "  strike=" + str(strike) + "  score=" + str(score))
 
         engine = BacktestEngine(
             symbol           = symbol,
@@ -1146,11 +1123,11 @@ def run_backtest(all_results, top_n=5):
 
         if result["status"] == "ok":
             rv = result["residual_variance_report"]
-            ev_label = "POSITIVE" if rv["ev_positive"] else "NEGATIVE"
-            print("    EV=" + str(rv["expected_value_ev"]) +
+            ev_label = "EV+" if rv["ev_positive"] else "EV-"
+            print("    " + ev_label +
                   "  P(ITM)=" + str(rv["p_itm_pct"]) + "%" +
-                  "  TerminalErr=" + str(rv["terminal_price_error_pct"]) + "%" +
-                  "  EV:" + ev_label)
+                  "  EV=$" + str(rv["expected_value_ev"]) +
+                  "  TermErr=" + str(rv["terminal_price_error_pct"]) + "%")
         else:
             print("    ERROR: " + result.get("error", "unknown"))
 
@@ -1252,7 +1229,7 @@ def main():
 
     # Run backtest if enabled
     if RUN_BACKTEST and all_results:
-        bt_results = run_backtest(all_results, top_n=BT_TOP_N_CANDIDATES)
+        bt_results = run_backtest(all_results)
 
         bt_meta = {
             "generated_at":      datetime.utcnow().isoformat() + "Z",
@@ -1260,8 +1237,8 @@ def main():
             "validation_years":  BT_VALIDATION_YEARS,
             "n_simulations":     BT_N_SIMULATIONS,
             "risk_free_rate_pct": RISK_FREE_RATE * 100,
-            "entry_signal":      "composite_score (multi-factor screener)",
-            "top_n_candidates":  BT_TOP_N_CANDIDATES,
+            "tickers_backtested":    len(bt_results),
+            "entry_signal":          "composite_score (best option per ticker, all passing tickers)",
         }
 
         save_json(
