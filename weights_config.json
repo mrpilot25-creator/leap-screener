@@ -1,0 +1,30 @@
+{
+  "note": "Edit the weights values to change the scoring system. Values are auto-normalised to sum to 1.0 so you can use any positive numbers. Re-run the screener after saving. You can also adjust weights via the Base44 dashboard.",
+  "last_modified": "2026-05-09",
+  "weights": {
+    "market_cap": 0.06,
+    "avg_volume": 0.05,
+    "inst_ownership": 0.06,
+    "eps_growth": 0.07,
+    "revenue_growth": 0.06,
+    "ebitda_margin": 0.06,
+    "rsi": 0.12,
+    "price_vs_200ma": 0.1,
+    "bb_position": 0.1,
+    "delta": 0.2,
+    "iv_percentile": 0.12
+  },
+  "parameter_descriptions": {
+    "market_cap": "Company size - larger scores higher",
+    "avg_volume": "Daily trading liquidity",
+    "inst_ownership": "% held by professional investors",
+    "eps_growth": "Earnings per share growth rate",
+    "revenue_growth": "Revenue growth rate",
+    "ebitda_margin": "Operating profitability margin",
+    "rsi": "Technical - oversold entry signal",
+    "price_vs_200ma": "Technical - near long-term trend",
+    "bb_position": "Technical - Bollinger Band entry",
+    "delta": "Option - price sensitivity (0.70-0.85)",
+    "iv_percentile": "Option - cheap implied volatility"
+  }
+}
