@@ -31,31 +31,8 @@ warnings.filterwarnings("ignore")
 # ------------------------------------------------------------------
 
 WATCHLIST = [
-    "A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
-    "ALB", "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", "AMZN", "ANET", "ANSS", "AON", "AOS", "APA", "APD", "APH", "APO", 
-    "ARE", "ATO", "AVB", "AVGO", "AVY", "AWK", "AXON", "AXP", "AYI", "AZO", "BA", "BAC", "BALL", "BAX", "BBWI", "BBY", "BDX", "BEN", "BF-B", "BG", 
-    "BIIB", "BIO", "BK", "BKNG", "BKR", "BLK", "BMY", "BR", "BRK-B", "BSX", "BWA", "BX", "BXP", "C", "CAG", "CAH", "CARR", "CAT", "CB", "CBOE", 
-    "CBRE", "CCI", "CCL", "CDNS", "CDW", "CE", "CEG", "CF", "CFG", "CHD", "CHRW", "CHTR", "CI", "CINF", "CL", "CLX", "CMA", "CMCSA", "CME", "CMG", 
-    "CMI", "CMS", "CNC", "CNP", "COF", "COO", "COP", "COR", "COST", "CPAY", "CPB", "CPRT", "CPT", "CRL", "CRM", "CSCO", "CSGP", "CSX", "CTAS", "CTRA", 
-    "CTSH", "CTVA", "CVS", "CVX", "CZR", "D", "DAL", "DAY", "DD", "DE", "DECK", "DELL", "DFS", "DG", "DGX", "DHI", "DHR", "DIS", "DLR", "DLTR", 
-    "DOC", "DOV", "DOW", "DPZ", "DRI", "DTE", "DUK", "DVA", "DVN", "DXCM", "EA", "EBAY", "ECL", "ED", "EFX", "EG", "EIX", "EL", "ELV", "EMN", 
-    "EMR", "ENPH", "EOG", "EPAM", "EQIX", "EQR", "EQT", "ES", "ESS", "ETN", "ETR", "ETSY", "EVRG", "EW", "EXC", "EXPD", "EXPE", "EXR", "F", "FANG", 
-    "FAST", "FCX", "FDS", "FDX", "FE", "FFIV", "FI", "FICO", "FIS", "FITB", "FMC", "FOX", "FOXA", "FRT", "FSLR", "FTNT", "FTV", "GD", "GE", "GEF", 
-    "GEHC", "GEN", "GESV", "GEV", "GILD", "GIS", "GL", "GLW", "GM", "GNRC", "GOOG", "GOOGL", "GPC", "GPN", "GRMN", "GS", "GWRE", "GWW", "HAL", "HAS", 
-    "HBAN", "HCA", "HD", "HES", "HIG", "HII", "HLT", "HOLX", "HON", "HPE", "HPQ", "HRL", "HSIC", "HST", "HSY", "HUBB", "HUM", "HWM", "IBM", "ICE", 
-    "IDXX", "IEX", "IFF", "ILMN", "INCY", "INTC", "INTU", "INVH", "IP", "IPG", "IQV", "IR", "IRM", "ISRG", "IT", "ITW", "IVZ", "J", "JBHT", "JBL", 
-    "JCI", "JKHY", "JNJ", "JNPR", "JPM", "K", "KDP", "KEY", "KEYS", "KHC", "KIM", "KLAC", "KMB", "KMI", "KMX", "KO", "KR", "KVUE", "L", "LDOS", 
-    "LEN", "LH", "LHX", "LIN", "LKQ", "LLY", "LMT", "LNT", "LOW", "LRCX", "LULU", "LUV", "LVS", "LW", "LYB", "LYV", "MA", "MAA", "MAR", "MAS", 
-    "MCD", "MCHP", "MCK", "MCO", "MDLZ", "MDT", "MET", "META", "MGM", "MHK", "MKC", "MKTX", "MLM", "MMC", "MMM", "MNST", "MO", "MOH", "MOS", "MPC", 
-    "MPWR", "MRK", "MRNA", "MS", "MSI", "MSFT", "MTB", "MTCH", "MTD", "MU", "NCLH", "NDAQ", "NDSN", "NEE", "NEM", "NFLX", "NI", "NKE", "NOC", "NOW", 
-    "NRG", "NSC", "NTRS", "NUE", "NVDA", "NVR", "NWS", "NWSA", "NXPI", "O", "ODFL", "OKE", "OMC", "ON", "ORCL", "ORLY", "OTIS", "OXY", "PANW", "PARA", 
-    "PAYC", "PAYX", "PCAR", "PCG", "PEG", "PEP", "PFE", "PFG", "PG", "PGR", "PH", "PHM", "PKG", "PLD", "PLTR", "PM", "PNC", "PNW", "POOL", "PPG", 
-    "PPL", "PRU", "PSA", "PSX", "PTC", "PWR", "PXD", "PYPL", "QCOM", "QRVO", "RCL", "REG", "REGN", "RF", "RHI", "RJF", "RL", "RMD", "ROK", "ROL", 
-    "ROP", "ROST", "RSG", "RTX", "RVTY", "SBAC", "SBUX", "SCHW", "SHW", "SJM", "SNA", "SNPS", "SO", "SPG", "SPGI", "SRE", "STE", "STLD", "STT", "STX", 
-    "SYK", "SYY", "T", "TAP", "TDG", "TDY", "TECH", "TEL", "TER", "TFC", "TFX", "TGT", "TJX", "TMO", "TMUS", "TPR", "TRGP", "TRMB", "TROW", "TRV", 
-    "TSCO", "TSLA", "TSN", "TT", "TTWO", "TXN", "TXT", "TYL", "UAL", "UDR", "UHS", "ULTA", "UNH", "UNP", "UPS", "URI", "USB", "V", "VICI", "VLO", 
-    "VMC", "VRSK", "VRSN", "VRTX", "VST", "VTR", "VZ", "WAB", "WAT", "WBA", "WBD", "WDC", "WEC", "WELL", "WFC", "WHR", "WM", "WMB", "WMT", "WRB", 
-    "WST", "WTW", "WY", "WYNN", "XEL", "XOM", "XYL", "YUM", "ZBH", "ZBRA", "ZTS"
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
+    "META", "TSLA", "JPM", "UNH", "V",
 ]
 
 # ------------------------------------------------------------------
@@ -126,6 +103,338 @@ def calculate_iv_percentile(close_prices, current_iv):
         return round(float(np.mean(roll_vol.dropna() < current_iv) * 100), 1)
     except Exception:
         return 50.0
+
+# ------------------------------------------------------------------
+# EXTENDED TECHNICAL INDICATORS (ABCD Strategy Framework)
+# ------------------------------------------------------------------
+
+def resample_to_weekly(hist):
+    """Resample daily OHLCV history to weekly bars."""
+    weekly = hist.resample("W").agg({
+        "Open":   "first",
+        "High":   "max",
+        "Low":    "min",
+        "Close":  "last",
+        "Volume": "sum",
+    }).dropna()
+    return weekly
+
+
+def calculate_macd(prices, fast=12, slow=26, signal=9):
+    """
+    Returns (macd_line, signal_line, histogram, bullish_crossover).
+    bullish_crossover = True if MACD crossed above signal on the most recent bar.
+    """
+    try:
+        ema_fast   = prices.ewm(span=fast,   adjust=False).mean()
+        ema_slow   = prices.ewm(span=slow,   adjust=False).mean()
+        macd_line  = ema_fast - ema_slow
+        signal_line= macd_line.ewm(span=signal, adjust=False).mean()
+        histogram  = macd_line - signal_line
+
+        macd_now    = float(macd_line.iloc[-1])
+        signal_now  = float(signal_line.iloc[-1])
+        macd_prev   = float(macd_line.iloc[-2]) if len(macd_line) > 1 else macd_now
+        signal_prev = float(signal_line.iloc[-2]) if len(signal_line) > 1 else signal_now
+
+        bullish_crossover = (macd_prev < signal_prev) and (macd_now >= signal_now)
+        macd_above_signal = macd_now > signal_now
+
+        return {
+            "macd":              round(macd_now, 4),
+            "signal":            round(signal_now, 4),
+            "histogram":         round(float(histogram.iloc[-1]), 4),
+            "bullish_crossover": bullish_crossover,
+            "macd_above_signal": macd_above_signal,
+        }
+    except Exception:
+        return {
+            "macd": None, "signal": None, "histogram": None,
+            "bullish_crossover": False, "macd_above_signal": False,
+        }
+
+
+def calculate_stoch_rsi(prices, rsi_period=14, stoch_period=14, k=3, d=3):
+    """
+    Stochastic RSI - more sensitive than plain RSI.
+    Returns %K and %D lines and whether K crossed above D (bullish).
+    """
+    try:
+        delta    = prices.diff()
+        gain     = delta.clip(lower=0)
+        loss     = -delta.clip(upper=0)
+        avg_gain = gain.ewm(com=rsi_period - 1, min_periods=rsi_period).mean()
+        avg_loss = loss.ewm(com=rsi_period - 1, min_periods=rsi_period).mean()
+        rs       = avg_gain / avg_loss.replace(0, np.nan)
+        rsi_ser  = 100 - (100 / (1 + rs))
+
+        rsi_min  = rsi_ser.rolling(stoch_period).min()
+        rsi_max  = rsi_ser.rolling(stoch_period).max()
+        rsi_rng  = (rsi_max - rsi_min).replace(0, np.nan)
+        raw_k    = ((rsi_ser - rsi_min) / rsi_rng * 100)
+        pct_k    = raw_k.rolling(k).mean()
+        pct_d    = pct_k.rolling(d).mean()
+
+        k_now  = float(pct_k.iloc[-1])
+        d_now  = float(pct_d.iloc[-1])
+        k_prev = float(pct_k.iloc[-2]) if len(pct_k) > 1 else k_now
+        d_prev = float(pct_d.iloc[-2]) if len(pct_d) > 1 else d_now
+
+        bullish_cross = (k_prev < d_prev) and (k_now >= d_now)
+        oversold      = k_now < 20
+
+        return {
+            "stoch_k":        round(k_now, 2),
+            "stoch_d":        round(d_now, 2),
+            "bullish_cross":  bullish_cross,
+            "oversold":       oversold,
+        }
+    except Exception:
+        return {"stoch_k": None, "stoch_d": None,
+                "bullish_cross": False, "oversold": False}
+
+
+def calculate_obv(close, volume):
+    """
+    On Balance Volume. Also detects bullish divergence:
+    price making lower lows while OBV makes higher lows.
+    """
+    try:
+        direction = np.sign(close.diff().fillna(0))
+        obv       = (direction * volume).cumsum()
+
+        obv_now  = float(obv.iloc[-1])
+        obv_20   = float(obv.rolling(20).mean().iloc[-1])
+
+        # Divergence: compare last 20 bars
+        # Price lower low vs OBV not making lower low
+        price_low_20  = float(close.tail(20).min())
+        price_low_10  = float(close.tail(10).min())
+        obv_low_20    = float(obv.tail(20).min())
+        obv_low_10    = float(obv.tail(10).min())
+
+        bullish_divergence = (price_low_10 <= price_low_20) and (obv_low_10 > obv_low_20)
+        obv_rising        = obv_now > obv_20
+
+        return {
+            "obv":                  round(obv_now, 0),
+            "obv_rising":           obv_rising,
+            "bullish_divergence":   bullish_divergence,
+        }
+    except Exception:
+        return {"obv": None, "obv_rising": False, "bullish_divergence": False}
+
+
+def calculate_atr(high, low, close, period=14):
+    """Average True Range - measures typical daily price range."""
+    try:
+        tr = pd.concat([
+            high - low,
+            (high - close.shift(1)).abs(),
+            (low  - close.shift(1)).abs(),
+        ], axis=1).max(axis=1)
+        atr = float(tr.ewm(span=period, adjust=False).mean().iloc[-1])
+        return round(atr, 4)
+    except Exception:
+        return None
+
+
+def calculate_weekly_mas(weekly_close):
+    """50-week and 200-week moving averages and whether price is above them."""
+    try:
+        ma50  = weekly_close.rolling(50).mean()
+        ma200 = weekly_close.rolling(200).mean()
+        price = float(weekly_close.iloc[-1])
+        ma50_val  = float(ma50.iloc[-1])  if not ma50.isna().all()  else None
+        ma200_val = float(ma200.iloc[-1]) if not ma200.isna().all() else None
+        return {
+            "ma50_weekly":         round(ma50_val, 2)  if ma50_val  else None,
+            "ma200_weekly":        round(ma200_val, 2) if ma200_val else None,
+            "above_ma50_weekly":   price > ma50_val    if ma50_val  else None,
+            "above_ma200_weekly":  price > ma200_val   if ma200_val else None,
+        }
+    except Exception:
+        return {"ma50_weekly": None, "ma200_weekly": None,
+                "above_ma50_weekly": None, "above_ma200_weekly": None}
+
+
+def detect_swing_points(prices, window=5):
+    """
+    Detect local swing highs and lows.
+    A swing high is where price is higher than `window` bars each side.
+    A swing low is where price is lower than `window` bars each side.
+    Returns lists of (index_position, price) tuples.
+    """
+    highs, lows = [], []
+    arr = prices.values
+    for i in range(window, len(arr) - window):
+        left  = arr[i - window: i]
+        right = arr[i + 1: i + window + 1]
+        if arr[i] >= max(left) and arr[i] >= max(right):
+            highs.append((i, float(arr[i])))
+        if arr[i] <= min(left) and arr[i] <= min(right):
+            lows.append((i, float(arr[i])))
+    return highs, lows
+
+
+def detect_abcd_pattern(weekly_close, current_price):
+    """
+    Identifies the most recent valid ABCD harmonic structure.
+
+    Rules (from strategy document):
+      A = Major swing LOW
+      B = Swing HIGH after A
+      C = Corrective LOW after B, must hold above A
+      D = Projected using Fibonacci extensions of AB leg from C
+
+    Returns a dict with A, B, C coordinates and D projections
+    at 1.272x, 1.618x, 2.000x, 2.618x, and 4.236x.
+    Also flags whether current price is near Point C (entry zone).
+    """
+    try:
+        if len(weekly_close) < 30:
+            return {"status": "insufficient_data"}
+
+        highs, lows = detect_swing_points(weekly_close, window=3)
+
+        if len(lows) < 2 or len(highs) < 1:
+            return {"status": "no_pattern_found"}
+
+        # Find the last significant swing LOW as point A
+        # (must be followed by a swing HIGH, then another swing LOW)
+        best = None
+        for li, (a_idx, a_price) in enumerate(lows[:-1]):
+            # Find the highest B after A
+            b_candidates = [(i, p) for i, p in highs if i > a_idx]
+            if not b_candidates:
+                continue
+            b_idx, b_price = max(b_candidates, key=lambda x: x[1])
+
+            # Find C: swing low after B, must be above A
+            c_candidates = [(i, p) for i, p in lows if i > b_idx and p > a_price]
+            if not c_candidates:
+                continue
+            c_idx, c_price = c_candidates[-1]  # most recent valid C
+
+            ab_dist = b_price - a_price
+            bc_dist = b_price - c_price
+            if ab_dist <= 0:
+                continue
+
+            bc_retracement = bc_dist / ab_dist
+
+            pattern = {
+                "A_price": round(a_price, 2),
+                "B_price": round(b_price, 2),
+                "C_price": round(c_price, 2),
+                "AB_distance":      round(ab_dist, 2),
+                "BC_retracement_pct": round(bc_retracement * 100, 1),
+                "D_targets": {
+                    "1.272x": round(c_price + ab_dist * 1.272, 2),
+                    "1.618x": round(c_price + ab_dist * 1.618, 2),
+                    "2.000x": round(c_price + ab_dist * 2.000, 2),
+                    "2.618x": round(c_price + ab_dist * 2.618, 2),
+                    "4.236x": round(c_price + ab_dist * 4.236, 2),
+                },
+                "pattern_valid":  True,
+                "C_above_A":      c_price > a_price,
+            }
+
+            # Prefer the most recent pattern
+            if best is None or c_idx > best[0]:
+                best = (c_idx, pattern)
+
+        if best is None:
+            return {"status": "no_pattern_found"}
+
+        _, result = best
+        c_price = result["C_price"]
+
+        # Is current price near C (within 10%)?
+        near_c = abs(current_price - c_price) / c_price < 0.10
+        result["price_near_C"]    = near_c
+        result["current_price"]   = round(current_price, 2)
+        result["status"]          = "found"
+
+        return result
+
+    except Exception as e:
+        return {"status": "error", "error": str(e)}
+
+
+def leaps_entry_checklist(
+    current_price, rsi_weekly, macd_data, obv_data,
+    bb_pos, stoch_data, weekly_mas, iv_percentile,
+    abcd_data, volume_data
+):
+    """
+    Scores each item from the LEAPS Entry Checklist in the strategy document.
+    Returns a dict with each item True/False and a total confluence score.
+
+    Items:
+      1. Stock at or near ABCD Point C
+      2. Point C holds above Point A (pattern intact)
+      3. Weekly RSI oversold (below 40)
+      4. OBV bullish divergence at C
+      5. Price at or below lower Bollinger Band
+      6. MACD early momentum shift upward
+      7. Volume spike / capitulation at C
+      8. 50/200 Week MA structure bullish
+      9. IV Percentile relatively low (below 30)
+    """
+    checks = {}
+
+    # 1. Near ABCD Point C
+    checks["near_abcd_c"] = (
+        abcd_data.get("status") == "found" and
+        abcd_data.get("price_near_C", False)
+    )
+
+    # 2. C holds above A (pattern valid)
+    checks["c_above_a"] = (
+        abcd_data.get("status") == "found" and
+        abcd_data.get("C_above_A", False)
+    )
+
+    # 3. Weekly RSI oversold
+    checks["weekly_rsi_oversold"] = (
+        rsi_weekly is not None and rsi_weekly < 40
+    )
+
+    # 4. OBV bullish divergence
+    checks["obv_bullish_divergence"] = obv_data.get("bullish_divergence", False)
+
+    # 5. Price near or below lower Bollinger Band
+    checks["at_lower_bollinger"] = bb_pos < 0.15  # bottom 15% of band
+
+    # 6. MACD bullish crossover or above signal
+    checks["macd_bullish"] = (
+        macd_data.get("bullish_crossover", False) or
+        macd_data.get("macd_above_signal", False)
+    )
+
+    # 7. Volume spike (OBV rising = accumulation)
+    checks["volume_capitulation"] = obv_data.get("obv_rising", False)
+
+    # 8. Weekly MA structure bullish
+    above_50  = weekly_mas.get("above_ma50_weekly")
+    above_200 = weekly_mas.get("above_ma200_weekly")
+    checks["weekly_ma_bullish"] = (
+        (above_50 is True) or (above_200 is True)
+    )
+
+    # 9. IV low
+    checks["iv_low"] = iv_percentile < 30
+
+    # Confluence score: count of True items
+    confluence = sum(1 for v in checks.values() if v is True)
+
+    return {
+        "checklist":        checks,
+        "confluence_score": confluence,
+        "max_score":        9,
+        "confluence_pct":   round(confluence / 9 * 100, 1),
+    }
 
 # ------------------------------------------------------------------
 # BLACK-SCHOLES GREEKS
@@ -1080,20 +1389,45 @@ def analyze_ticker(symbol, idx, total):
             print(" FAIL  " + reason)
             return []
 
-        hist = ticker.history(period="1y")
+        hist = ticker.history(period="2y")
         if hist.empty or len(hist) < 30:
             print(" FAIL  Insufficient price history")
             return []
 
         close         = hist["Close"]
+        volume        = hist["Volume"]
+        high          = hist["High"]
+        low           = hist["Low"]
         current_price = float(close.iloc[-1])
 
+        # -- Daily indicators ------------------------------------------
         rsi_val                       = calculate_rsi(close)
         bb_upper, bb_middle, bb_lower = calculate_bollinger_bands(close)
         ma_200         = float(close.rolling(200).mean().iloc[-1]) if len(close) >= 200 else float(close.mean())
         bb_width       = (bb_upper - bb_lower) or 1
         bb_pos         = (current_price - bb_lower) / bb_width
         price_vs_200ma = (current_price - ma_200) / ma_200
+        atr_val        = calculate_atr(high, low, close)
+        obv_data       = calculate_obv(close, volume)
+
+        # -- Weekly indicators -----------------------------------------
+        weekly         = resample_to_weekly(hist)
+        weekly_close   = weekly["Close"]
+        rsi_weekly     = calculate_rsi(weekly_close) if len(weekly_close) >= 14 else None
+        macd_data      = calculate_macd(weekly_close)
+        stoch_data     = calculate_stoch_rsi(weekly_close)
+        weekly_mas     = calculate_weekly_mas(weekly_close)
+
+        # -- ABCD harmonic pattern (weekly prices) ---------------------
+        abcd_data      = detect_abcd_pattern(weekly_close, current_price)
+
+        # -- LEAPS entry checklist ------------------------------------
+        volume_data    = {"obv_rising": obv_data.get("obv_rising", False)}
+        checklist      = leaps_entry_checklist(
+            current_price, rsi_weekly, macd_data, obv_data,
+            bb_pos, stoch_data, weekly_mas, 0.0,  # iv_percentile filled later
+            abcd_data, volume_data
+        )
 
         expirations = ticker.options
         if not expirations:
@@ -1114,6 +1448,13 @@ def analyze_ticker(symbol, idx, total):
 
         mid_iv        = float(calls["impliedVolatility"].median())
         iv_percentile = calculate_iv_percentile(close, mid_iv)
+
+        # Rerun checklist with the actual IV percentile now that we have it
+        checklist = leaps_entry_checklist(
+            current_price, rsi_weekly, macd_data, obv_data,
+            bb_pos, stoch_data, weekly_mas, iv_percentile,
+            abcd_data, volume_data
+        )
 
         param_scores_base = {
             "market_cap":     score_parameter(fund["market_cap"],     "market_cap"),
@@ -1166,11 +1507,19 @@ def analyze_ticker(symbol, idx, total):
                 "ebitda_margin_pct":  round(fund["ebitda_margin"] * 100, 1)   if fund["ebitda_margin"]   is not None else None,
 
                 "rsi":                round(rsi_val, 2),
+                "rsi_weekly":         round(rsi_weekly, 2) if rsi_weekly else None,
                 "price_vs_200ma_pct": round(price_vs_200ma * 100, 2),
                 "bb_lower":           round(bb_lower, 2),
                 "bb_middle":          round(bb_middle, 2),
                 "bb_upper":           round(bb_upper, 2),
                 "bb_position_pct":    round(bb_pos * 100, 1),
+                "atr":                round(atr_val, 2) if atr_val else None,
+                "macd":               macd_data,
+                "stoch_rsi":          stoch_data,
+                "obv":                obv_data,
+                "weekly_mas":         weekly_mas,
+                "abcd_pattern":       abcd_data,
+                "leaps_checklist":    checklist,
 
                 "premium":                round(prem, 2),
                 "implied_volatility_pct": round(iv * 100, 2),
@@ -1284,6 +1633,75 @@ def save_json(data, filename):
 # ENTRY POINT
 # ------------------------------------------------------------------
 
+# ------------------------------------------------------------------
+# TRADINGVIEW CONFIG BUILDER
+# ------------------------------------------------------------------
+
+def build_tradingview_config(all_results, passed_tickers):
+    """
+    Builds tradingview_config.json consumed by the Base44 TradingView tab.
+
+    Structure:
+      - tickers: ordered list for the dropdown (sorted by best composite score)
+      - ticker_details: per-ticker summary including ABCD pattern,
+        checklist confluence, and best option data
+    """
+    if not all_results:
+        return {"tickers": [], "ticker_details": {}}
+
+    # Best option per ticker
+    best_per_ticker = {}
+    for opt in sorted(all_results, key=lambda x: x["composite_score"], reverse=True):
+        sym = opt["ticker"]
+        if sym not in best_per_ticker:
+            best_per_ticker[sym] = opt
+
+    # Build ordered ticker list (best composite score first)
+    tickers_ordered = list(best_per_ticker.keys())
+
+    ticker_details = {}
+    for sym in tickers_ordered:
+        opt = best_per_ticker[sym]
+        abcd = opt.get("abcd_pattern", {})
+        cl   = opt.get("leaps_checklist", {})
+
+        ticker_details[sym] = {
+            "ticker":           sym,
+            "current_price":    opt["current_price"],
+            "composite_score":  opt["composite_score"],
+            "best_strike":      opt["strike"],
+            "best_expiry":      opt["expiry"],
+            "best_premium":     opt["premium"],
+            "delta":            opt["delta"],
+            "rsi_daily":        opt.get("rsi"),
+            "rsi_weekly":       opt.get("rsi_weekly"),
+            "iv_percentile":    opt.get("iv_percentile"),
+            "macd_bullish":     opt.get("macd", {}).get("macd_above_signal"),
+            "stoch_oversold":   opt.get("stoch_rsi", {}).get("oversold"),
+            "obv_divergence":   opt.get("obv", {}).get("bullish_divergence"),
+            "above_50wk_ma":    opt.get("weekly_mas", {}).get("above_ma50_weekly"),
+            "above_200wk_ma":   opt.get("weekly_mas", {}).get("above_ma200_weekly"),
+            "ma50_weekly":      opt.get("weekly_mas", {}).get("ma50_weekly"),
+            "ma200_weekly":     opt.get("weekly_mas", {}).get("ma200_weekly"),
+            "abcd_status":      abcd.get("status"),
+            "abcd_A":           abcd.get("A_price"),
+            "abcd_B":           abcd.get("B_price"),
+            "abcd_C":           abcd.get("C_price"),
+            "abcd_D_targets":   abcd.get("D_targets"),
+            "abcd_near_C":      abcd.get("price_near_C"),
+            "abcd_bc_retracement_pct": abcd.get("BC_retracement_pct"),
+            "checklist_score":      cl.get("confluence_score"),
+            "checklist_max":        cl.get("max_score"),
+            "checklist_pct":        cl.get("confluence_pct"),
+            "checklist_items":      cl.get("checklist"),
+        }
+
+    return {
+        "tickers":        tickers_ordered,
+        "ticker_details": ticker_details,
+    }
+
+
 def main():
     print("=================================================================")
     print("  LEAP CALL OPTIONS SCREENER")
@@ -1346,6 +1764,19 @@ def main():
     save_json({"meta": run_meta, "top_20_per_stock":     per_stock},      "top_20_per_stock.json")
     save_json({"meta": run_meta, "top_20_overall":       top_20_overall}, "top_20_overall.json")
     save_json({"meta": run_meta, "all_screened_options": all_results},    "full_results.json")
+
+    # Build and save TradingView config for Base44 chart tab
+    tv_config = build_tradingview_config(all_results, passed_tickers)
+    tv_meta = {
+        "generated_at":   datetime.utcnow().isoformat() + "Z",
+        "note": (
+            "Use this file to populate the TradingView ticker dropdown "
+            "on the Base44 dashboard. The tickers list is sorted by "
+            "composite score. Each ticker_details entry contains ABCD "
+            "pattern data, LEAPS checklist scores, and key indicator values."
+        ),
+    }
+    save_json({"meta": tv_meta, **tv_config}, "tradingview_config.json")
 
     print("")
     print("=================================================================")
