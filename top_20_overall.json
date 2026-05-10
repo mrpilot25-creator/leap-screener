@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-10T05:05:53.834674Z",
+    "generated_at": "2026-05-10T05:19:04.592673Z",
     "watchlist": [
       "A",
       "AAPL",
@@ -609,6 +609,8 @@
   "top_20_overall": [
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 45.0,
       "contract": "EQT280121C00045000",
@@ -696,6 +698,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 52.5,
       "contract": "EQT280121C00052500",
@@ -783,6 +787,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 47.5,
       "contract": "EQT280121C00047500",
@@ -870,6 +876,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 35.0,
       "contract": "EQT280121C00035000",
@@ -957,6 +965,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 42.5,
       "contract": "EQT280121C00042500",
@@ -1044,6 +1054,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 40.0,
       "contract": "EQT280121C00040000",
@@ -1131,6 +1143,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 50.0,
       "contract": "EQT280121C00050000",
@@ -1218,6 +1232,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 32.5,
       "contract": "EQT280121C00032500",
@@ -1305,6 +1321,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 55.0,
       "contract": "EQT280121C00055000",
@@ -1392,6 +1410,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 37.5,
       "contract": "EQT280121C00037500",
@@ -1479,6 +1499,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 30.0,
       "contract": "EQT280121C00030000",
@@ -1566,6 +1588,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 57.5,
       "contract": "EQT280121C00057500",
@@ -1653,6 +1677,8 @@
     },
     {
       "ticker": "YUM",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:YUM",
       "expiry": "2028-01-21",
       "strike": 145.0,
       "contract": "YUM280121C00145000",
@@ -1756,6 +1782,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 60.0,
       "contract": "EQT280121C00060000",
@@ -1843,6 +1871,8 @@
     },
     {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "expiry": "2028-01-21",
       "strike": 25.0,
       "contract": "EQT280121C00025000",
@@ -1930,6 +1960,8 @@
     },
     {
       "ticker": "BKNG",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:BKNG",
       "expiry": "2028-12-15",
       "strike": 172.0,
       "contract": "BKNG281215C00172000",
@@ -2033,6 +2065,8 @@
     },
     {
       "ticker": "YUM",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:YUM",
       "expiry": "2028-01-21",
       "strike": 140.0,
       "contract": "YUM280121C00140000",
@@ -2136,6 +2170,8 @@
     },
     {
       "ticker": "BKNG",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:BKNG",
       "expiry": "2028-12-15",
       "strike": 140.0,
       "contract": "BKNG281215C00140000",
@@ -2239,6 +2275,8 @@
     },
     {
       "ticker": "BKNG",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:BKNG",
       "expiry": "2028-12-15",
       "strike": 172.8,
       "contract": "BKNG281215C00172800",
@@ -2342,6 +2380,8 @@
     },
     {
       "ticker": "BKNG",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:BKNG",
       "expiry": "2028-12-15",
       "strike": 168.8,
       "contract": "BKNG281215C00168800",

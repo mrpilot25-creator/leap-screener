@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-10T05:05:54.353112Z",
+    "generated_at": "2026-05-10T05:19:05.152846Z",
     "note": "Use this file to populate the TradingView ticker dropdown on the Base44 dashboard. The tickers list is sorted by composite score. Each ticker_details entry contains ABCD pattern data, LEAPS checklist scores, and key indicator values."
   },
   "tickers": [
@@ -84,9 +84,92 @@
     "KO",
     "IQV"
   ],
+  "tradingview_symbols": [
+    "NYSE:EQT",
+    "NYSE:YUM",
+    "NASDAQ:BKNG",
+    "NYSE:ICE",
+    "NASDAQ:EA",
+    "NYSE:PCG",
+    "NYSE:LLY",
+    "NYSE:HSY",
+    "NYSE:AFL",
+    "NASDAQ:EXPE",
+    "NASDAQ:META",
+    "NYSE:VST",
+    "NYSE:BSX",
+    "NYSE:CB",
+    "NYSE:TEL",
+    "NASDAQ:NFLX",
+    "NASDAQ:PLTR",
+    "NASDAQ:ROP",
+    "NYSE:WAT",
+    "NASDAQ:TER",
+    "NYSE:DLR",
+    "NASDAQ:MU",
+    "NYSE:NEM",
+    "NYSE:TPR",
+    "NYSE:APD",
+    "NYSE:SPG",
+    "NASDAQ:NVDA",
+    "NYSE:FCX",
+    "NASDAQ:WDC",
+    "NASDAQ:NDAQ",
+    "NASDAQ:ADI",
+    "NASDAQ:STX",
+    "NASDAQ:GOOGL",
+    "NASDAQ:MCHP",
+    "NYSE:ANET",
+    "NYSE:APH",
+    "NYSE:WELL",
+    "NASDAQ:AMD",
+    "NYSE:RTX",
+    "NYSE:V",
+    "NYSE:IRM",
+    "NASDAQ:GOOG",
+    "NASDAQ:NXPI",
+    "NYSE:PLD",
+    "NYSE:GLW",
+    "NYSE:HWM",
+    "NYSE:KEYS",
+    "NASDAQ:INTU",
+    "NYSE:EOG",
+    "NASDAQ:PANW",
+    "NASDAQ:AMZN",
+    "NASDAQ:CME",
+    "NASDAQ:LRCX",
+    "NASDAQ:PEP",
+    "NYSE:KMI",
+    "NYSE:PEG",
+    "NYSE:HLT",
+    "NYSE:SPGI",
+    "NYSE:JCI",
+    "NYSE:O",
+    "NASDAQ:AVGO",
+    "NASDAQ:TXN",
+    "NYSE:RCL",
+    "NYSE:MA",
+    "NASDAQ:MSFT",
+    "NYSE:WMB",
+    "NASDAQ:CSCO",
+    "NASDAQ:ORLY",
+    "NASDAQ:MNST",
+    "NYSE:CAT",
+    "NASDAQ:FTNT",
+    "NASDAQ:ISRG",
+    "NYSE:AJG",
+    "NASDAQ:CDNS",
+    "NYSE:OKE",
+    "NASDAQ:AAPL",
+    "NYSE:CRM",
+    "NYSE:KO",
+    "NYSE:IQV"
+  ],
   "ticker_details": {
     "EQT": {
       "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
       "current_price": 55.96,
       "composite_score": 82.33,
       "best_strike": 45.0,
@@ -127,6 +210,8 @@
     },
     "YUM": {
       "ticker": "YUM",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:YUM",
       "current_price": 151.95,
       "composite_score": 74.19,
       "best_strike": 145.0,
@@ -173,6 +258,8 @@
     },
     "BKNG": {
       "ticker": "BKNG",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:BKNG",
       "current_price": 165.93,
       "composite_score": 72.4,
       "best_strike": 172.0,
@@ -219,6 +306,8 @@
     },
     "ICE": {
       "ticker": "ICE",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:ICE",
       "current_price": 155.82,
       "composite_score": 71.79,
       "best_strike": 130.0,
@@ -265,6 +354,8 @@
     },
     "EA": {
       "ticker": "EA",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:EA",
       "current_price": 200.44,
       "composite_score": 71.57,
       "best_strike": 210.0,
@@ -311,6 +402,8 @@
     },
     "PCG": {
       "ticker": "PCG",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:PCG",
       "current_price": 16.07,
       "composite_score": 70.14,
       "best_strike": 13.0,
@@ -357,6 +450,8 @@
     },
     "LLY": {
       "ticker": "LLY",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:LLY",
       "current_price": 948.45,
       "composite_score": 69.92,
       "best_strike": 780.0,
@@ -374,7 +469,7 @@
       "ma50_weekly": 893.09,
       "ma200_weekly": null,
       "abcd_status": "found",
-      "abcd_A": 794.74,
+      "abcd_A": 794.75,
       "abcd_B": 1078.56,
       "abcd_C": 878.24,
       "abcd_D_targets": {
@@ -403,6 +498,8 @@
     },
     "HSY": {
       "ticker": "HSY",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:HSY",
       "current_price": 185.94,
       "composite_score": 68.75,
       "best_strike": 155.0,
@@ -443,6 +540,8 @@
     },
     "AFL": {
       "ticker": "AFL",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:AFL",
       "current_price": 113.1,
       "composite_score": 68.4,
       "best_strike": 100.0,
@@ -489,6 +588,8 @@
     },
     "EXPE": {
       "ticker": "EXPE",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:EXPE",
       "current_price": 229.98,
       "composite_score": 65.93,
       "best_strike": 185.0,
@@ -535,6 +636,8 @@
     },
     "META": {
       "ticker": "META",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:META",
       "current_price": 609.63,
       "composite_score": 65.55,
       "best_strike": 510.0,
@@ -581,6 +684,8 @@
     },
     "VST": {
       "ticker": "VST",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:VST",
       "current_price": 147.72,
       "composite_score": 64.96,
       "best_strike": 120.0,
@@ -627,6 +732,8 @@
     },
     "BSX": {
       "ticker": "BSX",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:BSX",
       "current_price": 53.93,
       "composite_score": 64.45,
       "best_strike": 35.0,
@@ -673,6 +780,8 @@
     },
     "CB": {
       "ticker": "CB",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:CB",
       "current_price": 319.64,
       "composite_score": 64.29,
       "best_strike": 270.0,
@@ -719,6 +828,8 @@
     },
     "TEL": {
       "ticker": "TEL",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:TEL",
       "current_price": 206.2,
       "composite_score": 63.06,
       "best_strike": 150.0,
@@ -765,6 +876,8 @@
     },
     "NFLX": {
       "ticker": "NFLX",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:NFLX",
       "current_price": 87.49,
       "composite_score": 62.73,
       "best_strike": 75.0,
@@ -811,6 +924,8 @@
     },
     "PLTR": {
       "ticker": "PLTR",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:PLTR",
       "current_price": 137.8,
       "composite_score": 62.22,
       "best_strike": 120.0,
@@ -857,6 +972,8 @@
     },
     "ROP": {
       "ticker": "ROP",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:ROP",
       "current_price": 343.32,
       "composite_score": 61.58,
       "best_strike": 310.0,
@@ -903,6 +1020,8 @@
     },
     "WAT": {
       "ticker": "WAT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:WAT",
       "current_price": 355.13,
       "composite_score": 61.44,
       "best_strike": 300.0,
@@ -949,6 +1068,8 @@
     },
     "TER": {
       "ticker": "TER",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:TER",
       "current_price": 359.77,
       "composite_score": 61.38,
       "best_strike": 370.0,
@@ -995,6 +1116,8 @@
     },
     "DLR": {
       "ticker": "DLR",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:DLR",
       "current_price": 195.31,
       "composite_score": 60.59,
       "best_strike": 160.0,
@@ -1035,6 +1158,8 @@
     },
     "MU": {
       "ticker": "MU",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:MU",
       "current_price": 746.81,
       "composite_score": 60.42,
       "best_strike": 730.0,
@@ -1081,6 +1206,8 @@
     },
     "NEM": {
       "ticker": "NEM",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:NEM",
       "current_price": 116.51,
       "composite_score": 60.27,
       "best_strike": 110.0,
@@ -1127,6 +1254,8 @@
     },
     "TPR": {
       "ticker": "TPR",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:TPR",
       "current_price": 133.48,
       "composite_score": 59.83,
       "best_strike": 125.0,
@@ -1173,6 +1302,8 @@
     },
     "APD": {
       "ticker": "APD",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:APD",
       "current_price": 295.41,
       "composite_score": 59.33,
       "best_strike": 250.0,
@@ -1219,6 +1350,8 @@
     },
     "SPG": {
       "ticker": "SPG",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:SPG",
       "current_price": 202.12,
       "composite_score": 59.3,
       "best_strike": 175.0,
@@ -1259,6 +1392,8 @@
     },
     "NVDA": {
       "ticker": "NVDA",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:NVDA",
       "current_price": 215.2,
       "composite_score": 59.28,
       "best_strike": 180.0,
@@ -1305,8 +1440,10 @@
     },
     "FCX": {
       "ticker": "FCX",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:FCX",
       "current_price": 61.65,
-      "composite_score": 58.72,
+      "composite_score": 58.93,
       "best_strike": 50.0,
       "best_expiry": "2028-01-21",
       "best_premium": 21.6,
@@ -1345,6 +1482,8 @@
     },
     "WDC": {
       "ticker": "WDC",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:WDC",
       "current_price": 480.0,
       "composite_score": 58.59,
       "best_strike": 330.0,
@@ -1391,6 +1530,8 @@
     },
     "NDAQ": {
       "ticker": "NDAQ",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:NDAQ",
       "current_price": 88.91,
       "composite_score": 58.34,
       "best_strike": 72.5,
@@ -1437,6 +1578,8 @@
     },
     "ADI": {
       "ticker": "ADI",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:ADI",
       "current_price": 416.52,
       "composite_score": 58.07,
       "best_strike": 390.0,
@@ -1483,6 +1626,8 @@
     },
     "STX": {
       "ticker": "STX",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:STX",
       "current_price": 782.64,
       "composite_score": 57.57,
       "best_strike": 660.0,
@@ -1529,6 +1674,8 @@
     },
     "GOOGL": {
       "ticker": "GOOGL",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:GOOGL",
       "current_price": 400.8,
       "composite_score": 57.03,
       "best_strike": 265.0,
@@ -1575,6 +1722,8 @@
     },
     "MCHP": {
       "ticker": "MCHP",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:MCHP",
       "current_price": 99.09,
       "composite_score": 56.97,
       "best_strike": 80.0,
@@ -1621,6 +1770,8 @@
     },
     "ANET": {
       "ticker": "ANET",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:ANET",
       "current_price": 141.77,
       "composite_score": 56.6,
       "best_strike": 115.0,
@@ -1667,6 +1818,8 @@
     },
     "APH": {
       "ticker": "APH",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:APH",
       "current_price": 128.03,
       "composite_score": 56.57,
       "best_strike": 105.0,
@@ -1713,6 +1866,8 @@
     },
     "WELL": {
       "ticker": "WELL",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:WELL",
       "current_price": 214.63,
       "composite_score": 56.39,
       "best_strike": 185.0,
@@ -1759,6 +1914,8 @@
     },
     "AMD": {
       "ticker": "AMD",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:AMD",
       "current_price": 455.19,
       "composite_score": 55.95,
       "best_strike": 410.0,
@@ -1805,6 +1962,8 @@
     },
     "RTX": {
       "ticker": "RTX",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:RTX",
       "current_price": 176.09,
       "composite_score": 55.41,
       "best_strike": 145.0,
@@ -1851,6 +2010,8 @@
     },
     "V": {
       "ticker": "V",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:V",
       "current_price": 318.79,
       "composite_score": 55.4,
       "best_strike": 270.0,
@@ -1897,6 +2058,8 @@
     },
     "IRM": {
       "ticker": "IRM",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:IRM",
       "current_price": 128.84,
       "composite_score": 55.18,
       "best_strike": 120.0,
@@ -1943,6 +2106,8 @@
     },
     "GOOG": {
       "ticker": "GOOG",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:GOOG",
       "current_price": 397.05,
       "composite_score": 55.01,
       "best_strike": 330.0,
@@ -1989,6 +2154,8 @@
     },
     "NXPI": {
       "ticker": "NXPI",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:NXPI",
       "current_price": 294.75,
       "composite_score": 54.62,
       "best_strike": 240.0,
@@ -2035,6 +2202,8 @@
     },
     "PLD": {
       "ticker": "PLD",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:PLD",
       "current_price": 144.09,
       "composite_score": 54.49,
       "best_strike": 125.0,
@@ -2075,6 +2244,8 @@
     },
     "GLW": {
       "ticker": "GLW",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:GLW",
       "current_price": 186.94,
       "composite_score": 54.38,
       "best_strike": 150.0,
@@ -2121,6 +2292,8 @@
     },
     "HWM": {
       "ticker": "HWM",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:HWM",
       "current_price": 270.56,
       "composite_score": 54.2,
       "best_strike": 220.0,
@@ -2167,6 +2340,8 @@
     },
     "KEYS": {
       "ticker": "KEYS",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:KEYS",
       "current_price": 360.3,
       "composite_score": 53.59,
       "best_strike": 250.0,
@@ -2207,6 +2382,8 @@
     },
     "INTU": {
       "ticker": "INTU",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:INTU",
       "current_price": 396.31,
       "composite_score": 53.08,
       "best_strike": 320.0,
@@ -2253,6 +2430,8 @@
     },
     "EOG": {
       "ticker": "EOG",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EOG",
       "current_price": 130.03,
       "composite_score": 53.0,
       "best_strike": 110.0,
@@ -2299,6 +2478,8 @@
     },
     "PANW": {
       "ticker": "PANW",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:PANW",
       "current_price": 207.88,
       "composite_score": 52.73,
       "best_strike": 135.0,
@@ -2345,6 +2526,8 @@
     },
     "AMZN": {
       "ticker": "AMZN",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:AMZN",
       "current_price": 272.68,
       "composite_score": 52.52,
       "best_strike": 180.0,
@@ -2391,6 +2574,8 @@
     },
     "CME": {
       "ticker": "CME",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:CME",
       "current_price": 281.25,
       "composite_score": 50.62,
       "best_strike": 240.0,
@@ -2431,6 +2616,8 @@
     },
     "LRCX": {
       "ticker": "LRCX",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:LRCX",
       "current_price": 294.05,
       "composite_score": 49.11,
       "best_strike": 290.0,
@@ -2477,6 +2664,8 @@
     },
     "PEP": {
       "ticker": "PEP",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:PEP",
       "current_price": 154.62,
       "composite_score": 48.66,
       "best_strike": 135.0,
@@ -2523,6 +2712,8 @@
     },
     "KMI": {
       "ticker": "KMI",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:KMI",
       "current_price": 31.41,
       "composite_score": 48.06,
       "best_strike": 27.0,
@@ -2563,6 +2754,8 @@
     },
     "PEG": {
       "ticker": "PEG",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:PEG",
       "current_price": 77.13,
       "composite_score": 47.63,
       "best_strike": 65.0,
@@ -2609,6 +2802,8 @@
     },
     "HLT": {
       "ticker": "HLT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:HLT",
       "current_price": 316.78,
       "composite_score": 47.43,
       "best_strike": 260.0,
@@ -2649,6 +2844,8 @@
     },
     "SPGI": {
       "ticker": "SPGI",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:SPGI",
       "current_price": 420.12,
       "composite_score": 46.36,
       "best_strike": 350.0,
@@ -2695,6 +2892,8 @@
     },
     "JCI": {
       "ticker": "JCI",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:JCI",
       "current_price": 139.52,
       "composite_score": 45.51,
       "best_strike": 90.0,
@@ -2741,6 +2940,8 @@
     },
     "O": {
       "ticker": "O",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:O",
       "current_price": 61.92,
       "composite_score": 44.81,
       "best_strike": 55.0,
@@ -2787,6 +2988,8 @@
     },
     "AVGO": {
       "ticker": "AVGO",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:AVGO",
       "current_price": 430.0,
       "composite_score": 43.28,
       "best_strike": 360.0,
@@ -2833,6 +3036,8 @@
     },
     "TXN": {
       "ticker": "TXN",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:TXN",
       "current_price": 287.8,
       "composite_score": 40.85,
       "best_strike": 270.0,
@@ -2879,6 +3084,8 @@
     },
     "RCL": {
       "ticker": "RCL",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:RCL",
       "current_price": 275.24,
       "composite_score": 40.53,
       "best_strike": 220.0,
@@ -2925,6 +3132,8 @@
     },
     "MA": {
       "ticker": "MA",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:MA",
       "current_price": 495.48,
       "composite_score": 38.41,
       "best_strike": 420.0,
@@ -2971,6 +3180,8 @@
     },
     "MSFT": {
       "ticker": "MSFT",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:MSFT",
       "current_price": 415.12,
       "composite_score": 38.19,
       "best_strike": 345.0,
@@ -3017,6 +3228,8 @@
     },
     "WMB": {
       "ticker": "WMB",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:WMB",
       "current_price": 71.96,
       "composite_score": 38.14,
       "best_strike": 60.0,
@@ -3063,6 +3276,8 @@
     },
     "CSCO": {
       "ticker": "CSCO",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:CSCO",
       "current_price": 96.57,
       "composite_score": 37.79,
       "best_strike": 65.0,
@@ -3109,6 +3324,8 @@
     },
     "ORLY": {
       "ticker": "ORLY",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:ORLY",
       "current_price": 92.96,
       "composite_score": 37.61,
       "best_strike": 75.0,
@@ -3155,6 +3372,8 @@
     },
     "MNST": {
       "ticker": "MNST",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:MNST",
       "current_price": 86.29,
       "composite_score": 37.04,
       "best_strike": 70.0,
@@ -3201,6 +3420,8 @@
     },
     "CAT": {
       "ticker": "CAT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:CAT",
       "current_price": 897.45,
       "composite_score": 36.2,
       "best_strike": 600.0,
@@ -3247,6 +3468,8 @@
     },
     "FTNT": {
       "ticker": "FTNT",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:FTNT",
       "current_price": 114.07,
       "composite_score": 35.98,
       "best_strike": 90.0,
@@ -3293,6 +3516,8 @@
     },
     "ISRG": {
       "ticker": "ISRG",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:ISRG",
       "current_price": 450.06,
       "composite_score": 34.7,
       "best_strike": 380.0,
@@ -3339,6 +3564,8 @@
     },
     "AJG": {
       "ticker": "AJG",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:AJG",
       "current_price": 198.87,
       "composite_score": 34.65,
       "best_strike": 160.0,
@@ -3385,6 +3612,8 @@
     },
     "CDNS": {
       "ticker": "CDNS",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:CDNS",
       "current_price": 362.7,
       "composite_score": 32.14,
       "best_strike": 290.0,
@@ -3431,6 +3660,8 @@
     },
     "OKE": {
       "ticker": "OKE",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:OKE",
       "current_price": 85.16,
       "composite_score": 30.16,
       "best_strike": 65.0,
@@ -3477,6 +3708,8 @@
     },
     "AAPL": {
       "ticker": "AAPL",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:AAPL",
       "current_price": 293.32,
       "composite_score": 30.08,
       "best_strike": 250.0,
@@ -3523,6 +3756,8 @@
     },
     "CRM": {
       "ticker": "CRM",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:CRM",
       "current_price": 181.82,
       "composite_score": 27.34,
       "best_strike": 120.0,
@@ -3569,6 +3804,8 @@
     },
     "KO": {
       "ticker": "KO",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:KO",
       "current_price": 78.42,
       "composite_score": 27.05,
       "best_strike": 75.0,
@@ -3615,6 +3852,8 @@
     },
     "IQV": {
       "ticker": "IQV",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:IQV",
       "current_price": 178.71,
       "composite_score": 19.0,
       "best_strike": 140.0,

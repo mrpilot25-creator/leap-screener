@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-10T05:06:49.765631Z",
+    "generated_at": "2026-05-10T05:19:40.109165Z",
     "training_years": 3,
     "validation_years": 2,
     "n_simulations": 1000,
@@ -1929,7 +1929,7 @@
     {
       "symbol": "FCX",
       "strike": 50.0,
-      "entry_score": 58.72,
+      "entry_score": 58.93,
       "entry_price": 49.16,
       "training_years": 3,
       "validation_years": 2,

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-10T05:07:56.630397Z",
+    "generated_at": "2026-05-10T05:20:27.837927Z",
     "projection_date": "2026-05-10",
     "n_simulations": 1000,
     "risk_free_rate_pct": 3.88,
@@ -433,7 +433,7 @@
       "p_itm_pct": 98.9,
       "p_otm_pct": 1.1,
       "expected_payoff_if_itm": 551.86,
-      "pv_expected_payoff": 516.6,
+      "pv_expected_payoff": 516.61,
       "expected_value_ev": 510.32,
       "ev_positive": true,
       "projected_option_value": 409.0,
@@ -781,8 +781,8 @@
       "projected_prices": {
         "median": 13029.78,
         "pct_5": 3570.49,
-        "pct_25": 7408.36,
-        "pct_75": 21768.0,
+        "pct_25": 7408.37,
+        "pct_75": 21768.01,
         "pct_95": 49545.4
       },
       "upside_downside": {
@@ -793,8 +793,8 @@
       "p_itm_pct": 100.0,
       "p_otm_pct": 0.0,
       "expected_payoff_if_itm": 17317.1,
-      "pv_expected_payoff": 15653.71,
-      "expected_value_ev": 15653.71,
+      "pv_expected_payoff": 15653.72,
+      "expected_value_ev": 15653.72,
       "ev_positive": true,
       "projected_option_value": 12300.06,
       "status": "ok"
@@ -1034,8 +1034,8 @@
         "median": 14303.48,
         "pct_5": 3919.51,
         "pct_25": 8132.56,
-        "pct_75": 23895.91,
-        "pct_95": 54388.64
+        "pct_75": 23895.9,
+        "pct_95": 54388.63
       },
       "upside_downside": {
         "median_change_pct": 2879.9,
@@ -1045,8 +1045,8 @@
       "p_itm_pct": 100.0,
       "p_otm_pct": 0.0,
       "expected_payoff_if_itm": 19481.27,
-      "pv_expected_payoff": 17610.01,
-      "expected_value_ev": 17610.01,
+      "pv_expected_payoff": 17610.0,
+      "expected_value_ev": 17610.0,
       "ev_positive": true,
       "projected_option_value": 13973.61,
       "status": "ok"
@@ -2187,7 +2187,7 @@
         "pct_5": 1019.36,
         "pct_25": 2115.05,
         "pct_75": 6214.65,
-        "pct_95": 14144.96
+        "pct_95": 14144.95
       },
       "upside_downside": {
         "median_change_pct": 765.1,
@@ -2198,7 +2198,7 @@
       "p_otm_pct": 0.2,
       "expected_payoff_if_itm": 4802.07,
       "pv_expected_payoff": 4340.81,
-      "expected_value_ev": 4331.78,
+      "expected_value_ev": 4331.77,
       "ev_positive": true,
       "projected_option_value": 3360.07,
       "status": "ok"
