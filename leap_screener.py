@@ -31,7 +31,7 @@ warnings.filterwarnings("ignore")
 # ------------------------------------------------------------------
 
 WATCHLIST = [
-   "A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
+    "A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
     "ALB", "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", "AMZN", "ANET", "ANSS", "AON", "AOS", "APA", "APD", "APH", "APO", 
     "ARE", "ATO", "AVB", "AVGO", "AVY", "AWK", "AXON", "AXP", "AYI", "AZO", "BA", "BAC", "BALL", "BAX", "BBWI", "BBY", "BDX", "BEN", "BF-B", "BG", 
     "BIIB", "BIO", "BK", "BKNG", "BKR", "BLK", "BMY", "BR", "BRK-B", "BSX", "BWA", "BX", "BXP", "C", "CAG", "CAH", "CARR", "CAT", "CB", "CBOE", 
@@ -724,8 +724,46 @@ def fetch_ebitda_margin(info):
     return None
 
 
+def get_tv_exchange(yf_exchange, yf_full_name):
+    """
+    Maps Yahoo Finance exchange codes to TradingView exchange prefixes.
+
+    Yahoo Finance codes:
+      NMS / NGM / NCM / NasdaqGS / NasdaqGM / NasdaqCM = NASDAQ
+      NYQ / NYSE / PCX / NYSEArca                       = NYSE
+      ASE / AMEX                                         = AMEX
+      BATS / BTS                                         = BATS
+
+    TradingView expects the format: EXCHANGE:TICKER  (e.g. NYSE:JPM)
+    """
+    code = (yf_exchange or "").upper()
+    name = (yf_full_name or "").upper()
+
+    nasdaq_codes = {"NMS", "NGM", "NCM", "NASDAQ", "NASDAQGS",
+                    "NASDAQGM", "NASDAQCM"}
+    nyse_codes   = {"NYQ", "NYSE", "PCX", "NYSEARCA", "NYSE ARCA"}
+    amex_codes   = {"ASE", "AMEX", "NYSEAmerican", "NYSE AMERICAN"}
+
+    if code in nasdaq_codes or "NASDAQ" in name:
+        return "NASDAQ"
+    if code in nyse_codes or "NYSE" in name:
+        return "NYSE"
+    if code in amex_codes or "AMEX" in name:
+        return "AMEX"
+    if "BATS" in code or "BATS" in name:
+        return "BATS"
+
+    # Safe fallback: most large-cap S&P 500 stocks are NYSE or NASDAQ
+    # Return empty string so TradingView uses its own auto-detection
+    return ""
+
+
 def fetch_fundamental_data(ticker):
     info = ticker.info or {}
+    exchange = get_tv_exchange(
+        info.get("exchange", ""),
+        info.get("fullExchangeName", "")
+    )
     return {
         "market_cap":     info.get("marketCap"),
         "avg_volume":     info.get("averageVolume"),
@@ -733,6 +771,7 @@ def fetch_fundamental_data(ticker):
         "eps_growth":     fetch_eps_growth(ticker, info),
         "revenue_growth": info.get("revenueGrowth"),
         "ebitda_margin":  fetch_ebitda_margin(info),
+        "exchange":       exchange,
     }
 
 
@@ -1517,6 +1556,9 @@ def analyze_ticker(symbol, idx, total):
 
             results.append({
                 "ticker":   symbol,
+                "exchange": fund.get("exchange", ""),
+                "tradingview_symbol": (fund.get("exchange", "") + ":" + symbol
+                                       if fund.get("exchange") else symbol),
                 "expiry":   expiry,
                 "strike":   round(strike, 2),
                 "contract": opt.get("contractSymbol", ""),
@@ -1689,7 +1731,9 @@ def build_tradingview_config(all_results, passed_tickers):
         cl   = opt.get("leaps_checklist", {})
 
         ticker_details[sym] = {
-            "ticker":           sym,
+            "ticker":              sym,
+            "exchange":            opt.get("exchange", ""),
+            "tradingview_symbol":  opt.get("tradingview_symbol", sym),
             "current_price":    opt["current_price"],
             "composite_score":  opt["composite_score"],
             "best_strike":      opt["strike"],
@@ -1719,9 +1763,16 @@ def build_tradingview_config(all_results, passed_tickers):
             "checklist_items":      cl.get("checklist"),
         }
 
+    # Build a flat list of EXCHANGE:TICKER strings for the Base44 dropdown
+    tradingview_symbols = [
+        ticker_details[sym]["tradingview_symbol"]
+        for sym in tickers_ordered
+    ]
+
     return {
-        "tickers":        tickers_ordered,
-        "ticker_details": ticker_details,
+        "tickers":             tickers_ordered,
+        "tradingview_symbols": tradingview_symbols,
+        "ticker_details":      ticker_details,
     }
 
 
