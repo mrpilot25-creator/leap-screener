@@ -58,6 +58,7 @@ WATCHLIST = [
     "WST", "WTW", "WY", "WYNN", "XEL", "XOM", "XYL", "YUM", "ZBH", "ZBRA", "ZTS"
 ]
 
+
 # ------------------------------------------------------------------
 # CONFIG
 # ------------------------------------------------------------------
@@ -286,17 +287,21 @@ def detect_swing_points(prices, window=5):
     Detect local swing highs and lows.
     A swing high is where price is higher than `window` bars each side.
     A swing low is where price is lower than `window` bars each side.
-    Returns lists of (index_position, price) tuples.
+    Returns lists of (index_position, price, date_label) tuples.
+    date_label is the pandas index value at that position (a date for
+    time-series data).
     """
     highs, lows = [], []
-    arr = prices.values
+    arr    = prices.values
+    labels = list(prices.index)
     for i in range(window, len(arr) - window):
         left  = arr[i - window: i]
         right = arr[i + 1: i + window + 1]
+        label = str(labels[i])[:10]   # keep YYYY-MM-DD portion only
         if arr[i] >= max(left) and arr[i] >= max(right):
-            highs.append((i, float(arr[i])))
+            highs.append((i, float(arr[i]), label))
         if arr[i] <= min(left) and arr[i] <= min(right):
-            lows.append((i, float(arr[i])))
+            lows.append((i, float(arr[i]), label))
     return highs, lows
 
 
@@ -326,18 +331,19 @@ def detect_abcd_pattern(weekly_close, current_price):
         # Find the last significant swing LOW as point A
         # (must be followed by a swing HIGH, then another swing LOW)
         best = None
-        for li, (a_idx, a_price) in enumerate(lows[:-1]):
+        for li, (a_idx, a_price, a_date) in enumerate(lows[:-1]):
             # Find the highest B after A
-            b_candidates = [(i, p) for i, p in highs if i > a_idx]
+            b_candidates = [(i, p, d) for i, p, d in highs if i > a_idx]
             if not b_candidates:
                 continue
-            b_idx, b_price = max(b_candidates, key=lambda x: x[1])
+            b_idx, b_price, b_date = max(b_candidates, key=lambda x: x[1])
 
             # Find C: swing low after B, must be above A
-            c_candidates = [(i, p) for i, p in lows if i > b_idx and p > a_price]
+            c_candidates = [(i, p, d) for i, p, d in lows
+                            if i > b_idx and p > a_price]
             if not c_candidates:
                 continue
-            c_idx, c_price = c_candidates[-1]  # most recent valid C
+            c_idx, c_price, c_date = c_candidates[-1]  # most recent valid C
 
             ab_dist = b_price - a_price
             bc_dist = b_price - c_price
@@ -348,9 +354,12 @@ def detect_abcd_pattern(weekly_close, current_price):
 
             pattern = {
                 "A_price": round(a_price, 2),
+                "A_date":  a_date,
                 "B_price": round(b_price, 2),
+                "B_date":  b_date,
                 "C_price": round(c_price, 2),
-                "AB_distance":      round(ab_dist, 2),
+                "C_date":  c_date,
+                "AB_distance":        round(ab_dist, 2),
                 "BC_retracement_pct": round(bc_retracement * 100, 1),
                 "D_targets": {
                     "1.272x": round(c_price + ab_dist * 1.272, 2),
@@ -359,8 +368,8 @@ def detect_abcd_pattern(weekly_close, current_price):
                     "2.618x": round(c_price + ab_dist * 2.618, 2),
                     "4.236x": round(c_price + ab_dist * 4.236, 2),
                 },
-                "pattern_valid":  True,
-                "C_above_A":      c_price > a_price,
+                "pattern_valid": True,
+                "C_above_A":     c_price > a_price,
             }
 
             # Prefer the most recent pattern
@@ -886,38 +895,103 @@ class BacktestEngine:
     # -- 2. Calibration -----------------------------------------------
 
     def calibrate(self):
-        # Log returns from training window
+        """
+        Improved calibration using three refinements over the naive approach:
+
+        1. WINSORIZED RETURNS for drift estimation
+           Trim the top and bottom 1% of daily log returns before computing
+           the mean. This removes the influence of earnings blowups, flash
+           crashes, and other one-off events that skew the mean and produce
+           a drift estimate that is not representative of normal trading days.
+
+        2. EXPONENTIALLY WEIGHTED VOLATILITY (EWMA)
+           Standard deviation weights all days equally. EWMA gives more weight
+           to recent observations, making sigma more responsive to the current
+           volatility regime rather than being anchored to a 3-year average.
+           This is the same approach used by RiskMetrics (lambda = 0.94).
+
+        3. COVERAGE-BASED SIGMA CORRECTION
+           After blending, we check whether the 90% confidence band of the
+           TRAINING data covers significantly more or less than 90% of the
+           training prices. If coverage is too high (band too wide), sigma is
+           deflated; if too low (band too narrow), sigma is inflated.
+           This anchors the simulation to produce realistic confidence bands.
+        """
+        # -- Log returns ----------------------------------------------
         log_rets = np.log(
             self.train_close.values[1:] / self.train_close.values[:-1]
         )
 
-        # Annualised mean and volatility from training
-        mu_daily          = float(np.mean(log_rets))
-        sigma_daily_train = float(np.std(log_rets, ddof=1))
-        self.sigma_train  = sigma_daily_train * np.sqrt(252)
+        # -- 1. Winsorized drift --------------------------------------
+        # Trim extreme 1% tails before computing mean drift
+        lo = float(np.percentile(log_rets, 1))
+        hi = float(np.percentile(log_rets, 99))
+        trimmed_rets  = log_rets[(log_rets >= lo) & (log_rets <= hi)]
+        mu_daily      = float(np.mean(trimmed_rets))
+        mu_annual     = mu_daily * 252
+        self.mu       = max(mu_annual - self.div_yield, self.r)
 
-        # Drift = annualised mean - dividend yield
-        # Under risk-neutral measure we use r - q, but for historical
-        # projection we use empirical mu - q
-        mu_annual = mu_daily * 252
-        self.mu   = mu_annual - self.div_yield
+        # -- 2. EWMA volatility (lambda = 0.94 RiskMetrics standard) --
+        lam          = 0.94
+        n            = len(log_rets)
+        weights      = np.array([(1 - lam) * lam ** (n - 1 - i)
+                                  for i in range(n)])
+        weights     /= weights.sum()
+        var_ewma     = float(np.dot(weights, log_rets ** 2))
+        sigma_daily_ewma = math.sqrt(var_ewma)
+        self.sigma_ewma  = sigma_daily_ewma * math.sqrt(252)
+
+        # Also compute plain training sigma for reporting
+        sigma_daily_plain = float(np.std(log_rets, ddof=1))
+        self.sigma_train  = sigma_daily_plain * math.sqrt(252)
 
         # Actual volatility in validation period (for reality check)
-        val_log_rets      = np.log(
+        val_log_rets     = np.log(
             self.val_close.values[1:] / self.val_close.values[:-1]
         )
-        sigma_daily_val   = float(np.std(val_log_rets, ddof=1))
-        self.sigma_val    = sigma_daily_val * np.sqrt(252)
+        sigma_daily_val  = float(np.std(val_log_rets, ddof=1))
+        self.sigma_val   = sigma_daily_val * math.sqrt(252)
 
-        # Mean-reverting IV overlay:
-        # Blend training sigma toward long-run mean (sigma_val) using
-        # an Ornstein-Uhlenbeck inspired decay with kappa = 2.0
-        kappa             = 2.0
-        T_val             = self.validation_years
-        weight            = math.exp(-kappa * T_val)
-        self.sigma_blended = (
-            weight * self.sigma_train + (1 - weight) * self.sigma_val
-        )
+        # -- Mean-reverting blend (EWMA replaces plain training sigma) -
+        kappa  = 2.0
+        T_val  = self.validation_years
+        weight = math.exp(-kappa * T_val)
+        blended = weight * self.sigma_ewma + (1 - weight) * self.sigma_val
+
+        # -- 3. Coverage-based sigma correction -----------------------
+        # Simulate a quick 200-path in-sample test on the training window
+        # to check how well calibrated the blended sigma is.
+        # If the 90% band covers >> 90% of training prices, sigma is too
+        # high and we deflate it proportionally. Cap adjustment at +-20%.
+        try:
+            n_train   = len(self.train_close)
+            S0_train  = float(self.train_close.iloc[0])
+            dt        = 1.0 / 252.0
+            np.random.seed(0)
+            Z_cal     = np.random.standard_normal((200, n_train))
+            drift_cal = (self.mu - 0.5 * blended ** 2) * dt
+            diff_cal  = blended * math.sqrt(dt) * Z_cal
+            paths_cal = S0_train * np.exp(np.cumsum(drift_cal + diff_cal, axis=1))
+
+            actual_arr = self.train_close.values
+            sim_5      = np.percentile(paths_cal, 5,  axis=0)
+            sim_95     = np.percentile(paths_cal, 95, axis=0)
+            coverage   = float(np.mean(
+                (actual_arr >= sim_5) & (actual_arr <= sim_95)
+            ))
+
+            # Target is 90% coverage. Scale sigma inversely with excess.
+            # coverage = 0.99 -> ratio = 0.99/0.90 = 1.10 -> deflate by 10%
+            # coverage = 0.80 -> ratio = 0.80/0.90 = 0.89 -> inflate by 11%
+            ratio     = coverage / 0.90
+            ratio     = max(0.80, min(1.20, ratio))    # cap at +-20%
+            self.sigma_blended           = blended / ratio
+            self.sigma_coverage_raw      = round(coverage * 100, 1)
+            self.sigma_coverage_ratio    = round(ratio, 4)
+        except Exception:
+            self.sigma_blended           = blended
+            self.sigma_coverage_raw      = None
+            self.sigma_coverage_ratio    = 1.0
 
         return self
 
@@ -1130,12 +1204,16 @@ class BacktestEngine:
                 "validation_years":  self.validation_years,
                 "n_simulations":     self.n_sims,
                 "calibration": {
-                    "annualised_mu_pct":      round(self.mu * 100, 2),
-                    "dividend_yield_pct":     round(self.div_yield * 100, 2),
-                    "training_sigma_pct":     round(self.sigma_train * 100, 2),
-                    "validation_sigma_pct":   round(self.sigma_val * 100, 2),
-                    "blended_sigma_pct":      round(self.sigma_blended * 100, 2),
-                    "risk_free_rate_pct":     round(self.r * 100, 2),
+                    "annualised_mu_pct":          round(self.mu * 100, 2),
+                    "dividend_yield_pct":          round(self.div_yield * 100, 2),
+                    "training_sigma_pct":          round(self.sigma_train * 100, 2),
+                    "ewma_sigma_pct":              round(self.sigma_ewma * 100, 2),
+                    "validation_sigma_pct":        round(self.sigma_val * 100, 2),
+                    "blended_sigma_pct":           round(self.sigma_blended * 100, 2),
+                    "coverage_correction_ratio":   getattr(self, "sigma_coverage_ratio", None),
+                    "in_sample_coverage_pct":      getattr(self, "sigma_coverage_raw", None),
+                    "risk_free_rate_pct":          round(self.r * 100, 2),
+                    "calibration_method":          "winsorized_drift + ewma_vol + coverage_correction",
                 },
                 "reality_check":          reality,
                 "greek_attribution":      greeks,
@@ -1752,8 +1830,11 @@ def build_tradingview_config(all_results, passed_tickers):
             "ma200_weekly":     opt.get("weekly_mas", {}).get("ma200_weekly"),
             "abcd_status":      abcd.get("status"),
             "abcd_A":           abcd.get("A_price"),
+            "abcd_A_date":      abcd.get("A_date"),
             "abcd_B":           abcd.get("B_price"),
+            "abcd_B_date":      abcd.get("B_date"),
             "abcd_C":           abcd.get("C_price"),
+            "abcd_C_date":      abcd.get("C_date"),
             "abcd_D_targets":   abcd.get("D_targets"),
             "abcd_near_C":      abcd.get("price_near_C"),
             "abcd_bc_retracement_pct": abcd.get("BC_retracement_pct"),
