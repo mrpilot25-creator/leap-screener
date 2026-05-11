@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-11T09:25:04.832720Z",
+    "generated_at": "2026-05-11T11:57:48.090177Z",
     "watchlist": [
       "A",
       "AAPL",
@@ -592,17 +592,17 @@
       "max_iv_percentile": 30
     },
     "score_weights": {
-      "market_cap": 0.069444,
-      "avg_volume": 0.013889,
-      "inst_ownership": 0.034722,
-      "eps_growth": 0.298611,
-      "revenue_growth": 0.041667,
-      "ebitda_margin": 0.041667,
-      "rsi": 0.083333,
-      "price_vs_200ma": 0.138889,
-      "bb_position": 0.069444,
-      "delta": 0.104167,
-      "iv_percentile": 0.104167
+      "market_cap": 0.06,
+      "avg_volume": 0.05,
+      "inst_ownership": 0.06,
+      "eps_growth": 0.07,
+      "revenue_growth": 0.06,
+      "ebitda_margin": 0.06,
+      "rsi": 0.12,
+      "price_vs_200ma": 0.1,
+      "bb_position": 0.1,
+      "delta": 0.2,
+      "iv_percentile": 0.12
     },
     "weights_config_file": "./weights_config.json"
   },
@@ -694,7 +694,979 @@
         "iv_percentile": 100,
         "delta": 69.3
       },
-      "composite_score": 89.55
+      "composite_score": 83.13
+    },
+    {
+      "ticker": "PCG",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:PCG",
+      "expiry": "2028-01-21",
+      "strike": 17.0,
+      "contract": "PCG280121C00017000",
+      "current_price": 16.07,
+      "market_cap": 35389751296,
+      "avg_volume": 22481315,
+      "inst_ownership": 104.2,
+      "eps_growth_pct": 39.8,
+      "revenue_growth_pct": 15.0,
+      "ebitda_margin_pct": 39.9,
+      "rsi": 32.12,
+      "rsi_weekly": 45.39,
+      "price_vs_200ma_pct": -0.3,
+      "bb_lower": 15.7,
+      "bb_middle": 16.75,
+      "bb_upper": 17.81,
+      "bb_position_pct": 17.7,
+      "atr": 0.38,
+      "macd": {
+        "macd": 0.2531,
+        "signal": 0.4383,
+        "histogram": -0.1852,
+        "bullish_crossover": false,
+        "macd_above_signal": false
+      },
+      "stoch_rsi": {
+        "stoch_k": 6.61,
+        "stoch_d": 22.54,
+        "bullish_cross": false,
+        "oversold": true
+      },
+      "obv": {
+        "obv": 127996100.0,
+        "obv_rising": false,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 15.81,
+        "ma200_weekly": null,
+        "above_ma50_weekly": true,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "A_price": 17.01,
+        "A_date": "2024-07-07",
+        "B_price": 21.37,
+        "B_date": "2024-12-01",
+        "C_price": 17.12,
+        "C_date": "2026-03-29",
+        "AB_distance": 4.36,
+        "BC_retracement_pct": 97.5,
+        "D_targets": {
+          "1.272x": 22.66,
+          "1.618x": 24.17,
+          "2.000x": 25.83,
+          "2.618x": 28.52,
+          "4.236x": 35.57
+        },
+        "pattern_valid": true,
+        "C_above_A": true,
+        "price_near_C": true,
+        "current_price": 16.07,
+        "status": "found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": true,
+          "c_above_a": true,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": false,
+          "macd_bullish": false,
+          "volume_capitulation": false,
+          "weekly_ma_bullish": true,
+          "iv_low": true
+        },
+        "confluence_score": 4,
+        "max_score": 9,
+        "confluence_pct": 44.4
+      },
+      "premium": 2.44,
+      "implied_volatility_pct": 1.56,
+      "iv_percentile": 0.0,
+      "dte": 620,
+      "delta": 0.6857,
+      "theta_daily": -0.0012,
+      "required_stock_move": 3.56,
+      "leverage_ratio": 4.52,
+      "breakeven_price": 21.88,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 100,
+        "inst_ownership": 100,
+        "eps_growth": 70.9,
+        "revenue_growth": 21.9,
+        "ebitda_margin": 83.1,
+        "rsi": 39.4,
+        "price_vs_200ma": 98.2,
+        "bb_position": 82.3,
+        "iv_percentile": 100,
+        "delta": 85.7
+      },
+      "composite_score": 80.17
+    },
+    {
+      "ticker": "APH",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:APH",
+      "expiry": "2028-01-21",
+      "strike": 95.0,
+      "contract": "APH280121C00095000",
+      "current_price": 128.03,
+      "market_cap": 157506928640,
+      "avg_volume": 8806073,
+      "inst_ownership": 102.5,
+      "eps_growth_pct": 24.1,
+      "revenue_growth_pct": 58.4,
+      "ebitda_margin_pct": 31.5,
+      "rsi": 34.65,
+      "rsi_weekly": 46.18,
+      "price_vs_200ma_pct": -2.74,
+      "bb_lower": 132.59,
+      "bb_middle": 145.25,
+      "bb_upper": 157.9,
+      "bb_position_pct": -18.0,
+      "atr": 6.26,
+      "macd": {
+        "macd": 3.3003,
+        "signal": 4.7954,
+        "histogram": -1.4951,
+        "bullish_crossover": false,
+        "macd_above_signal": false
+      },
+      "stoch_rsi": {
+        "stoch_k": 39.15,
+        "stoch_d": 47.37,
+        "bullish_cross": false,
+        "oversold": false
+      },
+      "obv": {
+        "obv": 291623000.0,
+        "obv_rising": false,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 125.33,
+        "ma200_weekly": null,
+        "above_ma50_weekly": true,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "A_price": 64.28,
+        "A_date": "2024-06-09",
+        "B_price": 154.09,
+        "B_date": "2026-01-18",
+        "C_price": 123.62,
+        "C_date": "2026-03-29",
+        "AB_distance": 89.8,
+        "BC_retracement_pct": 33.9,
+        "D_targets": {
+          "1.272x": 237.85,
+          "1.618x": 268.92,
+          "2.000x": 303.23,
+          "2.618x": 358.73,
+          "4.236x": 504.03
+        },
+        "pattern_valid": true,
+        "C_above_A": true,
+        "price_near_C": true,
+        "current_price": 128.03,
+        "status": "found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": true,
+          "c_above_a": true,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": true,
+          "macd_bullish": false,
+          "volume_capitulation": false,
+          "weekly_ma_bullish": true,
+          "iv_low": true
+        },
+        "confluence_score": 5,
+        "max_score": 9,
+        "confluence_pct": 55.6
+      },
+      "premium": 71.25,
+      "implied_volatility_pct": 98.57,
+      "iv_percentile": 0.0,
+      "dte": 620,
+      "delta": 0.8228,
+      "theta_daily": -0.0379,
+      "required_stock_move": 86.6,
+      "leverage_ratio": 1.48,
+      "breakeven_price": 237.5,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 86.7,
+        "inst_ownership": 100,
+        "eps_growth": 26.0,
+        "revenue_growth": 100,
+        "ebitda_margin": 55.1,
+        "rsi": 26.8,
+        "price_vs_200ma": 83.5,
+        "bb_position": 100,
+        "iv_percentile": 100,
+        "delta": 74.5
+      },
+      "composite_score": 75.94
+    },
+    {
+      "ticker": "ANET",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:ANET",
+      "expiry": "2028-01-21",
+      "strike": 150.0,
+      "contract": "ANET280121C00150000",
+      "current_price": 141.77,
+      "market_cap": 178512445440,
+      "avg_volume": 8454998,
+      "inst_ownership": 73.1,
+      "eps_growth_pct": 25.0,
+      "revenue_growth_pct": 35.1,
+      "ebitda_margin_pct": 43.6,
+      "rsi": 38.3,
+      "rsi_weekly": 50.82,
+      "price_vs_200ma_pct": 2.25,
+      "bb_lower": 141.01,
+      "bb_middle": 163.91,
+      "bb_upper": 186.8,
+      "bb_position_pct": 1.7,
+      "atr": 9.19,
+      "macd": {
+        "macd": 7.2909,
+        "signal": 4.8657,
+        "histogram": 2.4253,
+        "bullish_crossover": false,
+        "macd_above_signal": true
+      },
+      "stoch_rsi": {
+        "stoch_k": 72.9,
+        "stoch_d": 89.81,
+        "bullish_cross": false,
+        "oversold": false
+      },
+      "obv": {
+        "obv": 394879700.0,
+        "obv_rising": false,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 131.59,
+        "ma200_weekly": null,
+        "above_ma50_weekly": true,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "A_price": 74.2,
+        "A_date": "2024-06-09",
+        "B_price": 157.69,
+        "B_date": "2025-11-02",
+        "C_price": 120.77,
+        "C_date": "2026-03-29",
+        "AB_distance": 83.49,
+        "BC_retracement_pct": 44.2,
+        "D_targets": {
+          "1.272x": 226.97,
+          "1.618x": 255.86,
+          "2.000x": 287.75,
+          "2.618x": 339.35,
+          "4.236x": 474.44
+        },
+        "pattern_valid": true,
+        "C_above_A": true,
+        "price_near_C": false,
+        "current_price": 141.77,
+        "status": "found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": false,
+          "c_above_a": true,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": true,
+          "macd_bullish": true,
+          "volume_capitulation": false,
+          "weekly_ma_bullish": true,
+          "iv_low": true
+        },
+        "confluence_score": 5,
+        "max_score": 9,
+        "confluence_pct": 55.6
+      },
+      "premium": 39.71,
+      "implied_volatility_pct": 0.78,
+      "iv_percentile": 0.0,
+      "dte": 620,
+      "delta": 0.825,
+      "theta_daily": -0.0126,
+      "required_stock_move": 48.13,
+      "leverage_ratio": 2.95,
+      "breakeven_price": 229.42,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 82.8,
+        "inst_ownership": 77.0,
+        "eps_growth": 28.6,
+        "revenue_growth": 84.7,
+        "ebitda_margin": 95.5,
+        "rsi": 8.5,
+        "price_vs_200ma": 86.5,
+        "bb_position": 98.3,
+        "iv_percentile": 100,
+        "delta": 73.3
+      },
+      "composite_score": 73.74
+    },
+    {
+      "ticker": "ICE",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:ICE",
+      "expiry": "2028-01-21",
+      "strike": 165.0,
+      "contract": "ICE280121C00165000",
+      "current_price": 155.82,
+      "market_cap": 88118165504,
+      "avg_volume": 3559285,
+      "inst_ownership": 97.0,
+      "eps_growth_pct": 79.7,
+      "revenue_growth_pct": 20.4,
+      "ebitda_margin_pct": 63.5,
+      "rsi": 44.85,
+      "rsi_weekly": 45.23,
+      "price_vs_200ma_pct": -4.59,
+      "bb_lower": 151.83,
+      "bb_middle": 158.49,
+      "bb_upper": 165.14,
+      "bb_position_pct": 30.0,
+      "atr": 3.95,
+      "macd": {
+        "macd": -1.7576,
+        "signal": -1.3517,
+        "histogram": -0.4059,
+        "bullish_crossover": false,
+        "macd_above_signal": false
+      },
+      "stoch_rsi": {
+        "stoch_k": 33.52,
+        "stoch_d": 37.75,
+        "bullish_cross": false,
+        "oversold": false
+      },
+      "obv": {
+        "obv": 67270000.0,
+        "obv_rising": false,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 165.73,
+        "ma200_weekly": null,
+        "above_ma50_weekly": false,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "A_price": 130.68,
+        "A_date": "2024-06-09",
+        "B_price": 184.73,
+        "B_date": "2025-08-10",
+        "C_price": 152.67,
+        "C_date": "2026-03-29",
+        "AB_distance": 54.05,
+        "BC_retracement_pct": 59.3,
+        "D_targets": {
+          "1.272x": 221.42,
+          "1.618x": 240.12,
+          "2.000x": 260.76,
+          "2.618x": 294.17,
+          "4.236x": 381.61
+        },
+        "pattern_valid": true,
+        "C_above_A": true,
+        "price_near_C": true,
+        "current_price": 155.82,
+        "status": "found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": true,
+          "c_above_a": true,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": false,
+          "macd_bullish": false,
+          "volume_capitulation": false,
+          "weekly_ma_bullish": false,
+          "iv_low": true
+        },
+        "confluence_score": 3,
+        "max_score": 9,
+        "confluence_pct": 33.3
+      },
+      "premium": 20.1,
+      "implied_volatility_pct": 0.78,
+      "iv_percentile": 0.0,
+      "dte": 620,
+      "delta": 0.8037,
+      "theta_daily": -0.0135,
+      "required_stock_move": 25.01,
+      "leverage_ratio": 6.23,
+      "breakeven_price": 205.2,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 28.4,
+        "inst_ownership": 100,
+        "eps_growth": 100,
+        "revenue_growth": 38.7,
+        "ebitda_margin": 100,
+        "rsi": 0.0,
+        "price_vs_200ma": 72.4,
+        "bb_position": 70.0,
+        "iv_percentile": 100,
+        "delta": 84.7
+      },
+      "composite_score": 71.94
+    },
+    {
+      "ticker": "NFLX",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:NFLX",
+      "expiry": "2028-12-15",
+      "strike": 95.0,
+      "contract": "NFLX281215C00095000",
+      "current_price": 87.49,
+      "market_cap": 368348004352,
+      "avg_volume": 45205436,
+      "inst_ownership": 85.8,
+      "eps_growth_pct": 86.4,
+      "revenue_growth_pct": 16.2,
+      "ebitda_margin_pct": 30.5,
+      "rsi": 33.89,
+      "rsi_weekly": 41.62,
+      "price_vs_200ma_pct": -15.33,
+      "bb_lower": 81.69,
+      "bb_middle": 94.63,
+      "bb_upper": 107.56,
+      "bb_position_pct": 22.4,
+      "atr": 2.27,
+      "macd": {
+        "macd": -2.67,
+        "signal": -3.4286,
+        "histogram": 0.7586,
+        "bullish_crossover": false,
+        "macd_above_signal": true
+      },
+      "stoch_rsi": {
+        "stoch_k": 64.86,
+        "stoch_d": 74.15,
+        "bullish_cross": false,
+        "oversold": false
+      },
+      "obv": {
+        "obv": 557148100.0,
+        "obv_rising": false,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 106.46,
+        "ma200_weekly": null,
+        "above_ma50_weekly": false,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "A_price": 61.36,
+        "A_date": "2024-08-04",
+        "B_price": 132.31,
+        "B_date": "2025-06-29",
+        "C_price": 91.82,
+        "C_date": "2026-03-22",
+        "AB_distance": 70.95,
+        "BC_retracement_pct": 57.1,
+        "D_targets": {
+          "1.272x": 182.07,
+          "1.618x": 206.61,
+          "2.000x": 233.72,
+          "2.618x": 277.56,
+          "4.236x": 392.36
+        },
+        "pattern_valid": true,
+        "C_above_A": true,
+        "price_near_C": true,
+        "current_price": 87.49,
+        "status": "found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": true,
+          "c_above_a": true,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": false,
+          "macd_bullish": true,
+          "volume_capitulation": false,
+          "weekly_ma_bullish": false,
+          "iv_low": true
+        },
+        "confluence_score": 4,
+        "max_score": 9,
+        "confluence_pct": 44.4
+      },
+      "premium": 22.92,
+      "implied_volatility_pct": 1.56,
+      "iv_percentile": 0.0,
+      "dte": 949,
+      "delta": 0.7726,
+      "theta_daily": -0.0073,
+      "required_stock_move": 29.67,
+      "leverage_ratio": 2.95,
+      "breakeven_price": 140.84,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 100,
+        "inst_ownership": 100,
+        "eps_growth": 100,
+        "revenue_growth": 25.6,
+        "ebitda_margin": 51.6,
+        "rsi": 30.6,
+        "price_vs_200ma": 0.0,
+        "bb_position": 77.6,
+        "iv_percentile": 100,
+        "delta": 98.7
+      },
+      "composite_score": 71.8
+    },
+    {
+      "ticker": "APH",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:APH",
+      "expiry": "2028-01-21",
+      "strike": 135.0,
+      "contract": "APH280121C00135000",
+      "current_price": 128.03,
+      "market_cap": 157506928640,
+      "avg_volume": 8806073,
+      "inst_ownership": 102.5,
+      "eps_growth_pct": 24.1,
+      "revenue_growth_pct": 58.4,
+      "ebitda_margin_pct": 31.5,
+      "rsi": 34.65,
+      "rsi_weekly": 46.18,
+      "price_vs_200ma_pct": -2.74,
+      "bb_lower": 132.59,
+      "bb_middle": 145.25,
+      "bb_upper": 157.9,
+      "bb_position_pct": -18.0,
+      "atr": 6.26,
+      "macd": {
+        "macd": 3.3003,
+        "signal": 4.7954,
+        "histogram": -1.4951,
+        "bullish_crossover": false,
+        "macd_above_signal": false
+      },
+      "stoch_rsi": {
+        "stoch_k": 39.15,
+        "stoch_d": 47.37,
+        "bullish_cross": false,
+        "oversold": false
+      },
+      "obv": {
+        "obv": 291623000.0,
+        "obv_rising": false,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 125.33,
+        "ma200_weekly": null,
+        "above_ma50_weekly": true,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "A_price": 64.28,
+        "A_date": "2024-06-09",
+        "B_price": 154.09,
+        "B_date": "2026-01-18",
+        "C_price": 123.62,
+        "C_date": "2026-03-29",
+        "AB_distance": 89.8,
+        "BC_retracement_pct": 33.9,
+        "D_targets": {
+          "1.272x": 237.85,
+          "1.618x": 268.92,
+          "2.000x": 303.23,
+          "2.618x": 358.73,
+          "4.236x": 504.03
+        },
+        "pattern_valid": true,
+        "C_above_A": true,
+        "price_near_C": true,
+        "current_price": 128.03,
+        "status": "found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": true,
+          "c_above_a": true,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": true,
+          "macd_bullish": false,
+          "volume_capitulation": false,
+          "weekly_ma_bullish": true,
+          "iv_low": true
+        },
+        "confluence_score": 5,
+        "max_score": 9,
+        "confluence_pct": 55.6
+      },
+      "premium": 33.0,
+      "implied_volatility_pct": 0.78,
+      "iv_percentile": 0.0,
+      "dte": 620,
+      "delta": 0.898,
+      "theta_daily": -0.0122,
+      "required_stock_move": 36.75,
+      "leverage_ratio": 3.48,
+      "breakeven_price": 201.0,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 86.7,
+        "inst_ownership": 100,
+        "eps_growth": 26.0,
+        "revenue_growth": 100,
+        "ebitda_margin": 55.1,
+        "rsi": 26.8,
+        "price_vs_200ma": 83.5,
+        "bb_position": 100,
+        "iv_percentile": 100,
+        "delta": 52.0
+      },
+      "composite_score": 71.44
+    },
+    {
+      "ticker": "NDAQ",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:NDAQ",
+      "expiry": "2028-01-21",
+      "strike": 72.5,
+      "contract": "NDAQ280121C00072500",
+      "current_price": 88.91,
+      "market_cap": 50282233856,
+      "avg_volume": 3665720,
+      "inst_ownership": 92.3,
+      "eps_growth_pct": 33.8,
+      "revenue_growth_pct": 13.7,
+      "ebitda_margin_pct": 59.3,
+      "rsi": 51.54,
+      "rsi_weekly": 50.67,
+      "price_vs_200ma_pct": -1.32,
+      "bb_lower": 85.5,
+      "bb_middle": 89.06,
+      "bb_upper": 92.63,
+      "bb_position_pct": 47.9,
+      "atr": 2.12,
+      "macd": {
+        "macd": -0.3319,
+        "signal": -0.543,
+        "histogram": 0.2111,
+        "bullish_crossover": false,
+        "macd_above_signal": true
+      },
+      "stoch_rsi": {
+        "stoch_k": 74.09,
+        "stoch_d": 60.04,
+        "bullish_cross": false,
+        "oversold": false
+      },
+      "obv": {
+        "obv": 230707400.0,
+        "obv_rising": false,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 89.52,
+        "ma200_weekly": null,
+        "above_ma50_weekly": false,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "A_price": 57.29,
+        "A_date": "2024-06-09",
+        "B_price": 100.66,
+        "B_date": "2026-01-18",
+        "C_price": 81.48,
+        "C_date": "2026-03-29",
+        "AB_distance": 43.38,
+        "BC_retracement_pct": 44.2,
+        "D_targets": {
+          "1.272x": 136.65,
+          "1.618x": 151.66,
+          "2.000x": 168.23,
+          "2.618x": 195.04,
+          "4.236x": 265.22
+        },
+        "pattern_valid": true,
+        "C_above_A": true,
+        "price_near_C": true,
+        "current_price": 88.91,
+        "status": "found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": true,
+          "c_above_a": true,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": false,
+          "macd_bullish": true,
+          "volume_capitulation": false,
+          "weekly_ma_bullish": false,
+          "iv_low": true
+        },
+        "confluence_score": 4,
+        "max_score": 9,
+        "confluence_pct": 44.4
+      },
+      "premium": 24.25,
+      "implied_volatility_pct": 41.22,
+      "iv_percentile": 0.0,
+      "dte": 620,
+      "delta": 0.7797,
+      "theta_daily": -0.0157,
+      "required_stock_move": 31.1,
+      "leverage_ratio": 2.86,
+      "breakeven_price": 121.0,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 29.6,
+        "inst_ownership": 100,
+        "eps_growth": 53.7,
+        "revenue_growth": 17.8,
+        "ebitda_margin": 100,
+        "rsi": 0.0,
+        "price_vs_200ma": 92.1,
+        "bb_position": 52.1,
+        "iv_percentile": 100,
+        "delta": 97.5
+      },
+      "composite_score": 70.23
+    },
+    {
+      "ticker": "BKNG",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:BKNG",
+      "expiry": "2028-12-15",
+      "strike": 145.6,
+      "contract": "BKNG281215C00145600",
+      "current_price": 165.93,
+      "market_cap": 128625180672,
+      "avg_volume": 10111361,
+      "inst_ownership": 100.1,
+      "eps_growth_pct": 240.0,
+      "revenue_growth_pct": 16.2,
+      "ebitda_margin_pct": 37.5,
+      "rsi": 40.95,
+      "rsi_weekly": 40.89,
+      "price_vs_200ma_pct": -16.32,
+      "bb_lower": 159.85,
+      "bb_middle": 177.08,
+      "bb_upper": 194.3,
+      "bb_position_pct": 17.6,
+      "atr": 6.49,
+      "macd": {
+        "macd": -8.4733,
+        "signal": -8.4917,
+        "histogram": 0.0183,
+        "bullish_crossover": false,
+        "macd_above_signal": true
+      },
+      "stoch_rsi": {
+        "stoch_k": 63.06,
+        "stoch_d": 72.17,
+        "bullish_cross": false,
+        "oversold": false
+      },
+      "obv": {
+        "obv": 128858100.0,
+        "obv_rising": true,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 201.64,
+        "ma200_weekly": null,
+        "above_ma50_weekly": false,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "A_price": 131.32,
+        "A_date": "2024-08-04",
+        "B_price": 227.49,
+        "B_date": "2025-08-24",
+        "C_price": 162.49,
+        "C_date": "2026-03-29",
+        "AB_distance": 96.17,
+        "BC_retracement_pct": 67.6,
+        "D_targets": {
+          "1.272x": 284.81,
+          "1.618x": 318.08,
+          "2.000x": 354.82,
+          "2.618x": 414.25,
+          "4.236x": 569.85
+        },
+        "pattern_valid": true,
+        "C_above_A": true,
+        "price_near_C": true,
+        "current_price": 165.93,
+        "status": "found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": true,
+          "c_above_a": true,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": false,
+          "macd_bullish": true,
+          "volume_capitulation": true,
+          "weekly_ma_bullish": false,
+          "iv_low": true
+        },
+        "confluence_score": 5,
+        "max_score": 9,
+        "confluence_pct": 55.6
+      },
+      "premium": 79.75,
+      "implied_volatility_pct": 72.98,
+      "iv_percentile": 0.0,
+      "dte": 949,
+      "delta": 0.7838,
+      "theta_daily": -0.035,
+      "required_stock_move": 101.75,
+      "leverage_ratio": 1.63,
+      "breakeven_price": 305.1,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 100,
+        "inst_ownership": 100,
+        "eps_growth": 100,
+        "revenue_growth": 25.6,
+        "ebitda_margin": 74.9,
+        "rsi": 0.0,
+        "price_vs_200ma": 0.0,
+        "bb_position": 82.4,
+        "iv_percentile": 100,
+        "delta": 95.3
+      },
+      "composite_score": 69.33
+    },
+    {
+      "ticker": "BKNG",
+      "exchange": "NASDAQ",
+      "tradingview_symbol": "NASDAQ:BKNG",
+      "expiry": "2028-12-15",
+      "strike": 180.0,
+      "contract": "BKNG281215C00180000",
+      "current_price": 165.93,
+      "market_cap": 128625180672,
+      "avg_volume": 10111361,
+      "inst_ownership": 100.1,
+      "eps_growth_pct": 240.0,
+      "revenue_growth_pct": 16.2,
+      "ebitda_margin_pct": 37.5,
+      "rsi": 40.95,
+      "rsi_weekly": 40.89,
+      "price_vs_200ma_pct": -16.32,
+      "bb_lower": 159.85,
+      "bb_middle": 177.08,
+      "bb_upper": 194.3,
+      "bb_position_pct": 17.6,
+      "atr": 6.49,
+      "macd": {
+        "macd": -8.4733,
+        "signal": -8.4917,
+        "histogram": 0.0183,
+        "bullish_crossover": false,
+        "macd_above_signal": true
+      },
+      "stoch_rsi": {
+        "stoch_k": 63.06,
+        "stoch_d": 72.17,
+        "bullish_cross": false,
+        "oversold": false
+      },
+      "obv": {
+        "obv": 128858100.0,
+        "obv_rising": true,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 201.64,
+        "ma200_weekly": null,
+        "above_ma50_weekly": false,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "A_price": 131.32,
+        "A_date": "2024-08-04",
+        "B_price": 227.49,
+        "B_date": "2025-08-24",
+        "C_price": 162.49,
+        "C_date": "2026-03-29",
+        "AB_distance": 96.17,
+        "BC_retracement_pct": 67.6,
+        "D_targets": {
+          "1.272x": 284.81,
+          "1.618x": 318.08,
+          "2.000x": 354.82,
+          "2.618x": 414.25,
+          "4.236x": 569.85
+        },
+        "pattern_valid": true,
+        "C_above_A": true,
+        "price_near_C": true,
+        "current_price": 165.93,
+        "status": "found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": true,
+          "c_above_a": true,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": false,
+          "macd_bullish": true,
+          "volume_capitulation": true,
+          "weekly_ma_bullish": false,
+          "iv_low": true
+        },
+        "confluence_score": 5,
+        "max_score": 9,
+        "confluence_pct": 55.6
+      },
+      "premium": 50.0,
+      "implied_volatility_pct": 1.56,
+      "iv_percentile": 0.0,
+      "dte": 949,
+      "delta": 0.784,
+      "theta_daily": -0.0141,
+      "required_stock_move": 63.78,
+      "leverage_ratio": 2.6,
+      "breakeven_price": 280.0,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 100,
+        "inst_ownership": 100,
+        "eps_growth": 100,
+        "revenue_growth": 25.6,
+        "ebitda_margin": 74.9,
+        "rsi": 0.0,
+        "price_vs_200ma": 0.0,
+        "bb_position": 82.4,
+        "iv_percentile": 100,
+        "delta": 95.2
+      },
+      "composite_score": 69.31
     },
     {
       "ticker": "EQT",
@@ -783,7 +1755,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
+      "composite_score": 69.28
     },
     {
       "ticker": "EQT",
@@ -872,7 +1844,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
+      "composite_score": 69.28
     },
     {
       "ticker": "EQT",
@@ -961,7 +1933,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
+      "composite_score": 69.28
     },
     {
       "ticker": "EQT",
@@ -1050,7 +2022,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
+      "composite_score": 69.28
     },
     {
       "ticker": "EQT",
@@ -1139,7 +2111,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
+      "composite_score": 69.28
     },
     {
       "ticker": "EQT",
@@ -1228,7 +2200,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
+      "composite_score": 69.28
     },
     {
       "ticker": "EQT",
@@ -1317,7 +2289,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
+      "composite_score": 69.28
     },
     {
       "ticker": "EQT",
@@ -1406,7 +2378,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
+      "composite_score": 69.28
     },
     {
       "ticker": "EQT",
@@ -1495,7 +2467,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
+      "composite_score": 69.28
     },
     {
       "ticker": "EQT",
@@ -1584,808 +2556,7 @@
         "iv_percentile": 100,
         "delta": 0
       },
-      "composite_score": 82.33
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 52.5,
-      "contract": "EQT280121C00052500",
-      "current_price": 55.96,
-      "market_cap": 35001749504,
-      "avg_volume": 8826373,
-      "inst_ownership": 100.6,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 35.65,
-      "rsi_weekly": 45.91,
-      "price_vs_200ma_pct": 0.18,
-      "bb_lower": 55.7,
-      "bb_middle": 57.95,
-      "bb_upper": 60.2,
-      "bb_position_pct": 5.7,
-      "atr": 1.59,
-      "macd": {
-        "macd": 1.0218,
-        "signal": 1.6425,
-        "histogram": -0.6207,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 1.82,
-        "stoch_d": 11.47,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 223872300.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.02,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": true
-        },
-        "confluence_score": 2,
-        "max_score": 9,
-        "confluence_pct": 22.2
-      },
-      "premium": 14.7,
-      "implied_volatility_pct": 0.0,
-      "iv_percentile": 0.0,
-      "dte": 620,
-      "delta": 1.0,
-      "theta_daily": -0.0052,
-      "required_stock_move": 14.7,
-      "leverage_ratio": 3.81,
-      "breakeven_price": 81.9,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 87.0,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 21.7,
-        "price_vs_200ma": 98.9,
-        "bb_position": 94.3,
-        "iv_percentile": 100,
-        "delta": 0
-      },
-      "composite_score": 82.33
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 55.0,
-      "contract": "EQT280121C00055000",
-      "current_price": 55.96,
-      "market_cap": 35001749504,
-      "avg_volume": 8826373,
-      "inst_ownership": 100.6,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 35.65,
-      "rsi_weekly": 45.91,
-      "price_vs_200ma_pct": 0.18,
-      "bb_lower": 55.7,
-      "bb_middle": 57.95,
-      "bb_upper": 60.2,
-      "bb_position_pct": 5.7,
-      "atr": 1.59,
-      "macd": {
-        "macd": 1.0218,
-        "signal": 1.6425,
-        "histogram": -0.6207,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 1.82,
-        "stoch_d": 11.47,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 223872300.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.02,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": true
-        },
-        "confluence_score": 2,
-        "max_score": 9,
-        "confluence_pct": 22.2
-      },
-      "premium": 12.6,
-      "implied_volatility_pct": 0.0,
-      "iv_percentile": 0.0,
-      "dte": 620,
-      "delta": 1.0,
-      "theta_daily": -0.0055,
-      "required_stock_move": 12.6,
-      "leverage_ratio": 4.44,
-      "breakeven_price": 80.2,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 87.0,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 21.7,
-        "price_vs_200ma": 98.9,
-        "bb_position": 94.3,
-        "iv_percentile": 100,
-        "delta": 0
-      },
-      "composite_score": 82.33
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 57.5,
-      "contract": "EQT280121C00057500",
-      "current_price": 55.96,
-      "market_cap": 35001749504,
-      "avg_volume": 8826373,
-      "inst_ownership": 100.6,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 35.65,
-      "rsi_weekly": 45.91,
-      "price_vs_200ma_pct": 0.18,
-      "bb_lower": 55.7,
-      "bb_middle": 57.95,
-      "bb_upper": 60.2,
-      "bb_position_pct": 5.7,
-      "atr": 1.59,
-      "macd": {
-        "macd": 1.0218,
-        "signal": 1.6425,
-        "histogram": -0.6207,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 1.82,
-        "stoch_d": 11.47,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 223872300.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.02,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": true
-        },
-        "confluence_score": 2,
-        "max_score": 9,
-        "confluence_pct": 22.2
-      },
-      "premium": 11.36,
-      "implied_volatility_pct": 0.78,
-      "iv_percentile": 0.0,
-      "dte": 620,
-      "delta": 0.9999,
-      "theta_daily": -0.0057,
-      "required_stock_move": 11.36,
-      "leverage_ratio": 4.93,
-      "breakeven_price": 80.22,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 87.0,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 21.7,
-        "price_vs_200ma": 98.9,
-        "bb_position": 94.3,
-        "iv_percentile": 100,
-        "delta": 0
-      },
-      "composite_score": 82.33
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 60.0,
-      "contract": "EQT280121C00060000",
-      "current_price": 55.96,
-      "market_cap": 35001749504,
-      "avg_volume": 8826373,
-      "inst_ownership": 100.6,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 35.65,
-      "rsi_weekly": 45.91,
-      "price_vs_200ma_pct": 0.18,
-      "bb_lower": 55.7,
-      "bb_middle": 57.95,
-      "bb_upper": 60.2,
-      "bb_position_pct": 5.7,
-      "atr": 1.59,
-      "macd": {
-        "macd": 1.0218,
-        "signal": 1.6425,
-        "histogram": -0.6207,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 1.82,
-        "stoch_d": 11.47,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 223872300.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.02,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": true
-        },
-        "confluence_score": 2,
-        "max_score": 9,
-        "confluence_pct": 22.2
-      },
-      "premium": 10.5,
-      "implied_volatility_pct": 1.56,
-      "iv_percentile": 0.0,
-      "dte": 620,
-      "delta": 0.43,
-      "theta_daily": -0.0029,
-      "required_stock_move": 24.42,
-      "leverage_ratio": 2.29,
-      "breakeven_price": 81.0,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 87.0,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 21.7,
-        "price_vs_200ma": 98.9,
-        "bb_position": 94.3,
-        "iv_percentile": 100,
-        "delta": 0
-      },
-      "composite_score": 82.33
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 62.5,
-      "contract": "EQT280121C00062500",
-      "current_price": 55.96,
-      "market_cap": 35001749504,
-      "avg_volume": 8826373,
-      "inst_ownership": 100.6,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 35.65,
-      "rsi_weekly": 45.91,
-      "price_vs_200ma_pct": 0.18,
-      "bb_lower": 55.7,
-      "bb_middle": 57.95,
-      "bb_upper": 60.2,
-      "bb_position_pct": 5.7,
-      "atr": 1.59,
-      "macd": {
-        "macd": 1.0218,
-        "signal": 1.6425,
-        "histogram": -0.6207,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 1.82,
-        "stoch_d": 11.47,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 223872300.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.02,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": true
-        },
-        "confluence_score": 2,
-        "max_score": 9,
-        "confluence_pct": 22.2
-      },
-      "premium": 12.0,
-      "implied_volatility_pct": 1.56,
-      "iv_percentile": 0.0,
-      "dte": 620,
-      "delta": 0.0146,
-      "theta_daily": -0.0001,
-      "required_stock_move": 819.57,
-      "leverage_ratio": 0.07,
-      "breakeven_price": 86.5,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 87.0,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 21.7,
-        "price_vs_200ma": 98.9,
-        "bb_position": 94.3,
-        "iv_percentile": 100,
-        "delta": 0
-      },
-      "composite_score": 82.33
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 65.0,
-      "contract": "EQT280121C00065000",
-      "current_price": 55.96,
-      "market_cap": 35001749504,
-      "avg_volume": 8826373,
-      "inst_ownership": 100.6,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 35.65,
-      "rsi_weekly": 45.91,
-      "price_vs_200ma_pct": 0.18,
-      "bb_lower": 55.7,
-      "bb_middle": 57.95,
-      "bb_upper": 60.2,
-      "bb_position_pct": 5.7,
-      "atr": 1.59,
-      "macd": {
-        "macd": 1.0218,
-        "signal": 1.6425,
-        "histogram": -0.6207,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 1.82,
-        "stoch_d": 11.47,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 223872300.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.02,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": true
-        },
-        "confluence_score": 2,
-        "max_score": 9,
-        "confluence_pct": 22.2
-      },
-      "premium": 8.45,
-      "implied_volatility_pct": 3.13,
-      "iv_percentile": 0.0,
-      "dte": 620,
-      "delta": 0.0208,
-      "theta_daily": -0.0002,
-      "required_stock_move": 406.33,
-      "leverage_ratio": 0.14,
-      "breakeven_price": 81.9,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 87.0,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 21.7,
-        "price_vs_200ma": 98.9,
-        "bb_position": 94.3,
-        "iv_percentile": 100,
-        "delta": 0
-      },
-      "composite_score": 82.33
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 67.5,
-      "contract": "EQT280121C00067500",
-      "current_price": 55.96,
-      "market_cap": 35001749504,
-      "avg_volume": 8826373,
-      "inst_ownership": 100.6,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 35.65,
-      "rsi_weekly": 45.91,
-      "price_vs_200ma_pct": 0.18,
-      "bb_lower": 55.7,
-      "bb_middle": 57.95,
-      "bb_upper": 60.2,
-      "bb_position_pct": 5.7,
-      "atr": 1.59,
-      "macd": {
-        "macd": 1.0218,
-        "signal": 1.6425,
-        "histogram": -0.6207,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 1.82,
-        "stoch_d": 11.47,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 223872300.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.02,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": true
-        },
-        "confluence_score": 2,
-        "max_score": 9,
-        "confluence_pct": 22.2
-      },
-      "premium": 8.8,
-      "implied_volatility_pct": 3.13,
-      "iv_percentile": 0.0,
-      "dte": 620,
-      "delta": 0.0015,
-      "theta_daily": -0.0,
-      "required_stock_move": 5794.28,
-      "leverage_ratio": 0.01,
-      "breakeven_price": 85.1,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 87.0,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 21.7,
-        "price_vs_200ma": 98.9,
-        "bb_position": 94.3,
-        "iv_percentile": 100,
-        "delta": 0
-      },
-      "composite_score": 82.33
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 70.0,
-      "contract": "EQT280121C00070000",
-      "current_price": 55.96,
-      "market_cap": 35001749504,
-      "avg_volume": 8826373,
-      "inst_ownership": 100.6,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 35.65,
-      "rsi_weekly": 45.91,
-      "price_vs_200ma_pct": 0.18,
-      "bb_lower": 55.7,
-      "bb_middle": 57.95,
-      "bb_upper": 60.2,
-      "bb_position_pct": 5.7,
-      "atr": 1.59,
-      "macd": {
-        "macd": 1.0218,
-        "signal": 1.6425,
-        "histogram": -0.6207,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 1.82,
-        "stoch_d": 11.47,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 223872300.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.02,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": true
-        },
-        "confluence_score": 2,
-        "max_score": 9,
-        "confluence_pct": 22.2
-      },
-      "premium": 7.2,
-      "implied_volatility_pct": 3.13,
-      "iv_percentile": 0.0,
-      "dte": 620,
-      "delta": 0.0001,
-      "theta_daily": -0.0,
-      "required_stock_move": 125228.72,
-      "leverage_ratio": 0.0,
-      "breakeven_price": 84.4,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 87.0,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 21.7,
-        "price_vs_200ma": 98.9,
-        "bb_position": 94.3,
-        "iv_percentile": 100,
-        "delta": 0
-      },
-      "composite_score": 82.33
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 72.5,
-      "contract": "EQT280121C00072500",
-      "current_price": 55.96,
-      "market_cap": 35001749504,
-      "avg_volume": 8826373,
-      "inst_ownership": 100.6,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 35.65,
-      "rsi_weekly": 45.91,
-      "price_vs_200ma_pct": 0.18,
-      "bb_lower": 55.7,
-      "bb_middle": 57.95,
-      "bb_upper": 60.2,
-      "bb_position_pct": 5.7,
-      "atr": 1.59,
-      "macd": {
-        "macd": 1.0218,
-        "signal": 1.6425,
-        "histogram": -0.6207,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 1.82,
-        "stoch_d": 11.47,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 223872300.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.02,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": true
-        },
-        "confluence_score": 2,
-        "max_score": 9,
-        "confluence_pct": 22.2
-      },
-      "premium": 8.1,
-      "implied_volatility_pct": 3.13,
-      "iv_percentile": 0.0,
-      "dte": 620,
-      "delta": 0.0,
-      "theta_daily": -0.0,
-      "required_stock_move": 6798104.91,
-      "leverage_ratio": 0.0,
-      "breakeven_price": 88.7,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 87.0,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 21.7,
-        "price_vs_200ma": 98.9,
-        "bb_position": 94.3,
-        "iv_percentile": 100,
-        "delta": 0
-      },
-      "composite_score": 82.33
+      "composite_score": 69.28
     }
   ]
 }
