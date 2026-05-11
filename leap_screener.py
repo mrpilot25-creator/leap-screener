@@ -31,33 +31,9 @@ warnings.filterwarnings("ignore")
 # ------------------------------------------------------------------
 
 WATCHLIST = [
-    "A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
-    "ALB", "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", "AMZN", "ANET", "ANSS", "AON", "AOS", "APA", "APD", "APH", "APO", 
-    "ARE", "ATO", "AVB", "AVGO", "AVY", "AWK", "AXON", "AXP", "AYI", "AZO", "BA", "BAC", "BALL", "BAX", "BBWI", "BBY", "BDX", "BEN", "BF-B", "BG", 
-    "BIIB", "BIO", "BK", "BKNG", "BKR", "BLK", "BMY", "BR", "BRK-B", "BSX", "BWA", "BX", "BXP", "C", "CAG", "CAH", "CARR", "CAT", "CB", "CBOE", 
-    "CBRE", "CCI", "CCL", "CDNS", "CDW", "CE", "CEG", "CF", "CFG", "CHD", "CHRW", "CHTR", "CI", "CINF", "CL", "CLX", "CMA", "CMCSA", "CME", "CMG", 
-    "CMI", "CMS", "CNC", "CNP", "COF", "COO", "COP", "COR", "COST", "CPAY", "CPB", "CPRT", "CPT", "CRL", "CRM", "CSCO", "CSGP", "CSX", "CTAS", "CTRA", 
-    "CTSH", "CTVA", "CVS", "CVX", "CZR", "D", "DAL", "DAY", "DD", "DE", "DECK", "DELL", "DFS", "DG", "DGX", "DHI", "DHR", "DIS", "DLR", "DLTR", 
-    "DOC", "DOV", "DOW", "DPZ", "DRI", "DTE", "DUK", "DVA", "DVN", "DXCM", "EA", "EBAY", "ECL", "ED", "EFX", "EG", "EIX", "EL", "ELV", "EMN", 
-    "EMR", "ENPH", "EOG", "EPAM", "EQIX", "EQR", "EQT", "ES", "ESS", "ETN", "ETR", "ETSY", "EVRG", "EW", "EXC", "EXPD", "EXPE", "EXR", "F", "FANG", 
-    "FAST", "FCX", "FDS", "FDX", "FE", "FFIV", "FI", "FICO", "FIS", "FITB", "FMC", "FOX", "FOXA", "FRT", "FSLR", "FTNT", "FTV", "GD", "GE", "GEF", 
-    "GEHC", "GEN", "GESV", "GEV", "GILD", "GIS", "GL", "GLW", "GM", "GNRC", "GOOG", "GOOGL", "GPC", "GPN", "GRMN", "GS", "GWRE", "GWW", "HAL", "HAS", 
-    "HBAN", "HCA", "HD", "HES", "HIG", "HII", "HLT", "HOLX", "HON", "HPE", "HPQ", "HRL", "HSIC", "HST", "HSY", "HUBB", "HUM", "HWM", "IBM", "ICE", 
-    "IDXX", "IEX", "IFF", "ILMN", "INCY", "INTC", "INTU", "INVH", "IP", "IPG", "IQV", "IR", "IRM", "ISRG", "IT", "ITW", "IVZ", "J", "JBHT", "JBL", 
-    "JCI", "JKHY", "JNJ", "JNPR", "JPM", "K", "KDP", "KEY", "KEYS", "KHC", "KIM", "KLAC", "KMB", "KMI", "KMX", "KO", "KR", "KVUE", "L", "LDOS", 
-    "LEN", "LH", "LHX", "LIN", "LKQ", "LLY", "LMT", "LNT", "LOW", "LRCX", "LULU", "LUV", "LVS", "LW", "LYB", "LYV", "MA", "MAA", "MAR", "MAS", 
-    "MCD", "MCHP", "MCK", "MCO", "MDLZ", "MDT", "MET", "META", "MGM", "MHK", "MKC", "MKTX", "MLM", "MMC", "MMM", "MNST", "MO", "MOH", "MOS", "MPC", 
-    "MPWR", "MRK", "MRNA", "MS", "MSI", "MSFT", "MTB", "MTCH", "MTD", "MU", "NCLH", "NDAQ", "NDSN", "NEE", "NEM", "NFLX", "NI", "NKE", "NOC", "NOW", 
-    "NRG", "NSC", "NTRS", "NUE", "NVDA", "NVR", "NWS", "NWSA", "NXPI", "O", "ODFL", "OKE", "OMC", "ON", "ORCL", "ORLY", "OTIS", "OXY", "PANW", "PARA", 
-    "PAYC", "PAYX", "PCAR", "PCG", "PEG", "PEP", "PFE", "PFG", "PG", "PGR", "PH", "PHM", "PKG", "PLD", "PLTR", "PM", "PNC", "PNW", "POOL", "PPG", 
-    "PPL", "PRU", "PSA", "PSX", "PTC", "PWR", "PXD", "PYPL", "QCOM", "QRVO", "RCL", "REG", "REGN", "RF", "RHI", "RJF", "RL", "RMD", "ROK", "ROL", 
-    "ROP", "ROST", "RSG", "RTX", "RVTY", "SBAC", "SBUX", "SCHW", "SHW", "SJM", "SNA", "SNPS", "SO", "SPG", "SPGI", "SRE", "STE", "STLD", "STT", "STX", 
-    "SYK", "SYY", "T", "TAP", "TDG", "TDY", "TECH", "TEL", "TER", "TFC", "TFX", "TGT", "TJX", "TMO", "TMUS", "TPR", "TRGP", "TRMB", "TROW", "TRV", 
-    "TSCO", "TSLA", "TSN", "TT", "TTWO", "TXN", "TXT", "TYL", "UAL", "UDR", "UHS", "ULTA", "UNH", "UNP", "UPS", "URI", "USB", "V", "VICI", "VLO", 
-    "VMC", "VRSK", "VRSN", "VRTX", "VST", "VTR", "VZ", "WAB", "WAT", "WBA", "WBD", "WDC", "WEC", "WELL", "WFC", "WHR", "WM", "WMB", "WMT", "WRB", 
-    "WST", "WTW", "WY", "WYNN", "XEL", "XOM", "XYL", "YUM", "ZBH", "ZBRA", "ZTS"
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
+    "META", "TSLA", "JPM", "UNH", "V",
 ]
-
 
 # ------------------------------------------------------------------
 # CONFIG
@@ -1330,9 +1306,47 @@ class ForwardProjectionEngine:
             # Final floor at 0: drift must be non-negative
             self.mu = max(self.mu_hist - self.div_yield, 0.0)
 
+            # Store historical vol for IV sanity check below
+            if len(close) >= 30:
+                log_rets_full    = np.log(close.values[1:] / close.values[:-1])
+                hist_vol_daily   = float(np.std(log_rets_full, ddof=1))
+                self.hist_vol_1y = hist_vol_daily * math.sqrt(252)
+            else:
+                self.hist_vol_1y = 0.25  # sensible default
+
         except Exception:
-            self.mu = self.r
-            self.mu_hist = self.r
+            self.mu          = self.r
+            self.mu_hist     = self.r
+            self.hist_vol_1y = 0.25
+
+        # ------------------------------------------------------------------
+        # IV SANITY CHECK
+        # ------------------------------------------------------------------
+        # Yahoo Finance sometimes returns near-zero IV for deep in-the-money
+        # or near-the-money options where the Black-Scholes solver fails to
+        # converge numerically. A 1.6% IV for Netflix is clearly bad data -
+        # real equity IV is virtually never below 8%.
+        #
+        # Fix: if the IV from the options chain is below a realistic minimum
+        # (8%), replace it with the 1-year historical volatility computed
+        # from actual price data. This is a well-grounded fallback because
+        # historical vol is the best observable proxy for future vol when
+        # the implied vol data is unavailable or corrupted.
+        #
+        # The realistic minimum for any listed equity LEAP is approximately
+        # 8%. Anything below this almost certainly indicates a data error.
+        # ------------------------------------------------------------------
+        IV_FLOOR = 0.08  # 8% minimum realistic IV for any equity
+
+        if self.iv < IV_FLOOR:
+            print("    [IV WARN] " + self.symbol + " raw IV " +
+                  str(round(self.iv * 100, 1)) + "% is below floor. " +
+                  "Using historical vol " +
+                  str(round(self.hist_vol_1y * 100, 1)) + "% instead.")
+            self.iv          = max(self.hist_vol_1y, IV_FLOOR)
+            self.iv_was_bad  = True
+        else:
+            self.iv_was_bad  = False
 
         # Cap IV at 40% for projections longer than 1 year to reduce
         # excess volatility drag on long-dated median price estimates
@@ -1409,6 +1423,7 @@ class ForwardProjectionEngine:
             "implied_vol_raw_pct":  round(self.iv * 100, 2),
             "implied_vol_used_pct": round(self.iv_capped * 100, 2),
             "iv_was_capped":        self.iv_capped < self.iv,
+            "iv_data_corrected":    getattr(self, "iv_was_bad", False),
             "historical_mu_pct":    round(self.mu_hist * 100, 2)
                                     if self.mu_hist else None,
             "div_yield_pct":        round(self.div_yield * 100, 2),
