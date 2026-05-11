@@ -1811,6 +1811,15 @@ def save_json(data, filename):
         json.dump(data, f, indent=2, default=str)
     print("  Saved: " + path)
 
+
+def save_snapshot(data, filename, snapshot_date):
+    import os
+    folder = OUTPUT_DIR + "/snapshots/" + snapshot_date
+    os.makedirs(folder, exist_ok=True)
+    path = folder + "/" + filename
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2, default=str)
+
 # ------------------------------------------------------------------
 # ENTRY POINT
 # ------------------------------------------------------------------
@@ -1955,9 +1964,15 @@ def main():
     print(str(len(passed_tickers)) + "/" + str(total) + " tickers passed.")
     print("Saving output files...")
 
+    today_str = str(date.today())
+
     save_json({"meta": run_meta, "top_20_per_stock":     per_stock},      "top_20_per_stock.json")
     save_json({"meta": run_meta, "top_20_overall":       top_20_overall}, "top_20_overall.json")
     save_json({"meta": run_meta, "all_screened_options": all_results},    "full_results.json")
+
+    save_snapshot({"meta": run_meta, "top_20_per_stock":     per_stock},      "top_20_per_stock.json",  today_str)
+    save_snapshot({"meta": run_meta, "top_20_overall":       top_20_overall}, "top_20_overall.json",    today_str)
+    save_snapshot({"meta": run_meta, "all_screened_options": all_results},    "full_results.json",      today_str)
 
     # Build and save TradingView config for Base44 chart tab
     tv_config = build_tradingview_config(all_results, passed_tickers)
@@ -1971,6 +1986,7 @@ def main():
         ),
     }
     save_json({"meta": tv_meta, **tv_config}, "tradingview_config.json")
+    save_snapshot({"meta": tv_meta, **tv_config}, "tradingview_config.json", today_str)
 
     print("")
     print("=================================================================")
@@ -2004,6 +2020,11 @@ def main():
         save_json(
             {"meta": bt_meta, "backtest_results": bt_results},
             "backtest_results.json"
+        )
+        save_snapshot(
+            {"meta": bt_meta, "backtest_results": bt_results},
+            "backtest_results.json",
+            today_str
         )
 
         print("")
@@ -2048,6 +2069,11 @@ def main():
         save_json(
             {"meta": fp_meta, "forward_projections": fp_results},
             "forward_projections.json"
+        )
+        save_snapshot(
+            {"meta": fp_meta, "forward_projections": fp_results},
+            "forward_projections.json",
+            today_str
         )
 
         print("")
