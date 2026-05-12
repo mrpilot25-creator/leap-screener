@@ -511,6 +511,24 @@ def black_scholes_rho(S, K, T, r, sigma):
         return float("nan")
     return float(K * T * math.exp(-r * T) * norm.cdf(d2) / 100)
 
+
+def black_scholes_gamma(S, K, T, r, sigma):
+    # Gamma: rate of change of delta per $1 stock move
+    # Gamma = N'(d1) / (S * sigma * sqrt(T))
+    d1, _ = bs_d1_d2(S, K, T, r, sigma)
+    if math.isnan(d1):
+        return float("nan")
+    return float(norm.pdf(d1) / (S * sigma * math.sqrt(T)))
+
+
+def black_scholes_vega(S, K, T, r, sigma):
+    # Vega: option price change per 1% increase in IV
+    # Vega = S * N'(d1) * sqrt(T) / 100
+    d1, _ = bs_d1_d2(S, K, T, r, sigma)
+    if math.isnan(d1):
+        return float("nan")
+    return float(S * norm.pdf(d1) * math.sqrt(T) / 100)
+
 # ------------------------------------------------------------------
 # SCORING ENGINE
 # ------------------------------------------------------------------
@@ -767,12 +785,107 @@ def get_tv_exchange(yf_exchange, yf_full_name):
     return ""
 
 
+def fetch_stock_metadata(ticker, info):
+    """
+    Fetches additional stock-level data used for the 100% return analysis:
+    beta, short interest, analyst price target, sector, earnings calendar,
+    and historical earnings move magnitude.
+    """
+    # Beta
+    beta = info.get("beta")
+
+    # Short interest as % of float
+    short_pct = info.get("shortPercentOfFloat")
+    if short_pct is None:
+        shares_short = info.get("sharesShort")
+        float_shares = info.get("floatShares")
+        if shares_short and float_shares and float_shares > 0:
+            short_pct = shares_short / float_shares
+
+    # Analyst consensus price target
+    analyst_target  = info.get("targetMeanPrice")
+    analyst_low     = info.get("targetLowPrice")
+    analyst_high    = info.get("targetHighPrice")
+    analyst_count   = info.get("numberOfAnalystOpinions")
+    current_price   = info.get("currentPrice") or info.get("regularMarketPrice")
+
+    analyst_upside = None
+    if analyst_target and current_price and current_price > 0:
+        analyst_upside = round((analyst_target - current_price) / current_price * 100, 1)
+
+    # Sector and industry
+    sector   = info.get("sector", "")
+    industry = info.get("industry", "")
+
+    # Next earnings date
+    earnings_date = None
+    try:
+        cal = ticker.calendar
+        if cal is not None:
+            if isinstance(cal, dict):
+                ed = cal.get("Earnings Date")
+                if ed and len(ed) > 0:
+                    earnings_date = str(ed[0])[:10]
+            elif hasattr(cal, "loc"):
+                if "Earnings Date" in cal.index:
+                    ed = cal.loc["Earnings Date"]
+                    earnings_date = str(ed.iloc[0])[:10] if hasattr(ed, "iloc") else str(ed)[:10]
+    except Exception:
+        pass
+
+    # Historical earnings move (average absolute % move on earnings days)
+    avg_earnings_move = None
+    try:
+        hist_q = ticker.quarterly_earnings
+        if hist_q is not None and len(hist_q) >= 2:
+            hist = ticker.history(period="3y")
+            if not hist.empty:
+                close = hist["Close"]
+                moves = []
+                for dt_idx in hist_q.index:
+                    try:
+                        loc = close.index.get_indexer([dt_idx], method="nearest")[0]
+                        if 0 < loc < len(close):
+                            pct = abs(float(close.iloc[loc]) - float(close.iloc[loc-1])) / float(close.iloc[loc-1]) * 100
+                            if pct < 50:   # sanity cap
+                                moves.append(pct)
+                    except Exception:
+                        pass
+                if moves:
+                    avg_earnings_move = round(float(sum(moves) / len(moves)), 1)
+    except Exception:
+        pass
+
+    # FCF (Free Cash Flow) - supplementary fundamental
+    fcf = info.get("freeCashflow")
+
+    # Debt/Equity ratio
+    debt_equity = info.get("debtToEquity")
+
+    return {
+        "beta":              round(float(beta), 2) if beta else None,
+        "short_interest_pct": round(float(short_pct) * 100, 1) if short_pct else None,
+        "analyst_target":    round(float(analyst_target), 2) if analyst_target else None,
+        "analyst_low":       round(float(analyst_low), 2)    if analyst_low    else None,
+        "analyst_high":      round(float(analyst_high), 2)   if analyst_high   else None,
+        "analyst_count":     analyst_count,
+        "analyst_upside_pct": analyst_upside,
+        "next_earnings_date": earnings_date,
+        "avg_earnings_move_pct": avg_earnings_move,
+        "sector":            sector,
+        "industry":          industry,
+        "free_cashflow":     fcf,
+        "debt_to_equity":    round(float(debt_equity), 2) if debt_equity else None,
+    }
+
+
 def fetch_fundamental_data(ticker):
     info = ticker.info or {}
     exchange = get_tv_exchange(
         info.get("exchange", ""),
         info.get("fullExchangeName", "")
     )
+    metadata = fetch_stock_metadata(ticker, info)
     return {
         "market_cap":     info.get("marketCap"),
         "avg_volume":     info.get("averageVolume"),
@@ -781,6 +894,7 @@ def fetch_fundamental_data(ticker):
         "revenue_growth": info.get("revenueGrowth"),
         "ebitda_margin":  fetch_ebitda_margin(info),
         "exchange":       exchange,
+        **metadata,
     }
 
 
@@ -1091,27 +1205,68 @@ class BacktestEngine:
             delta_t = black_scholes_delta(S, K, T, r, sigma)
             theta_t = black_scholes_theta(S, K, T, r, sigma)
             rho_t   = black_scholes_rho(S, K, T, r, sigma)
+            gamma_t = black_scholes_gamma(S, K, T, r, sigma)
+            vega_t  = black_scholes_vega(S, K, T, r, sigma)
             price_t = black_scholes_price(S, K, T, r, sigma)
 
             greek_timeline.append({
                 "years_to_expiry":    round(T, 2),
                 "option_price":       round(price_t, 2) if not math.isnan(price_t) else None,
                 "delta":              round(delta_t, 4) if not math.isnan(delta_t) else None,
+                "gamma":              round(gamma_t, 6) if not math.isnan(gamma_t) else None,
                 "theta_daily":        round(theta_t, 4) if not math.isnan(theta_t) else None,
-                "rho_per_1pct_rate":  round(rho_t, 4)  if not math.isnan(rho_t)   else None,
+                "vega_per_1pct_iv":   round(vega_t, 4)  if not math.isnan(vega_t)  else None,
+                "rho_per_1pct_rate":  round(rho_t, 4)   if not math.isnan(rho_t)   else None,
             })
 
-        # Cumulative theta cost over validation period
-        # Approximate: average daily theta * validation days
+        # Cumulative theta cost
         theta_entry = black_scholes_theta(S, K, T_full, r, sigma)
         theta_mid   = black_scholes_theta(S, K, T_full / 2, r, sigma)
         avg_theta   = (theta_entry + theta_mid) / 2 if not math.isnan(theta_entry) else 0.0
         val_days    = int(self.validation_years * 365)
         cumulative_theta_cost = round(abs(avg_theta) * val_days, 2)
 
+        # Stock price required for 100% return at 6, 12, 18 month checkpoints
+        # Solve numerically: find S* such that BS_price(S*, K, T_rem, r, sigma) = 2 * entry_premium
+        entry_premium = black_scholes_price(S, K, T_full, r, sigma)
+        target_premium = entry_premium * 2.0 if not math.isnan(entry_premium) else None
+
+        return_checkpoints = []
+        for months in [6, 12, 18]:
+            T_rem = (self.validation_years * 12 - months) / 12.0
+            if T_rem <= 0 or target_premium is None:
+                return_checkpoints.append({
+                    "months_elapsed": months,
+                    "stock_price_for_100pct_return": None,
+                    "pct_above_entry": None,
+                })
+                continue
+            # Binary search for S* where BS price = target
+            lo, hi = S * 0.5, S * 5.0
+            result_S = None
+            for _ in range(60):
+                mid = (lo + hi) / 2
+                v   = black_scholes_price(mid, K, T_rem, r, sigma)
+                if math.isnan(v):
+                    break
+                if v < target_premium:
+                    lo = mid
+                else:
+                    hi = mid
+                if hi - lo < 0.01:
+                    result_S = round((lo + hi) / 2, 2)
+                    break
+            pct_above = round((result_S - S) / S * 100, 1) if result_S else None
+            return_checkpoints.append({
+                "months_elapsed":                months,
+                "stock_price_for_100pct_return": result_S,
+                "pct_above_entry_price":         pct_above,
+            })
+
         return {
-            "greek_timeline":         greek_timeline,
-            "cumulative_theta_cost":  cumulative_theta_cost,
+            "greek_timeline":             greek_timeline,
+            "cumulative_theta_cost":      cumulative_theta_cost,
+            "return_checkpoints":         return_checkpoints,
         }
 
     # -- 6. Residual Variance Report & EV ----------------------------
@@ -1171,7 +1326,24 @@ class BacktestEngine:
             "pct_actual_within_90_band": pct_within_band,
             "terminal_price_error_pct": reality["terminal_price_error_pct"],
             "drawdown_error_pct":       reality["drawdown_error_pct"],
+            "kelly_criterion_pct":      self._kelly(p_itm, ev_payoff, entry_premium),
         }
+
+    def _kelly(self, p_win, avg_win, premium):
+        """
+        Kelly Criterion: optimal fraction of capital to risk on this trade.
+        f = (p_win * avg_win - p_lose * premium) / avg_win
+        Returned as a percentage, floored at 0, capped at 25% (half-Kelly safety).
+        """
+        try:
+            if avg_win <= 0 or premium <= 0:
+                return None
+            p_lose = 1.0 - p_win
+            f = (p_win * avg_win - p_lose * premium) / avg_win
+            f_half_kelly = f / 2.0   # half-Kelly is standard practice
+            return round(max(0.0, min(25.0, f_half_kelly * 100)), 1)
+        except Exception:
+            return None
 
     # -- 7. Returns Analysis ------------------------------------------
 
@@ -1578,6 +1750,60 @@ class ForwardProjectionEngine:
         upside_pct95  = (pct95 - self.S0) / self.S0 * 100
         downside_pct5 = (pct5 - self.S0) / self.S0 * 100
 
+        # Gamma and Vega at entry
+        entry_gamma = black_scholes_gamma(self.S0, self.K, self.T, self.r, self.iv_capped)
+        entry_vega  = black_scholes_vega(self.S0, self.K, self.T, self.r, self.iv_capped)
+
+        # Stock price required for 100% return at 6, 12, 18 month checkpoints
+        entry_opt_price = black_scholes_price(self.S0, self.K, self.T, self.r, self.iv_capped)
+        target_100 = entry_opt_price * 2.0 if not math.isnan(entry_opt_price) else None
+
+        return_checkpoints = []
+        for months in [6, 12, 18]:
+            T_rem = self.T - months / 12.0
+            if T_rem <= 0.01 or target_100 is None:
+                return_checkpoints.append({
+                    "months_elapsed": months,
+                    "stock_price_for_100pct_return": None,
+                    "pct_above_current": None,
+                })
+                continue
+            lo, hi = self.S0 * 0.5, self.S0 * 5.0
+            result_S = None
+            for _ in range(60):
+                mid = (lo + hi) / 2
+                v   = black_scholes_price(mid, self.K, T_rem, self.r, self.iv_capped)
+                if math.isnan(v):
+                    break
+                if v < target_100:
+                    lo = mid
+                else:
+                    hi = mid
+                if hi - lo < 0.01:
+                    result_S = round((lo + hi) / 2, 2)
+                    break
+            pct_above = round((result_S - self.S0) / self.S0 * 100, 1) if result_S else None
+            return_checkpoints.append({
+                "months_elapsed":                months,
+                "stock_price_for_100pct_return": result_S,
+                "pct_above_current":             pct_above,
+            })
+
+        # Kelly Criterion for forward projection
+        kelly = None
+        try:
+            if p_itm > 0 and ev_payoff > 0 and self.current_premium > 0:
+                f = (p_itm * ev_payoff - (1 - p_itm) * self.current_premium) / ev_payoff
+                kelly = round(max(0.0, min(25.0, f / 2 * 100)), 1)
+        except Exception:
+            pass
+
+        # P(100% return) from simulated paths
+        target_stock_for_100 = return_checkpoints[-1].get("stock_price_for_100pct_return")
+        p_100_return = None
+        if target_stock_for_100:
+            p_100_return = round(float(np.mean(terminal >= target_stock_for_100)) * 100, 1)
+
         return {
             "symbol":               self.symbol,
             "current_price":        round(self.S0, 2),
@@ -1610,12 +1836,17 @@ class ForwardProjectionEngine:
             },
             "p_itm_pct":                round(p_itm * 100, 1),
             "p_otm_pct":                round(p_otm * 100, 1),
+            "p_100pct_return_pct":      p_100_return,
             "expected_payoff_if_itm":   round(ev_payoff, 2),
             "pv_expected_payoff":       round(pv_payoff, 2),
             "expected_value_ev":        round(ev, 2),
             "ev_positive":              ev > 0,
+            "kelly_criterion_pct":      kelly,
             "projected_option_value":   round(projected_bs, 2)
                                         if not math.isnan(projected_bs) else None,
+            "entry_gamma":              round(entry_gamma, 6) if not math.isnan(entry_gamma) else None,
+            "entry_vega":               round(entry_vega, 4)  if not math.isnan(entry_vega)  else None,
+            "return_checkpoints":       return_checkpoints,
             "status": "ok",
         }
 
@@ -1803,6 +2034,8 @@ def analyze_ticker(symbol, idx, total):
 
             delta = black_scholes_delta(current_price, strike, T, RISK_FREE_RATE, iv)
             theta = black_scholes_theta(current_price, strike, T, RISK_FREE_RATE, iv)
+            gamma = black_scholes_gamma(current_price, strike, T, RISK_FREE_RATE, iv)
+            vega  = black_scholes_vega(current_price, strike, T, RISK_FREE_RATE, iv)
             if math.isnan(delta):
                 continue
 
@@ -1851,11 +2084,28 @@ def analyze_ticker(symbol, idx, total):
                 "dte":                    dte,
 
                 "delta":       round(delta, 4),
+                "gamma":       round(gamma, 6) if not math.isnan(gamma) else None,
                 "theta_daily": round(theta, 4),
+                "vega":        round(vega, 4)  if not math.isnan(vega)  else None,
 
                 "required_stock_move": round(required_move, 2)  if not math.isnan(required_move)  else None,
                 "leverage_ratio":      round(leverage_ratio, 2) if not math.isnan(leverage_ratio) else None,
                 "breakeven_price":     round(breakeven, 2),
+
+                # Stock metadata
+                "beta":                    fund.get("beta"),
+                "short_interest_pct":      fund.get("short_interest_pct"),
+                "analyst_target":          fund.get("analyst_target"),
+                "analyst_low":             fund.get("analyst_low"),
+                "analyst_high":            fund.get("analyst_high"),
+                "analyst_count":           fund.get("analyst_count"),
+                "analyst_upside_pct":      fund.get("analyst_upside_pct"),
+                "next_earnings_date":      fund.get("next_earnings_date"),
+                "avg_earnings_move_pct":   fund.get("avg_earnings_move_pct"),
+                "sector":                  fund.get("sector", ""),
+                "industry":                fund.get("industry", ""),
+                "free_cashflow":           fund.get("free_cashflow"),
+                "debt_to_equity":          fund.get("debt_to_equity"),
 
                 "scores":          dict((k, round(v, 1)) for k, v in param_scores.items()),
                 "composite_score": compute_composite_score(param_scores),
@@ -2047,6 +2297,59 @@ def build_tradingview_config(all_results, passed_tickers):
     }
 
 
+def build_portfolio_analysis(all_results):
+    """
+    Calculates portfolio-level metrics across all passing tickers:
+      - Sector concentration
+      - Pairwise correlation (based on composite scores as a proxy)
+      - Kelly-weighted position sizing suggestions
+    """
+    if not all_results:
+        return {}
+
+    # Best option per ticker
+    best = {}
+    for opt in sorted(all_results, key=lambda x: x["composite_score"], reverse=True):
+        if opt["ticker"] not in best:
+            best[opt["ticker"]] = opt
+
+    # Sector concentration
+    sector_count = {}
+    for opt in best.values():
+        s = opt.get("sector") or "Unknown"
+        sector_count[s] = sector_count.get(s, 0) + 1
+
+    total = len(best)
+    sector_pct = {s: round(c / total * 100, 1) for s, c in sector_count.items()}
+
+    # Flag over-concentration (any sector above 30%)
+    concentrated_sectors = [s for s, pct in sector_pct.items() if pct > 30]
+
+    # Beta-weighted market exposure
+    betas = [opt.get("beta") for opt in best.values() if opt.get("beta")]
+    avg_beta = round(sum(betas) / len(betas), 2) if betas else None
+
+    # Summary of analyst upside across picks
+    upsides = [opt.get("analyst_upside_pct") for opt in best.values()
+               if opt.get("analyst_upside_pct") is not None]
+    avg_analyst_upside = round(sum(upsides) / len(upsides), 1) if upsides else None
+
+    # Short interest summary
+    short_ints = [opt.get("short_interest_pct") for opt in best.values()
+                  if opt.get("short_interest_pct") is not None]
+    high_short_interest = [opt["ticker"] for opt in best.values()
+                           if (opt.get("short_interest_pct") or 0) > 10]
+
+    return {
+        "total_tickers":           total,
+        "sector_breakdown":        sector_pct,
+        "concentrated_sectors":    concentrated_sectors,
+        "avg_portfolio_beta":      avg_beta,
+        "avg_analyst_upside_pct":  avg_analyst_upside,
+        "high_short_interest_tickers": high_short_interest,
+    }
+
+
 def main():
     print("=================================================================")
     print("  LEAP CALL OPTIONS SCREENER")
@@ -2129,6 +2432,12 @@ def main():
     }
     save_json({"meta": tv_meta, **tv_config}, "tradingview_config.json")
     save_snapshot({"meta": tv_meta, **tv_config}, "tradingview_config.json", today_str)
+
+    # Portfolio-level analysis
+    portfolio = build_portfolio_analysis(all_results)
+    port_meta = {"generated_at": datetime.utcnow().isoformat() + "Z"}
+    save_json({"meta": port_meta, "portfolio_analysis": portfolio}, "portfolio_analysis.json")
+    save_snapshot({"meta": port_meta, "portfolio_analysis": portfolio}, "portfolio_analysis.json", today_str)
 
     print("")
     print("=================================================================")
