@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-12T18:31:12.503257Z"
+    "generated_at": "2026-05-12T23:31:37.922807Z"
   },
   "portfolio_analysis": {
     "total_tickers": 80,
@@ -8,12 +8,12 @@
       "Energy": 6.2,
       "Consumer Cyclical": 10.0,
       "Technology": 33.8,
-      "Communication Services": 6.2,
       "Financial Services": 11.2,
+      "Communication Services": 6.2,
       "Utilities": 5.0,
       "Healthcare": 6.2,
-      "Basic Materials": 3.8,
       "Consumer Defensive": 5.0,
+      "Basic Materials": 3.8,
       "Real Estate": 7.5,
       "Industrials": 5.0
     },
@@ -21,7 +21,7 @@
       "Technology"
     ],
     "avg_portfolio_beta": 1.08,
-    "avg_analyst_upside_pct": 16.1,
+    "avg_analyst_upside_pct": 15.8,
     "high_short_interest_tickers": [
       "CRM"
     ]
