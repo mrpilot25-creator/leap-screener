@@ -72,9 +72,9 @@ RUN_FORWARD_PROJECTION = True  # Set to False to skip forward projections
 # Backtest config
 BT_TRAINING_YEARS    = 3
 BT_VALIDATION_YEARS  = 2
-BT_N_SIMULATIONS     = 1000
+BT_N_SIMULATIONS     = 5500
 BT_TOP_N_CANDIDATES  = 999  # Backtest ALL passing tickers (one per ticker, best option)
-FP_N_SIMULATIONS     = 1000  # Monte Carlo paths for forward projection
+FP_N_SIMULATIONS     = 5500  # Monte Carlo paths for forward projection
 
 # Fundamental thresholds
 MIN_MARKET_CAP     = 25e9
