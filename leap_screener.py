@@ -1173,7 +1173,145 @@ class BacktestEngine:
             "drawdown_error_pct":       reality["drawdown_error_pct"],
         }
 
-    # -- 7. Full Run --------------------------------------------------
+    # -- 7. Returns Analysis ------------------------------------------
+
+    def returns_analysis(self):
+        """
+        Analyses option value along every simulated path and the actual
+        historical path to determine:
+
+          1. Whether and when a 100% return was achieved
+             (option value >= 2x the entry premium)
+
+          2. The maximum return achieved over the validation period
+             (best option value vs entry premium)
+
+        Option value at each day is calculated using Black-Scholes with
+        the remaining time to expiry decreasing daily.
+
+        All 1,000 paths are processed vectorized using NumPy. The actual
+        historical path uses real validation-window stock prices.
+        """
+        K          = self.strike
+        r          = self.r
+        sigma      = self.sigma_blended
+        T_full     = float(self.validation_years)
+        n_days     = self.paths.shape[1]
+        entry_prem = black_scholes_price(
+            self.entry_price, K, T_full, r, sigma
+        )
+        if math.isnan(entry_prem) or entry_prem <= 0:
+            return {"status": "error", "error": "entry premium invalid"}
+
+        target_value = entry_prem * 2.0   # 100% return threshold
+
+        # -- Daily time remaining for each day in validation window ----
+        # Day 0 = entry (T_full years left), Day n-1 = expiry (near 0)
+        dt        = T_full / n_days
+        t_remaining = np.array([T_full - i * dt for i in range(n_days)])
+        t_remaining = np.maximum(t_remaining, 0.01)  # floor at 1% to avoid BS singularity
+
+        # -- Vectorized option pricing across all paths and all days ---
+        # For each simulated stock price S[path, day], compute BS call price
+        # Shape: (n_sims, n_days)
+        # We use a loop over days (n_days ~500) but vectorized across
+        # all 1,000 paths simultaneously - fast enough in practice
+        option_values = np.zeros_like(self.paths)
+        for d in range(n_days):
+            T_rem = float(t_remaining[d])
+            S_col = self.paths[:, d]      # all 1,000 prices on day d
+            # Vectorized Black-Scholes across all paths
+            log_SK  = np.log(np.maximum(S_col, 0.001) / K)
+            d1      = (log_SK + (r + 0.5 * sigma**2) * T_rem) / (sigma * math.sqrt(T_rem))
+            d2      = d1 - sigma * math.sqrt(T_rem)
+            from scipy.stats import norm as _norm
+            nd1     = _norm.cdf(d1)
+            nd2     = _norm.cdf(d2)
+            option_values[:, d] = S_col * nd1 - K * math.exp(-r * T_rem) * nd2
+
+        # -- Simulated returns (%) at each day -------------------------
+        # Shape: (n_sims, n_days)
+        sim_returns = (option_values - entry_prem) / entry_prem * 100.0
+
+        # -- 100% return analysis across simulated paths ---------------
+        # For each path, find the first day it hit 100% return
+        hit_100   = option_values >= target_value  # (n_sims, n_days) bool
+        n_hit_100 = int(np.sum(np.any(hit_100, axis=1)))
+        p_hit_100 = round(n_hit_100 / self.n_sims * 100, 1)
+
+        # First day each path hit 100% (argmax on bool gives first True index)
+        paths_that_hit = np.any(hit_100, axis=1)
+        if n_hit_100 > 0:
+            first_day_each = np.argmax(hit_100[paths_that_hit], axis=1)
+            median_day_100  = int(np.median(first_day_each))
+            earliest_day_100 = int(np.min(first_day_each))
+            latest_day_100   = int(np.max(first_day_each))
+        else:
+            median_day_100   = None
+            earliest_day_100 = None
+            latest_day_100   = None
+
+        # -- Max return across simulated paths -------------------------
+        max_returns_per_path = np.max(sim_returns, axis=1)  # (n_sims,)
+        median_max_return    = round(float(np.median(max_returns_per_path)), 1)
+        pct_90_max_return    = round(float(np.percentile(max_returns_per_path, 90)), 1)
+        pct_10_max_return    = round(float(np.percentile(max_returns_per_path, 10)), 1)
+        avg_max_return       = round(float(np.mean(max_returns_per_path)), 1)
+
+        # -- Actual historical path analysis ---------------------------
+        actual_prices = self.val_close.values
+        actual_option = np.zeros(n_days)
+        for d in range(n_days):
+            T_rem = float(t_remaining[d])
+            S     = float(actual_prices[d]) if d < len(actual_prices) else float(actual_prices[-1])
+            v     = black_scholes_price(S, K, T_rem, r, sigma)
+            actual_option[d] = v if not math.isnan(v) else 0.0
+
+        actual_returns = (actual_option - entry_prem) / entry_prem * 100.0
+
+        # Did actual path hit 100%?
+        actual_hit_100 = actual_option >= target_value
+        if np.any(actual_hit_100):
+            actual_day_100     = int(np.argmax(actual_hit_100))
+            actual_hit_100_bool = True
+        else:
+            actual_day_100     = None
+            actual_hit_100_bool = False
+
+        # Max return on actual path
+        actual_max_return     = round(float(np.max(actual_returns)), 1)
+        actual_max_return_day = int(np.argmax(actual_returns))
+
+        # Option value at entry and terminal on actual path
+        actual_terminal_option = round(float(actual_option[-1]), 2)
+        actual_terminal_return = round(float(actual_returns[-1]), 1)
+
+        return {
+            "entry_premium":            round(entry_prem, 2),
+            "target_value_100pct":      round(target_value, 2),
+
+            # -- Simulated 100% return stats ---------------------------
+            "sim_pct_paths_hit_100":    p_hit_100,
+            "sim_median_day_hit_100":   median_day_100,
+            "sim_earliest_day_hit_100": earliest_day_100,
+            "sim_latest_day_hit_100":   latest_day_100,
+
+            # -- Simulated max return stats ----------------------------
+            "sim_median_max_return_pct":  median_max_return,
+            "sim_avg_max_return_pct":     avg_max_return,
+            "sim_top10pct_max_return":    pct_90_max_return,
+            "sim_bottom10pct_max_return": pct_10_max_return,
+
+            # -- Actual historical path --------------------------------
+            "actual_hit_100":             actual_hit_100_bool,
+            "actual_day_hit_100":         actual_day_100,
+            "actual_max_return_pct":      actual_max_return,
+            "actual_max_return_day":      actual_max_return_day,
+            "actual_terminal_option_value": actual_terminal_option,
+            "actual_terminal_return_pct": actual_terminal_return,
+        }
+
+    # -- 8. Full Run --------------------------------------------------
 
     def run(self):
         try:
@@ -1195,6 +1333,9 @@ class BacktestEngine:
             print("    Building residual variance report...")
             rv_report = self.residual_variance_report(reality)
 
+            print("    Analysing 100% return and max return milestones...")
+            returns = self.returns_analysis()
+
             return {
                 "symbol":            self.symbol,
                 "strike":            self.strike,
@@ -1215,9 +1356,10 @@ class BacktestEngine:
                     "risk_free_rate_pct":          round(self.r * 100, 2),
                     "calibration_method":          "winsorized_drift + ewma_vol + coverage_correction",
                 },
-                "reality_check":          reality,
-                "greek_attribution":      greeks,
+                "reality_check":            reality,
+                "greek_attribution":        greeks,
                 "residual_variance_report": rv_report,
+                "returns_analysis":         returns,
                 "status": "ok",
             }
 
