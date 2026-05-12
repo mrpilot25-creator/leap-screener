@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-12T11:05:51.276405Z",
+    "generated_at": "2026-05-12T11:33:16.732290Z",
     "training_years": 3,
     "validation_years": 2,
     "n_simulations": 1000,
@@ -465,7 +465,7 @@
         "sim_earliest_day_hit_100": 4,
         "sim_latest_day_hit_100": 491,
         "sim_median_max_return_pct": 336.4,
-        "sim_avg_max_return_pct": 1255.5,
+        "sim_avg_max_return_pct": 1255.6,
         "sim_top10pct_max_return": 3581.0,
         "sim_bottom10pct_max_return": 19.3,
         "actual_hit_100": true,
@@ -1319,7 +1319,7 @@
       "reality_check": {
         "actual_terminal_price": 206.12,
         "median_simulated_terminal": 176.24,
-        "sim_terminal_5th_pct": 77.19,
+        "sim_terminal_5th_pct": 77.18,
         "sim_terminal_95th_pct": 377.68,
         "terminal_price_error_pct": -14.49,
         "sim_avg_max_drawdown_pct": -39.58,
@@ -2537,7 +2537,7 @@
           },
           {
             "months_elapsed": 12,
-            "stock_price_for_100pct_return": 161.37,
+            "stock_price_for_100pct_return": 161.36,
             "pct_above_entry_price": 32.0
           },
           {
@@ -3625,7 +3625,7 @@
         "sim_latest_day_hit_100": 503,
         "sim_median_max_return_pct": 978.7,
         "sim_avg_max_return_pct": 1295.3,
-        "sim_top10pct_max_return": 2817.2,
+        "sim_top10pct_max_return": 2817.3,
         "sim_bottom10pct_max_return": 93.6,
         "actual_hit_100": true,
         "actual_day_hit_100": 57,
@@ -4309,7 +4309,7 @@
         "reality_premium": 104.68,
         "p_itm_pct": 60.3,
         "p_otm_pct": 39.7,
-        "expected_payoff_if_itm": 650.67,
+        "expected_payoff_if_itm": 650.68,
         "expected_value_ev": 362.09,
         "ev_positive": "True",
         "residual_variance": 60999.1204,
@@ -4560,7 +4560,7 @@
         "sim_earliest_day_hit_100": 2,
         "sim_latest_day_hit_100": 460,
         "sim_median_max_return_pct": 572.2,
-        "sim_avg_max_return_pct": 5403.1,
+        "sim_avg_max_return_pct": 5403.2,
         "sim_top10pct_max_return": 14822.6,
         "sim_bottom10pct_max_return": 27.3,
         "actual_hit_100": true,
@@ -5730,7 +5730,7 @@
         "sim_earliest_day_hit_100": 52,
         "sim_latest_day_hit_100": 501,
         "sim_median_max_return_pct": 59.9,
-        "sim_avg_max_return_pct": 74.1,
+        "sim_avg_max_return_pct": 74.2,
         "sim_top10pct_max_return": 151.2,
         "sim_bottom10pct_max_return": 11.6,
         "actual_hit_100": false,
@@ -7793,7 +7793,7 @@
             "years_to_expiry": 0.25,
             "option_price": 0.06,
             "delta": 0.0817,
-            "gamma": 0.085684,
+            "gamma": 0.085685,
             "theta_daily": -0.0016,
             "vega_per_1pct_iv": 0.0129,
             "rho_per_1pct_rate": 0.0033
@@ -7995,7 +7995,7 @@
         "actual_terminal_price": 305.99,
         "median_simulated_terminal": 327.82,
         "sim_terminal_5th_pct": 128.6,
-        "sim_terminal_95th_pct": 777.63,
+        "sim_terminal_95th_pct": 777.64,
         "terminal_price_error_pct": 7.13,
         "sim_avg_max_drawdown_pct": -43.43,
         "actual_max_drawdown_pct": -46.47,

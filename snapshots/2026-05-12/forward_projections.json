@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-12T11:06:43.053072Z",
+    "generated_at": "2026-05-12T11:34:03.819661Z",
     "projection_date": "2026-05-12",
     "n_simulations": 1000,
     "risk_free_rate_pct": 3.88,
@@ -897,8 +897,8 @@
         "median": 14585.35,
         "pct_5": 4242.48,
         "pct_25": 8842.58,
-        "pct_75": 25004.2,
-        "pct_95": 55750.52
+        "pct_75": 25004.21,
+        "pct_95": 55750.53
       },
       "upside_downside": {
         "median_change_pct": 1733.9,
@@ -909,11 +909,11 @@
       "p_otm_pct": 0.0,
       "p_100pct_return_pct": 100.0,
       "expected_payoff_if_itm": 19901.9,
-      "pv_expected_payoff": 17994.05,
-      "expected_value_ev": 17994.05,
+      "pv_expected_payoff": 17994.06,
+      "expected_value_ev": 17994.06,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 13715.68,
+      "projected_option_value": 13715.69,
       "entry_gamma": 0.000735,
       "entry_vega": 4.8272,
       "return_checkpoints": [
@@ -1304,7 +1304,7 @@
         "pct_5": 596.73,
         "pct_25": 1243.77,
         "pct_75": 3517.0,
-        "pct_95": 7841.67
+        "pct_95": 7841.66
       },
       "upside_downside": {
         "median_change_pct": 834.9,
@@ -1725,7 +1725,7 @@
       "expected_value_ev": 1207.18,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 1019.42,
+      "projected_option_value": 1019.43,
       "entry_gamma": 0.002087,
       "entry_vega": 2.4147,
       "return_checkpoints": [
@@ -1826,7 +1826,7 @@
         "pct_5": 298.75,
         "pct_25": 591.51,
         "pct_75": 1515.83,
-        "pct_95": 2831.32
+        "pct_95": 2831.33
       },
       "upside_downside": {
         "median_change_pct": 156.0,
