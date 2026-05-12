@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generated_at": "2026-05-12T11:32:31.232052Z"
+    "generated_at": "2026-05-12T11:52:34.767048Z"
   },
   "portfolio_analysis": {
     "total_tickers": 81,
     "sector_breakdown": {
-      "Energy": 6.2,
       "Technology": 34.6,
+      "Energy": 6.2,
       "Consumer Cyclical": 9.9,
       "Financial Services": 11.1,
       "Consumer Defensive": 4.9,
