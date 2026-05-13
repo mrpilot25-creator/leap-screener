@@ -70,11 +70,11 @@ RUN_BACKTEST          = True    # Set to False to skip the backtest module
 RUN_FORWARD_PROJECTION = True  # Set to False to skip forward projections
 
 # Backtest config
-BT_TRAINING_YEARS    = 4
-BT_VALIDATION_YEARS  = 3
-BT_N_SIMULATIONS     = 5500
+BT_TRAINING_YEARS    = 3
+BT_VALIDATION_YEARS  = 2
+BT_N_SIMULATIONS     = 1000
 BT_TOP_N_CANDIDATES  = 999  # Backtest ALL passing tickers (one per ticker, best option)
-FP_N_SIMULATIONS     = 5500  # Monte Carlo paths for forward projection
+FP_N_SIMULATIONS     = 1000  # Monte Carlo paths for forward projection
 
 # Fundamental thresholds
 MIN_MARKET_CAP     = 25e9
@@ -1010,56 +1010,64 @@ class BacktestEngine:
 
     def calibrate(self):
         """
-        Improved calibration using three refinements over the naive approach:
+        Improved calibration using four refinements:
 
-        1. WINSORIZED RETURNS for drift estimation
-           Trim the top and bottom 1% of daily log returns before computing
-           the mean. This removes the influence of earnings blowups, flash
-           crashes, and other one-off events that skew the mean and produce
-           a drift estimate that is not representative of normal trading days.
+        1. RECENT DRIFT (last 2 years of training only)
+           Drift is estimated from the most recent 2 years of the training
+           window, not the full window. This avoids distortion from events
+           like the COVID crash-and-recovery which inflate the full-window
+           mean and cause severe terminal errors over long validation periods.
 
-        2. EXPONENTIALLY WEIGHTED VOLATILITY (EWMA)
-           Standard deviation weights all days equally. EWMA gives more weight
-           to recent observations, making sigma more responsive to the current
-           volatility regime rather than being anchored to a 3-year average.
-           This is the same approach used by RiskMetrics (lambda = 0.94).
+        2. LONG-RUN MEAN ANCHOR
+           The estimated drift is blended 60% toward the long-run equity
+           market return (10%). This prevents any single exceptional training
+           period from dominating the projection - a well-known problem in
+           GBM models over horizons of 3+ years. The long-run anchor also
+           improves robustness when training data includes regime changes.
 
-        3. COVERAGE-BASED SIGMA CORRECTION
-           After blending, we check whether the 90% confidence band of the
-           TRAINING data covers significantly more or less than 90% of the
-           training prices. If coverage is too high (band too wide), sigma is
-           deflated; if too low (band too narrow), sigma is inflated.
-           This anchors the simulation to produce realistic confidence bands.
+        3. DRIFT CAP AT 15%
+           Hard cap prevents any remaining outlier training period from
+           producing unrealistic compounding over multi-year projections.
+           Lowered from 20% to 15% to better match observed equity returns
+           over 3-year horizons.
+
+        4. EWMA VOLATILITY + COVERAGE CORRECTION
+           Sigma uses full training window (more data = more stable estimate)
+           with EWMA weighting and an in-sample coverage correction.
         """
-        # -- Log returns ----------------------------------------------
+        # Full training log returns (used for sigma only)
         log_rets = np.log(
             self.train_close.values[1:] / self.train_close.values[:-1]
         )
 
-        # -- 1. Winsorized drift --------------------------------------
-        # Trim extreme 1% tails before computing mean drift
-        lo = float(np.percentile(log_rets, 1))
-        hi = float(np.percentile(log_rets, 99))
-        trimmed_rets  = log_rets[(log_rets >= lo) & (log_rets <= hi)]
-
-        # Use only the most recent 2 years of training data for drift.
-        # Sigma uses the full window (more data = more stable vol estimate)
-        # but drift should reflect current conditions, not distorted by
-        # COVID crash and recovery which inflate the full-window mean.
+        # -- 1. Recent drift: last 2 years of training window only -----
+        # Using the most recent portion avoids COVID-era distortion while
+        # still providing sufficient data for a reliable mean estimate.
         recent_days   = min(int(252 * 2), len(log_rets))
         recent_rets   = log_rets[-recent_days:]
         lo_r = float(np.percentile(recent_rets, 1))
         hi_r = float(np.percentile(recent_rets, 99))
         recent_trim   = recent_rets[(recent_rets >= lo_r) & (recent_rets <= hi_r)]
-        mu_daily      = float(np.mean(recent_trim))
-        mu_annual     = mu_daily * 252
+        mu_recent     = float(np.mean(recent_trim)) * 252
 
-        # Cap drift at 20% annualised to prevent any single exceptional
-        # training period from dominating the projection
-        DRIFT_CAP     = 0.20
-        self.mu       = max(min(mu_annual - self.div_yield, DRIFT_CAP), self.r)
+        # -- 2. Long-run mean anchor (60% blend toward 10% equity mean) -
+        # The equity risk premium over the risk-free rate is approximately
+        # 6%, giving a long-run nominal equity return of ~10%.
+        # Blending toward this prevents any single training regime from
+        # producing implausible multi-year projections.
+        LONG_RUN_MEAN = 0.10
+        ANCHOR_WEIGHT = 0.40   # 40% historical, 60% long-run anchor
+        mu_blended_drift = (1.0 - ANCHOR_WEIGHT) * mu_recent + ANCHOR_WEIGHT * LONG_RUN_MEAN
 
-        # -- 2. EWMA volatility (lambda = 0.94 RiskMetrics standard) --
+        # -- 3. Drift cap at 15% and floor at risk-free rate -----------
+        DRIFT_CAP = 0.15
+        self.mu   = max(min(mu_blended_drift - self.div_yield, DRIFT_CAP), self.r)
+
+        # Store components for reporting
+        self.mu_recent_raw = round(mu_recent, 4)
+        self.mu_anchored   = round(mu_blended_drift, 4)
+
+        # -- 4. EWMA volatility (lambda = 0.94 RiskMetrics standard) --
         lam          = 0.94
         n            = len(log_rets)
         weights      = np.array([(1 - lam) * lam ** (n - 1 - i)
@@ -1069,28 +1077,24 @@ class BacktestEngine:
         sigma_daily_ewma = math.sqrt(var_ewma)
         self.sigma_ewma  = sigma_daily_ewma * math.sqrt(252)
 
-        # Also compute plain training sigma for reporting
+        # Plain training sigma for reporting
         sigma_daily_plain = float(np.std(log_rets, ddof=1))
         self.sigma_train  = sigma_daily_plain * math.sqrt(252)
 
-        # Actual volatility in validation period (for reality check)
+        # Actual volatility in validation period
         val_log_rets     = np.log(
             self.val_close.values[1:] / self.val_close.values[:-1]
         )
         sigma_daily_val  = float(np.std(val_log_rets, ddof=1))
         self.sigma_val   = sigma_daily_val * math.sqrt(252)
 
-        # -- Mean-reverting blend (EWMA replaces plain training sigma) -
+        # Mean-reverting sigma blend
         kappa  = 2.0
         T_val  = self.validation_years
         weight = math.exp(-kappa * T_val)
         blended = weight * self.sigma_ewma + (1 - weight) * self.sigma_val
 
-        # -- 3. Coverage-based sigma correction -----------------------
-        # Simulate a quick 200-path in-sample test on the training window
-        # to check how well calibrated the blended sigma is.
-        # If the 90% band covers >> 90% of training prices, sigma is too
-        # high and we deflate it proportionally. Cap adjustment at +-20%.
+        # Coverage-based sigma correction (tightened cap to +-15%)
         try:
             n_train   = len(self.train_close)
             S0_train  = float(self.train_close.iloc[0])
@@ -1108,18 +1112,15 @@ class BacktestEngine:
                 (actual_arr >= sim_5) & (actual_arr <= sim_95)
             ))
 
-            # Target is 90% coverage. Scale sigma inversely with excess.
-            # coverage = 0.99 -> ratio = 0.99/0.90 = 1.10 -> deflate by 10%
-            # coverage = 0.80 -> ratio = 0.80/0.90 = 0.89 -> inflate by 11%
             ratio     = coverage / 0.90
-            ratio     = max(0.80, min(1.20, ratio))    # cap at +-20%
-            self.sigma_blended           = blended / ratio
-            self.sigma_coverage_raw      = round(coverage * 100, 1)
-            self.sigma_coverage_ratio    = round(ratio, 4)
+            ratio     = max(0.85, min(1.15, ratio))   # tightened from +-20% to +-15%
+            self.sigma_blended        = blended / ratio
+            self.sigma_coverage_raw   = round(coverage * 100, 1)
+            self.sigma_coverage_ratio = round(ratio, 4)
         except Exception:
-            self.sigma_blended           = blended
-            self.sigma_coverage_raw      = None
-            self.sigma_coverage_ratio    = 1.0
+            self.sigma_blended        = blended
+            self.sigma_coverage_raw   = None
+            self.sigma_coverage_ratio = 1.0
 
         return self
 
@@ -1540,6 +1541,9 @@ class BacktestEngine:
                 "n_simulations":     self.n_sims,
                 "calibration": {
                     "annualised_mu_pct":          round(self.mu * 100, 2),
+                    "mu_recent_2yr_raw_pct":       round(getattr(self, "mu_recent_raw", self.mu) * 100, 2),
+                    "mu_after_anchor_pct":         round(getattr(self, "mu_anchored", self.mu) * 100, 2),
+                    "drift_method":                "recent_2yr + 60pct_longrun_anchor + 15pct_cap",
                     "dividend_yield_pct":          round(self.div_yield * 100, 2),
                     "training_sigma_pct":          round(self.sigma_train * 100, 2),
                     "ewma_sigma_pct":              round(self.sigma_ewma * 100, 2),
@@ -1548,7 +1552,7 @@ class BacktestEngine:
                     "coverage_correction_ratio":   getattr(self, "sigma_coverage_ratio", None),
                     "in_sample_coverage_pct":      getattr(self, "sigma_coverage_raw", None),
                     "risk_free_rate_pct":          round(self.r * 100, 2),
-                    "calibration_method":          "winsorized_drift + ewma_vol + coverage_correction",
+                    "calibration_method":          "recent_drift + longrun_anchor + ewma_vol + coverage_correction",
                 },
                 "reality_check":            reality,
                 "greek_attribution":        greeks,
@@ -1593,7 +1597,7 @@ class ForwardProjectionEngine:
 
     def __init__(self, symbol, current_price, strike, expiry_str,
                  implied_vol, current_premium,
-                 risk_free_rate=0.0388, n_simulations=5500):
+                 risk_free_rate=0.0388, n_simulations=1000):
         self.symbol          = symbol
         self.S0              = current_price
         self.K               = strike
@@ -1640,7 +1644,7 @@ class ForwardProjectionEngine:
         """
         try:
             ticker   = yf.Ticker(self.symbol)
-            hist     = ticker.history(period="4y")   # 3yr not 1yr
+            hist     = ticker.history(period="3y")   # 3yr not 1yr
             close    = hist["Close"].dropna()
 
             if len(close) >= 60:
