@@ -70,8 +70,8 @@ RUN_BACKTEST          = True    # Set to False to skip the backtest module
 RUN_FORWARD_PROJECTION = True  # Set to False to skip forward projections
 
 # Backtest config
-BT_TRAINING_YEARS    = 3
-BT_VALIDATION_YEARS  = 2
+BT_TRAINING_YEARS    = 4
+BT_VALIDATION_YEARS  = 3
 BT_N_SIMULATIONS     = 5500
 BT_TOP_N_CANDIDATES  = 999  # Backtest ALL passing tickers (one per ticker, best option)
 FP_N_SIMULATIONS     = 5500  # Monte Carlo paths for forward projection
