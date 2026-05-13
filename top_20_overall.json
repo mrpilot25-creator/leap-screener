@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-13T00:27:13.421385Z",
+    "generated_at": "2026-05-13T00:45:33.996411Z",
     "watchlist": [
       "A",
       "AAPL",
@@ -1233,6 +1233,110 @@
       "composite_score": 71.58
     },
     {
+      "ticker": "EQT",
+      "exchange": "NYSE",
+      "tradingview_symbol": "NYSE:EQT",
+      "expiry": "2028-01-21",
+      "strike": 32.5,
+      "contract": "EQT280121C00032500",
+      "current_price": 55.78,
+      "market_cap": 34889162752,
+      "avg_volume": 8756290,
+      "inst_ownership": 95.4,
+      "eps_growth_pct": 490.0,
+      "revenue_growth_pct": 49.9,
+      "ebitda_margin_pct": 81.9,
+      "rsi": 36.18,
+      "rsi_weekly": 45.56,
+      "price_vs_200ma_pct": -0.21,
+      "bb_lower": 55.4,
+      "bb_middle": 57.86,
+      "bb_upper": 60.32,
+      "bb_position_pct": 7.7,
+      "atr": 1.48,
+      "macd": {
+        "macd": 0.6867,
+        "signal": 1.4505,
+        "histogram": -0.7637,
+        "bullish_crossover": false,
+        "macd_above_signal": false
+      },
+      "stoch_rsi": {
+        "stoch_k": 0.47,
+        "stoch_d": 4.59,
+        "bullish_cross": false,
+        "oversold": true
+      },
+      "obv": {
+        "obv": 227790369.0,
+        "obv_rising": false,
+        "bullish_divergence": false
+      },
+      "weekly_mas": {
+        "ma50_weekly": 56.05,
+        "ma200_weekly": null,
+        "above_ma50_weekly": false,
+        "above_ma200_weekly": null
+      },
+      "abcd_pattern": {
+        "status": "no_pattern_found"
+      },
+      "leaps_checklist": {
+        "checklist": {
+          "near_abcd_c": false,
+          "c_above_a": false,
+          "weekly_rsi_oversold": false,
+          "obv_bullish_divergence": false,
+          "at_lower_bollinger": true,
+          "macd_bullish": false,
+          "volume_capitulation": false,
+          "weekly_ma_bullish": false,
+          "iv_low": false
+        },
+        "confluence_score": 1,
+        "max_score": 9,
+        "confluence_pct": 11.1
+      },
+      "premium": 28.12,
+      "implied_volatility_pct": 61.35,
+      "iv_percentile": 88.3,
+      "dte": 618,
+      "delta": 0.8766,
+      "gamma": 0.004582,
+      "theta_daily": -0.0094,
+      "vega": 0.1481,
+      "required_stock_move": 32.08,
+      "leverage_ratio": 1.74,
+      "breakeven_price": 88.75,
+      "beta": 0.59,
+      "short_interest_pct": 3.4,
+      "analyst_target": 70.56,
+      "analyst_low": 57.0,
+      "analyst_high": 83.0,
+      "analyst_count": 25,
+      "analyst_upside_pct": 26.5,
+      "next_earnings_date": "2026-07-21",
+      "avg_earnings_move_pct": null,
+      "sector": "Energy",
+      "industry": "Oil & Gas E&P",
+      "free_cashflow": 2503225856,
+      "debt_to_equity": 20.82,
+      "scores": {
+        "market_cap": 100,
+        "avg_volume": 86.2,
+        "inst_ownership": 100,
+        "eps_growth": 100,
+        "revenue_growth": 100,
+        "ebitda_margin": 100,
+        "rsi": 19.1,
+        "price_vs_200ma": 98.8,
+        "bb_position": 92.3,
+        "iv_percentile": 0.0,
+        "delta": 73.4
+      },
+      "composite_score": 71.39
+    },
+    {
       "ticker": "BKNG",
       "exchange": "NASDAQ",
       "tradingview_symbol": "NASDAQ:BKNG",
@@ -1458,110 +1562,6 @@
         "delta": 72.3
       },
       "composite_score": 71.17
-    },
-    {
-      "ticker": "EQT",
-      "exchange": "NYSE",
-      "tradingview_symbol": "NYSE:EQT",
-      "expiry": "2028-01-21",
-      "strike": 32.5,
-      "contract": "EQT280121C00032500",
-      "current_price": 55.78,
-      "market_cap": 34889162752,
-      "avg_volume": 8756290,
-      "inst_ownership": 95.4,
-      "eps_growth_pct": 490.0,
-      "revenue_growth_pct": 49.9,
-      "ebitda_margin_pct": 81.9,
-      "rsi": 36.18,
-      "rsi_weekly": 45.56,
-      "price_vs_200ma_pct": -0.21,
-      "bb_lower": 55.4,
-      "bb_middle": 57.86,
-      "bb_upper": 60.32,
-      "bb_position_pct": 7.7,
-      "atr": 1.48,
-      "macd": {
-        "macd": 0.6867,
-        "signal": 1.4505,
-        "histogram": -0.7637,
-        "bullish_crossover": false,
-        "macd_above_signal": false
-      },
-      "stoch_rsi": {
-        "stoch_k": 0.47,
-        "stoch_d": 4.59,
-        "bullish_cross": false,
-        "oversold": true
-      },
-      "obv": {
-        "obv": 227790369.0,
-        "obv_rising": false,
-        "bullish_divergence": false
-      },
-      "weekly_mas": {
-        "ma50_weekly": 56.05,
-        "ma200_weekly": null,
-        "above_ma50_weekly": false,
-        "above_ma200_weekly": null
-      },
-      "abcd_pattern": {
-        "status": "no_pattern_found"
-      },
-      "leaps_checklist": {
-        "checklist": {
-          "near_abcd_c": false,
-          "c_above_a": false,
-          "weekly_rsi_oversold": false,
-          "obv_bullish_divergence": false,
-          "at_lower_bollinger": true,
-          "macd_bullish": false,
-          "volume_capitulation": false,
-          "weekly_ma_bullish": false,
-          "iv_low": false
-        },
-        "confluence_score": 1,
-        "max_score": 9,
-        "confluence_pct": 11.1
-      },
-      "premium": 27.88,
-      "implied_volatility_pct": 59.81,
-      "iv_percentile": 88.3,
-      "dte": 618,
-      "delta": 0.8785,
-      "gamma": 0.004648,
-      "theta_daily": -0.0092,
-      "vega": 0.1465,
-      "required_stock_move": 31.73,
-      "leverage_ratio": 1.76,
-      "breakeven_price": 88.25,
-      "beta": 0.59,
-      "short_interest_pct": 3.4,
-      "analyst_target": 70.56,
-      "analyst_low": 57.0,
-      "analyst_high": 83.0,
-      "analyst_count": 25,
-      "analyst_upside_pct": 26.5,
-      "next_earnings_date": "2026-07-21",
-      "avg_earnings_move_pct": null,
-      "sector": "Energy",
-      "industry": "Oil & Gas E&P",
-      "free_cashflow": 2503225856,
-      "debt_to_equity": 20.82,
-      "scores": {
-        "market_cap": 100,
-        "avg_volume": 86.2,
-        "inst_ownership": 100,
-        "eps_growth": 100,
-        "revenue_growth": 100,
-        "ebitda_margin": 100,
-        "rsi": 19.1,
-        "price_vs_200ma": 98.8,
-        "bb_position": 92.3,
-        "iv_percentile": 0.0,
-        "delta": 71.5
-      },
-      "composite_score": 71.01
     },
     {
       "ticker": "BKNG",
