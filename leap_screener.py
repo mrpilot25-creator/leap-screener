@@ -1041,9 +1041,23 @@ class BacktestEngine:
         lo = float(np.percentile(log_rets, 1))
         hi = float(np.percentile(log_rets, 99))
         trimmed_rets  = log_rets[(log_rets >= lo) & (log_rets <= hi)]
-        mu_daily      = float(np.mean(trimmed_rets))
+
+        # Use only the most recent 2 years of training data for drift.
+        # Sigma uses the full window (more data = more stable vol estimate)
+        # but drift should reflect current conditions, not distorted by
+        # COVID crash and recovery which inflate the full-window mean.
+        recent_days   = min(int(252 * 2), len(log_rets))
+        recent_rets   = log_rets[-recent_days:]
+        lo_r = float(np.percentile(recent_rets, 1))
+        hi_r = float(np.percentile(recent_rets, 99))
+        recent_trim   = recent_rets[(recent_rets >= lo_r) & (recent_rets <= hi_r)]
+        mu_daily      = float(np.mean(recent_trim))
         mu_annual     = mu_daily * 252
-        self.mu       = max(mu_annual - self.div_yield, self.r)
+
+        # Cap drift at 20% annualised to prevent any single exceptional
+        # training period from dominating the projection
+        DRIFT_CAP     = 0.20
+        self.mu       = max(min(mu_annual - self.div_yield, DRIFT_CAP), self.r)
 
         # -- 2. EWMA volatility (lambda = 0.94 RiskMetrics standard) --
         lam          = 0.94
