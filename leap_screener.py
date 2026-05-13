@@ -72,9 +72,9 @@ RUN_FORWARD_PROJECTION = True  # Set to False to skip forward projections
 # Backtest config
 BT_TRAINING_YEARS    = 3
 BT_VALIDATION_YEARS  = 2
-BT_N_SIMULATIONS     = 1000
+BT_N_SIMULATIONS     = 5500
 BT_TOP_N_CANDIDATES  = 999  # Backtest ALL passing tickers (one per ticker, best option)
-FP_N_SIMULATIONS     = 1000  # Monte Carlo paths for forward projection
+FP_N_SIMULATIONS     = 5500  # Monte Carlo paths for forward projection
 
 # Fundamental thresholds
 MIN_MARKET_CAP     = 25e9
@@ -941,8 +941,8 @@ class BacktestEngine:
     """
 
     def __init__(self, symbol, strike, entry_score,
-                 training_years=3, validation_years=2,
-                 n_simulations=1000, risk_free_rate=0.0388):
+                 training_years=4, validation_years=3,
+                 n_simulations=5500, risk_free_rate=0.0388):
         self.symbol           = symbol
         self.strike           = strike
         self.entry_score      = entry_score
@@ -1597,7 +1597,7 @@ class ForwardProjectionEngine:
 
     def __init__(self, symbol, current_price, strike, expiry_str,
                  implied_vol, current_premium,
-                 risk_free_rate=0.0388, n_simulations=1000):
+                 risk_free_rate=0.0388, n_simulations=5500):
         self.symbol          = symbol
         self.S0              = current_price
         self.K               = strike
@@ -1644,7 +1644,7 @@ class ForwardProjectionEngine:
         """
         try:
             ticker   = yf.Ticker(self.symbol)
-            hist     = ticker.history(period="3y")   # 3yr not 1yr
+            hist     = ticker.history(period="4y")   # 3yr not 1yr
             close    = hist["Close"].dropna()
 
             if len(close) >= 60:
