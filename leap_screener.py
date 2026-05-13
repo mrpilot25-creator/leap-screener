@@ -70,7 +70,7 @@ RUN_BACKTEST          = True    # Set to False to skip the backtest module
 RUN_FORWARD_PROJECTION = True  # Set to False to skip forward projections
 
 # Backtest config
-BT_TRAINING_YEARS    = 2
+BT_TRAINING_YEARS    = 3
 BT_VALIDATION_YEARS  = 2
 BT_N_SIMULATIONS     = 5500
 BT_TOP_N_CANDIDATES  = 999  # Backtest ALL passing tickers (one per ticker, best option)
@@ -941,7 +941,7 @@ class BacktestEngine:
     """
 
     def __init__(self, symbol, strike, entry_score,
-                 training_years=2, validation_years=2,
+                 training_years=3, validation_years=2,
                  n_simulations=5500, risk_free_rate=0.0388):
         self.symbol           = symbol
         self.strike           = strike
