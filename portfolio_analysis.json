@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-13T12:59:53.091006Z"
+    "generated_at": "2026-05-13T13:10:02.826385Z"
   },
   "portfolio_analysis": {
     "total_tickers": 80,
@@ -11,9 +11,9 @@
       "Consumer Cyclical": 10.0,
       "Communication Services": 6.2,
       "Utilities": 5.0,
+      "Consumer Defensive": 5.0,
       "Basic Materials": 3.8,
       "Real Estate": 7.5,
-      "Consumer Defensive": 5.0,
       "Healthcare": 6.2,
       "Industrials": 5.0
     },
