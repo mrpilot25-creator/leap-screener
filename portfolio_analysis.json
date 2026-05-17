@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-17T04:03:15.833375Z"
+    "generated_at": "2026-05-17T22:29:22.271818Z"
   },
   "portfolio_analysis": {
     "total_tickers": 82,
@@ -21,7 +21,7 @@
       "Technology"
     ],
     "avg_portfolio_beta": 1.1,
-    "avg_analyst_upside_pct": 17.3,
+    "avg_analyst_upside_pct": 17.4,
     "high_short_interest_tickers": []
   }
 }
