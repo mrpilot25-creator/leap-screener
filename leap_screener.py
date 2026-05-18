@@ -1995,7 +1995,15 @@ def main():
             per_stock[symbol] = options[:20]
             all_results.extend(options)
     all_results.sort(key=lambda x: x["composite_score"], reverse=True)
-    top_20_overall = all_results[:20]
+    # Top 20 overall: one ATM option per ticker, ranked by composite score.
+    # Without deduplication every slot would be filled by different strikes
+    # of the same ticker, hiding all other companies.
+    atm_by_ticker = build_atm_per_ticker(all_results)
+    top_20_overall = sorted(
+        atm_by_ticker.values(),
+        key=lambda x: x["composite_score"],
+        reverse=True,
+    )[:20]
     run_meta = {
         "generated_at":   datetime.utcnow().isoformat() + "Z",
         "watchlist":      WATCHLIST,
