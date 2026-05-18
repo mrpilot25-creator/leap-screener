@@ -88,8 +88,11 @@ PRICE_VS_200MA_RANGE = 0.05
 BB_NEAR_LOWER_THRESH = 0.10
 
 # Option thresholds
-DELTA_MIN       = 0.70
-DELTA_MAX       = 0.85
+# ATM LEAP calls typically carry delta ~0.50-0.65 (1-2yr expiry).
+# Deep ITM (0.70-0.85) adds intrinsic value to the premium unnecessarily.
+# Targeting ATM minimises premium paid while maximising leverage per dollar.
+DELTA_MIN       = 0.45
+DELTA_MAX       = 0.65
 MAX_IV_PERCENTILE = 30
 
 # ------------------------------------------------------------------
@@ -1499,6 +1502,43 @@ class ForwardProjectionEngine:
 
 
 # ------------------------------------------------------------------
+# ATM OPTION SELECTOR
+# ------------------------------------------------------------------
+def select_atm_option(options_for_ticker):
+    """
+    From a list of options for a single ticker, return the one whose
+    strike is closest to the current stock price (i.e. the ATM option).
+    This minimises the premium paid vs deep-ITM options which carry
+    expensive intrinsic value.  Composite score is used as a tiebreaker
+    when two strikes are equidistant from current price.
+    """
+    if not options_for_ticker:
+        return None
+    return min(
+        options_for_ticker,
+        key=lambda x: (
+            abs(x["strike"] - x["current_price"]),
+            -x["composite_score"],
+        ),
+    )
+
+
+def build_atm_per_ticker(all_results):
+    """
+    Given all screener results, return a dict of {ticker: atm_option}
+    where the chosen option per ticker is the ATM one (strike nearest
+    current price).  Results are processed in composite-score order so
+    that each ticker's full option list is already available before
+    ATM selection.
+    """
+    grouped = {}
+    for opt in all_results:
+        sym = opt["ticker"]
+        grouped.setdefault(sym, []).append(opt)
+    return {sym: select_atm_option(opts) for sym, opts in grouped.items()}
+
+
+# ------------------------------------------------------------------
 # FORWARD PROJECTION RUNNER
 # ------------------------------------------------------------------
 def run_forward_projections(all_results):
@@ -1509,11 +1549,9 @@ def run_forward_projections(all_results):
     if not all_results:
         print(" No screener results to project.")
         return []
-    best_per_ticker = {}
-    for opt in sorted(all_results, key=lambda x: x["composite_score"], reverse=True):
-        sym = opt["ticker"]
-        if sym not in best_per_ticker:
-            best_per_ticker[sym] = opt
+    # Select the ATM option (strike closest to current price) per ticker.
+    # This matches the trading rule: always buy the ATM call to minimise premium.
+    best_per_ticker = build_atm_per_ticker(all_results)
     projections = []
     tickers     = list(best_per_ticker.keys())
     for i, sym in enumerate(tickers, 1):
@@ -1720,9 +1758,16 @@ def analyze_ticker(symbol, idx, total):
                 "debt_to_equity":        fund.get("debt_to_equity"),
                 "scores":          dict((k, round(v, 1)) for k, v in param_scores.items()),
                 "composite_score": compute_composite_score(param_scores),
+                # ATM distance: smaller = closer to current price (ATM).
+                # Used as primary sort key so ATM option always appears first.
+                "atm_distance":    round(abs(strike - current_price), 2),
             })
 
-        results.sort(key=lambda x: x["composite_score"], reverse=True)
+        # Sort: ATM option first (smallest |strike - current_price|),
+        # composite score descending as tiebreaker.
+        # This ensures the first result per ticker is always the ATM call,
+        # minimising premium paid vs deep-ITM options.
+        results.sort(key=lambda x: (x["atm_distance"], -x["composite_score"]))
         rg_s = (str(round(fund["revenue_growth"] * 100)) + "%"
                 if fund["revenue_growth"] is not None else "N/A")
         em_s = (str(round(fund["ebitda_margin"] * 100)) + "%"
@@ -1753,11 +1798,10 @@ def run_backtest(all_results):
     if not all_results:
         print(" No screener results to backtest.")
         return []
-    seen = {}
-    for opt in sorted(all_results, key=lambda x: x["composite_score"], reverse=True):
-        sym = opt["ticker"]
-        if sym not in seen:
-            seen[sym] = opt
+    # Select the ATM option per ticker to match the trading rule of buying
+    # the ATM call.  Composite score still determines ticker ranking in
+    # the overall leaderboard; ATM governs strike selection only.
+    seen = build_atm_per_ticker(all_results)
     candidates = list(seen.values())
     print(" Tickers to backtest: " + str(len(candidates)))
     for c in candidates:
@@ -1826,12 +1870,14 @@ def save_snapshot(data, filename, snapshot_date):
 def build_tradingview_config(all_results, passed_tickers):
     if not all_results:
         return {"tickers": [], "ticker_details": {}}
-    best_per_ticker = {}
-    for opt in sorted(all_results, key=lambda x: x["composite_score"], reverse=True):
-        sym = opt["ticker"]
-        if sym not in best_per_ticker:
-            best_per_ticker[sym] = opt
-    tickers_ordered = list(best_per_ticker.keys())
+    # Use ATM option per ticker for the TradingView config so that the
+    # strike displayed on the dashboard matches the ATM trading rule.
+    best_per_ticker = build_atm_per_ticker(all_results)
+    tickers_ordered = sorted(
+        best_per_ticker.keys(),
+        key=lambda s: best_per_ticker[s]["composite_score"],
+        reverse=True,
+    )
     ticker_details  = {}
     for sym in tickers_ordered:
         opt  = best_per_ticker[sym]
@@ -1889,10 +1935,7 @@ def build_tradingview_config(all_results, passed_tickers):
 def build_portfolio_analysis(all_results):
     if not all_results:
         return {}
-    best = {}
-    for opt in sorted(all_results, key=lambda x: x["composite_score"], reverse=True):
-        if opt["ticker"] not in best:
-            best[opt["ticker"]] = opt
+    best = build_atm_per_ticker(all_results)
     sector_count = {}
     for opt in best.values():
         s = opt.get("sector") or "Unknown"
