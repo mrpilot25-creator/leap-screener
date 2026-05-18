@@ -1,19 +1,19 @@
 {
   "meta": {
-    "generated_at": "2026-05-18T06:49:35.269802Z"
+    "generated_at": "2026-05-18T10:16:10.354934Z"
   },
   "portfolio_analysis": {
     "total_tickers": 82,
     "sector_breakdown": {
       "Energy": 6.1,
-      "Basic Materials": 3.7,
-      "Communication Services": 6.1,
-      "Utilities": 4.9,
-      "Technology": 35.4,
-      "Healthcare": 6.1,
       "Consumer Cyclical": 9.8,
-      "Real Estate": 7.3,
+      "Technology": 35.4,
+      "Communication Services": 6.1,
       "Financial Services": 11.0,
+      "Healthcare": 6.1,
+      "Utilities": 4.9,
+      "Real Estate": 7.3,
+      "Basic Materials": 3.7,
       "Consumer Defensive": 4.9,
       "Industrials": 4.9
     },
