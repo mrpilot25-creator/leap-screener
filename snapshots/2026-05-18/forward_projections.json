@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-18T10:19:06.785872Z",
+    "generated_at": "2026-05-18T12:34:36.384562Z",
     "projection_date": "2026-05-18",
     "n_simulations": 1000,
     "risk_free_rate_pct": 3.88,
@@ -143,8 +143,8 @@
         "median": 11053.01,
         "pct_5": 3151.41,
         "pct_25": 6464.89,
-        "pct_75": 18970.33,
-        "pct_95": 42770.76
+        "pct_75": 18970.32,
+        "pct_95": 42770.75
       },
       "upside_downside": {
         "median_change_pct": 1425.3,
@@ -202,7 +202,7 @@
         "pct_5": 500.09,
         "pct_25": 948.34,
         "pct_75": 2473.59,
-        "pct_95": 5102.38
+        "pct_95": 5102.37
       },
       "upside_downside": {
         "median_change_pct": 148.9,
@@ -1419,7 +1419,7 @@
         "median": 3347.04,
         "pct_5": 954.3,
         "pct_25": 1957.68,
-        "pct_75": 5744.54,
+        "pct_75": 5744.53,
         "pct_95": 12951.71
       },
       "upside_downside": {
@@ -1435,7 +1435,7 @@
       "expected_value_ev": 3864.76,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 2917.21,
+      "projected_option_value": 2917.2,
       "entry_gamma": 0.001314,
       "entry_vega": 2.4519,
       "return_checkpoints": [
@@ -1826,7 +1826,7 @@
         "pct_5": 586.89,
         "pct_25": 997.09,
         "pct_75": 2205.84,
-        "pct_95": 4017.92
+        "pct_95": 4017.91
       },
       "upside_downside": {
         "median_change_pct": 273.2,
@@ -1881,7 +1881,7 @@
       "n_simulations": 1000,
       "projected_prices": {
         "median": 1448.02,
-        "pct_5": 579.12,
+        "pct_5": 579.11,
         "pct_25": 978.74,
         "pct_75": 2148.34,
         "pct_95": 3890.08
@@ -2462,7 +2462,7 @@
       "projected_prices": {
         "median": 12399.35,
         "pct_5": 3535.28,
-        "pct_25": 7252.36,
+        "pct_25": 7252.37,
         "pct_75": 21281.06,
         "pct_95": 47980.56
       },
@@ -2475,8 +2475,8 @@
       "p_otm_pct": 0.0,
       "p_100pct_return_pct": 100.0,
       "expected_payoff_if_itm": 16938.93,
-      "pv_expected_payoff": 15324.89,
-      "expected_value_ev": 15324.89,
+      "pv_expected_payoff": 15324.9,
+      "expected_value_ev": 15324.9,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
       "projected_option_value": 11919.54,
@@ -4504,7 +4504,7 @@
       "p_itm_pct": 89.1,
       "p_otm_pct": 10.9,
       "p_100pct_return_pct": 76.1,
-      "expected_payoff_if_itm": 933.17,
+      "expected_payoff_if_itm": 933.18,
       "pv_expected_payoff": 874.31,
       "expected_value_ev": 765.03,
       "ev_positive": true,
@@ -4678,7 +4678,7 @@
       "p_itm_pct": 98.5,
       "p_otm_pct": 1.5,
       "p_100pct_return_pct": 92.8,
-      "expected_payoff_if_itm": 2109.13,
+      "expected_payoff_if_itm": 2109.12,
       "pv_expected_payoff": 1976.07,
       "expected_value_ev": 1943.39,
       "ev_positive": true,

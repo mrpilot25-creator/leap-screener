@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-18T10:16:10.343802Z",
+    "generated_at": "2026-05-18T12:31:32.820210Z",
     "note": "Use this file to populate the TradingView ticker dropdown on the Base44 dashboard. The tickers list is sorted by composite score. Each ticker_details entry contains ABCD pattern data, LEAPS checklist scores, and key indicator values."
   },
   "tickers": [
@@ -904,7 +904,7 @@
       "abcd_D_targets": {
         "1.272x": 1242.83,
         "1.618x": 1340.86,
-        "2.000x": 1449.09,
+        "2.000x": 1449.1,
         "2.618x": 1624.19,
         "4.236x": 2082.61
       },
@@ -2108,7 +2108,7 @@
       "abcd_C": 273.76,
       "abcd_C_date": "2026-03-29",
       "abcd_D_targets": {
-        "1.272x": 511.91,
+        "1.272x": 511.92,
         "1.618x": 576.7,
         "2.000x": 648.22,
         "2.618x": 763.92,
