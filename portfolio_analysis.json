@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-19T13:43:15.521726Z"
+    "generated_at": "2026-05-19T14:09:57.376581Z"
   },
   "portfolio_analysis": {
     "total_tickers": 17,
@@ -8,8 +8,8 @@
       "Technology": 47.1,
       "Healthcare": 29.4,
       "Communication Services": 5.9,
-      "Consumer Defensive": 5.9,
-      "Consumer Cyclical": 11.8
+      "Consumer Cyclical": 11.8,
+      "Consumer Defensive": 5.9
     },
     "concentrated_sectors": [
       "Technology"
