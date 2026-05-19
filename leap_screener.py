@@ -737,7 +737,7 @@ def fetch_fundamental_data(ticker):
     # Fetch annualised dividend yield. Used for both the hard filter and the
     # div_yield scoring penalty, and passed as q into all Black-Scholes calls.
     raw_yield = info.get("dividendYield")
-    div_yield = float(raw_yield) if raw_yield is not None else 0.0
+    div_yield = float(raw_yield)/100 if raw_yield is not None else 0.0
     return {
         "market_cap":     info.get("marketCap"),
         "avg_volume":     info.get("averageVolume"),
