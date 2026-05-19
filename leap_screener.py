@@ -85,7 +85,7 @@ MIN_EBITDA_MARGIN  = 0.15
 # Dividend yield hard cap - stocks above this are excluded.
 # High dividend payers cause LEAP calls to trade below intrinsic value
 # because call holders do not receive dividends over the option life.
-MAX_DIV_YIELD = 0.035            # 3.5% annual yield cap
+MAX_DIV_YIELD = 0.015            # 1.5% annual yield cap
 
 # Technical thresholds
 RSI_UPPER            = 40
