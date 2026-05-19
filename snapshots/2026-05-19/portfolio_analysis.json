@@ -1,22 +1,23 @@
 {
   "meta": {
-    "generated_at": "2026-05-19T14:09:57.376581Z"
+    "generated_at": "2026-05-19T14:51:23.849504Z"
   },
   "portfolio_analysis": {
-    "total_tickers": 17,
+    "total_tickers": 16,
     "sector_breakdown": {
-      "Technology": 47.1,
-      "Healthcare": 29.4,
-      "Communication Services": 5.9,
-      "Consumer Cyclical": 11.8,
-      "Consumer Defensive": 5.9
+      "Technology": 43.8,
+      "Healthcare": 31.2,
+      "Consumer Cyclical": 12.5,
+      "Communication Services": 6.2,
+      "Consumer Defensive": 6.2
     },
     "concentrated_sectors": [
-      "Technology"
+      "Technology",
+      "Healthcare"
     ],
-    "avg_portfolio_beta": 1.29,
+    "avg_portfolio_beta": 1.23,
     "avg_analyst_upside_pct": 18.1,
-    "avg_div_yield_pct": 0.12,
+    "avg_div_yield_pct": 0.0,
     "high_short_interest_tickers": []
   }
 }
