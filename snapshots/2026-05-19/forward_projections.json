@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-19T15:07:45.791310Z",
+    "generated_at": "2026-05-19T15:25:10.682990Z",
     "projection_date": "2026-05-19",
     "n_simulations": 1000,
     "risk_free_rate_pct": 3.88,
@@ -8,107 +8,397 @@
   },
   "forward_projections": [
     {
+      "symbol": "NEM",
+      "current_price": 104.65,
+      "strike": 105.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 27.43,
+      "div_yield_pct": 0.97,
+      "implied_vol_raw_pct": 51.88,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 31.71,
+      "calibrated_drift_pct": 30.74,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 179.88,
+        "pct_5": 61.91,
+        "pct_25": 112.7,
+        "pct_75": 286.48,
+        "pct_95": 516.28
+      },
+      "upside_downside": {
+        "median_change_pct": 71.9,
+        "pct95_change_pct": 393.3,
+        "pct5_change_pct": -40.8
+      },
+      "p_itm_pct": 78.3,
+      "p_otm_pct": 21.7,
+      "p_100pct_return_pct": 59.2,
+      "expected_payoff_if_itm": 157.23,
+      "pv_expected_payoff": 147.32,
+      "expected_value_ev": 109.4,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 74.9,
+      "entry_gamma": 0.006819,
+      "entry_vega": 0.5009,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 141.3,
+          "pct_above_current": 35.0
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 146.2,
+          "pct_above_current": 39.7
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 150.31,
+          "pct_above_current": 43.6
+        }
+      ],
+      "status": "ok"
+    },
+    {
       "symbol": "ANET",
-      "current_price": 138.95,
+      "current_price": 139.41,
       "strike": 140.0,
       "expiry": "2028-01-21",
       "days_to_expiry": 612,
       "years_to_expiry": 1.677,
-      "current_premium": 41.2,
+      "current_premium": 41.08,
       "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 59.27,
+      "implied_vol_raw_pct": 58.65,
       "implied_vol_used_pct": 40.0,
       "iv_was_capped": true,
       "iv_data_corrected": false,
-      "historical_mu_pct": 45.27,
-      "calibrated_drift_pct": 45.27,
+      "historical_mu_pct": 45.28,
+      "calibrated_drift_pct": 45.28,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 339.86,
-        "pct_5": 116.98,
-        "pct_25": 212.94,
-        "pct_75": 541.29,
-        "pct_95": 975.48
+        "median": 341.05,
+        "pct_5": 117.38,
+        "pct_25": 213.68,
+        "pct_75": 543.18,
+        "pct_95": 978.88
       },
       "upside_downside": {
         "median_change_pct": 144.6,
-        "pct95_change_pct": 602.0,
+        "pct95_change_pct": 602.2,
         "pct5_change_pct": -15.8
       },
-      "p_itm_pct": 89.5,
-      "p_otm_pct": 10.5,
+      "p_itm_pct": 89.6,
+      "p_otm_pct": 10.4,
       "p_100pct_return_pct": 77.7,
-      "expected_payoff_if_itm": 314.98,
-      "pv_expected_payoff": 295.14,
-      "expected_value_ev": 259.83,
+      "expected_payoff_if_itm": 316.22,
+      "pv_expected_payoff": 296.3,
+      "expected_value_ev": 261.21,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 199.92,
-      "entry_gamma": 0.005176,
-      "entry_vega": 0.6703,
+      "projected_option_value": 201.1,
+      "entry_gamma": 0.005147,
+      "entry_vega": 0.6709,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 188.8,
+          "stock_price_for_100pct_return": 189.5,
           "pct_above_current": 35.9
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 196.03,
+          "stock_price_for_100pct_return": 196.7,
           "pct_above_current": 41.1
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 202.21,
+          "stock_price_for_100pct_return": 202.82,
           "pct_above_current": 45.5
         }
       ],
       "status": "ok"
     },
     {
+      "symbol": "META",
+      "current_price": 605.61,
+      "strike": 610.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 174.5,
+      "div_yield_pct": 0.35,
+      "implied_vol_raw_pct": 47.36,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 30.54,
+      "calibrated_drift_pct": 30.19,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 1367.84,
+        "pct_5": 379.87,
+        "pct_25": 782.59,
+        "pct_75": 2332.04,
+        "pct_95": 5107.25
+      },
+      "upside_downside": {
+        "median_change_pct": 125.9,
+        "pct95_change_pct": 743.3,
+        "pct5_change_pct": -37.3
+      },
+      "p_itm_pct": 84.3,
+      "p_otm_pct": 15.7,
+      "p_100pct_return_pct": 68.5,
+      "expected_payoff_if_itm": 1546.0,
+      "pv_expected_payoff": 1398.84,
+      "expected_value_ev": 1151.82,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 758.03,
+      "entry_gamma": 0.000918,
+      "entry_vega": 3.4719,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 855.43,
+          "pct_above_current": 41.3
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 880.41,
+          "pct_above_current": 45.4
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 906.55,
+          "pct_above_current": 49.7
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "EQT",
+      "current_price": 59.1,
+      "strike": 60.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 11.85,
+      "div_yield_pct": 1.1,
+      "implied_vol_raw_pct": 43.26,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 17.82,
+      "calibrated_drift_pct": 16.71,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 72.25,
+        "pct_5": 24.87,
+        "pct_25": 45.27,
+        "pct_75": 115.07,
+        "pct_95": 207.38
+      },
+      "upside_downside": {
+        "median_change_pct": 22.3,
+        "pct95_change_pct": 250.9,
+        "pct5_change_pct": -57.9
+      },
+      "p_itm_pct": 59.6,
+      "p_otm_pct": 40.4,
+      "p_100pct_return_pct": 41.1,
+      "expected_payoff_if_itm": 62.43,
+      "pv_expected_payoff": 58.5,
+      "expected_value_ev": 30.08,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 12.27,
+      "entry_gamma": 0.012156,
+      "entry_vega": 0.2848,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 79.61,
+          "pct_above_current": 34.7
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 82.44,
+          "pct_above_current": 39.5
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 84.86,
+          "pct_above_current": 43.6
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "VST",
+      "current_price": 134.11,
+      "strike": 135.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 37.77,
+      "div_yield_pct": 0.68,
+      "implied_vol_raw_pct": 56.14,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 58.28,
+      "calibrated_drift_pct": 57.61,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 442.63,
+        "pct_5": 152.35,
+        "pct_25": 277.33,
+        "pct_75": 704.96,
+        "pct_95": 1270.45
+      },
+      "upside_downside": {
+        "median_change_pct": 230.0,
+        "pct95_change_pct": 847.3,
+        "pct5_change_pct": 13.6
+      },
+      "p_itm_pct": 96.1,
+      "p_otm_pct": 3.9,
+      "p_100pct_return_pct": 88.2,
+      "expected_payoff_if_itm": 428.06,
+      "pv_expected_payoff": 401.1,
+      "expected_value_ev": 383.98,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 307.65,
+      "entry_gamma": 0.005341,
+      "entry_vega": 0.6443,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 181.38,
+          "pct_above_current": 35.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 187.9,
+          "pct_above_current": 40.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 193.43,
+          "pct_above_current": 44.2
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "MU",
+      "current_price": 681.06,
+      "strike": 680.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 334.0,
+      "div_yield_pct": 0.07,
+      "implied_vol_raw_pct": 82.01,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 77.67,
+      "calibrated_drift_pct": 77.6,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 9032.89,
+        "pct_5": 2508.57,
+        "pct_25": 5168.03,
+        "pct_75": 15400.26,
+        "pct_95": 33727.15
+      },
+      "upside_downside": {
+        "median_change_pct": 1226.3,
+        "pct95_change_pct": 4852.2,
+        "pct5_change_pct": 268.3
+      },
+      "p_itm_pct": 100.0,
+      "p_otm_pct": 0.0,
+      "p_100pct_return_pct": 99.7,
+      "expected_payoff_if_itm": 11767.03,
+      "pv_expected_payoff": 10646.93,
+      "expected_value_ev": 10646.93,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 8353.09,
+      "entry_gamma": 0.000813,
+      "entry_vega": 3.8873,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 965.36,
+          "pct_above_current": 41.7
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 993.97,
+          "pct_above_current": 45.9
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 1023.76,
+          "pct_above_current": 50.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
       "symbol": "WAT",
-      "current_price": 336.98,
+      "current_price": 334.84,
       "strike": 340.0,
       "expiry": "2027-01-15",
       "days_to_expiry": 241,
       "years_to_expiry": 0.66,
-      "current_premium": 41.5,
+      "current_premium": 42.05,
       "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 42.49,
-      "implied_vol_used_pct": 42.49,
+      "implied_vol_raw_pct": 44.05,
+      "implied_vol_used_pct": 44.05,
       "iv_was_capped": false,
       "iv_data_corrected": false,
-      "historical_mu_pct": 7.75,
-      "calibrated_drift_pct": 7.75,
+      "historical_mu_pct": 7.56,
+      "calibrated_drift_pct": 7.56,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 333.15,
-        "pct_5": 157.66,
-        "pct_25": 245.33,
-        "pct_75": 438.17,
-        "pct_95": 679.31
+        "median": 328.32,
+        "pct_5": 151.16,
+        "pct_25": 239.08,
+        "pct_75": 436.18,
+        "pct_95": 687.2
       },
       "upside_downside": {
-        "median_change_pct": -1.1,
-        "pct95_change_pct": 101.6,
-        "pct5_change_pct": -53.2
+        "median_change_pct": -1.9,
+        "pct95_change_pct": 105.2,
+        "pct5_change_pct": -54.9
       },
-      "p_itm_pct": 48.2,
-      "p_otm_pct": 51.8,
+      "p_itm_pct": 46.9,
+      "p_otm_pct": 53.1,
       "p_100pct_return_pct": null,
-      "expected_payoff_if_itm": 147.87,
-      "pv_expected_payoff": 144.13,
-      "expected_value_ev": 47.97,
+      "expected_payoff_if_itm": 152.41,
+      "pv_expected_payoff": 148.56,
+      "expected_value_ev": 47.35,
       "ev_positive": true,
-      "kelly_criterion_pct": 16.8,
-      "projected_option_value": 2.96,
-      "entry_gamma": 0.003346,
-      "entry_vega": 1.066,
+      "kelly_criterion_pct": 16.1,
+      "projected_option_value": 1.82,
+      "entry_gamma": 0.003258,
+      "entry_vega": 1.0623,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 433.1,
-          "pct_above_current": 28.5
+          "stock_price_for_100pct_return": 433.61,
+          "pct_above_current": 29.5
         },
         {
           "months_elapsed": 12,
@@ -125,57 +415,57 @@
     },
     {
       "symbol": "PLTR",
-      "current_price": 135.09,
+      "current_price": 134.86,
       "strike": 135.0,
       "expiry": "2028-12-15",
       "days_to_expiry": 941,
       "years_to_expiry": 2.578,
-      "current_premium": 52.45,
+      "current_premium": 52.35,
       "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 63.14,
+      "implied_vol_raw_pct": 63.22,
       "implied_vol_used_pct": 40.0,
       "iv_was_capped": true,
       "iv_data_corrected": false,
-      "historical_mu_pct": 82.03,
-      "calibrated_drift_pct": 82.03,
+      "historical_mu_pct": 81.95,
+      "calibrated_drift_pct": 81.95,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 2114.33,
-        "pct_5": 587.18,
-        "pct_25": 1209.68,
-        "pct_75": 3604.74,
-        "pct_95": 7894.52
+        "median": 2104.51,
+        "pct_5": 584.45,
+        "pct_25": 1204.06,
+        "pct_75": 3588.0,
+        "pct_95": 7857.86
       },
       "upside_downside": {
-        "median_change_pct": 1465.1,
-        "pct95_change_pct": 5743.9,
-        "pct5_change_pct": 334.7
+        "median_change_pct": 1460.5,
+        "pct95_change_pct": 5726.7,
+        "pct5_change_pct": 333.4
       },
       "p_itm_pct": 100.0,
       "p_otm_pct": 0.0,
       "p_100pct_return_pct": 99.8,
-      "expected_payoff_if_itm": 2778.48,
-      "pv_expected_payoff": 2514.0,
-      "expected_value_ev": 2514.0,
+      "expected_payoff_if_itm": 2764.95,
+      "pv_expected_payoff": 2501.75,
+      "expected_value_ev": 2501.75,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 1979.38,
-      "entry_gamma": 0.004102,
-      "entry_vega": 0.7719,
+      "projected_option_value": 1969.56,
+      "entry_gamma": 0.004114,
+      "entry_vega": 0.7716,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 191.58,
+          "stock_price_for_100pct_return": 191.21,
           "pct_above_current": 41.8
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 197.31,
-          "pct_above_current": 46.1
+          "stock_price_for_100pct_return": 196.96,
+          "pct_above_current": 46.0
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 203.29,
+          "stock_price_for_100pct_return": 202.94,
           "pct_above_current": 50.5
         }
       ],
@@ -183,164 +473,1382 @@
     },
     {
       "symbol": "NVDA",
-      "current_price": 220.56,
+      "current_price": 220.89,
       "strike": 220.0,
       "expiry": "2028-12-15",
       "days_to_expiry": 941,
       "years_to_expiry": 2.578,
-      "current_premium": 71.55,
+      "current_premium": 72.03,
       "div_yield_pct": 0.02,
-      "implied_vol_raw_pct": 51.94,
+      "implied_vol_raw_pct": 52.16,
       "implied_vol_used_pct": 40.0,
       "iv_was_capped": true,
       "iv_data_corrected": false,
-      "historical_mu_pct": 65.54,
-      "calibrated_drift_pct": 65.52,
+      "historical_mu_pct": 65.58,
+      "calibrated_drift_pct": 65.56,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 1863.44,
-        "pct_5": 517.51,
-        "pct_25": 1066.14,
-        "pct_75": 3177.0,
-        "pct_95": 6957.75
+        "median": 1869.3,
+        "pct_5": 519.13,
+        "pct_25": 1069.49,
+        "pct_75": 3186.98,
+        "pct_95": 6979.61
       },
       "upside_downside": {
-        "median_change_pct": 744.9,
-        "pct95_change_pct": 3054.6,
-        "pct5_change_pct": 134.6
+        "median_change_pct": 746.3,
+        "pct95_change_pct": 3059.8,
+        "pct5_change_pct": 135.0
       },
-      "p_itm_pct": 99.4,
-      "p_otm_pct": 0.6,
+      "p_itm_pct": 99.6,
+      "p_otm_pct": 0.4,
       "p_100pct_return_pct": 98.5,
-      "expected_payoff_if_itm": 2362.07,
-      "pv_expected_payoff": 2137.23,
-      "expected_value_ev": 2123.97,
+      "expected_payoff_if_itm": 2365.43,
+      "pv_expected_payoff": 2140.26,
+      "expected_value_ev": 2131.41,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 1643.52,
-      "entry_gamma": 0.002509,
-      "entry_vega": 1.2584,
+      "projected_option_value": 1649.38,
+      "entry_gamma": 0.002502,
+      "entry_vega": 1.2589,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 312.81,
-          "pct_above_current": 41.8
+          "stock_price_for_100pct_return": 313.35,
+          "pct_above_current": 41.9
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 322.13,
+          "stock_price_for_100pct_return": 322.65,
           "pct_above_current": 46.1
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 331.82,
+          "stock_price_for_100pct_return": 332.32,
           "pct_above_current": 50.4
         }
       ],
       "status": "ok"
     },
     {
-      "symbol": "AMD",
-      "current_price": 404.82,
-      "strike": 400.0,
-      "expiry": "2028-12-15",
-      "days_to_expiry": 941,
-      "years_to_expiry": 2.578,
-      "current_premium": 170.0,
-      "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 68.19,
-      "implied_vol_used_pct": 40.0,
-      "iv_was_capped": true,
+      "symbol": "ICE",
+      "current_price": 156.1,
+      "strike": 155.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 25.45,
+      "div_yield_pct": 1.26,
+      "implied_vol_raw_pct": 33.64,
+      "implied_vol_used_pct": 33.64,
+      "iv_was_capped": false,
       "iv_data_corrected": false,
-      "historical_mu_pct": 44.78,
-      "calibrated_drift_pct": 44.78,
+      "historical_mu_pct": 13.59,
+      "calibrated_drift_pct": 12.34,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 1576.49,
-        "pct_5": 437.81,
-        "pct_25": 901.96,
-        "pct_75": 2687.77,
-        "pct_95": 5886.32
+        "median": 181.94,
+        "pct_5": 74.2,
+        "pct_25": 122.79,
+        "pct_75": 269.11,
+        "pct_95": 441.61
       },
       "upside_downside": {
-        "median_change_pct": 289.4,
-        "pct95_change_pct": 1354.1,
-        "pct5_change_pct": 8.2
+        "median_change_pct": 16.6,
+        "pct95_change_pct": 182.9,
+        "pct5_change_pct": -52.5
       },
-      "p_itm_pct": 95.7,
-      "p_otm_pct": 4.3,
-      "p_100pct_return_pct": 88.3,
-      "expected_payoff_if_itm": 1856.36,
-      "pv_expected_payoff": 1679.66,
-      "expected_value_ev": 1600.12,
+      "p_itm_pct": 59.7,
+      "p_otm_pct": 40.3,
+      "p_100pct_return_pct": 39.4,
+      "expected_payoff_if_itm": 124.33,
+      "pv_expected_payoff": 116.5,
+      "expected_value_ev": 59.3,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 1176.64,
-      "entry_gamma": 0.001357,
-      "entry_vega": 2.2935,
+      "projected_option_value": 26.98,
+      "entry_gamma": 0.005431,
+      "entry_vega": 0.7465,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 574.97,
-          "pct_above_current": 42.0
+          "stock_price_for_100pct_return": 203.3,
+          "pct_above_current": 30.2
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 591.8,
-          "pct_above_current": 46.2
+          "stock_price_for_100pct_return": 209.05,
+          "pct_above_current": 33.9
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 609.25,
+          "stock_price_for_100pct_return": 213.67,
+          "pct_above_current": 36.9
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "WDC",
+      "current_price": 442.68,
+      "strike": 440.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 222.75,
+      "div_yield_pct": 0.1,
+      "implied_vol_raw_pct": 84.28,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 91.58,
+      "calibrated_drift_pct": 91.48,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 9859.63,
+        "pct_5": 2738.17,
+        "pct_25": 5641.04,
+        "pct_75": 16809.77,
+        "pct_95": 36814.04
+      },
+      "upside_downside": {
+        "median_change_pct": 2127.3,
+        "pct95_change_pct": 8216.2,
+        "pct5_change_pct": 518.5
+      },
+      "p_itm_pct": 100.0,
+      "p_otm_pct": 0.0,
+      "p_100pct_return_pct": 100.0,
+      "expected_payoff_if_itm": 13146.25,
+      "pv_expected_payoff": 11894.86,
+      "expected_value_ev": 11894.86,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 9419.7,
+      "entry_gamma": 0.001246,
+      "entry_vega": 2.5177,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 627.7,
+          "pct_above_current": 41.8
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 646.07,
+          "pct_above_current": 45.9
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 665.16,
+          "pct_above_current": 50.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "PCG",
+      "current_price": 16.18,
+      "strike": 17.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 2.66,
+      "div_yield_pct": 0.93,
+      "implied_vol_raw_pct": 39.89,
+      "implied_vol_used_pct": 39.89,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 3.88,
+      "calibrated_drift_pct": 2.95,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 14.18,
+        "pct_5": 4.89,
+        "pct_25": 8.89,
+        "pct_75": 22.55,
+        "pct_95": 40.57
+      },
+      "upside_downside": {
+        "median_change_pct": -12.4,
+        "pct95_change_pct": 150.8,
+        "pct5_change_pct": -69.8
+      },
+      "p_itm_pct": 39.8,
+      "p_otm_pct": 60.2,
+      "p_100pct_return_pct": 22.9,
+      "expected_payoff_if_itm": 11.78,
+      "pv_expected_payoff": 11.04,
+      "expected_value_ev": 2.79,
+      "ev_positive": true,
+      "kelly_criterion_pct": 13.1,
+      "projected_option_value": 0.0,
+      "entry_gamma": 0.045456,
+      "entry_vega": 0.0796,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 21.73,
+          "pct_above_current": 34.3
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 22.6,
+          "pct_above_current": 39.7
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 23.38,
+          "pct_above_current": 44.5
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "TER",
+      "current_price": 314.93,
+      "strike": 310.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 119.45,
+      "div_yield_pct": 0.16,
+      "implied_vol_raw_pct": 75.28,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 39.84,
+      "calibrated_drift_pct": 39.69,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 672.66,
+        "pct_5": 231.52,
+        "pct_25": 421.45,
+        "pct_75": 1071.33,
+        "pct_95": 1930.69
+      },
+      "upside_downside": {
+        "median_change_pct": 113.6,
+        "pct95_change_pct": 513.1,
+        "pct5_change_pct": -26.5
+      },
+      "p_itm_pct": 87.3,
+      "p_otm_pct": 12.7,
+      "p_100pct_return_pct": 70.4,
+      "expected_payoff_if_itm": 605.88,
+      "pv_expected_payoff": 567.71,
+      "expected_value_ev": 480.44,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 362.77,
+      "entry_gamma": 0.002243,
+      "entry_vega": 1.4918,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 428.7,
+          "pct_above_current": 36.1
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 443.83,
+          "pct_above_current": 40.9
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 456.36,
+          "pct_above_current": 44.9
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "CEG",
+      "current_price": 257.74,
+      "strike": 260.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 70.55,
+      "div_yield_pct": 0.63,
+      "implied_vol_raw_pct": 54.66,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 39.0,
+      "calibrated_drift_pct": 38.37,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 533.19,
+        "pct_5": 183.51,
+        "pct_25": 334.06,
+        "pct_75": 849.19,
+        "pct_95": 1530.37
+      },
+      "upside_downside": {
+        "median_change_pct": 106.9,
+        "pct95_change_pct": 493.8,
+        "pct5_change_pct": -28.8
+      },
+      "p_itm_pct": 85.9,
+      "p_otm_pct": 14.1,
+      "p_100pct_return_pct": 69.0,
+      "expected_payoff_if_itm": 473.67,
+      "pv_expected_payoff": 443.84,
+      "expected_value_ev": 371.31,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 273.25,
+      "entry_gamma": 0.002784,
+      "entry_vega": 1.2403,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 348.59,
+          "pct_above_current": 35.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 361.27,
+          "pct_above_current": 40.2
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 372.04,
+          "pct_above_current": 44.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "V",
+      "current_price": 332.43,
+      "strike": 330.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 70.2,
+      "div_yield_pct": 0.78,
+      "implied_vol_raw_pct": 33.68,
+      "implied_vol_used_pct": 33.68,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 12.6,
+      "calibrated_drift_pct": 11.82,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 413.42,
+        "pct_5": 140.57,
+        "pct_25": 258.35,
+        "pct_75": 647.86,
+        "pct_95": 1253.55
+      },
+      "upside_downside": {
+        "median_change_pct": 24.4,
+        "pct95_change_pct": 277.1,
+        "pct5_change_pct": -57.7
+      },
+      "p_itm_pct": 63.3,
+      "p_otm_pct": 36.7,
+      "p_100pct_return_pct": 42.1,
+      "expected_payoff_if_itm": 363.25,
+      "pv_expected_payoff": 328.68,
+      "expected_value_ev": 182.29,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 83.51,
+      "entry_gamma": 0.001981,
+      "entry_vega": 1.9013,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 451.82,
+          "pct_above_current": 35.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 462.67,
+          "pct_above_current": 39.2
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 473.79,
+          "pct_above_current": 42.5
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "LLY",
+      "current_price": 1018.86,
+      "strike": 1020.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 279.75,
+      "div_yield_pct": 0.63,
+      "implied_vol_raw_pct": 45.04,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 28.7,
+      "calibrated_drift_pct": 28.07,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 2125.8,
+        "pct_5": 590.37,
+        "pct_25": 1216.25,
+        "pct_75": 3624.3,
+        "pct_95": 7937.36
+      },
+      "upside_downside": {
+        "median_change_pct": 108.6,
+        "pct95_change_pct": 679.0,
+        "pct5_change_pct": -42.1
+      },
+      "p_itm_pct": 81.5,
+      "p_otm_pct": 18.5,
+      "p_100pct_return_pct": 64.9,
+      "expected_payoff_if_itm": 2411.85,
+      "pv_expected_payoff": 2182.27,
+      "expected_value_ev": 1726.79,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 1106.06,
+      "entry_gamma": 0.000542,
+      "entry_vega": 5.8031,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 1436.84,
+          "pct_above_current": 41.0
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 1476.79,
+          "pct_above_current": 44.9
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 1518.6,
+          "pct_above_current": 49.0
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "AVGO",
+      "current_price": 410.16,
+      "strike": 410.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 140.82,
+      "div_yield_pct": 0.6,
+      "implied_vol_raw_pct": 55.31,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 61.43,
+      "calibrated_drift_pct": 60.82,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 2908.15,
+        "pct_5": 807.64,
+        "pct_25": 1663.86,
+        "pct_75": 4958.14,
+        "pct_95": 10858.51
+      },
+      "upside_downside": {
+        "median_change_pct": 609.0,
+        "pct95_change_pct": 2547.4,
+        "pct5_change_pct": 96.9
+      },
+      "p_itm_pct": 99.2,
+      "p_otm_pct": 0.8,
+      "p_100pct_return_pct": 97.8,
+      "expected_payoff_if_itm": 3627.04,
+      "pv_expected_payoff": 3281.78,
+      "expected_value_ev": 3254.4,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 2498.14,
+      "entry_gamma": 0.001345,
+      "entry_vega": 2.3342,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 578.68,
+          "pct_above_current": 41.1
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 594.78,
+          "pct_above_current": 45.0
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 611.61,
+          "pct_above_current": 49.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "STX",
+      "current_price": 709.8,
+      "strike": 710.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 279.0,
+      "div_yield_pct": 0.41,
+      "implied_vol_raw_pct": 79.24,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 84.28,
+      "calibrated_drift_pct": 83.87,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 4432.86,
+        "pct_5": 1525.73,
+        "pct_25": 2777.38,
+        "pct_75": 7060.13,
+        "pct_95": 12723.35
+      },
+      "upside_downside": {
+        "median_change_pct": 524.5,
+        "pct95_change_pct": 1692.5,
+        "pct5_change_pct": 115.0
+      },
+      "p_itm_pct": 99.9,
+      "p_otm_pct": 0.1,
+      "p_100pct_return_pct": 98.5,
+      "expected_payoff_if_itm": 4756.94,
+      "pv_expected_payoff": 4457.32,
+      "expected_value_ev": 4452.58,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 3722.96,
+      "entry_gamma": 0.001006,
+      "entry_vega": 3.3997,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 962.49,
+          "pct_above_current": 35.6
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 997.3,
+          "pct_above_current": 40.5
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 1026.6,
+          "pct_above_current": 44.6
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "YUM",
+      "current_price": 152.69,
+      "strike": 155.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 20.05,
+      "div_yield_pct": 1.89,
+      "implied_vol_raw_pct": 29.25,
+      "implied_vol_used_pct": 29.25,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 5.27,
+      "calibrated_drift_pct": 3.39,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 148.25,
+        "pct_5": 67.97,
+        "pct_25": 105.32,
+        "pct_75": 208.36,
+        "pct_95": 320.52
+      },
+      "upside_downside": {
+        "median_change_pct": -2.9,
+        "pct95_change_pct": 109.9,
+        "pct5_change_pct": -55.5
+      },
+      "p_itm_pct": 46.5,
+      "p_otm_pct": 53.5,
+      "p_100pct_return_pct": 27.0,
+      "expected_payoff_if_itm": 78.6,
+      "pv_expected_payoff": 73.65,
+      "expected_value_ev": 23.52,
+      "ev_positive": true,
+      "kelly_criterion_pct": 16.4,
+      "projected_option_value": 0.13,
+      "entry_gamma": 0.006497,
+      "entry_vega": 0.7429,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 192.22,
+          "pct_above_current": 25.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 197.21,
+          "pct_above_current": 29.2
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 201.27,
+          "pct_above_current": 31.8
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "APH",
+      "current_price": 119.65,
+      "strike": 120.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 32.45,
+      "div_yield_pct": 0.69,
+      "implied_vol_raw_pct": 53.72,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 39.28,
+      "calibrated_drift_pct": 38.58,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 248.8,
+        "pct_5": 85.63,
+        "pct_25": 155.88,
+        "pct_75": 396.26,
+        "pct_95": 714.12
+      },
+      "upside_downside": {
+        "median_change_pct": 107.9,
+        "pct95_change_pct": 496.8,
+        "pct5_change_pct": -28.4
+      },
+      "p_itm_pct": 86.0,
+      "p_otm_pct": 14.0,
+      "p_100pct_return_pct": 69.1,
+      "expected_payoff_if_itm": 222.1,
+      "pv_expected_payoff": 208.11,
+      "expected_value_ev": 174.43,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 128.83,
+      "entry_gamma": 0.005971,
+      "entry_vega": 0.5733,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 161.87,
+          "pct_above_current": 35.3
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 167.62,
+          "pct_above_current": 40.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 172.46,
+          "pct_above_current": 44.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "BKNG",
+      "current_price": 157.72,
+      "strike": 158.4,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 49.2,
+      "div_yield_pct": 1.0,
+      "implied_vol_raw_pct": 50.22,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 12.49,
+      "calibrated_drift_pct": 11.49,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 177.24,
+        "pct_5": 49.22,
+        "pct_25": 101.4,
+        "pct_75": 302.17,
+        "pct_95": 661.77
+      },
+      "upside_downside": {
+        "median_change_pct": 12.4,
+        "pct95_change_pct": 319.6,
+        "pct5_change_pct": -68.8
+      },
+      "p_itm_pct": 54.9,
+      "p_otm_pct": 45.1,
+      "p_100pct_return_pct": 35.5,
+      "expected_payoff_if_itm": 207.96,
+      "pv_expected_payoff": 188.17,
+      "expected_value_ev": 81.11,
+      "ev_positive": true,
+      "kelly_criterion_pct": 22.1,
+      "projected_option_value": 18.88,
+      "entry_gamma": 0.003499,
+      "entry_vega": 0.8976,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 221.65,
+          "pct_above_current": 40.5
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 227.58,
+          "pct_above_current": 44.3
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 233.81,
+          "pct_above_current": 48.2
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "MCHP",
+      "current_price": 91.01,
+      "strike": 90.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 25.7,
+      "div_yield_pct": 2.0,
+      "implied_vol_raw_pct": 54.97,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 7.59,
+      "calibrated_drift_pct": 5.59,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 84.93,
+        "pct_5": 29.23,
+        "pct_25": 53.21,
+        "pct_75": 135.26,
+        "pct_95": 243.77
+      },
+      "upside_downside": {
+        "median_change_pct": -6.7,
+        "pct95_change_pct": 167.8,
+        "pct5_change_pct": -67.9
+      },
+      "p_itm_pct": 46.7,
+      "p_otm_pct": 53.3,
+      "p_100pct_return_pct": 27.0,
+      "expected_payoff_if_itm": 71.44,
+      "pv_expected_payoff": 66.94,
+      "expected_value_ev": 17.56,
+      "ev_positive": true,
+      "kelly_criterion_pct": 13.8,
+      "projected_option_value": 0.12,
+      "entry_gamma": 0.007721,
+      "entry_vega": 0.4289,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 122.21,
+          "pct_above_current": 34.3
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 125.83,
+          "pct_above_current": 38.3
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 128.75,
+          "pct_above_current": 41.5
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "LRCX",
+      "current_price": 267.33,
+      "strike": 270.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 86.9,
+      "div_yield_pct": 0.38,
+      "implied_vol_raw_pct": 65.42,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 51.74,
+      "calibrated_drift_pct": 51.36,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 758.16,
+        "pct_5": 260.95,
+        "pct_25": 475.02,
+        "pct_75": 1207.51,
+        "pct_95": 2176.11
+      },
+      "upside_downside": {
+        "median_change_pct": 183.6,
+        "pct95_change_pct": 714.0,
+        "pct5_change_pct": -2.4
+      },
+      "p_itm_pct": 94.2,
+      "p_otm_pct": 5.8,
+      "p_100pct_return_pct": 83.4,
+      "expected_payoff_if_itm": 708.74,
+      "pv_expected_payoff": 664.1,
+      "expected_value_ev": 620.54,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 488.24,
+      "entry_gamma": 0.00269,
+      "entry_vega": 1.2893,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 362.16,
+          "pct_above_current": 35.5
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 375.69,
+          "pct_above_current": 40.5
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 387.22,
+          "pct_above_current": 44.8
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "ADI",
+      "current_price": 412.71,
+      "strike": 410.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 100.7,
+      "div_yield_pct": 0.99,
+      "implied_vol_raw_pct": 48.32,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 27.61,
+      "calibrated_drift_pct": 26.63,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 641.9,
+        "pct_5": 220.93,
+        "pct_25": 402.18,
+        "pct_75": 1022.34,
+        "pct_95": 1842.4
+      },
+      "upside_downside": {
+        "median_change_pct": 55.5,
+        "pct95_change_pct": 346.4,
+        "pct5_change_pct": -46.5
+      },
+      "p_itm_pct": 74.0,
+      "p_otm_pct": 26.0,
+      "p_100pct_return_pct": 54.9,
+      "expected_payoff_if_itm": 557.29,
+      "pv_expected_payoff": 522.19,
+      "expected_value_ev": 360.24,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 231.99,
+      "entry_gamma": 0.001717,
+      "entry_vega": 1.9616,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 557.84,
+          "pct_above_current": 35.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 576.52,
+          "pct_above_current": 39.7
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 591.96,
+          "pct_above_current": 43.4
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "GOOGL",
+      "current_price": 388.22,
+      "strike": 390.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 108.58,
+      "div_yield_pct": 0.22,
+      "implied_vol_raw_pct": 45.87,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 38.86,
+      "calibrated_drift_pct": 38.65,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 1202.53,
+        "pct_5": 333.96,
+        "pct_25": 688.01,
+        "pct_75": 2050.21,
+        "pct_95": 4490.04
+      },
+      "upside_downside": {
+        "median_change_pct": 209.8,
+        "pct95_change_pct": 1056.6,
+        "pct5_change_pct": -14.0
+      },
+      "p_itm_pct": 92.0,
+      "p_otm_pct": 8.0,
+      "p_100pct_return_pct": 81.3,
+      "expected_payoff_if_itm": 1386.01,
+      "pv_expected_payoff": 1254.08,
+      "expected_value_ev": 1145.07,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 812.66,
+      "entry_gamma": 0.001431,
+      "entry_vega": 2.2236,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 549.16,
+          "pct_above_current": 41.5
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 565.36,
+          "pct_above_current": 45.6
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 582.29,
+          "pct_above_current": 50.0
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "DLR",
+      "current_price": 187.62,
+      "strike": 190.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 30.9,
+      "div_yield_pct": 2.6,
+      "implied_vol_raw_pct": 35.09,
+      "implied_vol_used_pct": 35.09,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 27.56,
+      "calibrated_drift_pct": 24.96,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 293.46,
+        "pct_5": 115.13,
+        "pct_25": 194.73,
+        "pct_75": 441.43,
+        "pct_95": 740.04
+      },
+      "upside_downside": {
+        "median_change_pct": 56.4,
+        "pct95_change_pct": 294.4,
+        "pct5_change_pct": -38.6
+      },
+      "p_itm_pct": 76.6,
+      "p_otm_pct": 23.4,
+      "p_100pct_return_pct": 58.3,
+      "expected_payoff_if_itm": 217.01,
+      "pv_expected_payoff": 203.34,
+      "expected_value_ev": 148.53,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 103.46,
+      "entry_gamma": 0.004346,
+      "entry_vega": 0.9001,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 243.4,
+          "pct_above_current": 29.7
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 250.02,
+          "pct_above_current": 33.3
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 255.49,
+          "pct_above_current": 36.2
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "FCX",
+      "current_price": 58.76,
+      "strike": 60.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 15.3,
+      "div_yield_pct": 1.02,
+      "implied_vol_raw_pct": 52.84,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 17.9,
+      "calibrated_drift_pct": 16.88,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 72.12,
+        "pct_5": 24.82,
+        "pct_25": 45.19,
+        "pct_75": 114.86,
+        "pct_95": 207.0
+      },
+      "upside_downside": {
+        "median_change_pct": 22.7,
+        "pct95_change_pct": 252.3,
+        "pct5_change_pct": -57.8
+      },
+      "p_itm_pct": 59.5,
+      "p_otm_pct": 40.5,
+      "p_100pct_return_pct": 41.2,
+      "expected_payoff_if_itm": 62.31,
+      "pv_expected_payoff": 58.39,
+      "expected_value_ev": 28.54,
+      "ev_positive": true,
+      "kelly_criterion_pct": 24.8,
+      "projected_option_value": 12.14,
+      "entry_gamma": 0.012276,
+      "entry_vega": 0.2843,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 79.15,
+          "pct_above_current": 34.7
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 82.03,
+          "pct_above_current": 39.6
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 84.52,
+          "pct_above_current": 43.8
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "NDAQ",
+      "current_price": 92.88,
+      "strike": 92.5,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 16.05,
+      "div_yield_pct": 1.16,
+      "implied_vol_raw_pct": 37.52,
+      "implied_vol_used_pct": 37.52,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 18.82,
+      "calibrated_drift_pct": 17.65,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 119.0,
+        "pct_5": 43.76,
+        "pct_25": 76.75,
+        "pct_75": 184.13,
+        "pct_95": 319.93
+      },
+      "upside_downside": {
+        "median_change_pct": 28.1,
+        "pct95_change_pct": 244.5,
+        "pct5_change_pct": -52.9
+      },
+      "p_itm_pct": 64.1,
+      "p_otm_pct": 35.9,
+      "p_100pct_return_pct": 44.2,
+      "expected_payoff_if_itm": 94.58,
+      "pv_expected_payoff": 88.63,
+      "expected_value_ev": 51.05,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 26.52,
+      "entry_gamma": 0.008169,
+      "entry_vega": 0.4433,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 123.67,
+          "pct_above_current": 33.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 127.57,
+          "pct_above_current": 37.3
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 130.76,
+          "pct_above_current": 40.8
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "AMD",
+      "current_price": 407.71,
+      "strike": 410.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 167.88,
+      "div_yield_pct": 0.0,
+      "implied_vol_raw_pct": 67.73,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 45.18,
+      "calibrated_drift_pct": 45.18,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 1612.09,
+        "pct_5": 447.7,
+        "pct_25": 922.33,
+        "pct_75": 2748.46,
+        "pct_95": 6019.23
+      },
+      "upside_downside": {
+        "median_change_pct": 295.4,
+        "pct95_change_pct": 1376.4,
+        "pct5_change_pct": 9.8
+      },
+      "p_itm_pct": 95.7,
+      "p_otm_pct": 4.3,
+      "p_100pct_return_pct": 88.7,
+      "expected_payoff_if_itm": 1897.31,
+      "pv_expected_payoff": 1716.71,
+      "expected_value_ev": 1635.67,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 1202.24,
+      "entry_gamma": 0.001365,
+      "entry_vega": 2.3406,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 577.7,
+          "pct_above_current": 41.7
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 595.23,
+          "pct_above_current": 46.0
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 613.51,
           "pct_above_current": 50.5
         }
       ],
       "status": "ok"
     },
     {
+      "symbol": "TPR",
+      "current_price": 130.94,
+      "strike": 130.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 31.6,
+      "div_yield_pct": 1.18,
+      "implied_vol_raw_pct": 50.12,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 39.94,
+      "calibrated_drift_pct": 38.76,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 273.44,
+        "pct_5": 94.12,
+        "pct_25": 171.32,
+        "pct_75": 435.51,
+        "pct_95": 784.85
+      },
+      "upside_downside": {
+        "median_change_pct": 108.8,
+        "pct95_change_pct": 499.4,
+        "pct5_change_pct": -28.1
+      },
+      "p_itm_pct": 86.5,
+      "p_otm_pct": 13.5,
+      "p_100pct_return_pct": 69.8,
+      "expected_payoff_if_itm": 244.56,
+      "pv_expected_payoff": 229.16,
+      "expected_value_ev": 193.96,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 143.46,
+      "entry_gamma": 0.005405,
+      "entry_vega": 0.6215,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 176.76,
+          "pct_above_current": 35.0
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 182.55,
+          "pct_above_current": 39.4
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 187.31,
+          "pct_above_current": 43.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "GOOG",
+      "current_price": 384.96,
+      "strike": 385.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 107.0,
+      "div_yield_pct": 0.22,
+      "implied_vol_raw_pct": 45.14,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 38.45,
+      "calibrated_drift_pct": 38.24,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 1174.25,
+        "pct_5": 326.11,
+        "pct_25": 671.83,
+        "pct_75": 2001.99,
+        "pct_95": 4384.44
+      },
+      "upside_downside": {
+        "median_change_pct": 205.0,
+        "pct95_change_pct": 1038.9,
+        "pct5_change_pct": -15.3
+      },
+      "p_itm_pct": 91.9,
+      "p_otm_pct": 8.1,
+      "p_100pct_return_pct": 80.6,
+      "expected_payoff_if_itm": 1350.71,
+      "pv_expected_payoff": 1222.14,
+      "expected_value_ev": 1114.48,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 789.38,
+      "entry_gamma": 0.001438,
+      "entry_vega": 2.1978,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 544.86,
+          "pct_above_current": 41.5
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 560.78,
+          "pct_above_current": 45.7
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 577.39,
+          "pct_above_current": 50.0
+        }
+      ],
+      "status": "ok"
+    },
+    {
       "symbol": "KEYS",
-      "current_price": 328.85,
+      "current_price": 332.18,
       "strike": 330.0,
       "expiry": "2026-12-18",
       "days_to_expiry": 213,
       "years_to_expiry": 0.584,
-      "current_premium": 55.25,
+      "current_premium": 55.55,
       "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 55.89,
-      "implied_vol_used_pct": 55.89,
+      "implied_vol_raw_pct": 54.22,
+      "implied_vol_used_pct": 54.22,
       "iv_was_capped": false,
       "iv_data_corrected": false,
-      "historical_mu_pct": 24.76,
-      "calibrated_drift_pct": 24.76,
+      "historical_mu_pct": 25.02,
+      "calibrated_drift_pct": 25.02,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 355.3,
-        "pct_5": 153.51,
-        "pct_25": 246.1,
-        "pct_75": 499.31,
-        "pct_95": 864.42
+        "median": 362.51,
+        "pct_5": 160.6,
+        "pct_25": 253.86,
+        "pct_75": 504.28,
+        "pct_95": 858.83
       },
       "upside_downside": {
-        "median_change_pct": 8.0,
-        "pct95_change_pct": 162.9,
-        "pct5_change_pct": -53.3
+        "median_change_pct": 9.1,
+        "pct95_change_pct": 158.5,
+        "pct5_change_pct": -51.7
       },
-      "p_itm_pct": 55.5,
-      "p_otm_pct": 44.5,
+      "p_itm_pct": 57.7,
+      "p_otm_pct": 42.3,
       "p_100pct_return_pct": null,
-      "expected_payoff_if_itm": 219.34,
-      "pv_expected_payoff": 214.43,
-      "expected_value_ev": 94.42,
+      "expected_payoff_if_itm": 213.78,
+      "pv_expected_payoff": 208.99,
+      "expected_value_ev": 97.09,
       "ev_positive": true,
-      "kelly_criterion_pct": 22.1,
-      "projected_option_value": 26.25,
-      "entry_gamma": 0.002748,
-      "entry_vega": 0.9693,
+      "kelly_criterion_pct": 23.4,
+      "projected_option_value": 32.95,
+      "entry_gamma": 0.00279,
+      "entry_vega": 0.9741,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 444.66,
-          "pct_above_current": 35.2
+          "stock_price_for_100pct_return": 445.59,
+          "pct_above_current": 34.1
         },
         {
           "months_elapsed": 12,
@@ -357,57 +1865,57 @@
     },
     {
       "symbol": "AMZN",
-      "current_price": 257.39,
+      "current_price": 256.7,
       "strike": 260.0,
       "expiry": "2028-12-15",
       "days_to_expiry": 941,
       "years_to_expiry": 2.578,
-      "current_premium": 70.1,
+      "current_premium": 70.03,
       "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 45.01,
+      "implied_vol_raw_pct": 44.89,
       "implied_vol_used_pct": 40.0,
       "iv_was_capped": true,
       "iv_data_corrected": false,
-      "historical_mu_pct": 26.62,
-      "calibrated_drift_pct": 26.62,
+      "historical_mu_pct": 26.48,
+      "calibrated_drift_pct": 26.48,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 508.85,
-        "pct_5": 141.31,
-        "pct_25": 291.13,
-        "pct_75": 867.54,
-        "pct_95": 1899.95
+        "median": 504.79,
+        "pct_5": 140.19,
+        "pct_25": 288.81,
+        "pct_75": 860.62,
+        "pct_95": 1884.79
       },
       "upside_downside": {
-        "median_change_pct": 97.7,
-        "pct95_change_pct": 638.2,
-        "pct5_change_pct": -45.1
+        "median_change_pct": 96.6,
+        "pct95_change_pct": 634.2,
+        "pct5_change_pct": -45.4
       },
-      "p_itm_pct": 79.3,
-      "p_otm_pct": 20.7,
+      "p_itm_pct": 79.2,
+      "p_otm_pct": 20.8,
       "p_100pct_return_pct": 63.3,
-      "expected_payoff_if_itm": 577.25,
-      "pv_expected_payoff": 522.3,
-      "expected_value_ev": 399.67,
+      "expected_payoff_if_itm": 571.29,
+      "pv_expected_payoff": 516.91,
+      "expected_value_ev": 394.82,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 248.95,
-      "entry_gamma": 0.00217,
-      "entry_vega": 1.4824,
+      "projected_option_value": 244.89,
+      "entry_gamma": 0.00218,
+      "entry_vega": 1.4813,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 364.49,
+          "stock_price_for_100pct_return": 363.38,
           "pct_above_current": 41.6
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 375.65,
+          "stock_price_for_100pct_return": 374.57,
           "pct_above_current": 45.9
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 387.31,
+          "stock_price_for_100pct_return": 386.27,
           "pct_above_current": 50.5
         }
       ],
@@ -415,130 +1923,188 @@
     },
     {
       "symbol": "NFLX",
-      "current_price": 90.61,
+      "current_price": 90.23,
       "strike": 90.0,
       "expiry": "2028-12-15",
       "days_to_expiry": 941,
       "years_to_expiry": 2.578,
-      "current_premium": 26.55,
+      "current_premium": 26.48,
       "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 47.39,
+      "implied_vol_raw_pct": 47.49,
       "implied_vol_used_pct": 40.0,
       "iv_was_capped": true,
       "iv_data_corrected": false,
-      "historical_mu_pct": 30.47,
-      "calibrated_drift_pct": 30.47,
+      "historical_mu_pct": 30.34,
+      "calibrated_drift_pct": 30.34,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 206.8,
-        "pct_5": 57.43,
-        "pct_25": 118.32,
-        "pct_75": 352.57,
-        "pct_95": 772.14
+        "median": 204.95,
+        "pct_5": 56.92,
+        "pct_25": 117.26,
+        "pct_75": 349.42,
+        "pct_95": 765.24
       },
       "upside_downside": {
-        "median_change_pct": 128.2,
-        "pct95_change_pct": 752.2,
-        "pct5_change_pct": -36.6
+        "median_change_pct": 127.1,
+        "pct95_change_pct": 748.1,
+        "pct5_change_pct": -36.9
       },
-      "p_itm_pct": 85.3,
-      "p_otm_pct": 14.7,
-      "p_100pct_return_pct": 68.7,
-      "expected_payoff_if_itm": 233.2,
-      "pv_expected_payoff": 211.01,
-      "expected_value_ev": 176.09,
+      "p_itm_pct": 85.0,
+      "p_otm_pct": 15.0,
+      "p_100pct_return_pct": 68.5,
+      "expected_payoff_if_itm": 231.13,
+      "pv_expected_payoff": 209.13,
+      "expected_value_ev": 173.79,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 116.83,
-      "entry_gamma": 0.006088,
-      "entry_vega": 0.5154,
+      "projected_option_value": 114.98,
+      "entry_gamma": 0.006133,
+      "entry_vega": 0.5149,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 128.6,
-          "pct_above_current": 41.9
+          "stock_price_for_100pct_return": 127.99,
+          "pct_above_current": 41.8
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 132.41,
+          "stock_price_for_100pct_return": 131.81,
           "pct_above_current": 46.1
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 136.36,
+          "stock_price_for_100pct_return": 135.78,
           "pct_above_current": 50.5
         }
       ],
       "status": "ok"
     },
     {
-      "symbol": "BSX",
-      "current_price": 56.81,
-      "strike": 55.0,
+      "symbol": "GLW",
+      "current_price": 173.93,
+      "strike": 175.0,
       "expiry": "2028-01-21",
       "days_to_expiry": 612,
       "years_to_expiry": 1.677,
-      "current_premium": 14.85,
-      "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 50.97,
+      "current_premium": 61.6,
+      "div_yield_pct": 0.64,
+      "implied_vol_raw_pct": 71.39,
       "implied_vol_used_pct": 40.0,
       "iv_was_capped": true,
       "iv_data_corrected": false,
-      "historical_mu_pct": 3.88,
-      "calibrated_drift_pct": 3.88,
+      "historical_mu_pct": 59.96,
+      "calibrated_drift_pct": 59.32,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 50.85,
-        "pct_5": 17.5,
-        "pct_25": 31.86,
-        "pct_75": 81.0,
-        "pct_95": 145.96
+        "median": 598.41,
+        "pct_5": 205.96,
+        "pct_25": 374.93,
+        "pct_75": 953.08,
+        "pct_95": 1717.58
       },
       "upside_downside": {
-        "median_change_pct": -10.5,
-        "pct95_change_pct": 156.9,
-        "pct5_change_pct": -69.2
+        "median_change_pct": 244.1,
+        "pct95_change_pct": 887.5,
+        "pct5_change_pct": 18.4
       },
-      "p_itm_pct": 45.6,
-      "p_otm_pct": 54.4,
-      "p_100pct_return_pct": 23.5,
-      "expected_payoff_if_itm": 42.69,
-      "pv_expected_payoff": 40.0,
-      "expected_value_ev": 10.16,
+      "p_itm_pct": 96.7,
+      "p_otm_pct": 3.3,
+      "p_100pct_return_pct": 89.0,
+      "expected_payoff_if_itm": 582.61,
+      "pv_expected_payoff": 545.91,
+      "expected_value_ev": 525.86,
       "ev_positive": true,
-      "kelly_criterion_pct": 13.3,
-      "projected_option_value": 0.02,
-      "entry_gamma": 0.012268,
-      "entry_vega": 0.2656,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 423.44,
+      "entry_gamma": 0.004118,
+      "entry_vega": 0.8355,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 77.59,
-          "pct_above_current": 36.6
+          "stock_price_for_100pct_return": 235.3,
+          "pct_above_current": 35.3
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 80.24,
-          "pct_above_current": 41.2
+          "stock_price_for_100pct_return": 243.78,
+          "pct_above_current": 40.2
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 82.4,
-          "pct_above_current": 45.0
+          "stock_price_for_100pct_return": 250.95,
+          "pct_above_current": 44.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "EA",
+      "current_price": 201.46,
+      "strike": 200.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 10.0,
+      "div_yield_pct": 0.38,
+      "implied_vol_raw_pct": 23.31,
+      "implied_vol_used_pct": 23.31,
+      "iv_was_capped": false,
+      "iv_data_corrected": true,
+      "historical_mu_pct": 16.34,
+      "calibrated_drift_pct": 15.96,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 327.71,
+        "pct_5": 155.3,
+        "pct_25": 236.67,
+        "pct_75": 447.23,
+        "pct_95": 706.27
+      },
+      "upside_downside": {
+        "median_change_pct": 62.7,
+        "pct95_change_pct": 250.6,
+        "pct5_change_pct": -22.9
+      },
+      "p_itm_pct": 85.6,
+      "p_otm_pct": 14.4,
+      "p_100pct_return_pct": 65.4,
+      "expected_payoff_if_itm": 199.44,
+      "pv_expected_payoff": 180.45,
+      "expected_value_ev": 153.03,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 127.77,
+      "entry_gamma": 0.004739,
+      "entry_vega": 1.156,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 256.97,
+          "pct_above_current": 27.6
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 262.31,
+          "pct_above_current": 30.2
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 267.63,
+          "pct_above_current": 32.8
         }
       ],
       "status": "ok"
     },
     {
       "symbol": "DXCM",
-      "current_price": 66.29,
+      "current_price": 66.4,
       "strike": 65.0,
       "expiry": "2028-01-21",
       "days_to_expiry": 612,
       "years_to_expiry": 1.677,
       "current_premium": 18.05,
       "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 52.23,
+      "implied_vol_raw_pct": 52.01,
       "implied_vol_used_pct": 40.0,
       "iv_was_capped": true,
       "iv_data_corrected": false,
@@ -546,11 +2112,11 @@
       "calibrated_drift_pct": 3.88,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 59.34,
-        "pct_5": 20.42,
-        "pct_25": 37.18,
-        "pct_75": 94.51,
-        "pct_95": 170.32
+        "median": 59.44,
+        "pct_5": 20.46,
+        "pct_25": 37.24,
+        "pct_75": 94.67,
+        "pct_95": 170.6
       },
       "upside_downside": {
         "median_change_pct": -10.5,
@@ -560,391 +2126,159 @@
       "p_itm_pct": 44.7,
       "p_otm_pct": 55.3,
       "p_100pct_return_pct": 23.5,
-      "expected_payoff_if_itm": 49.98,
-      "pv_expected_payoff": 46.83,
-      "expected_value_ev": 10.95,
+      "expected_payoff_if_itm": 50.17,
+      "pv_expected_payoff": 47.01,
+      "expected_value_ev": 11.03,
       "ev_positive": true,
       "kelly_criterion_pct": 12.4,
       "projected_option_value": 0.01,
-      "entry_gamma": 0.010627,
-      "entry_vega": 0.3132,
+      "entry_gamma": 0.010595,
+      "entry_vega": 0.3133,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 90.38,
-          "pct_above_current": 36.3
+          "stock_price_for_100pct_return": 90.55,
+          "pct_above_current": 36.4
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 93.59,
+          "stock_price_for_100pct_return": 93.74,
           "pct_above_current": 41.2
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 96.23,
+          "stock_price_for_100pct_return": 96.38,
           "pct_above_current": 45.2
         }
       ],
       "status": "ok"
     },
     {
-      "symbol": "CDNS",
-      "current_price": 343.47,
-      "strike": 340.0,
-      "expiry": "2028-01-21",
-      "days_to_expiry": 612,
-      "years_to_expiry": 1.677,
-      "current_premium": 88.55,
-      "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 51.14,
-      "implied_vol_used_pct": 40.0,
-      "iv_was_capped": true,
+      "symbol": "ROP",
+      "current_price": 334.26,
+      "strike": 330.0,
+      "expiry": "2026-11-20",
+      "days_to_expiry": 185,
+      "years_to_expiry": 0.507,
+      "current_premium": 37.1,
+      "div_yield_pct": 1.04,
+      "implied_vol_raw_pct": 40.23,
+      "implied_vol_used_pct": 40.23,
+      "iv_was_capped": false,
       "iv_data_corrected": false,
-      "historical_mu_pct": 15.42,
-      "calibrated_drift_pct": 15.42,
+      "historical_mu_pct": 3.88,
+      "calibrated_drift_pct": 2.84,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 406.95,
-        "pct_5": 140.07,
-        "pct_25": 254.97,
-        "pct_75": 648.14,
-        "pct_95": 1168.05
+        "median": 326.66,
+        "pct_5": 181.33,
+        "pct_25": 253.89,
+        "pct_75": 403.12,
+        "pct_95": 564.87
       },
       "upside_downside": {
-        "median_change_pct": 18.5,
-        "pct95_change_pct": 240.1,
-        "pct5_change_pct": -59.2
+        "median_change_pct": -2.3,
+        "pct95_change_pct": 69.0,
+        "pct5_change_pct": -45.8
       },
-      "p_itm_pct": 59.2,
-      "p_otm_pct": 40.8,
-      "p_100pct_return_pct": 38.9,
-      "expected_payoff_if_itm": 351.94,
-      "pv_expected_payoff": 329.77,
-      "expected_value_ev": 159.1,
+      "p_itm_pct": 48.6,
+      "p_otm_pct": 51.4,
+      "p_100pct_return_pct": null,
+      "expected_payoff_if_itm": 104.17,
+      "pv_expected_payoff": 102.14,
+      "expected_value_ev": 30.57,
       "ev_positive": true,
-      "kelly_criterion_pct": 24.5,
-      "projected_option_value": 67.08,
-      "entry_gamma": 0.002067,
-      "entry_vega": 1.6351,
+      "kelly_criterion_pct": 15.1,
+      "projected_option_value": 3.8,
+      "entry_gamma": 0.004029,
+      "entry_vega": 0.918,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 467.73,
-          "pct_above_current": 36.2
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 484.77,
-          "pct_above_current": 41.1
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 499.0,
-          "pct_above_current": 45.3
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
         }
       ],
       "status": "ok"
     },
     {
-      "symbol": "ISRG",
-      "current_price": 444.23,
-      "strike": 440.0,
-      "expiry": "2028-12-15",
-      "days_to_expiry": 941,
-      "years_to_expiry": 2.578,
-      "current_premium": 123.0,
-      "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 44.64,
-      "implied_vol_used_pct": 40.0,
-      "iv_was_capped": true,
-      "iv_data_corrected": false,
-      "historical_mu_pct": 11.75,
-      "calibrated_drift_pct": 11.75,
-      "n_simulations": 1000,
-      "projected_prices": {
-        "median": 504.07,
-        "pct_5": 139.99,
-        "pct_25": 288.4,
-        "pct_75": 859.39,
-        "pct_95": 1882.1
-      },
-      "upside_downside": {
-        "median_change_pct": 13.5,
-        "pct95_change_pct": 323.7,
-        "pct5_change_pct": -68.5
-      },
-      "p_itm_pct": 56.6,
-      "p_otm_pct": 43.4,
-      "p_100pct_return_pct": 35.3,
-      "expected_payoff_if_itm": 584.01,
-      "pv_expected_payoff": 528.42,
-      "expected_value_ev": 245.7,
-      "ev_positive": true,
-      "kelly_criterion_pct": 23.7,
-      "projected_option_value": 64.24,
-      "entry_gamma": 0.001239,
-      "entry_vega": 2.5215,
-      "return_checkpoints": [
-        {
-          "months_elapsed": 6,
-          "stock_price_for_100pct_return": 630.74,
-          "pct_above_current": 42.0
-        },
-        {
-          "months_elapsed": 12,
-          "stock_price_for_100pct_return": 649.29,
-          "pct_above_current": 46.2
-        },
-        {
-          "months_elapsed": 18,
-          "stock_price_for_100pct_return": 668.54,
-          "pct_above_current": 50.5
-        }
-      ],
-      "status": "ok"
-    },
-    {
-      "symbol": "PANW",
-      "current_price": 245.14,
+      "symbol": "HWM",
+      "current_price": 252.82,
       "strike": 250.0,
-      "expiry": "2028-12-15",
-      "days_to_expiry": 941,
-      "years_to_expiry": 2.578,
-      "current_premium": 82.17,
-      "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 55.04,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 61.25,
+      "div_yield_pct": 0.19,
+      "implied_vol_raw_pct": 48.54,
       "implied_vol_used_pct": 40.0,
       "iv_was_capped": true,
       "iv_data_corrected": false,
-      "historical_mu_pct": 32.02,
-      "calibrated_drift_pct": 32.02,
+      "historical_mu_pct": 58.18,
+      "calibrated_drift_pct": 57.99,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 592.78,
-        "pct_5": 164.62,
-        "pct_25": 339.15,
-        "pct_75": 1010.63,
-        "pct_95": 2213.32
+        "median": 842.3,
+        "pct_5": 289.91,
+        "pct_25": 527.74,
+        "pct_75": 1341.51,
+        "pct_95": 2417.6
       },
       "upside_downside": {
-        "median_change_pct": 141.8,
-        "pct95_change_pct": 802.9,
-        "pct5_change_pct": -32.8
+        "median_change_pct": 233.2,
+        "pct95_change_pct": 856.3,
+        "pct5_change_pct": 14.7
       },
-      "p_itm_pct": 85.8,
-      "p_otm_pct": 14.2,
-      "p_100pct_return_pct": 71.2,
-      "expected_payoff_if_itm": 672.54,
-      "pv_expected_payoff": 608.52,
-      "expected_value_ev": 510.44,
+      "p_itm_pct": 96.4,
+      "p_otm_pct": 3.6,
+      "p_100pct_return_pct": 88.4,
+      "expected_payoff_if_itm": 818.92,
+      "pv_expected_payoff": 767.34,
+      "expected_value_ev": 737.51,
       "ev_positive": true,
       "kelly_criterion_pct": 25.0,
-      "projected_option_value": 342.87,
-      "entry_gamma": 0.002294,
-      "entry_vega": 1.4214,
+      "projected_option_value": 592.38,
+      "entry_gamma": 0.002803,
+      "entry_vega": 1.2017,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 346.71,
-          "pct_above_current": 41.4
+          "stock_price_for_100pct_return": 343.86,
+          "pct_above_current": 36.0
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 357.52,
-          "pct_above_current": 45.8
+          "stock_price_for_100pct_return": 356.13,
+          "pct_above_current": 40.9
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 368.87,
-          "pct_above_current": 50.5
+          "stock_price_for_100pct_return": 366.34,
+          "pct_above_current": 44.9
         }
       ],
       "status": "ok"
     },
     {
-      "symbol": "MNST",
-      "current_price": 86.61,
-      "strike": 87.5,
+      "symbol": "BSX",
+      "current_price": 56.35,
+      "strike": 55.0,
       "expiry": "2028-01-21",
       "days_to_expiry": 612,
       "years_to_expiry": 1.677,
-      "current_premium": 16.2,
-      "div_yield_pct": 0.01,
-      "implied_vol_raw_pct": 38.93,
-      "implied_vol_used_pct": 38.93,
-      "iv_was_capped": false,
-      "iv_data_corrected": false,
-      "historical_mu_pct": 12.52,
-      "calibrated_drift_pct": 12.51,
-      "n_simulations": 1000,
-      "projected_prices": {
-        "median": 96.62,
-        "pct_5": 34.22,
-        "pct_25": 61.3,
-        "pct_75": 151.98,
-        "pct_95": 269.61
-      },
-      "upside_downside": {
-        "median_change_pct": 11.6,
-        "pct95_change_pct": 211.3,
-        "pct5_change_pct": -60.5
-      },
-      "p_itm_pct": 55.7,
-      "p_otm_pct": 44.3,
-      "p_100pct_return_pct": 34.9,
-      "expected_payoff_if_itm": 78.88,
-      "pv_expected_payoff": 73.91,
-      "expected_value_ev": 33.99,
-      "ev_positive": true,
-      "kelly_criterion_pct": 23.3,
-      "projected_option_value": 9.16,
-      "entry_gamma": 0.008561,
-      "entry_vega": 0.4192,
-      "return_checkpoints": [
-        {
-          "months_elapsed": 6,
-          "stock_price_for_100pct_return": 116.96,
-          "pct_above_current": 35.0
-        },
-        {
-          "months_elapsed": 12,
-          "stock_price_for_100pct_return": 121.39,
-          "pct_above_current": 40.2
-        },
-        {
-          "months_elapsed": 18,
-          "stock_price_for_100pct_return": 125.18,
-          "pct_above_current": 44.5
-        }
-      ],
-      "status": "ok"
-    },
-    {
-      "symbol": "ORLY",
-      "current_price": 92.64,
-      "strike": 95.0,
-      "expiry": "2028-01-21",
-      "days_to_expiry": 612,
-      "years_to_expiry": 1.677,
-      "current_premium": 15.0,
+      "current_premium": 14.85,
       "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 36.73,
-      "implied_vol_used_pct": 36.73,
-      "iv_was_capped": false,
-      "iv_data_corrected": false,
-      "historical_mu_pct": 12.62,
-      "calibrated_drift_pct": 12.62,
-      "n_simulations": 1000,
-      "projected_prices": {
-        "median": 105.8,
-        "pct_5": 39.73,
-        "pct_25": 68.87,
-        "pct_75": 162.22,
-        "pct_95": 278.6
-      },
-      "upside_downside": {
-        "median_change_pct": 14.2,
-        "pct95_change_pct": 200.7,
-        "pct5_change_pct": -57.1
-      },
-      "p_itm_pct": 56.1,
-      "p_otm_pct": 43.9,
-      "p_100pct_return_pct": 36.7,
-      "expected_payoff_if_itm": 80.23,
-      "pv_expected_payoff": 75.18,
-      "expected_value_ev": 35.59,
-      "ev_positive": true,
-      "kelly_criterion_pct": 23.9,
-      "projected_option_value": 10.84,
-      "entry_gamma": 0.008598,
-      "entry_vega": 0.4544,
-      "return_checkpoints": [
-        {
-          "months_elapsed": 6,
-          "stock_price_for_100pct_return": 123.37,
-          "pct_above_current": 33.2
-        },
-        {
-          "months_elapsed": 12,
-          "stock_price_for_100pct_return": 128.08,
-          "pct_above_current": 38.3
-        },
-        {
-          "months_elapsed": 18,
-          "stock_price_for_100pct_return": 132.15,
-          "pct_above_current": 42.6
-        }
-      ],
-      "status": "ok"
-    },
-    {
-      "symbol": "FTNT",
-      "current_price": 126.53,
-      "strike": 125.0,
-      "expiry": "2028-01-21",
-      "days_to_expiry": 612,
-      "years_to_expiry": 1.677,
-      "current_premium": 33.97,
-      "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 52.02,
-      "implied_vol_used_pct": 40.0,
-      "iv_was_capped": true,
-      "iv_data_corrected": false,
-      "historical_mu_pct": 19.97,
-      "calibrated_drift_pct": 19.97,
-      "n_simulations": 1000,
-      "projected_prices": {
-        "median": 167.42,
-        "pct_5": 57.63,
-        "pct_25": 104.9,
-        "pct_75": 266.65,
-        "pct_95": 480.55
-      },
-      "upside_downside": {
-        "median_change_pct": 32.3,
-        "pct95_change_pct": 279.8,
-        "pct5_change_pct": -54.5
-      },
-      "p_itm_pct": 65.6,
-      "p_otm_pct": 34.4,
-      "p_100pct_return_pct": 44.7,
-      "expected_payoff_if_itm": 144.79,
-      "pv_expected_payoff": 135.67,
-      "expected_value_ev": 77.31,
-      "ev_positive": true,
-      "kelly_criterion_pct": 25.0,
-      "projected_option_value": 42.47,
-      "entry_gamma": 0.005601,
-      "entry_vega": 0.6014,
-      "return_checkpoints": [
-        {
-          "months_elapsed": 6,
-          "stock_price_for_100pct_return": 172.35,
-          "pct_above_current": 36.2
-        },
-        {
-          "months_elapsed": 12,
-          "stock_price_for_100pct_return": 178.6,
-          "pct_above_current": 41.2
-        },
-        {
-          "months_elapsed": 18,
-          "stock_price_for_100pct_return": 183.79,
-          "pct_above_current": 45.3
-        }
-      ],
-      "status": "ok"
-    },
-    {
-      "symbol": "IQV",
-      "current_price": 174.65,
-      "strike": 175.0,
-      "expiry": "2028-01-21",
-      "days_to_expiry": 612,
-      "years_to_expiry": 1.677,
-      "current_premium": 42.75,
-      "div_yield_pct": 0.0,
-      "implied_vol_raw_pct": 50.88,
+      "implied_vol_raw_pct": 50.05,
       "implied_vol_used_pct": 40.0,
       "iv_was_capped": true,
       "iv_data_corrected": false,
@@ -952,42 +2286,2420 @@
       "calibrated_drift_pct": 3.88,
       "n_simulations": 1000,
       "projected_prices": {
-        "median": 156.34,
-        "pct_5": 53.81,
-        "pct_25": 97.95,
-        "pct_75": 249.0,
-        "pct_95": 448.74
+        "median": 50.44,
+        "pct_5": 17.36,
+        "pct_25": 31.6,
+        "pct_75": 80.34,
+        "pct_95": 144.78
       },
       "upside_downside": {
         "median_change_pct": -10.5,
         "pct95_change_pct": 156.9,
         "pct5_change_pct": -69.2
       },
-      "p_itm_pct": 43.8,
-      "p_otm_pct": 56.2,
+      "p_itm_pct": 45.1,
+      "p_otm_pct": 54.9,
       "p_100pct_return_pct": 23.5,
-      "expected_payoff_if_itm": 130.61,
-      "pv_expected_payoff": 122.38,
-      "expected_value_ev": 29.58,
+      "expected_payoff_if_itm": 42.36,
+      "pv_expected_payoff": 39.7,
+      "expected_value_ev": 9.75,
       "ev_positive": true,
-      "kelly_criterion_pct": 12.7,
-      "projected_option_value": 0.0,
-      "entry_gamma": 0.004102,
-      "entry_vega": 0.8391,
+      "kelly_criterion_pct": 12.9,
+      "projected_option_value": 0.01,
+      "entry_gamma": 0.012454,
+      "entry_vega": 0.2652,
       "return_checkpoints": [
         {
           "months_elapsed": 6,
-          "stock_price_for_100pct_return": 237.47,
-          "pct_above_current": 36.0
+          "stock_price_for_100pct_return": 76.88,
+          "pct_above_current": 36.4
         },
         {
           "months_elapsed": 12,
-          "stock_price_for_100pct_return": 246.43,
+          "stock_price_for_100pct_return": 79.56,
+          "pct_above_current": 41.2
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 81.78,
+          "pct_above_current": 45.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "HLT",
+      "current_price": 317.0,
+      "strike": 320.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 58.75,
+      "div_yield_pct": 0.19,
+      "implied_vol_raw_pct": 38.01,
+      "implied_vol_used_pct": 38.01,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 26.69,
+      "calibrated_drift_pct": 26.5,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 501.18,
+        "pct_5": 181.9,
+        "pct_25": 321.4,
+        "pct_75": 779.94,
+        "pct_95": 1364.98
+      },
+      "upside_downside": {
+        "median_change_pct": 58.1,
+        "pct95_change_pct": 330.6,
+        "pct5_change_pct": -42.6
+      },
+      "p_itm_pct": 75.2,
+      "p_otm_pct": 24.8,
+      "p_100pct_return_pct": 55.7,
+      "expected_payoff_if_itm": 408.72,
+      "pv_expected_payoff": 382.98,
+      "expected_value_ev": 273.43,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 181.29,
+      "entry_gamma": 0.002395,
+      "entry_vega": 1.5339,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 425.44,
+          "pct_above_current": 34.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 441.0,
+          "pct_above_current": 39.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 454.22,
+          "pct_above_current": 43.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "WELL",
+      "current_price": 215.05,
+      "strike": 220.0,
+      "expiry": "2027-01-15",
+      "days_to_expiry": 241,
+      "years_to_expiry": 0.66,
+      "current_premium": 16.35,
+      "div_yield_pct": 1.38,
+      "implied_vol_raw_pct": 28.47,
+      "implied_vol_used_pct": 28.47,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 36.71,
+      "calibrated_drift_pct": 35.33,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 290.2,
+        "pct_5": 175.79,
+        "pct_25": 236.4,
+        "pct_75": 348.68,
+        "pct_95": 467.76
+      },
+      "upside_downside": {
+        "median_change_pct": 34.9,
+        "pct95_change_pct": 117.5,
+        "pct5_change_pct": -18.3
+      },
+      "p_itm_pct": 83.1,
+      "p_otm_pct": 16.9,
+      "p_100pct_return_pct": null,
+      "expected_payoff_if_itm": 103.31,
+      "pv_expected_payoff": 100.7,
+      "expected_value_ev": 80.92,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 70.24,
+      "entry_gamma": 0.007915,
+      "entry_vega": 0.6881,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 256.2,
+          "pct_above_current": 19.1
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "MSFT",
+      "current_price": 422.59,
+      "strike": 425.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 101.25,
+      "div_yield_pct": 0.82,
+      "implied_vol_raw_pct": 39.17,
+      "implied_vol_used_pct": 39.17,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 10.17,
+      "calibrated_drift_pct": 9.35,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 443.83,
+        "pct_5": 126.58,
+        "pct_25": 256.89,
+        "pct_75": 748.37,
+        "pct_95": 1612.51
+      },
+      "upside_downside": {
+        "median_change_pct": 5.0,
+        "pct95_change_pct": 281.6,
+        "pct5_change_pct": -70.0
+      },
+      "p_itm_pct": 51.4,
+      "p_otm_pct": 48.6,
+      "p_100pct_return_pct": 32.1,
+      "expected_payoff_if_itm": 508.99,
+      "pv_expected_payoff": 460.54,
+      "expected_value_ev": 187.51,
+      "ev_positive": true,
+      "kelly_criterion_pct": 20.9,
+      "projected_option_value": 20.1,
+      "entry_gamma": 0.001339,
+      "entry_vega": 2.4153,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 591.87,
+          "pct_above_current": 40.1
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 607.9,
+          "pct_above_current": 43.9
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 624.68,
+          "pct_above_current": 47.8
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "CDNS",
+      "current_price": 343.62,
+      "strike": 340.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 88.55,
+      "div_yield_pct": 0.0,
+      "implied_vol_raw_pct": 51.09,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 15.37,
+      "calibrated_drift_pct": 15.37,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 406.59,
+        "pct_5": 139.94,
+        "pct_25": 254.74,
+        "pct_75": 647.56,
+        "pct_95": 1167.0
+      },
+      "upside_downside": {
+        "median_change_pct": 18.3,
+        "pct95_change_pct": 239.6,
+        "pct5_change_pct": -59.3
+      },
+      "p_itm_pct": 59.2,
+      "p_otm_pct": 40.8,
+      "p_100pct_return_pct": 38.8,
+      "expected_payoff_if_itm": 351.32,
+      "pv_expected_payoff": 329.19,
+      "expected_value_ev": 158.75,
+      "ev_positive": true,
+      "kelly_criterion_pct": 24.5,
+      "projected_option_value": 66.72,
+      "entry_gamma": 0.002065,
+      "entry_vega": 1.6353,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 467.96,
+          "pct_above_current": 36.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 484.98,
           "pct_above_current": 41.1
         },
         {
           "months_elapsed": 18,
-          "stock_price_for_100pct_return": 254.03,
+          "stock_price_for_100pct_return": 499.2,
+          "pct_above_current": 45.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "PEG",
+      "current_price": 77.21,
+      "strike": 77.5,
+      "expiry": "2027-01-15",
+      "days_to_expiry": 241,
+      "years_to_expiry": 0.66,
+      "current_premium": 5.1,
+      "div_yield_pct": 3.32,
+      "implied_vol_raw_pct": 25.28,
+      "implied_vol_used_pct": 25.28,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 10.93,
+      "calibrated_drift_pct": 7.61,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 80.58,
+        "pct_5": 51.63,
+        "pct_25": 67.17,
+        "pct_75": 94.85,
+        "pct_95": 123.12
+      },
+      "upside_downside": {
+        "median_change_pct": 4.4,
+        "pct95_change_pct": 59.5,
+        "pct5_change_pct": -33.1
+      },
+      "p_itm_pct": 55.2,
+      "p_otm_pct": 44.8,
+      "p_100pct_return_pct": null,
+      "expected_payoff_if_itm": 20.15,
+      "pv_expected_payoff": 19.64,
+      "expected_value_ev": 8.55,
+      "ev_positive": true,
+      "kelly_criterion_pct": 21.9,
+      "projected_option_value": 3.14,
+      "entry_gamma": 0.02448,
+      "entry_vega": 0.2436,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 89.57,
+          "pct_above_current": 16.0
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "APD",
+      "current_price": 291.89,
+      "strike": 290.0,
+      "expiry": "2027-03-19",
+      "days_to_expiry": 304,
+      "years_to_expiry": 0.833,
+      "current_premium": 32.0,
+      "div_yield_pct": 2.46,
+      "implied_vol_raw_pct": 31.24,
+      "implied_vol_used_pct": 31.24,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 4.08,
+      "calibrated_drift_pct": 1.62,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 275.16,
+        "pct_5": 151.49,
+        "pct_25": 217.75,
+        "pct_75": 362.11,
+        "pct_95": 502.35
+      },
+      "upside_downside": {
+        "median_change_pct": -5.7,
+        "pct95_change_pct": 72.1,
+        "pct5_change_pct": -48.1
+      },
+      "p_itm_pct": 45.7,
+      "p_otm_pct": 54.3,
+      "p_100pct_return_pct": null,
+      "expected_payoff_if_itm": 101.9,
+      "pv_expected_payoff": 98.66,
+      "expected_value_ev": 27.71,
+      "ev_positive": true,
+      "kelly_criterion_pct": 14.3,
+      "projected_option_value": 0.17,
+      "entry_gamma": 0.004597,
+      "entry_vega": 1.0191,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 355.21,
+          "pct_above_current": 21.7
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "PLD",
+      "current_price": 141.73,
+      "strike": 140.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 20.75,
+      "div_yield_pct": 2.89,
+      "implied_vol_raw_pct": 30.56,
+      "implied_vol_used_pct": 30.56,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 7.94,
+      "calibrated_drift_pct": 5.04,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 141.86,
+        "pct_5": 62.8,
+        "pct_25": 99.25,
+        "pct_75": 202.43,
+        "pct_95": 317.47
+      },
+      "upside_downside": {
+        "median_change_pct": 0.1,
+        "pct95_change_pct": 124.0,
+        "pct5_change_pct": -55.7
+      },
+      "p_itm_pct": 50.9,
+      "p_otm_pct": 49.1,
+      "p_100pct_return_pct": 30.6,
+      "expected_payoff_if_itm": 81.3,
+      "pv_expected_payoff": 76.18,
+      "expected_value_ev": 28.59,
+      "ev_positive": true,
+      "kelly_criterion_pct": 19.2,
+      "projected_option_value": 2.81,
+      "entry_gamma": 0.006533,
+      "entry_vega": 0.6724,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 179.21,
+          "pct_above_current": 26.4
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 182.87,
+          "pct_above_current": 29.0
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 185.59,
+          "pct_above_current": 30.9
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "SPGI",
+      "current_price": 415.25,
+      "strike": 420.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 76.5,
+      "div_yield_pct": 0.93,
+      "implied_vol_raw_pct": 38.53,
+      "implied_vol_used_pct": 38.53,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 5.15,
+      "calibrated_drift_pct": 4.22,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 380.27,
+        "pct_5": 136.12,
+        "pct_25": 242.38,
+        "pct_75": 595.38,
+        "pct_95": 1049.98
+      },
+      "upside_downside": {
+        "median_change_pct": -8.4,
+        "pct95_change_pct": 152.9,
+        "pct5_change_pct": -67.2
+      },
+      "p_itm_pct": 44.0,
+      "p_otm_pct": 56.0,
+      "p_100pct_return_pct": 25.5,
+      "expected_payoff_if_itm": 301.79,
+      "pv_expected_payoff": 282.78,
+      "expected_value_ev": 81.58,
+      "ev_positive": true,
+      "kelly_criterion_pct": 14.9,
+      "projected_option_value": 0.02,
+      "entry_gamma": 0.001798,
+      "entry_vega": 2.0028,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 555.84,
+          "pct_above_current": 33.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 575.13,
+          "pct_above_current": 38.5
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 591.46,
+          "pct_above_current": 42.4
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "RTX",
+      "current_price": 175.54,
+      "strike": 175.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 31.93,
+      "div_yield_pct": 1.55,
+      "implied_vol_raw_pct": 36.95,
+      "implied_vol_used_pct": 36.95,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 22.26,
+      "calibrated_drift_pct": 20.71,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 243.51,
+        "pct_5": 90.91,
+        "pct_25": 158.1,
+        "pct_75": 374.31,
+        "pct_95": 644.93
+      },
+      "upside_downside": {
+        "median_change_pct": 38.7,
+        "pct95_change_pct": 267.4,
+        "pct5_change_pct": -48.2
+      },
+      "p_itm_pct": 69.0,
+      "p_otm_pct": 31.0,
+      "p_100pct_return_pct": 49.6,
+      "expected_payoff_if_itm": 190.7,
+      "pv_expected_payoff": 178.69,
+      "expected_value_ev": 113.39,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 68.54,
+      "entry_gamma": 0.004387,
+      "entry_vega": 0.8375,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 232.32,
+          "pct_above_current": 32.3
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 239.29,
+          "pct_above_current": 36.3
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 244.96,
+          "pct_above_current": 39.5
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "MA",
+      "current_price": 507.29,
+      "strike": 510.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 112.0,
+      "div_yield_pct": 0.64,
+      "implied_vol_raw_pct": 36.5,
+      "implied_vol_used_pct": 36.5,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 9.76,
+      "calibrated_drift_pct": 9.12,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 549.06,
+        "pct_5": 170.57,
+        "pct_25": 329.87,
+        "pct_75": 893.41,
+        "pct_95": 1826.89
+      },
+      "upside_downside": {
+        "median_change_pct": 8.2,
+        "pct95_change_pct": 260.1,
+        "pct5_change_pct": -66.4
+      },
+      "p_itm_pct": 53.3,
+      "p_otm_pct": 46.7,
+      "p_100pct_return_pct": 33.7,
+      "expected_payoff_if_itm": 557.24,
+      "pv_expected_payoff": 504.19,
+      "expected_value_ev": 216.43,
+      "ev_positive": true,
+      "kelly_criterion_pct": 22.0,
+      "projected_option_value": 39.38,
+      "entry_gamma": 0.001205,
+      "entry_vega": 2.9184,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 700.75,
+          "pct_above_current": 38.1
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 719.34,
+          "pct_above_current": 41.8
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 738.64,
+          "pct_above_current": 45.6
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "TXN",
+      "current_price": 298.32,
+      "strike": 300.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 69.25,
+      "div_yield_pct": 1.88,
+      "implied_vol_raw_pct": 47.16,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 21.73,
+      "calibrated_drift_pct": 19.84,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 393.51,
+        "pct_5": 135.44,
+        "pct_25": 246.55,
+        "pct_75": 626.73,
+        "pct_95": 1129.46
+      },
+      "upside_downside": {
+        "median_change_pct": 31.9,
+        "pct95_change_pct": 278.6,
+        "pct5_change_pct": -54.6
+      },
+      "p_itm_pct": 64.3,
+      "p_otm_pct": 35.7,
+      "p_100pct_return_pct": 45.7,
+      "expected_payoff_if_itm": 340.93,
+      "pv_expected_payoff": 319.45,
+      "expected_value_ev": 180.69,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 93.55,
+      "entry_gamma": 0.002382,
+      "entry_vega": 1.4219,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 400.12,
+          "pct_above_current": 34.1
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 412.89,
+          "pct_above_current": 38.4
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 423.56,
+          "pct_above_current": 42.0
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "AMAT",
+      "current_price": 402.4,
+      "strike": 400.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 122.5,
+      "div_yield_pct": 0.46,
+      "implied_vol_raw_pct": 59.94,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 39.4,
+      "calibrated_drift_pct": 38.94,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 843.99,
+        "pct_5": 290.49,
+        "pct_25": 528.8,
+        "pct_75": 1344.21,
+        "pct_95": 2422.46
+      },
+      "upside_downside": {
+        "median_change_pct": 109.7,
+        "pct95_change_pct": 502.0,
+        "pct5_change_pct": -27.8
+      },
+      "p_itm_pct": 86.7,
+      "p_otm_pct": 13.3,
+      "p_100pct_return_pct": 69.6,
+      "expected_payoff_if_itm": 754.36,
+      "pv_expected_payoff": 706.85,
+      "expected_value_ev": 596.54,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 444.11,
+      "entry_gamma": 0.001766,
+      "entry_vega": 1.9182,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 545.9,
+          "pct_above_current": 35.7
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 565.19,
+          "pct_above_current": 40.5
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 581.27,
+          "pct_above_current": 44.5
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "NXPI",
+      "current_price": 292.46,
+      "strike": 290.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 71.5,
+      "div_yield_pct": 1.39,
+      "implied_vol_raw_pct": 48.78,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 19.09,
+      "calibrated_drift_pct": 17.71,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 366.26,
+        "pct_5": 126.06,
+        "pct_25": 229.48,
+        "pct_75": 583.34,
+        "pct_95": 1051.27
+      },
+      "upside_downside": {
+        "median_change_pct": 25.2,
+        "pct95_change_pct": 259.5,
+        "pct5_change_pct": -56.9
+      },
+      "p_itm_pct": 62.2,
+      "p_otm_pct": 37.8,
+      "p_100pct_return_pct": 42.6,
+      "expected_payoff_if_itm": 317.07,
+      "pv_expected_payoff": 297.1,
+      "expected_value_ev": 157.77,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 76.33,
+      "entry_gamma": 0.002415,
+      "entry_vega": 1.3854,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 394.28,
+          "pct_above_current": 34.8
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 406.88,
+          "pct_above_current": 39.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 417.19,
+          "pct_above_current": 42.6
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "INTU",
+      "current_price": 407.09,
+      "strike": 410.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 120.75,
+      "div_yield_pct": 1.14,
+      "implied_vol_raw_pct": 59.35,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 3.88,
+      "calibrated_drift_pct": 2.74,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 354.47,
+        "pct_5": 122.0,
+        "pct_25": 222.09,
+        "pct_75": 564.55,
+        "pct_95": 1017.4
+      },
+      "upside_downside": {
+        "median_change_pct": -12.9,
+        "pct95_change_pct": 149.9,
+        "pct5_change_pct": -70.0
+      },
+      "p_itm_pct": 41.8,
+      "p_otm_pct": 58.2,
+      "p_100pct_return_pct": 23.1,
+      "expected_payoff_if_itm": 296.76,
+      "pv_expected_payoff": 278.07,
+      "expected_value_ev": 45.96,
+      "ev_positive": true,
+      "kelly_criterion_pct": 9.1,
+      "projected_option_value": 0.0,
+      "entry_gamma": 0.001756,
+      "entry_vega": 1.9513,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 548.74,
+          "pct_above_current": 34.8
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 567.69,
+          "pct_above_current": 39.5
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 583.65,
+          "pct_above_current": 43.4
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "EOG",
+      "current_price": 143.11,
+      "strike": 145.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 28.25,
+      "div_yield_pct": 2.82,
+      "implied_vol_raw_pct": 34.47,
+      "implied_vol_used_pct": 34.47,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 11.02,
+      "calibrated_drift_pct": 8.2,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 153.89,
+        "pct_5": 51.02,
+        "pct_25": 95.11,
+        "pct_75": 243.71,
+        "pct_95": 478.91
+      },
+      "upside_downside": {
+        "median_change_pct": 7.5,
+        "pct95_change_pct": 234.6,
+        "pct5_change_pct": -64.4
+      },
+      "p_itm_pct": 52.4,
+      "p_otm_pct": 47.6,
+      "p_100pct_return_pct": 34.7,
+      "expected_payoff_if_itm": 143.66,
+      "pv_expected_payoff": 129.98,
+      "expected_value_ev": 54.66,
+      "ev_positive": true,
+      "kelly_criterion_pct": 21.5,
+      "projected_option_value": 8.99,
+      "entry_gamma": 0.004474,
+      "entry_vega": 0.8143,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 191.43,
+          "pct_above_current": 33.8
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 195.03,
+          "pct_above_current": 36.3
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 198.84,
+          "pct_above_current": 38.9
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "ISRG",
+      "current_price": 443.21,
+      "strike": 440.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 123.0,
+      "div_yield_pct": 0.0,
+      "implied_vol_raw_pct": 45.27,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 11.58,
+      "calibrated_drift_pct": 11.58,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 499.62,
+        "pct_5": 138.75,
+        "pct_25": 285.85,
+        "pct_75": 851.8,
+        "pct_95": 1865.47
+      },
+      "upside_downside": {
+        "median_change_pct": 12.7,
+        "pct95_change_pct": 320.9,
+        "pct5_change_pct": -68.7
+      },
+      "p_itm_pct": 55.7,
+      "p_otm_pct": 44.3,
+      "p_100pct_return_pct": 35.0,
+      "expected_payoff_if_itm": 584.28,
+      "pv_expected_payoff": 528.67,
+      "expected_value_ev": 239.98,
+      "ev_positive": true,
+      "kelly_criterion_pct": 23.2,
+      "projected_option_value": 59.79,
+      "entry_gamma": 0.001244,
+      "entry_vega": 2.5201,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 629.1,
+          "pct_above_current": 41.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 647.68,
+          "pct_above_current": 46.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 666.99,
+          "pct_above_current": 50.5
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "PANW",
+      "current_price": 244.98,
+      "strike": 240.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 86.5,
+      "div_yield_pct": 0.0,
+      "implied_vol_raw_pct": 55.85,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 32.01,
+      "calibrated_drift_pct": 32.01,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 592.25,
+        "pct_5": 164.48,
+        "pct_25": 338.85,
+        "pct_75": 1009.74,
+        "pct_95": 2211.37
+      },
+      "upside_downside": {
+        "median_change_pct": 141.8,
+        "pct95_change_pct": 802.7,
+        "pct5_change_pct": -32.9
+      },
+      "p_itm_pct": 86.8,
+      "p_otm_pct": 13.2,
+      "p_100pct_return_pct": 71.2,
+      "expected_payoff_if_itm": 673.95,
+      "pv_expected_payoff": 609.8,
+      "expected_value_ev": 517.89,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 352.35,
+      "entry_gamma": 0.002228,
+      "entry_vega": 1.3787,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 348.36,
+          "pct_above_current": 42.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 358.37,
+          "pct_above_current": 46.3
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 368.73,
+          "pct_above_current": 50.5
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "RCL",
+      "current_price": 245.91,
+      "strike": 250.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 62.25,
+      "div_yield_pct": 1.73,
+      "implied_vol_raw_pct": 51.04,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 38.72,
+      "calibrated_drift_pct": 36.99,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 491.94,
+        "pct_5": 169.32,
+        "pct_25": 308.22,
+        "pct_75": 783.51,
+        "pct_95": 1411.99
+      },
+      "upside_downside": {
+        "median_change_pct": 100.0,
+        "pct95_change_pct": 474.2,
+        "pct5_change_pct": -31.1
+      },
+      "p_itm_pct": 83.7,
+      "p_otm_pct": 16.3,
+      "p_100pct_return_pct": 68.4,
+      "expected_payoff_if_itm": 438.27,
+      "pv_expected_payoff": 410.67,
+      "expected_value_ev": 333.58,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 241.95,
+      "entry_gamma": 0.002912,
+      "entry_vega": 1.1809,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 329.77,
+          "pct_above_current": 34.1
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 340.88,
+          "pct_above_current": 38.6
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 350.35,
+          "pct_above_current": 42.5
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "HSY",
+      "current_price": 194.6,
+      "strike": 195.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 32.0,
+      "div_yield_pct": 2.9,
+      "implied_vol_raw_pct": 34.73,
+      "implied_vol_used_pct": 34.73,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 3.88,
+      "calibrated_drift_pct": 0.98,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 170.54,
+        "pct_5": 67.56,
+        "pct_25": 113.64,
+        "pct_75": 255.47,
+        "pct_95": 426.02
+      },
+      "upside_downside": {
+        "median_change_pct": -12.4,
+        "pct95_change_pct": 118.9,
+        "pct5_change_pct": -65.3
+      },
+      "p_itm_pct": 41.4,
+      "p_otm_pct": 58.6,
+      "p_100pct_return_pct": 23.1,
+      "expected_payoff_if_itm": 113.83,
+      "pv_expected_payoff": 106.66,
+      "expected_value_ev": 25.41,
+      "ev_positive": true,
+      "kelly_criterion_pct": 12.5,
+      "projected_option_value": 0.0,
+      "entry_gamma": 0.004201,
+      "entry_vega": 0.9265,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 251.72,
+          "pct_above_current": 29.4
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 257.96,
+          "pct_above_current": 32.6
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 262.94,
+          "pct_above_current": 35.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "IRM",
+      "current_price": 123.8,
+      "strike": 125.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 22.55,
+      "div_yield_pct": 2.66,
+      "implied_vol_raw_pct": 39.43,
+      "implied_vol_used_pct": 39.43,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 30.34,
+      "calibrated_drift_pct": 27.68,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 198.65,
+        "pct_5": 69.42,
+        "pct_25": 125.29,
+        "pct_75": 314.29,
+        "pct_95": 561.67
+      },
+      "upside_downside": {
+        "median_change_pct": 60.5,
+        "pct95_change_pct": 353.7,
+        "pct5_change_pct": -43.9
+      },
+      "p_itm_pct": 75.1,
+      "p_otm_pct": 24.9,
+      "p_100pct_return_pct": 57.3,
+      "expected_payoff_if_itm": 169.54,
+      "pv_expected_payoff": 158.86,
+      "expected_value_ev": 113.69,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 73.64,
+      "entry_gamma": 0.00581,
+      "entry_vega": 0.5887,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 164.57,
+          "pct_above_current": 32.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 169.43,
+          "pct_above_current": 36.9
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 173.48,
+          "pct_above_current": 40.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "MNST",
+      "current_price": 86.57,
+      "strike": 87.5,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 16.2,
+      "div_yield_pct": 0.01,
+      "implied_vol_raw_pct": 38.98,
+      "implied_vol_used_pct": 38.98,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 12.42,
+      "calibrated_drift_pct": 12.41,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 96.3,
+        "pct_5": 34.06,
+        "pct_25": 61.06,
+        "pct_75": 151.57,
+        "pct_95": 269.08
+      },
+      "upside_downside": {
+        "median_change_pct": 11.2,
+        "pct95_change_pct": 210.8,
+        "pct5_change_pct": -60.7
+      },
+      "p_itm_pct": 55.4,
+      "p_otm_pct": 44.6,
+      "p_100pct_return_pct": 34.8,
+      "expected_payoff_if_itm": 78.89,
+      "pv_expected_payoff": 73.92,
+      "expected_value_ev": 33.73,
+      "ev_positive": true,
+      "kelly_criterion_pct": 23.1,
+      "projected_option_value": 8.84,
+      "entry_gamma": 0.008557,
+      "entry_vega": 0.4191,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 116.93,
+          "pct_above_current": 35.1
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 121.37,
+          "pct_above_current": 40.2
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 125.17,
+          "pct_above_current": 44.6
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "ORLY",
+      "current_price": 92.39,
+      "strike": 90.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 17.75,
+      "div_yield_pct": 0.0,
+      "implied_vol_raw_pct": 39.19,
+      "implied_vol_used_pct": 39.19,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 12.52,
+      "calibrated_drift_pct": 12.52,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 102.84,
+        "pct_5": 36.17,
+        "pct_25": 65.04,
+        "pct_75": 162.25,
+        "pct_95": 288.93
+      },
+      "upside_downside": {
+        "median_change_pct": 11.3,
+        "pct95_change_pct": 212.7,
+        "pct5_change_pct": -60.9
+      },
+      "p_itm_pct": 57.2,
+      "p_otm_pct": 42.8,
+      "p_100pct_return_pct": 34.9,
+      "expected_payoff_if_itm": 85.57,
+      "pv_expected_payoff": 80.18,
+      "expected_value_ev": 38.26,
+      "ev_positive": true,
+      "kelly_criterion_pct": 24.2,
+      "projected_option_value": 12.87,
+      "entry_gamma": 0.007746,
+      "entry_vega": 0.4345,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 125.54,
+          "pct_above_current": 35.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 129.84,
+          "pct_above_current": 40.5
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 133.35,
+          "pct_above_current": 44.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "AFL",
+      "current_price": 119.47,
+      "strike": 120.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 14.9,
+      "div_yield_pct": 1.97,
+      "implied_vol_raw_pct": 26.88,
+      "implied_vol_used_pct": 26.88,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 21.45,
+      "calibrated_drift_pct": 19.48,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 174.38,
+        "pct_5": 85.16,
+        "pct_25": 127.36,
+        "pct_75": 238.41,
+        "pct_95": 354.17
+      },
+      "upside_downside": {
+        "median_change_pct": 46.0,
+        "pct95_change_pct": 196.5,
+        "pct5_change_pct": -28.7
+      },
+      "p_itm_pct": 79.2,
+      "p_otm_pct": 20.8,
+      "p_100pct_return_pct": 59.2,
+      "expected_payoff_if_itm": 96.66,
+      "pv_expected_payoff": 90.58,
+      "expected_value_ev": 68.64,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 54.39,
+      "entry_gamma": 0.008989,
+      "entry_vega": 0.5783,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 148.34,
+          "pct_above_current": 24.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 151.73,
+          "pct_above_current": 27.0
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 154.41,
+          "pct_above_current": 29.2
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "FTNT",
+      "current_price": 126.47,
+      "strike": 125.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 34.0,
+      "div_yield_pct": 0.0,
+      "implied_vol_raw_pct": 52.13,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 19.99,
+      "calibrated_drift_pct": 19.99,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 167.41,
+        "pct_5": 57.62,
+        "pct_25": 104.89,
+        "pct_75": 266.63,
+        "pct_95": 480.51
+      },
+      "upside_downside": {
+        "median_change_pct": 32.4,
+        "pct95_change_pct": 279.9,
+        "pct5_change_pct": -54.4
+      },
+      "p_itm_pct": 65.5,
+      "p_otm_pct": 34.5,
+      "p_100pct_return_pct": 44.7,
+      "expected_payoff_if_itm": 144.98,
+      "pv_expected_payoff": 135.85,
+      "expected_value_ev": 77.25,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 42.46,
+      "entry_gamma": 0.005606,
+      "entry_vega": 0.6014,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 172.26,
+          "pct_above_current": 36.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 178.5,
+          "pct_above_current": 41.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 183.71,
+          "pct_above_current": 45.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "EXPE",
+      "current_price": 218.26,
+      "strike": 220.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 61.25,
+      "div_yield_pct": 0.77,
+      "implied_vol_raw_pct": 56.03,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 27.74,
+      "calibrated_drift_pct": 26.97,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 342.28,
+        "pct_5": 117.81,
+        "pct_25": 214.45,
+        "pct_75": 545.15,
+        "pct_95": 982.43
+      },
+      "upside_downside": {
+        "median_change_pct": 56.8,
+        "pct95_change_pct": 350.1,
+        "pct5_change_pct": -46.0
+      },
+      "p_itm_pct": 73.7,
+      "p_otm_pct": 26.3,
+      "p_100pct_return_pct": 55.0,
+      "expected_payoff_if_itm": 297.0,
+      "pv_expected_payoff": 278.29,
+      "expected_value_ev": 188.99,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 122.34,
+      "entry_gamma": 0.003283,
+      "entry_vega": 1.049,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 294.94,
+          "pct_above_current": 35.1
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 305.5,
+          "pct_above_current": 40.0
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 314.46,
+          "pct_above_current": 44.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "CSCO",
+      "current_price": 115.58,
+      "strike": 115.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 25.27,
+      "div_yield_pct": 1.43,
+      "implied_vol_raw_pct": 44.48,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 31.34,
+      "calibrated_drift_pct": 29.91,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 194.69,
+        "pct_5": 67.01,
+        "pct_25": 121.98,
+        "pct_75": 310.08,
+        "pct_95": 558.82
+      },
+      "upside_downside": {
+        "median_change_pct": 68.4,
+        "pct95_change_pct": 383.5,
+        "pct5_change_pct": -42.0
+      },
+      "p_itm_pct": 77.9,
+      "p_otm_pct": 22.1,
+      "p_100pct_return_pct": 58.6,
+      "expected_payoff_if_itm": 169.7,
+      "pv_expected_payoff": 159.01,
+      "expected_value_ev": 118.29,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 79.71,
+      "entry_gamma": 0.006124,
+      "entry_vega": 0.5487,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 155.71,
+          "pct_above_current": 34.7
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 160.73,
+          "pct_above_current": 39.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 164.85,
+          "pct_above_current": 42.6
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "PEP",
+      "current_price": 151.11,
+      "strike": 150.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 19.05,
+      "div_yield_pct": 3.77,
+      "implied_vol_raw_pct": 25.85,
+      "implied_vol_used_pct": 25.85,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 3.88,
+      "calibrated_drift_pct": 0.11,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 138.76,
+        "pct_5": 69.65,
+        "pct_25": 102.57,
+        "pct_75": 187.45,
+        "pct_95": 274.27
+      },
+      "upside_downside": {
+        "median_change_pct": -8.2,
+        "pct95_change_pct": 81.5,
+        "pct5_change_pct": -53.9
+      },
+      "p_itm_pct": 43.3,
+      "p_otm_pct": 56.7,
+      "p_100pct_return_pct": 23.8,
+      "expected_payoff_if_itm": 60.85,
+      "pv_expected_payoff": 57.02,
+      "expected_value_ev": 13.89,
+      "ev_positive": true,
+      "kelly_criterion_pct": 12.8,
+      "projected_option_value": 0.0,
+      "entry_gamma": 0.007265,
+      "entry_vega": 0.719,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 184.21,
+          "pct_above_current": 21.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 187.02,
+          "pct_above_current": 23.8
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 188.98,
+          "pct_above_current": 25.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "KMI",
+      "current_price": 33.97,
+      "strike": 35.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 3.97,
+      "div_yield_pct": 3.46,
+      "implied_vol_raw_pct": 25.9,
+      "implied_vol_used_pct": 25.9,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 29.26,
+      "calibrated_drift_pct": 25.79,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 58.17,
+        "pct_5": 29.16,
+        "pct_25": 42.98,
+        "pct_75": 78.63,
+        "pct_95": 115.14
+      },
+      "upside_downside": {
+        "median_change_pct": 71.3,
+        "pct95_change_pct": 239.0,
+        "pct5_change_pct": -14.2
+      },
+      "p_itm_pct": 87.3,
+      "p_otm_pct": 12.7,
+      "p_100pct_return_pct": 75.2,
+      "expected_payoff_if_itm": 33.44,
+      "pv_expected_payoff": 31.33,
+      "expected_value_ev": 26.85,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 23.17,
+      "entry_gamma": 0.032878,
+      "entry_vega": 0.1648,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 41.3,
+          "pct_above_current": 21.6
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 42.16,
+          "pct_above_current": 24.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 42.89,
+          "pct_above_current": 26.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "JCI",
+      "current_price": 134.99,
+      "strike": 135.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 26.6,
+      "div_yield_pct": 1.12,
+      "implied_vol_raw_pct": 41.32,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 27.08,
+      "calibrated_drift_pct": 25.97,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 206.61,
+        "pct_5": 71.11,
+        "pct_25": 129.45,
+        "pct_75": 329.06,
+        "pct_95": 593.02
+      },
+      "upside_downside": {
+        "median_change_pct": 53.1,
+        "pct95_change_pct": 339.3,
+        "pct5_change_pct": -47.3
+      },
+      "p_itm_pct": 73.0,
+      "p_otm_pct": 27.0,
+      "p_100pct_return_pct": 54.5,
+      "expected_payoff_if_itm": 178.78,
+      "pv_expected_payoff": 167.52,
+      "expected_value_ev": 115.11,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 71.64,
+      "entry_gamma": 0.00527,
+      "entry_vega": 0.6441,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 182.14,
+          "pct_above_current": 34.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 188.29,
+          "pct_above_current": 39.5
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 193.43,
+          "pct_above_current": 43.3
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "AAPL",
+      "current_price": 297.44,
+      "strike": 300.0,
+      "expiry": "2028-12-15",
+      "days_to_expiry": 941,
+      "years_to_expiry": 2.578,
+      "current_premium": 65.1,
+      "div_yield_pct": 0.35,
+      "implied_vol_raw_pct": 35.63,
+      "implied_vol_used_pct": 35.63,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 18.2,
+      "calibrated_drift_pct": 17.85,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 451.39,
+        "pct_5": 144.19,
+        "pct_25": 274.5,
+        "pct_75": 726.0,
+        "pct_95": 1459.47
+      },
+      "upside_downside": {
+        "median_change_pct": 51.8,
+        "pct95_change_pct": 390.7,
+        "pct5_change_pct": -51.5
+      },
+      "p_itm_pct": 70.4,
+      "p_otm_pct": 29.6,
+      "p_100pct_return_pct": 51.4,
+      "expected_payoff_if_itm": 439.52,
+      "pv_expected_payoff": 397.68,
+      "expected_value_ev": 260.7,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 151.49,
+      "entry_gamma": 0.002118,
+      "entry_vega": 1.7213,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 409.61,
+          "pct_above_current": 37.7
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 420.82,
+          "pct_above_current": 41.5
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 432.42,
+          "pct_above_current": 45.4
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "CAT",
+      "current_price": 856.84,
+      "strike": 860.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 191.0,
+      "div_yield_pct": 0.7,
+      "implied_vol_raw_pct": 45.38,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 47.78,
+      "calibrated_drift_pct": 47.08,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 2189.89,
+        "pct_5": 753.73,
+        "pct_25": 1372.06,
+        "pct_75": 3487.78,
+        "pct_95": 6285.49
+      },
+      "upside_downside": {
+        "median_change_pct": 155.6,
+        "pct95_change_pct": 633.6,
+        "pct5_change_pct": -12.0
+      },
+      "p_itm_pct": 90.8,
+      "p_otm_pct": 9.2,
+      "p_100pct_return_pct": 79.9,
+      "expected_payoff_if_itm": 2042.32,
+      "pv_expected_payoff": 1913.69,
+      "expected_value_ev": 1720.05,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 1330.07,
+      "entry_gamma": 0.000834,
+      "entry_vega": 4.1077,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 1158.99,
+          "pct_above_current": 35.3
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 1200.21,
+          "pct_above_current": 40.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 1234.93,
+          "pct_above_current": 44.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "TEL",
+      "current_price": 198.61,
+      "strike": 175.0,
+      "expiry": "2027-01-15",
+      "days_to_expiry": 241,
+      "years_to_expiry": 0.66,
+      "current_premium": 39.75,
+      "div_yield_pct": 1.4,
+      "implied_vol_raw_pct": 45.09,
+      "implied_vol_used_pct": 45.09,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 17.17,
+      "calibrated_drift_pct": 15.77,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 209.72,
+        "pct_5": 94.81,
+        "pct_25": 151.57,
+        "pct_75": 280.49,
+        "pct_95": 446.67
+      },
+      "upside_downside": {
+        "median_change_pct": 5.6,
+        "pct95_change_pct": 124.9,
+        "pct5_change_pct": -52.3
+      },
+      "p_itm_pct": 64.9,
+      "p_otm_pct": 35.1,
+      "p_100pct_return_pct": null,
+      "expected_payoff_if_itm": 108.45,
+      "pv_expected_payoff": 105.71,
+      "expected_value_ev": 54.65,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 34.76,
+      "entry_gamma": 0.004609,
+      "entry_vega": 0.5412,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 257.86,
+          "pct_above_current": 29.8
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "CME",
+      "current_price": 306.8,
+      "strike": 310.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 40.0,
+      "div_yield_pct": 3.65,
+      "implied_vol_raw_pct": 27.47,
+      "implied_vol_used_pct": 27.47,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 21.87,
+      "calibrated_drift_pct": 18.22,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 432.59,
+        "pct_5": 207.95,
+        "pct_25": 313.79,
+        "pct_75": 595.51,
+        "pct_95": 892.38
+      },
+      "upside_downside": {
+        "median_change_pct": 41.0,
+        "pct95_change_pct": 190.9,
+        "pct5_change_pct": -32.2
+      },
+      "p_itm_pct": 76.1,
+      "p_otm_pct": 23.9,
+      "p_100pct_return_pct": 58.1,
+      "expected_payoff_if_itm": 240.53,
+      "pv_expected_payoff": 225.38,
+      "expected_value_ev": 161.96,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 122.55,
+      "entry_gamma": 0.003395,
+      "entry_vega": 1.4719,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 377.29,
+          "pct_above_current": 23.0
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 384.38,
+          "pct_above_current": 25.3
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 389.9,
+          "pct_above_current": 27.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "WMB",
+      "current_price": 78.51,
+      "strike": 80.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 10.2,
+      "div_yield_pct": 2.58,
+      "implied_vol_raw_pct": 30.77,
+      "implied_vol_used_pct": 30.77,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 37.3,
+      "calibrated_drift_pct": 34.72,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 161.29,
+        "pct_5": 71.01,
+        "pct_25": 112.57,
+        "pct_75": 230.73,
+        "pct_95": 362.97
+      },
+      "upside_downside": {
+        "median_change_pct": 105.4,
+        "pct95_change_pct": 362.3,
+        "pct5_change_pct": -9.6
+      },
+      "p_itm_pct": 90.4,
+      "p_otm_pct": 9.6,
+      "p_100pct_return_pct": 79.9,
+      "expected_payoff_if_itm": 114.68,
+      "pv_expected_payoff": 107.45,
+      "expected_value_ev": 96.16,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 81.28,
+      "entry_gamma": 0.011955,
+      "entry_vega": 0.3802,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 99.21,
+          "pct_above_current": 26.4
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 101.71,
+          "pct_above_current": 29.6
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 103.77,
+          "pct_above_current": 32.2
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "CB",
+      "current_price": 333.08,
+      "strike": 330.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 51.25,
+      "div_yield_pct": 1.13,
+      "implied_vol_raw_pct": 30.19,
+      "implied_vol_used_pct": 30.19,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 18.1,
+      "calibrated_drift_pct": 16.98,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 446.71,
+        "pct_5": 199.72,
+        "pct_25": 313.89,
+        "pct_75": 634.72,
+        "pct_95": 990.02
+      },
+      "upside_downside": {
+        "median_change_pct": 34.1,
+        "pct95_change_pct": 197.2,
+        "pct5_change_pct": -40.0
+      },
+      "p_itm_pct": 70.9,
+      "p_otm_pct": 29.1,
+      "p_100pct_return_pct": 50.3,
+      "expected_payoff_if_itm": 275.75,
+      "pv_expected_payoff": 258.38,
+      "expected_value_ev": 168.28,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 116.79,
+      "entry_gamma": 0.00284,
+      "entry_vega": 1.595,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 425.65,
+          "pct_above_current": 27.8
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 436.81,
+          "pct_above_current": 31.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 445.67,
+          "pct_above_current": 33.8
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "AJG",
+      "current_price": 208.38,
+      "strike": 220.0,
+      "expiry": "2027-01-15",
+      "days_to_expiry": 241,
+      "years_to_expiry": 0.66,
+      "current_premium": 19.6,
+      "div_yield_pct": 1.27,
+      "implied_vol_raw_pct": 37.81,
+      "implied_vol_used_pct": 37.81,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 3.88,
+      "calibrated_drift_pct": 2.61,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 199.67,
+        "pct_5": 102.61,
+        "pct_25": 152.07,
+        "pct_75": 254.8,
+        "pct_95": 376.4
+      },
+      "upside_downside": {
+        "median_change_pct": -4.2,
+        "pct95_change_pct": 80.6,
+        "pct5_change_pct": -50.8
+      },
+      "p_itm_pct": 40.7,
+      "p_otm_pct": 59.3,
+      "p_100pct_return_pct": null,
+      "expected_payoff_if_itm": 71.8,
+      "pv_expected_payoff": 69.99,
+      "expected_value_ev": 16.86,
+      "ev_positive": true,
+      "kelly_criterion_pct": 12.3,
+      "projected_option_value": 0.01,
+      "entry_gamma": 0.006176,
+      "entry_vega": 0.6695,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 260.93,
+          "pct_above_current": 25.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": null,
+          "pct_above_current": null
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "SPG",
+      "current_price": 201.55,
+      "strike": 200.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 25.45,
+      "div_yield_pct": 4.29,
+      "implied_vol_raw_pct": 25.75,
+      "implied_vol_used_pct": 25.75,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 27.12,
+      "calibrated_drift_pct": 22.83,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 321.54,
+        "pct_5": 161.83,
+        "pct_25": 237.97,
+        "pct_75": 433.87,
+        "pct_95": 633.9
+      },
+      "upside_downside": {
+        "median_change_pct": 59.5,
+        "pct95_change_pct": 214.5,
+        "pct5_change_pct": -19.7
+      },
+      "p_itm_pct": 86.4,
+      "p_otm_pct": 13.6,
+      "p_100pct_return_pct": 70.5,
+      "expected_payoff_if_itm": 179.64,
+      "pv_expected_payoff": 168.32,
+      "expected_value_ev": 141.97,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 121.48,
+      "entry_gamma": 0.005446,
+      "entry_vega": 0.9551,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 244.6,
+          "pct_above_current": 21.4
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 247.91,
+          "pct_above_current": 23.0
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 250.15,
+          "pct_above_current": 24.1
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "CRM",
+      "current_price": 183.07,
+      "strike": 185.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 49.12,
+      "div_yield_pct": 0.92,
+      "implied_vol_raw_pct": 53.69,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 3.88,
+      "calibrated_drift_pct": 2.96,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 160.25,
+        "pct_5": 55.16,
+        "pct_25": 100.4,
+        "pct_75": 255.23,
+        "pct_95": 459.95
+      },
+      "upside_downside": {
+        "median_change_pct": -12.5,
+        "pct95_change_pct": 151.2,
+        "pct5_change_pct": -69.9
+      },
+      "p_itm_pct": 41.9,
+      "p_otm_pct": 58.1,
+      "p_100pct_return_pct": 23.1,
+      "expected_payoff_if_itm": 134.2,
+      "pv_expected_payoff": 125.75,
+      "expected_value_ev": 24.15,
+      "ev_positive": true,
+      "kelly_criterion_pct": 10.3,
+      "projected_option_value": 0.0,
+      "entry_gamma": 0.003917,
+      "entry_vega": 0.8805,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 247.05,
+          "pct_above_current": 34.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 255.85,
+          "pct_above_current": 39.8
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 263.32,
+          "pct_above_current": 43.8
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "KO",
+      "current_price": 82.25,
+      "strike": 82.5,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 9.07,
+      "div_yield_pct": 2.5,
+      "implied_vol_raw_pct": 22.43,
+      "implied_vol_used_pct": 22.43,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 12.03,
+      "calibrated_drift_pct": 9.52,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 96.93,
+        "pct_5": 53.3,
+        "pct_25": 74.57,
+        "pct_75": 125.83,
+        "pct_95": 175.08
+      },
+      "upside_downside": {
+        "median_change_pct": 17.8,
+        "pct95_change_pct": 112.9,
+        "pct5_change_pct": -35.2
+      },
+      "p_itm_pct": 65.3,
+      "p_otm_pct": 34.7,
+      "p_100pct_return_pct": 44.7,
+      "expected_payoff_if_itm": 40.85,
+      "pv_expected_payoff": 38.28,
+      "expected_value_ev": 21.85,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 14.44,
+      "entry_gamma": 0.01565,
+      "entry_vega": 0.3982,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 98.84,
+          "pct_above_current": 20.2
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 100.63,
+          "pct_above_current": 22.3
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 101.99,
+          "pct_above_current": 24.0
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "OKE",
+      "current_price": 94.75,
+      "strike": 95.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 14.05,
+      "div_yield_pct": 4.43,
+      "implied_vol_raw_pct": 32.7,
+      "implied_vol_used_pct": 32.7,
+      "iv_was_capped": false,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 21.32,
+      "calibrated_drift_pct": 16.89,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 124.32,
+        "pct_5": 51.98,
+        "pct_25": 84.83,
+        "pct_75": 181.87,
+        "pct_95": 294.36
+      },
+      "upside_downside": {
+        "median_change_pct": 31.2,
+        "pct95_change_pct": 210.7,
+        "pct5_change_pct": -45.1
+      },
+      "p_itm_pct": 67.8,
+      "p_otm_pct": 32.2,
+      "p_100pct_return_pct": 50.3,
+      "expected_payoff_if_itm": 82.74,
+      "pv_expected_payoff": 77.53,
+      "expected_value_ev": 48.04,
+      "ev_positive": true,
+      "kelly_criterion_pct": 25.0,
+      "projected_option_value": 29.3,
+      "entry_gamma": 0.009077,
+      "entry_vega": 0.4468,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 119.8,
+          "pct_above_current": 26.4
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 122.05,
+          "pct_above_current": 28.8
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 123.79,
+          "pct_above_current": 30.6
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "symbol": "IQV",
+      "current_price": 174.09,
+      "strike": 175.0,
+      "expiry": "2028-01-21",
+      "days_to_expiry": 612,
+      "years_to_expiry": 1.677,
+      "current_premium": 42.5,
+      "div_yield_pct": 0.0,
+      "implied_vol_raw_pct": 50.71,
+      "implied_vol_used_pct": 40.0,
+      "iv_was_capped": true,
+      "iv_data_corrected": false,
+      "historical_mu_pct": 3.88,
+      "calibrated_drift_pct": 3.88,
+      "n_simulations": 1000,
+      "projected_prices": {
+        "median": 155.84,
+        "pct_5": 53.64,
+        "pct_25": 97.64,
+        "pct_75": 248.2,
+        "pct_95": 447.3
+      },
+      "upside_downside": {
+        "median_change_pct": -10.5,
+        "pct95_change_pct": 156.9,
+        "pct5_change_pct": -69.2
+      },
+      "p_itm_pct": 43.5,
+      "p_otm_pct": 56.5,
+      "p_100pct_return_pct": 23.5,
+      "expected_payoff_if_itm": 130.52,
+      "pv_expected_payoff": 122.3,
+      "expected_value_ev": 29.19,
+      "ev_positive": true,
+      "kelly_criterion_pct": 12.6,
+      "projected_option_value": 0.0,
+      "entry_gamma": 0.004125,
+      "entry_vega": 0.8384,
+      "return_checkpoints": [
+        {
+          "months_elapsed": 6,
+          "stock_price_for_100pct_return": 236.61,
+          "pct_above_current": 35.9
+        },
+        {
+          "months_elapsed": 12,
+          "stock_price_for_100pct_return": 245.62,
+          "pct_above_current": 41.1
+        },
+        {
+          "months_elapsed": 18,
+          "stock_price_for_100pct_return": 253.3,
           "pct_above_current": 45.5
         }
       ],
