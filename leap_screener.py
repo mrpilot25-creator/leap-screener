@@ -28,30 +28,30 @@ warnings.filterwarnings("ignore")
 # WATCHLIST - Edit this list with your tickers
 # ------------------------------------------------------------------
 WATCHLIST = [
-    "A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM", 
-    "ALB", "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", "AMZN", "ANET", "ANSS", "AON", "AOS", "APA", "APD", "APH", "APO", 
-    "ARE", "ATO", "AVB", "AVGO", "AVY", "AWK", "AXON", "AXP", "AYI", "AZO", "BA", "BAC", "BALL", "BAX", "BBWI", "BBY", "BDX", "BEN", "BF-B", "BG", 
-    "BIIB", "BIO", "BK", "BKNG", "BKR", "BLK", "BMY", "BR", "BRK-B", "BSX", "BWA", "BX", "BXP", "C", "CAG", "CAH", "CARR", "CAT", "CB", "CBOE", 
-    "CBRE", "CCI", "CCL", "CDNS", "CDW", "CE", "CEG", "CF", "CFG", "CHD", "CHRW", "CHTR", "CI", "CINF", "CL", "CLX", "CMA", "CMCSA", "CME", "CMG", 
-    "CMI", "CMS", "CNC", "CNP", "COF", "COO", "COP", "COR", "COST", "CPAY", "CPB", "CPRT", "CPT", "CRL", "CRM", "CSCO", "CSGP", "CSX", "CTAS", "CTRA", 
-    "CTSH", "CTVA", "CVS", "CVX", "CZR", "D", "DAL", "DAY", "DD", "DE", "DECK", "DELL", "DFS", "DG", "DGX", "DHI", "DHR", "DIS", "DLR", "DLTR", 
-    "DOC", "DOV", "DOW", "DPZ", "DRI", "DTE", "DUK", "DVA", "DVN", "DXCM", "EA", "EBAY", "ECL", "ED", "EFX", "EG", "EIX", "EL", "ELV", "EMN", 
-    "EMR", "ENPH", "EOG", "EPAM", "EQIX", "EQR", "EQT", "ES", "ESS", "ETN", "ETR", "ETSY", "EVRG", "EW", "EXC", "EXPD", "EXPE", "EXR", "F", "FANG", 
-    "FAST", "FCX", "FDS", "FDX", "FE", "FFIV", "FI", "FICO", "FIS", "FITB", "FMC", "FOX", "FOXA", "FRT", "FSLR", "FTNT", "FTV", "GD", "GE", "GEF", 
-    "GEHC", "GEN", "GESV", "GEV", "GILD", "GIS", "GL", "GLW", "GM", "GNRC", "GOOG", "GOOGL", "GPC", "GPN", "GRMN", "GS", "GWRE", "GWW", "HAL", "HAS", 
-    "HBAN", "HCA", "HD", "HES", "HIG", "HII", "HLT", "HOLX", "HON", "HPE", "HPQ", "HRL", "HSIC", "HST", "HSY", "HUBB", "HUM", "HWM", "IBM", "ICE", 
-    "IDXX", "IEX", "IFF", "ILMN", "INCY", "INTC", "INTU", "INVH", "IP", "IPG", "IQV", "IR", "IRM", "ISRG", "IT", "ITW", "IVZ", "J", "JBHT", "JBL", 
-    "JCI", "JKHY", "JNJ", "JNPR", "JPM", "K", "KDP", "KEY", "KEYS", "KHC", "KIM", "KLAC", "KMB", "KMI", "KMX", "KO", "KR", "KVUE", "L", "LDOS", 
-    "LEN", "LH", "LHX", "LIN", "LKQ", "LLY", "LMT", "LNT", "LOW", "LRCX", "LULU", "LUV", "LVS", "LW", "LYB", "LYV", "MA", "MAA", "MAR", "MAS", 
-    "MCD", "MCHP", "MCK", "MCO", "MDLZ", "MDT", "MET", "META", "MGM", "MHK", "MKC", "MKTX", "MLM", "MMC", "MMM", "MNST", "MO", "MOH", "MOS", "MPC", 
-    "MPWR", "MRK", "MRNA", "MS", "MSI", "MSFT", "MTB", "MTCH", "MTD", "MU", "NCLH", "NDAQ", "NDSN", "NEE", "NEM", "NFLX", "NI", "NKE", "NOC", "NOW", 
-    "NRG", "NSC", "NTRS", "NUE", "NVDA", "NVR", "NWS", "NWSA", "NXPI", "O", "ODFL", "OKE", "OMC", "ON", "ORCL", "ORLY", "OTIS", "OXY", "PANW", "PARA", 
-    "PAYC", "PAYX", "PCAR", "PCG", "PEG", "PEP", "PFE", "PFG", "PG", "PGR", "PH", "PHM", "PKG", "PLD", "PLTR", "PM", "PNC", "PNW", "POOL", "PPG", 
-    "PPL", "PRU", "PSA", "PSX", "PTC", "PWR", "PXD", "PYPL", "QCOM", "QRVO", "RCL", "REG", "REGN", "RF", "RHI", "RJF", "RL", "RMD", "ROK", "ROL", 
-    "ROP", "ROST", "RSG", "RTX", "RVTY", "SBAC", "SBUX", "SCHW", "SHW", "SJM", "SNA", "SNPS", "SO", "SPG", "SPGI", "SRE", "STE", "STLD", "STT", "STX", 
-    "SYK", "SYY", "T", "TAP", "TDG", "TDY", "TECH", "TEL", "TER", "TFC", "TFX", "TGT", "TJX", "TMO", "TMUS", "TPR", "TRGP", "TRMB", "TROW", "TRV", 
-    "TSCO", "TSLA", "TSN", "TT", "TTWO", "TXN", "TXT", "TYL", "UAL", "UDR", "UHS", "ULTA", "UNH", "UNP", "UPS", "URI", "USB", "V", "VICI", "VLO", 
-    "VMC", "VRSK", "VRSN", "VRTX", "VST", "VTR", "VZ", "WAB", "WAT", "WBA", "WBD", "WDC", "WEC", "WELL", "WFC", "WHR", "WM", "WMB", "WMT", "WRB", 
+    "A", "AAPL", "ABBV", "ABNB", "ABT", "ACGL", "ACN", "ADBE", "ADI", "ADM", "ADP", "ADSK", "AEE", "AEP", "AES", "AFL", "AIG", "AIZ", "AJG", "AKAM",
+    "ALB", "ALGN", "ALL", "ALLE", "AMAT", "AMCR", "AMD", "AME", "AMGN", "AMP", "AMT", "AMZN", "ANET", "ANSS", "AON", "AOS", "APA", "APD", "APH", "APO",
+    "ARE", "ATO", "AVB", "AVGO", "AVY", "AWK", "AXON", "AXP", "AYI", "AZO", "BA", "BAC", "BALL", "BAX", "BBWI", "BBY", "BDX", "BEN", "BF-B", "BG",
+    "BIIB", "BIO", "BK", "BKNG", "BKR", "BLK", "BMY", "BR", "BRK-B", "BSX", "BWA", "BX", "BXP", "C", "CAG", "CAH", "CARR", "CAT", "CB", "CBOE",
+    "CBRE", "CCI", "CCL", "CDNS", "CDW", "CE", "CEG", "CF", "CFG", "CHD", "CHRW", "CHTR", "CI", "CINF", "CL", "CLX", "CMA", "CMCSA", "CME", "CMG",
+    "CMI", "CMS", "CNC", "CNP", "COF", "COO", "COP", "COR", "COST", "CPAY", "CPB", "CPRT", "CPT", "CRL", "CRM", "CSCO", "CSGP", "CSX", "CTAS", "CTRA",
+    "CTSH", "CTVA", "CVS", "CVX", "CZR", "D", "DAL", "DAY", "DD", "DE", "DECK", "DELL", "DFS", "DG", "DGX", "DHI", "DHR", "DIS", "DLR", "DLTR",
+    "DOC", "DOV", "DOW", "DPZ", "DRI", "DTE", "DUK", "DVA", "DVN", "DXCM", "EA", "EBAY", "ECL", "ED", "EFX", "EG", "EIX", "EL", "ELV", "EMN",
+    "EMR", "ENPH", "EOG", "EPAM", "EQIX", "EQR", "EQT", "ES", "ESS", "ETN", "ETR", "ETSY", "EVRG", "EW", "EXC", "EXPD", "EXPE", "EXR", "F", "FANG",
+    "FAST", "FCX", "FDS", "FDX", "FE", "FFIV", "FI", "FICO", "FIS", "FITB", "FMC", "FOX", "FOXA", "FRT", "FSLR", "FTNT", "FTV", "GD", "GE", "GEF",
+    "GEHC", "GEN", "GESV", "GEV", "GILD", "GIS", "GL", "GLW", "GM", "GNRC", "GOOG", "GOOGL", "GPC", "GPN", "GRMN", "GS", "GWRE", "GWW", "HAL", "HAS",
+    "HBAN", "HCA", "HD", "HES", "HIG", "HII", "HLT", "HOLX", "HON", "HPE", "HPQ", "HRL", "HSIC", "HST", "HSY", "HUBB", "HUM", "HWM", "IBM", "ICE",
+    "IDXX", "IEX", "IFF", "ILMN", "INCY", "INTC", "INTU", "INVH", "IP", "IPG", "IQV", "IR", "IRM", "ISRG", "IT", "ITW", "IVZ", "J", "JBHT", "JBL",
+    "JCI", "JKHY", "JNJ", "JNPR", "JPM", "K", "KDP", "KEY", "KEYS", "KHC", "KIM", "KLAC", "KMB", "KMI", "KMX", "KO", "KR", "KVUE", "L", "LDOS",
+    "LEN", "LH", "LHX", "LIN", "LKQ", "LLY", "LMT", "LNT", "LOW", "LRCX", "LULU", "LUV", "LVS", "LW", "LYB", "LYV", "MA", "MAA", "MAR", "MAS",
+    "MCD", "MCHP", "MCK", "MCO", "MDLZ", "MDT", "MET", "META", "MGM", "MHK", "MKC", "MKTX", "MLM", "MMC", "MMM", "MNST", "MO", "MOH", "MOS", "MPC",
+    "MPWR", "MRK", "MRNA", "MS", "MSI", "MSFT", "MTB", "MTCH", "MTD", "MU", "NCLH", "NDAQ", "NDSN", "NEE", "NEM", "NFLX", "NI", "NKE", "NOC", "NOW",
+    "NRG", "NSC", "NTRS", "NUE", "NVDA", "NVR", "NWS", "NWSA", "NXPI", "O", "ODFL", "OKE", "OMC", "ON", "ORCL", "ORLY", "OTIS", "OXY", "PANW", "PARA",
+    "PAYC", "PAYX", "PCAR", "PCG", "PEG", "PEP", "PFE", "PFG", "PG", "PGR", "PH", "PHM", "PKG", "PLD", "PLTR", "PM", "PNC", "PNW", "POOL", "PPG",
+    "PPL", "PRU", "PSA", "PSX", "PTC", "PWR", "PXD", "PYPL", "QCOM", "QRVO", "RCL", "REG", "REGN", "RF", "RHI", "RJF", "RL", "RMD", "ROK", "ROL",
+    "ROP", "ROST", "RSG", "RTX", "RVTY", "SBAC", "SBUX", "SCHW", "SHW", "SJM", "SNA", "SNPS", "SO", "SPG", "SPGI", "SRE", "STE", "STLD", "STT", "STX",
+    "SYK", "SYY", "T", "TAP", "TDG", "TDY", "TECH", "TEL", "TER", "TFC", "TFX", "TGT", "TJX", "TMO", "TMUS", "TPR", "TRGP", "TRMB", "TROW", "TRV",
+    "TSCO", "TSLA", "TSN", "TT", "TTWO", "TXN", "TXT", "TYL", "UAL", "UDR", "UHS", "ULTA", "UNH", "UNP", "UPS", "URI", "USB", "V", "VICI", "VLO",
+    "VMC", "VRSK", "VRSN", "VRTX", "VST", "VTR", "VZ", "WAB", "WAT", "WBA", "WBD", "WDC", "WEC", "WELL", "WFC", "WHR", "WM", "WMB", "WMT", "WRB",
     "WST", "WTW", "WY", "WYNN", "XEL", "XOM", "XYL", "YUM", "ZBH", "ZBRA", "ZTS"
 ]
 
@@ -82,17 +82,19 @@ MIN_EPS_GROWTH     = 0.15
 MIN_REVENUE_GROWTH = 0.08
 MIN_EBITDA_MARGIN  = 0.15
 
+# Dividend yield hard cap - stocks above this are excluded.
+# High dividend payers cause LEAP calls to trade below intrinsic value
+# because call holders do not receive dividends over the option life.
+MAX_DIV_YIELD = 0.035            # 3.5% annual yield cap
+
 # Technical thresholds
 RSI_UPPER            = 40
 PRICE_VS_200MA_RANGE = 0.05
 BB_NEAR_LOWER_THRESH = 0.10
 
 # Option thresholds
-# ATM LEAP calls typically carry delta ~0.50-0.65 (1-2yr expiry).
-# Deep ITM (0.70-0.85) adds intrinsic value to the premium unnecessarily.
-# Targeting ATM minimises premium paid while maximising leverage per dollar.
-DELTA_MIN       = 0.45
-DELTA_MAX       = 0.65
+DELTA_MIN         = 0.45
+DELTA_MAX         = 0.65
 MAX_IV_PERCENTILE = 30
 
 # ------------------------------------------------------------------
@@ -192,8 +194,8 @@ def calculate_stoch_rsi(prices, rsi_period=14, stoch_period=14, k=3, d=3):
         bullish_cross = (k_prev < d_prev) and (k_now >= d_now)
         oversold      = k_now < 20
         return {
-            "stoch_k":      round(k_now, 2),
-            "stoch_d":      round(d_now, 2),
+            "stoch_k":       round(k_now, 2),
+            "stoch_d":       round(d_now, 2),
             "bullish_cross": bullish_cross,
             "oversold":      oversold,
         }
@@ -244,10 +246,10 @@ def calculate_weekly_mas(weekly_close):
         ma50_val  = float(ma50.iloc[-1])  if not ma50.isna().all()  else None
         ma200_val = float(ma200.iloc[-1]) if not ma200.isna().all() else None
         return {
-            "ma50_weekly":       round(ma50_val,  2) if ma50_val  else None,
-            "ma200_weekly":      round(ma200_val, 2) if ma200_val else None,
-            "above_ma50_weekly": price > ma50_val  if ma50_val  else None,
-            "above_ma200_weekly":price > ma200_val if ma200_val else None,
+            "ma50_weekly":        round(ma50_val,  2) if ma50_val  else None,
+            "ma200_weekly":       round(ma200_val, 2) if ma200_val else None,
+            "above_ma50_weekly":  price > ma50_val  if ma50_val  else None,
+            "above_ma200_weekly": price > ma200_val if ma200_val else None,
         }
     except Exception:
         return {"ma50_weekly": None, "ma200_weekly": None,
@@ -358,7 +360,7 @@ def leaps_entry_checklist(
     checks["iv_low"] = iv_percentile < 30
     confluence = sum(1 for v in checks.values() if v is True)
     return {
-        "checklist":       checks,
+        "checklist":        checks,
         "confluence_score": confluence,
         "max_score":        9,
         "confluence_pct":   round(confluence / 9 * 100, 1),
@@ -366,58 +368,67 @@ def leaps_entry_checklist(
 
 
 # ------------------------------------------------------------------
-# BLACK-SCHOLES GREEKS
+# BLACK-SCHOLES GREEKS (Merton continuous-dividend model)
 # ------------------------------------------------------------------
-def bs_d1_d2(S, K, T, r, sigma):
+# All functions accept an optional q parameter (continuous dividend yield).
+# Using q=0.0 (default) reproduces the original non-dividend Black-Scholes.
+# Pass the stock's annualised dividend yield to correctly price options on
+# dividend-paying stocks. Without q, LEAP calls on high-yield stocks are
+# systematically overvalued because the model ignores the present value of
+# dividends the call holder does not receive over the option's life.
+
+def bs_d1_d2(S, K, T, r, sigma, q=0.0):
     if T <= 0 or sigma <= 0 or S <= 0 or K <= 0:
         return float("nan"), float("nan")
-    d1 = (math.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * math.sqrt(T))
+    d1 = (math.log(S / K) + (r - q + 0.5 * sigma ** 2) * T) / (sigma * math.sqrt(T))
     d2 = d1 - sigma * math.sqrt(T)
     return d1, d2
 
 
-def black_scholes_price(S, K, T, r, sigma):
-    d1, d2 = bs_d1_d2(S, K, T, r, sigma)
+def black_scholes_price(S, K, T, r, sigma, q=0.0):
+    d1, d2 = bs_d1_d2(S, K, T, r, sigma, q)
     if math.isnan(d1):
         return float("nan")
-    return S * norm.cdf(d1) - K * math.exp(-r * T) * norm.cdf(d2)
+    return (S * math.exp(-q * T) * norm.cdf(d1)
+            - K * math.exp(-r * T) * norm.cdf(d2))
 
 
-def black_scholes_delta(S, K, T, r, sigma):
-    d1, _ = bs_d1_d2(S, K, T, r, sigma)
+def black_scholes_delta(S, K, T, r, sigma, q=0.0):
+    d1, _ = bs_d1_d2(S, K, T, r, sigma, q)
     if math.isnan(d1):
         return float("nan")
-    return float(norm.cdf(d1))
+    return float(math.exp(-q * T) * norm.cdf(d1))
 
 
-def black_scholes_theta(S, K, T, r, sigma):
-    d1, d2 = bs_d1_d2(S, K, T, r, sigma)
+def black_scholes_theta(S, K, T, r, sigma, q=0.0):
+    d1, d2 = bs_d1_d2(S, K, T, r, sigma, q)
     if math.isnan(d1):
         return float("nan")
-    term1 = -(S * norm.pdf(d1) * sigma) / (2 * math.sqrt(T))
+    term1 = -(S * math.exp(-q * T) * norm.pdf(d1) * sigma) / (2 * math.sqrt(T))
     term2 =  r * K * math.exp(-r * T) * norm.cdf(d2)
-    return float((term1 - term2) / 365)
+    term3 =  q * S * math.exp(-q * T) * norm.cdf(d1)
+    return float((term1 + term3 - term2) / 365)
 
 
-def black_scholes_rho(S, K, T, r, sigma):
-    _, d2 = bs_d1_d2(S, K, T, r, sigma)
+def black_scholes_rho(S, K, T, r, sigma, q=0.0):
+    _, d2 = bs_d1_d2(S, K, T, r, sigma, q)
     if math.isnan(d2):
         return float("nan")
     return float(K * T * math.exp(-r * T) * norm.cdf(d2) / 100)
 
 
-def black_scholes_gamma(S, K, T, r, sigma):
-    d1, _ = bs_d1_d2(S, K, T, r, sigma)
+def black_scholes_gamma(S, K, T, r, sigma, q=0.0):
+    d1, _ = bs_d1_d2(S, K, T, r, sigma, q)
     if math.isnan(d1):
         return float("nan")
-    return float(norm.pdf(d1) / (S * sigma * math.sqrt(T)))
+    return float(math.exp(-q * T) * norm.pdf(d1) / (S * sigma * math.sqrt(T)))
 
 
-def black_scholes_vega(S, K, T, r, sigma):
-    d1, _ = bs_d1_d2(S, K, T, r, sigma)
+def black_scholes_vega(S, K, T, r, sigma, q=0.0):
+    d1, _ = bs_d1_d2(S, K, T, r, sigma, q)
     if math.isnan(d1):
         return float("nan")
-    return float(S * norm.pdf(d1) * math.sqrt(T) / 100)
+    return float(S * math.exp(-q * T) * norm.pdf(d1) * math.sqrt(T) / 100)
 
 
 # ------------------------------------------------------------------
@@ -464,12 +475,21 @@ def score_parameter(value, kind):
         if value > MAX_IV_PERCENTILE:
             return 0.0
         return clamp((MAX_IV_PERCENTILE - value) / MAX_IV_PERCENTILE * 100, 0, 100)
+    if kind == "div_yield":
+        # 0% yield scores 100 (no dividend drag on call value).
+        # 2% yield scores ~50. 3.5%+ (at or above hard cap) scores 0.
+        # Penalises dividend payers because call holders do not receive
+        # dividends, and high yields mechanically erode LEAP call value
+        # over a multi-year holding period.
+        return clamp(100 - (value / MAX_DIV_YIELD) * 100, 0, 100)
     return 0.0
 
 
 # ------------------------------------------------------------------
 # SCORING WEIGHTS
 # ------------------------------------------------------------------
+# div_yield added (0.08). delta reduced 0.20->0.16, iv_percentile 0.12->0.08
+# to accommodate the new criterion while keeping the sum at 1.00.
 DEFAULT_WEIGHTS = {
     "market_cap":     0.06,
     "avg_volume":     0.05,
@@ -480,8 +500,9 @@ DEFAULT_WEIGHTS = {
     "rsi":            0.12,
     "price_vs_200ma": 0.10,
     "bb_position":    0.10,
-    "delta":          0.20,
-    "iv_percentile":  0.12,
+    "delta":          0.16,
+    "iv_percentile":  0.08,
+    "div_yield":      0.08,
 }
 
 WEIGHTS_CONFIG_FILE  = OUTPUT_DIR + "/weights_config.json"
@@ -545,8 +566,9 @@ def load_weights():
                     "rsi":            "Technical - oversold entry signal",
                     "price_vs_200ma": "Technical - near long-term trend",
                     "bb_position":    "Technical - Bollinger Band entry",
-                    "delta":          "Option - price sensitivity (0.70-0.85)",
+                    "delta":          "Option - price sensitivity (0.45-0.65 ATM target)",
                     "iv_percentile":  "Option - cheap implied volatility",
+                    "div_yield":      "Dividend yield penalty - 0% ideal, penalises above 0% up to 3.5% hard cap",
                 },
             }
             with open(WEIGHTS_CONFIG_FILE, "w") as f:
@@ -686,22 +708,22 @@ def fetch_stock_metadata(ticker, info):
                     avg_earnings_move = round(float(sum(moves) / len(moves)), 1)
     except Exception:
         pass
-    fcf          = info.get("freeCashflow")
-    debt_equity  = info.get("debtToEquity")
+    fcf         = info.get("freeCashflow")
+    debt_equity = info.get("debtToEquity")
     return {
-        "beta":                round(float(beta),       2) if beta      else None,
-        "short_interest_pct":  round(float(short_pct) * 100, 1) if short_pct else None,
-        "analyst_target":      round(float(analyst_target), 2) if analyst_target else None,
-        "analyst_low":         round(float(analyst_low),    2) if analyst_low    else None,
-        "analyst_high":        round(float(analyst_high),   2) if analyst_high   else None,
-        "analyst_count":       analyst_count,
-        "analyst_upside_pct":  analyst_upside,
-        "next_earnings_date":  earnings_date,
-        "avg_earnings_move_pct": avg_earnings_move,
-        "sector":              sector,
-        "industry":            industry,
-        "free_cashflow":       fcf,
-        "debt_to_equity":      round(float(debt_equity), 2) if debt_equity else None,
+        "beta":                    round(float(beta),         2) if beta      else None,
+        "short_interest_pct":      round(float(short_pct) * 100, 1) if short_pct else None,
+        "analyst_target":          round(float(analyst_target), 2) if analyst_target else None,
+        "analyst_low":             round(float(analyst_low),    2) if analyst_low    else None,
+        "analyst_high":            round(float(analyst_high),   2) if analyst_high   else None,
+        "analyst_count":           analyst_count,
+        "analyst_upside_pct":      analyst_upside,
+        "next_earnings_date":      earnings_date,
+        "avg_earnings_move_pct":   avg_earnings_move,
+        "sector":                  sector,
+        "industry":                industry,
+        "free_cashflow":           fcf,
+        "debt_to_equity":          round(float(debt_equity), 2) if debt_equity else None,
     }
 
 
@@ -712,6 +734,10 @@ def fetch_fundamental_data(ticker):
         info.get("fullExchangeName", ""),
     )
     metadata = fetch_stock_metadata(ticker, info)
+    # Fetch annualised dividend yield. Used for both the hard filter and the
+    # div_yield scoring penalty, and passed as q into all Black-Scholes calls.
+    raw_yield = info.get("dividendYield")
+    div_yield = float(raw_yield) if raw_yield is not None else 0.0
     return {
         "market_cap":     info.get("marketCap"),
         "avg_volume":     info.get("averageVolume"),
@@ -720,6 +746,7 @@ def fetch_fundamental_data(ticker):
         "revenue_growth": info.get("revenueGrowth"),
         "ebitda_margin":  fetch_ebitda_margin(info),
         "exchange":       exchange,
+        "div_yield":      div_yield,
         **metadata,
     }
 
@@ -731,6 +758,7 @@ def passes_fundamental_screen(fund):
     eg = fund.get("eps_growth")
     rg = fund.get("revenue_growth")
     em = fund.get("ebitda_margin")
+    dy = fund.get("div_yield", 0.0) or 0.0
     if mc is None or mc < MIN_MARKET_CAP:
         label = "no data" if mc is None else ("$" + str(round(mc / 1e9, 1)) + "B < $25B")
         return False, "MarketCap " + label
@@ -744,6 +772,12 @@ def passes_fundamental_screen(fund):
         return False, "RevenueGrowth " + str(round(rg * 100, 1)) + "% < 8%"
     if em is not None and em < MIN_EBITDA_MARGIN:
         return False, "EBITDAMargin " + str(round(em * 100, 1)) + "% < 15%"
+    # Hard dividend yield cap. High-yield stocks cause LEAP calls to trade
+    # below intrinsic value because dividends reduce the forward price that
+    # the call benefits from. At 3.5%+ annual yield on a 2-year LEAP the
+    # cumulative drag is material enough to warrant outright exclusion.
+    if dy > MAX_DIV_YIELD:
+        return False, "DivYield " + str(round(dy * 100, 1)) + "% > " + str(round(MAX_DIV_YIELD * 100, 1)) + "%"
     return True, ""
 
 
@@ -769,34 +803,36 @@ class BacktestEngine:
       date (train/validation split), so every backtest starts with a
       realistic ATM option rather than applying today's screener strike
       to a historical period where it was deeply OTM.
+
+    Dividend Model:
+      self.div_yield is passed as q into every Black-Scholes call so that
+      option pricing correctly discounts dividends the call holder does not
+      receive. This prevents overestimation of premiums on dividend payers.
     """
 
     def __init__(self, symbol, strike, entry_score,
                  training_years=3, validation_years=2,
                  n_simulations=1000, risk_free_rate=0.0388,
                  use_atm_strike=False):
-        self.symbol          = symbol
-        self.screener_strike = strike     # original screener strike (kept for reference)
-        self.strike          = strike     # may be overridden in load_data if ATM mode
-        self.entry_score     = entry_score
-        self.use_atm_strike  = use_atm_strike
-        self.training_years  = training_years
-        self.validation_years= validation_years
-        self.n_sims          = n_simulations
-        self.r               = risk_free_rate
-        self.total_years     = training_years + validation_years
-        # Populated by load_data()
-        self.train_close = None
-        self.val_close   = None
-        self.entry_price = None
-        self.div_yield   = None
-        # Populated by calibrate()
-        self.mu             = None
-        self.sigma_train    = None
-        self.sigma_val      = None
-        self.sigma_blended  = None
-        # Populated by run_monte_carlo()
-        self.paths = None    # shape: (n_sims, val_days)
+        self.symbol           = symbol
+        self.screener_strike  = strike
+        self.strike           = strike
+        self.entry_score      = entry_score
+        self.use_atm_strike   = use_atm_strike
+        self.training_years   = training_years
+        self.validation_years = validation_years
+        self.n_sims           = n_simulations
+        self.r                = risk_free_rate
+        self.total_years      = training_years + validation_years
+        self.train_close  = None
+        self.val_close    = None
+        self.entry_price  = None
+        self.div_yield    = None
+        self.mu           = None
+        self.sigma_train  = None
+        self.sigma_val    = None
+        self.sigma_blended= None
+        self.paths        = None
 
     # -- 1. Data Loading ------------------------------------------
     def load_data(self):
@@ -811,16 +847,10 @@ class BacktestEngine:
         self.train_close = close.iloc[:split_idx]
         self.val_close   = close.iloc[split_idx:]
         self.entry_price = float(self.train_close.iloc[-1])
-
-        # ATM mode: replace screener strike with stock price at historical entry.
-        # This ensures every backtest starts with a realistic ATM option
-        # regardless of where the screener strike sits relative to historical prices.
         if self.use_atm_strike:
             self.strike = self.entry_price
             print(" [ATM] Strike set to $" + str(round(self.strike, 2)) +
                   " (screener strike was $" + str(round(self.screener_strike, 2)) + ")")
-
-        # Dividend yield from training period
         try:
             divs = ticker.dividends
             if not divs.empty:
@@ -846,29 +876,22 @@ class BacktestEngine:
         3. DRIFT CAP AT 15% and floor at risk-free rate
         4. EWMA VOLATILITY + COVERAGE CORRECTION
         """
-        log_rets    = np.log(
+        log_rets     = np.log(
             self.train_close.values[1:] / self.train_close.values[:-1]
         )
-        # 1. Recent drift: last 2 years of training window only
         recent_days  = min(int(252 * 2), len(log_rets))
         recent_rets  = log_rets[-recent_days:]
         lo_r         = float(np.percentile(recent_rets, 1))
         hi_r         = float(np.percentile(recent_rets, 99))
         recent_trim  = recent_rets[(recent_rets >= lo_r) & (recent_rets <= hi_r)]
         mu_recent    = float(np.mean(recent_trim)) * 252
-
-        # 2. Long-run mean anchor (60% blend toward 10% equity mean)
         LONG_RUN_MEAN = 0.10
         ANCHOR_WEIGHT = 0.40
         mu_blended_drift = (1.0 - ANCHOR_WEIGHT) * mu_recent + ANCHOR_WEIGHT * LONG_RUN_MEAN
-
-        # 3. Drift cap at 15% and floor at risk-free rate
         DRIFT_CAP = 0.15
         self.mu   = max(min(mu_blended_drift - self.div_yield, DRIFT_CAP), self.r)
         self.mu_recent_raw = round(mu_recent,        4)
         self.mu_anchored   = round(mu_blended_drift, 4)
-
-        # 4. EWMA volatility (lambda = 0.94 RiskMetrics standard)
         lam     = 0.94
         n       = len(log_rets)
         weights = np.array([(1 - lam) * lam ** (n - 1 - i) for i in range(n)])
@@ -876,23 +899,17 @@ class BacktestEngine:
         var_ewma          = float(np.dot(weights, log_rets ** 2))
         sigma_daily_ewma  = math.sqrt(var_ewma)
         self.sigma_ewma   = sigma_daily_ewma * math.sqrt(252)
-
         sigma_daily_plain = float(np.std(log_rets, ddof=1))
         self.sigma_train  = sigma_daily_plain * math.sqrt(252)
-
         val_log_rets      = np.log(
             self.val_close.values[1:] / self.val_close.values[:-1]
         )
         sigma_daily_val   = float(np.std(val_log_rets, ddof=1))
         self.sigma_val    = sigma_daily_val * math.sqrt(252)
-
-        # Mean-reverting sigma blend
         kappa   = 2.0
         T_val   = self.validation_years
         weight  = math.exp(-kappa * T_val)
         blended = weight * self.sigma_ewma + (1 - weight) * self.sigma_val
-
-        # Coverage-based sigma correction (cap +/- 15%)
         try:
             n_train   = len(self.train_close)
             S0_train  = float(self.train_close.iloc[0])
@@ -910,9 +927,9 @@ class BacktestEngine:
             ))
             ratio      = coverage / 0.90
             ratio      = max(0.85, min(1.15, ratio))
-            self.sigma_blended          = blended / ratio
-            self.sigma_coverage_raw     = round(coverage * 100, 1)
-            self.sigma_coverage_ratio   = round(ratio, 4)
+            self.sigma_blended        = blended / ratio
+            self.sigma_coverage_raw   = round(coverage * 100, 1)
+            self.sigma_coverage_ratio = round(ratio, 4)
         except Exception:
             self.sigma_blended        = blended
             self.sigma_coverage_raw   = None
@@ -921,16 +938,16 @@ class BacktestEngine:
 
     # -- 3. Monte Carlo Simulation (vectorized GBM) ---------------
     def run_monte_carlo(self):
-        n_days   = len(self.val_close)
-        dt       = 1.0 / 252.0
-        S0       = self.entry_price
-        mu       = self.mu
-        sigma    = self.sigma_blended
+        n_days    = len(self.val_close)
+        dt        = 1.0 / 252.0
+        S0        = self.entry_price
+        mu        = self.mu
+        sigma     = self.sigma_blended
         np.random.seed(42)
-        Z        = np.random.standard_normal((self.n_sims, n_days))
-        drift    = (mu - 0.5 * sigma ** 2) * dt
-        diffusion= sigma * math.sqrt(dt) * Z
-        log_paths= np.cumsum(drift + diffusion, axis=1)
+        Z         = np.random.standard_normal((self.n_sims, n_days))
+        drift     = (mu - 0.5 * sigma ** 2) * dt
+        diffusion = sigma * math.sqrt(dt) * Z
+        log_paths = np.cumsum(drift + diffusion, axis=1)
         self.paths = S0 * np.exp(log_paths)
         return self
 
@@ -952,7 +969,10 @@ class BacktestEngine:
         T_remaining      = self.validation_years
         K                = self.strike
         S_entry          = self.entry_price
-        reality_premium  = black_scholes_price(S_entry, K, T_remaining, self.r, reality_iv)
+        q                = self.div_yield
+        reality_premium  = black_scholes_price(
+            S_entry, K, T_remaining, self.r, reality_iv, q=q
+        )
         return {
             "actual_terminal_price":      round(actual_terminal,  2),
             "median_simulated_terminal":  round(median_sim_term,  2),
@@ -961,7 +981,7 @@ class BacktestEngine:
             "terminal_price_error_pct":   round(
                 (median_sim_term - actual_terminal) / actual_terminal * 100, 2
             ),
-            "sim_avg_max_drawdown_pct":   round(sim_max_dd  * 100, 2),
+            "sim_avg_max_drawdown_pct":   round(sim_max_dd   * 100, 2),
             "actual_max_drawdown_pct":    round(actual_max_dd * 100, 2),
             "drawdown_error_pct":         round(
                 (sim_max_dd - actual_max_dd) / abs(actual_max_dd) * 100
@@ -978,18 +998,19 @@ class BacktestEngine:
         S       = self.entry_price
         r       = self.r
         sigma   = self.sigma_blended
+        q       = self.div_yield
         T_full  = float(self.validation_years)
         checkpoints    = [T_full, T_full / 2, 0.25]
         greek_timeline = []
         for T in checkpoints:
             if T <= 0:
                 continue
-            delta_t = black_scholes_delta(S, K, T, r, sigma)
-            theta_t = black_scholes_theta(S, K, T, r, sigma)
-            rho_t   = black_scholes_rho(  S, K, T, r, sigma)
-            gamma_t = black_scholes_gamma(S, K, T, r, sigma)
-            vega_t  = black_scholes_vega( S, K, T, r, sigma)
-            price_t = black_scholes_price(S, K, T, r, sigma)
+            delta_t = black_scholes_delta(S, K, T, r, sigma, q=q)
+            theta_t = black_scholes_theta(S, K, T, r, sigma, q=q)
+            rho_t   = black_scholes_rho(  S, K, T, r, sigma, q=q)
+            gamma_t = black_scholes_gamma(S, K, T, r, sigma, q=q)
+            vega_t  = black_scholes_vega( S, K, T, r, sigma, q=q)
+            price_t = black_scholes_price(S, K, T, r, sigma, q=q)
             greek_timeline.append({
                 "years_to_expiry":  round(T, 2),
                 "option_price":     round(price_t, 2)  if not math.isnan(price_t)  else None,
@@ -999,13 +1020,13 @@ class BacktestEngine:
                 "vega_per_1pct_iv": round(vega_t,  4)  if not math.isnan(vega_t)   else None,
                 "rho_per_1pct_rate":round(rho_t,   4)  if not math.isnan(rho_t)    else None,
             })
-        theta_entry = black_scholes_theta(S, K, T_full,     r, sigma)
-        theta_mid   = black_scholes_theta(S, K, T_full / 2, r, sigma)
+        theta_entry = black_scholes_theta(S, K, T_full,     r, sigma, q=q)
+        theta_mid   = black_scholes_theta(S, K, T_full / 2, r, sigma, q=q)
         avg_theta   = (theta_entry + theta_mid) / 2 if not math.isnan(theta_entry) else 0.0
         val_days    = int(self.validation_years * 365)
         cumulative_theta_cost = round(abs(avg_theta) * val_days, 2)
-        entry_premium   = black_scholes_price(S, K, T_full, r, sigma)
-        target_premium  = entry_premium * 2.0 if not math.isnan(entry_premium) else None
+        entry_premium  = black_scholes_price(S, K, T_full, r, sigma, q=q)
+        target_premium = entry_premium * 2.0 if not math.isnan(entry_premium) else None
         return_checkpoints = []
         for months in [6, 12, 18]:
             T_rem = (self.validation_years * 12 - months) / 12.0
@@ -1016,11 +1037,11 @@ class BacktestEngine:
                     "pct_above_entry": None,
                 })
                 continue
-            lo, hi    = S * 0.5, S * 5.0
-            result_S  = None
+            lo, hi   = S * 0.5, S * 5.0
+            result_S = None
             for _ in range(60):
                 mid = (lo + hi) / 2
-                v   = black_scholes_price(mid, K, T_rem, r, sigma)
+                v   = black_scholes_price(mid, K, T_rem, r, sigma, q=q)
                 if math.isnan(v):
                     break
                 if v < target_premium:
@@ -1032,29 +1053,30 @@ class BacktestEngine:
                     break
             pct_above = round((result_S - S) / S * 100, 1) if result_S else None
             return_checkpoints.append({
-                "months_elapsed":               months,
+                "months_elapsed":                months,
                 "stock_price_for_100pct_return": result_S,
                 "pct_above_entry_price":         pct_above,
             })
         return {
-            "greek_timeline":         greek_timeline,
-            "cumulative_theta_cost":  cumulative_theta_cost,
-            "return_checkpoints":     return_checkpoints,
+            "greek_timeline":        greek_timeline,
+            "cumulative_theta_cost": cumulative_theta_cost,
+            "return_checkpoints":    return_checkpoints,
         }
 
     # -- 6. Residual Variance Report & EV -------------------------
     def residual_variance_report(self, reality):
-        K      = self.strike
-        sigma  = self.sigma_blended
-        T_val  = float(self.validation_years)
-        r      = self.r
-        S_entry= self.entry_price
+        K       = self.strike
+        sigma   = self.sigma_blended
+        T_val   = float(self.validation_years)
+        r       = self.r
+        q       = self.div_yield
+        S_entry = self.entry_price
         sim_terminal = self.paths[:, -1]
         n_itm    = float(np.sum(sim_terminal > K))
         p_itm    = n_itm / self.n_sims
         payoffs_itm = sim_terminal[sim_terminal > K] - K
         ev_payoff   = float(np.mean(payoffs_itm)) if len(payoffs_itm) > 0 else 0.0
-        entry_premium = black_scholes_price(S_entry, K, T_val, r, sigma)
+        entry_premium = black_scholes_price(S_entry, K, T_val, r, sigma, q=q)
         if math.isnan(entry_premium):
             entry_premium = 0.0
         p_otm = 1.0 - p_itm
@@ -1074,8 +1096,8 @@ class BacktestEngine:
             "strike":                   round(K,             2),
             "projected_entry_premium":  round(entry_premium, 2),
             "reality_premium":          reality["reality_option_premium"],
-            "p_itm_pct":                round(p_itm  * 100, 1),
-            "p_otm_pct":                round(p_otm  * 100, 1),
+            "p_itm_pct":                round(p_itm  * 100,  1),
+            "p_otm_pct":                round(p_otm  * 100,  1),
             "expected_payoff_if_itm":   round(ev_payoff,     2),
             "expected_value_ev":        round(ev,            2),
             "ev_positive":              ev > 0,
@@ -1090,9 +1112,9 @@ class BacktestEngine:
         try:
             if avg_win <= 0 or premium <= 0:
                 return None
-            p_lose      = 1.0 - p_win
-            f           = (p_win * avg_win - p_lose * premium) / avg_win
-            f_half_kelly= f / 2.0
+            p_lose       = 1.0 - p_win
+            f            = (p_win * avg_win - p_lose * premium) / avg_win
+            f_half_kelly = f / 2.0
             return round(max(0.0, min(25.0, f_half_kelly * 100)), 1)
         except Exception:
             return None
@@ -1102,10 +1124,13 @@ class BacktestEngine:
         try:
             K      = self.strike
             r      = self.r
+            q      = self.div_yield
             sigma  = self.sigma_blended
             T_full = float(self.validation_years)
             n_days = self.paths.shape[1]
-            entry_prem = black_scholes_price(self.entry_price, K, T_full, r, sigma)
+            entry_prem = black_scholes_price(
+                self.entry_price, K, T_full, r, sigma, q=q
+            )
             if math.isnan(entry_prem) or entry_prem <= 0:
                 print(" [WARN] returns_analysis: invalid entry premium")
                 return self._empty_returns()
@@ -1123,53 +1148,55 @@ class BacktestEngine:
                     continue
                 S_col   = np.maximum(self.paths[:, d], 0.001)
                 log_SK  = np.log(S_col / K)
-                d1_vec  = (log_SK + (r + 0.5 * sigma ** 2) * T_rem) / denom
+                # Merton d1 with dividend yield q
+                d1_vec  = (log_SK + (r - q + 0.5 * sigma ** 2) * T_rem) / denom
                 d2_vec  = d1_vec - denom
                 nd1     = norm.cdf(d1_vec)
                 nd2     = norm.cdf(d2_vec)
-                vals    = S_col * nd1 - K * math.exp(-r * T_rem) * nd2
+                vals    = (S_col * math.exp(-q * T_rem) * nd1
+                           - K * math.exp(-r * T_rem) * nd2)
                 intrinsic = np.maximum(S_col - K, 0.0)
                 option_values[:, d] = np.maximum(vals, intrinsic)
             option_values = np.nan_to_num(option_values, nan=0.0)
             sim_returns   = (option_values - entry_prem) / entry_prem * 100.0
-            hit_100       = option_values >= target_value
-            paths_hit_mask= np.any(hit_100, axis=1)
-            n_hit_100     = int(np.sum(paths_hit_mask))
-            p_hit_100     = round(n_hit_100 / self.n_sims * 100, 1)
+            hit_100        = option_values >= target_value
+            paths_hit_mask = np.any(hit_100, axis=1)
+            n_hit_100      = int(np.sum(paths_hit_mask))
+            p_hit_100      = round(n_hit_100 / self.n_sims * 100, 1)
             if n_hit_100 > 0:
-                first_days        = np.argmax(hit_100[paths_hit_mask], axis=1)
-                median_day_100    = int(np.median(first_days))
-                earliest_day_100  = int(np.min(first_days))
-                latest_day_100    = int(np.max(first_days))
+                first_days       = np.argmax(hit_100[paths_hit_mask], axis=1)
+                median_day_100   = int(np.median(first_days))
+                earliest_day_100 = int(np.min(first_days))
+                latest_day_100   = int(np.max(first_days))
             else:
                 median_day_100   = None
                 earliest_day_100 = None
                 latest_day_100   = None
-            max_ret_per_path     = np.nanmax(sim_returns, axis=1)
-            median_max_return    = round(float(np.nanmedian(max_ret_per_path)),    1)
-            avg_max_return       = round(float(np.nanmean(max_ret_per_path)),      1)
-            pct_90_max_return    = round(float(np.nanpercentile(max_ret_per_path, 90)), 1)
-            pct_10_max_return    = round(float(np.nanpercentile(max_ret_per_path, 10)), 1)
+            max_ret_per_path  = np.nanmax(sim_returns, axis=1)
+            median_max_return = round(float(np.nanmedian(max_ret_per_path)),       1)
+            avg_max_return    = round(float(np.nanmean(max_ret_per_path)),         1)
+            pct_90_max_return = round(float(np.nanpercentile(max_ret_per_path, 90)), 1)
+            pct_10_max_return = round(float(np.nanpercentile(max_ret_per_path, 10)), 1)
             actual_prices = self.val_close.values
             actual_option = np.zeros(n_days)
             for d in range(n_days):
                 T_rem = float(t_rem_arr[d])
                 S     = (float(actual_prices[d]) if d < len(actual_prices)
                          else float(actual_prices[-1]))
-                v     = black_scholes_price(S, K, T_rem, r, sigma)
+                v     = black_scholes_price(S, K, T_rem, r, sigma, q=q)
                 actual_option[d] = max(
                     v if not math.isnan(v) else 0.0,
                     max(S - K, 0.0)
                 )
-            actual_returns         = (actual_option - entry_prem) / entry_prem * 100.0
-            actual_hit_100_arr     = actual_option >= target_value
-            actual_hit_100_bool    = bool(np.any(actual_hit_100_arr))
-            actual_day_100         = (int(np.argmax(actual_hit_100_arr))
-                                      if actual_hit_100_bool else None)
-            actual_max_return      = round(float(np.max(actual_returns)),    1)
-            actual_max_return_day  = int(np.argmax(actual_returns))
-            actual_terminal_opt    = round(float(actual_option[-1]),         2)
-            actual_terminal_ret    = round(float(actual_returns[-1]),        1)
+            actual_returns      = (actual_option - entry_prem) / entry_prem * 100.0
+            actual_hit_100_arr  = actual_option >= target_value
+            actual_hit_100_bool = bool(np.any(actual_hit_100_arr))
+            actual_day_100      = (int(np.argmax(actual_hit_100_arr))
+                                   if actual_hit_100_bool else None)
+            actual_max_return     = round(float(np.max(actual_returns)),    1)
+            actual_max_return_day = int(np.argmax(actual_returns))
+            actual_terminal_opt   = round(float(actual_option[-1]),         2)
+            actual_terminal_ret   = round(float(actual_returns[-1]),        1)
             print(" [returns] hit_100=" + str(p_hit_100) + "%" +
                   " median_max=" + str(median_max_return) + "%" +
                   " actual_max=" + str(actual_max_return) + "%")
@@ -1225,9 +1252,9 @@ class BacktestEngine:
             print(" Running " + str(self.n_sims) + " Monte Carlo paths...")
             self.run_monte_carlo()
             print(" Comparing projections to reality...")
-            reality = self.reality_check()
+            reality   = self.reality_check()
             print(" Calculating greek attribution...")
-            greeks  = self.greek_attribution()
+            greeks    = self.greek_attribution()
             print(" Building residual variance report...")
             rv_report = self.residual_variance_report(reality)
             print(" Analysing 100% return and max return milestones...")
@@ -1239,6 +1266,7 @@ class BacktestEngine:
                 "atm_mode":         self.use_atm_strike,
                 "entry_score":      self.entry_score,
                 "entry_price":      round(self.entry_price, 2),
+                "div_yield_pct":    round(self.div_yield * 100, 2),
                 "training_years":   self.training_years,
                 "validation_years": self.validation_years,
                 "n_simulations":    self.n_sims,
@@ -1259,10 +1287,10 @@ class BacktestEngine:
                     "risk_free_rate_pct":       round(self.r * 100, 2),
                     "calibration_method":       "recent_drift + longrun_anchor + ewma_vol + coverage_correction",
                 },
-                "reality_check":           reality,
-                "greek_attribution":       greeks,
+                "reality_check":            reality,
+                "greek_attribution":        greeks,
                 "residual_variance_report": rv_report,
-                "returns_analysis":        returns,
+                "returns_analysis":         returns,
                 "status": "ok",
             }
         except Exception as e:
@@ -1284,6 +1312,10 @@ class ForwardProjectionEngine:
     Projects the stock price from TODAY to the option expiry date
     using GBM calibrated on 3 years of recent price history, with
     implied volatility as the simulation sigma.
+
+    div_yield is passed as q into all Black-Scholes calls so that the
+    projected option value correctly accounts for dividends the call
+    holder does not receive over the holding period.
     """
 
     def __init__(self, symbol, current_price, strike, expiry_str,
@@ -1341,20 +1373,19 @@ class ForwardProjectionEngine:
             self.mu          = self.r
             self.mu_hist     = self.r
             self.hist_vol_1y = 0.25
+            self.div_yield   = 0.0
 
-        # IV sanity check: floor at 8% minimum realistic equity IV
         IV_FLOOR = 0.08
         if self.iv < IV_FLOOR:
             print(" [IV WARN] " + self.symbol + " raw IV " +
                   str(round(self.iv * 100, 1)) + "% is below floor. " +
                   "Using historical vol " +
                   str(round(self.hist_vol_1y * 100, 1)) + "% instead.")
-            self.iv        = max(self.hist_vol_1y, IV_FLOOR)
+            self.iv         = max(self.hist_vol_1y, IV_FLOOR)
             self.iv_was_bad = True
         else:
             self.iv_was_bad = False
 
-        # Cap IV at 40% for projections longer than 1 year
         if self.T > 1.0 and self.iv > 0.40:
             self.iv_capped = 0.40
         else:
@@ -1370,10 +1401,11 @@ class ForwardProjectionEngine:
         drift     = (mu - 0.5 * sigma ** 2) * dt
         diffusion = sigma * math.sqrt(dt) * Z
         log_paths = np.cumsum(drift + diffusion, axis=1)
-        self.paths= self.S0 * np.exp(log_paths)
+        self.paths = self.S0 * np.exp(log_paths)
         return self
 
     def projection_report(self):
+        q            = self.div_yield
         terminal     = self.paths[:, -1]
         median_price = float(np.median(terminal))
         pct5         = float(np.percentile(terminal,  5))
@@ -1388,15 +1420,21 @@ class ForwardProjectionEngine:
         p_otm        = 1.0 - p_itm
         ev           = p_itm * pv_payoff - p_otm * self.current_premium
         projected_bs = black_scholes_price(
-            median_price, self.K, 0.01, self.r, self.iv_capped
+            median_price, self.K, 0.01, self.r, self.iv_capped, q=q
         )
         upside_median  = (median_price - self.S0) / self.S0 * 100
         upside_pct95   = (pct95 - self.S0) / self.S0 * 100
         downside_pct5  = (pct5  - self.S0) / self.S0 * 100
-        entry_gamma    = black_scholes_gamma(self.S0, self.K, self.T, self.r, self.iv_capped)
-        entry_vega     = black_scholes_vega( self.S0, self.K, self.T, self.r, self.iv_capped)
-        entry_opt_price= black_scholes_price(self.S0, self.K, self.T, self.r, self.iv_capped)
-        target_100     = entry_opt_price * 2.0 if not math.isnan(entry_opt_price) else None
+        entry_gamma     = black_scholes_gamma(
+            self.S0, self.K, self.T, self.r, self.iv_capped, q=q
+        )
+        entry_vega      = black_scholes_vega(
+            self.S0, self.K, self.T, self.r, self.iv_capped, q=q
+        )
+        entry_opt_price = black_scholes_price(
+            self.S0, self.K, self.T, self.r, self.iv_capped, q=q
+        )
+        target_100 = entry_opt_price * 2.0 if not math.isnan(entry_opt_price) else None
         return_checkpoints = []
         for months in [6, 12, 18]:
             T_rem = self.T - months / 12.0
@@ -1404,14 +1442,16 @@ class ForwardProjectionEngine:
                 return_checkpoints.append({
                     "months_elapsed":               months,
                     "stock_price_for_100pct_return": None,
-                    "pct_above_current":             None,
+                    "pct_above_current":            None,
                 })
                 continue
             lo, hi   = self.S0 * 0.5, self.S0 * 5.0
             result_S = None
             for _ in range(60):
                 mid = (lo + hi) / 2
-                v   = black_scholes_price(mid, self.K, T_rem, self.r, self.iv_capped)
+                v   = black_scholes_price(
+                    mid, self.K, T_rem, self.r, self.iv_capped, q=q
+                )
                 if math.isnan(v):
                     break
                 if v < target_100:
@@ -1425,7 +1465,7 @@ class ForwardProjectionEngine:
             return_checkpoints.append({
                 "months_elapsed":               months,
                 "stock_price_for_100pct_return": result_S,
-                "pct_above_current":             pct_above,
+                "pct_above_current":            pct_above,
             })
         kelly = None
         try:
@@ -1448,6 +1488,7 @@ class ForwardProjectionEngine:
             "days_to_expiry":       self.n_days,
             "years_to_expiry":      round(self.T,               3),
             "current_premium":      round(self.current_premium, 2),
+            "div_yield_pct":        round(self.div_yield * 100, 2),
             "implied_vol_raw_pct":  round(self.iv        * 100, 2),
             "implied_vol_used_pct": round(self.iv_capped * 100, 2),
             "iv_was_capped":        self.iv_capped < self.iv,
@@ -1459,9 +1500,9 @@ class ForwardProjectionEngine:
             "projected_prices": {
                 "median": round(median_price, 2),
                 "pct_5":  round(pct5,         2),
-                "pct_25": round(pct25,         2),
-                "pct_75": round(pct75,         2),
-                "pct_95": round(pct95,         2),
+                "pct_25": round(pct25,        2),
+                "pct_75": round(pct75,        2),
+                "pct_95": round(pct95,        2),
             },
             "upside_downside": {
                 "median_change_pct": round(upside_median,  1),
@@ -1505,13 +1546,6 @@ class ForwardProjectionEngine:
 # ATM OPTION SELECTOR
 # ------------------------------------------------------------------
 def select_atm_option(options_for_ticker):
-    """
-    From a list of options for a single ticker, return the one whose
-    strike is closest to the current stock price (i.e. the ATM option).
-    This minimises the premium paid vs deep-ITM options which carry
-    expensive intrinsic value.  Composite score is used as a tiebreaker
-    when two strikes are equidistant from current price.
-    """
     if not options_for_ticker:
         return None
     return min(
@@ -1524,13 +1558,6 @@ def select_atm_option(options_for_ticker):
 
 
 def build_atm_per_ticker(all_results):
-    """
-    Given all screener results, return a dict of {ticker: atm_option}
-    where the chosen option per ticker is the ATM one (strike nearest
-    current price).  Results are processed in composite-score order so
-    that each ticker's full option list is already available before
-    ATM selection.
-    """
     grouped = {}
     for opt in all_results:
         sym = opt["ticker"]
@@ -1549,8 +1576,6 @@ def run_forward_projections(all_results):
     if not all_results:
         print(" No screener results to project.")
         return []
-    # Select the ATM option (strike closest to current price) per ticker.
-    # This matches the trading rule: always buy the ATM call to minimise premium.
     best_per_ticker = build_atm_per_ticker(all_results)
     projections = []
     tickers     = list(best_per_ticker.keys())
@@ -1563,11 +1588,11 @@ def run_forward_projections(all_results):
               " DTE="    + str(opt["dte"]) + " days",
               end="", flush=True)
         engine = ForwardProjectionEngine(
-            symbol        = sym,
-            current_price = opt["current_price"],
-            strike        = opt["strike"],
-            expiry_str    = opt["expiry"],
-            implied_vol   = opt["implied_volatility_pct"] / 100.0,
+            symbol          = sym,
+            current_price   = opt["current_price"],
+            strike          = opt["strike"],
+            expiry_str      = opt["expiry"],
+            implied_vol     = opt["implied_volatility_pct"] / 100.0,
             current_premium = opt["premium"],
             risk_free_rate  = RISK_FREE_RATE,
             n_simulations   = FP_N_SIMULATIONS,
@@ -1608,16 +1633,19 @@ def analyze_ticker(symbol, idx, total):
         low    = hist["Low"]
         current_price = float(close.iloc[-1])
 
+        # Dividend yield for this ticker (used in BS pricing and scoring)
+        div_yield_val = fund.get("div_yield", 0.0) or 0.0
+
         # Daily indicators
-        rsi_val                      = calculate_rsi(close)
-        bb_upper, bb_middle, bb_lower= calculate_bollinger_bands(close)
+        rsi_val                       = calculate_rsi(close)
+        bb_upper, bb_middle, bb_lower = calculate_bollinger_bands(close)
         ma_200 = (float(close.rolling(200).mean().iloc[-1])
                   if len(close) >= 200 else float(close.mean()))
-        bb_width      = (bb_upper - bb_lower) or 1
-        bb_pos        = (current_price - bb_lower) / bb_width
-        price_vs_200ma= (current_price - ma_200) / ma_200
-        atr_val       = calculate_atr(high, low, close)
-        obv_data      = calculate_obv(close, volume)
+        bb_width       = (bb_upper - bb_lower) or 1
+        bb_pos         = (current_price - bb_lower) / bb_width
+        price_vs_200ma = (current_price - ma_200) / ma_200
+        atr_val        = calculate_atr(high, low, close)
+        obv_data       = calculate_obv(close, volume)
 
         # Weekly indicators
         weekly       = resample_to_weekly(hist)
@@ -1628,7 +1656,7 @@ def analyze_ticker(symbol, idx, total):
         weekly_mas   = calculate_weekly_mas(weekly_close)
 
         # ABCD harmonic pattern (weekly prices)
-        abcd_data  = detect_abcd_pattern(weekly_close, current_price)
+        abcd_data = detect_abcd_pattern(weekly_close, current_price)
 
         # LEAPS entry checklist (iv_percentile filled after options fetch)
         volume_data = {"obv_rising": obv_data.get("obv_rising", False)}
@@ -1649,11 +1677,11 @@ def analyze_ticker(symbol, idx, total):
             print(" FAIL No calls at " + expiry)
             return []
 
-        exp_date     = datetime.strptime(expiry, "%Y-%m-%d").date()
-        dte          = max((exp_date - date.today()).days, 1)
-        T            = dte / 365.0
-        mid_iv       = float(calls["impliedVolatility"].median())
-        iv_percentile= calculate_iv_percentile(close, mid_iv)
+        exp_date      = datetime.strptime(expiry, "%Y-%m-%d").date()
+        dte           = max((exp_date - date.today()).days, 1)
+        T             = dte / 365.0
+        mid_iv        = float(calls["impliedVolatility"].median())
+        iv_percentile = calculate_iv_percentile(close, mid_iv)
 
         # Rerun checklist with actual IV percentile
         checklist = leaps_entry_checklist(
@@ -1673,22 +1701,33 @@ def analyze_ticker(symbol, idx, total):
             "price_vs_200ma": score_parameter(price_vs_200ma,         "price_vs_200ma"),
             "bb_position":    score_parameter(bb_pos,                 "bb_position"),
             "iv_percentile":  score_parameter(iv_percentile,          "iv_percentile"),
+            "div_yield":      score_parameter(div_yield_val,          "div_yield"),
         }
 
         results = []
         for _, opt in calls.iterrows():
-            strike   = float(opt["strike"])
-            iv       = float(opt["impliedVolatility"])
-            bid      = float(opt.get("bid", 0) or 0)
-            ask      = float(opt.get("ask", 0) or 0)
-            prem     = ((bid + ask) / 2 if (bid + ask) > 0
-                        else float(opt.get("lastPrice", 0) or 0))
+            strike = float(opt["strike"])
+            iv     = float(opt["impliedVolatility"])
+            bid    = float(opt.get("bid", 0) or 0)
+            ask    = float(opt.get("ask", 0) or 0)
+            prem   = ((bid + ask) / 2 if (bid + ask) > 0
+                      else float(opt.get("lastPrice", 0) or 0))
             if prem <= 0:
                 continue
-            delta    = black_scholes_delta(current_price, strike, T, RISK_FREE_RATE, iv)
-            theta    = black_scholes_theta(current_price, strike, T, RISK_FREE_RATE, iv)
-            gamma    = black_scholes_gamma(current_price, strike, T, RISK_FREE_RATE, iv)
-            vega     = black_scholes_vega( current_price, strike, T, RISK_FREE_RATE, iv)
+            # All Greeks now use the Merton dividend-adjusted model via q=div_yield_val.
+            # This prevents overstating delta/price on high-dividend stocks.
+            delta = black_scholes_delta(
+                current_price, strike, T, RISK_FREE_RATE, iv, q=div_yield_val
+            )
+            theta = black_scholes_theta(
+                current_price, strike, T, RISK_FREE_RATE, iv, q=div_yield_val
+            )
+            gamma = black_scholes_gamma(
+                current_price, strike, T, RISK_FREE_RATE, iv, q=div_yield_val
+            )
+            vega  = black_scholes_vega(
+                current_price, strike, T, RISK_FREE_RATE, iv, q=div_yield_val
+            )
             if math.isnan(delta):
                 continue
             required_move  = prem / delta if delta != 0 else float("nan")
@@ -1715,6 +1754,7 @@ def analyze_ticker(symbol, idx, total):
                                       if fund["revenue_growth"] is not None else None),
                 "ebitda_margin_pct": (round(fund["ebitda_margin"] * 100, 1)
                                       if fund["ebitda_margin"] is not None else None),
+                "div_yield_pct":     round(div_yield_val * 100, 2),
                 "rsi":               round(rsi_val, 2),
                 "rsi_weekly":        round(rsi_weekly, 2) if rsi_weekly else None,
                 "price_vs_200ma_pct":round(price_vs_200ma * 100, 2),
@@ -1743,37 +1783,32 @@ def analyze_ticker(symbol, idx, total):
                                       if not math.isnan(leverage_ratio) else None),
                 "breakeven_price":   round(breakeven, 2),
                 # Stock metadata
-                "beta":                  fund.get("beta"),
-                "short_interest_pct":    fund.get("short_interest_pct"),
-                "analyst_target":        fund.get("analyst_target"),
-                "analyst_low":           fund.get("analyst_low"),
-                "analyst_high":          fund.get("analyst_high"),
-                "analyst_count":         fund.get("analyst_count"),
-                "analyst_upside_pct":    fund.get("analyst_upside_pct"),
-                "next_earnings_date":    fund.get("next_earnings_date"),
-                "avg_earnings_move_pct": fund.get("avg_earnings_move_pct"),
-                "sector":                fund.get("sector",   ""),
-                "industry":              fund.get("industry", ""),
-                "free_cashflow":         fund.get("free_cashflow"),
-                "debt_to_equity":        fund.get("debt_to_equity"),
+                "beta":                   fund.get("beta"),
+                "short_interest_pct":     fund.get("short_interest_pct"),
+                "analyst_target":         fund.get("analyst_target"),
+                "analyst_low":            fund.get("analyst_low"),
+                "analyst_high":           fund.get("analyst_high"),
+                "analyst_count":          fund.get("analyst_count"),
+                "analyst_upside_pct":     fund.get("analyst_upside_pct"),
+                "next_earnings_date":     fund.get("next_earnings_date"),
+                "avg_earnings_move_pct":  fund.get("avg_earnings_move_pct"),
+                "sector":                 fund.get("sector",   ""),
+                "industry":               fund.get("industry", ""),
+                "free_cashflow":          fund.get("free_cashflow"),
+                "debt_to_equity":         fund.get("debt_to_equity"),
                 "scores":          dict((k, round(v, 1)) for k, v in param_scores.items()),
                 "composite_score": compute_composite_score(param_scores),
-                # ATM distance: smaller = closer to current price (ATM).
-                # Used as primary sort key so ATM option always appears first.
                 "atm_distance":    round(abs(strike - current_price), 2),
             })
 
-        # Sort: ATM option first (smallest |strike - current_price|),
-        # composite score descending as tiebreaker.
-        # This ensures the first result per ticker is always the ATM call,
-        # minimising premium paid vs deep-ITM options.
         results.sort(key=lambda x: (x["atm_distance"], -x["composite_score"]))
         rg_s = (str(round(fund["revenue_growth"] * 100)) + "%"
                 if fund["revenue_growth"] is not None else "N/A")
         em_s = (str(round(fund["ebitda_margin"] * 100)) + "%"
                 if fund["ebitda_margin"] is not None else "N/A")
+        dy_s = str(round(div_yield_val * 100, 1)) + "%"
         print(" PASS " + str(len(results)) + " opts RevGrowth=" + rg_s +
-              " EBITDA=" + em_s)
+              " EBITDA=" + em_s + " DivYield=" + dy_s)
         time.sleep(DELAY_SECONDS)
         return results
 
@@ -1798,10 +1833,7 @@ def run_backtest(all_results):
     if not all_results:
         print(" No screener results to backtest.")
         return []
-    # Select the ATM option per ticker to match the trading rule of buying
-    # the ATM call.  Composite score still determines ticker ranking in
-    # the overall leaderboard; ATM governs strike selection only.
-    seen = build_atm_per_ticker(all_results)
+    seen       = build_atm_per_ticker(all_results)
     candidates = list(seen.values())
     print(" Tickers to backtest: " + str(len(candidates)))
     for c in candidates:
@@ -1819,14 +1851,14 @@ def run_backtest(all_results):
         print(" [" + str(i).rjust(2) + "/" + str(len(candidates)) + "] " +
               symbol + " strike=" + str(strike) + " score=" + str(score))
         engine = BacktestEngine(
-            symbol          = symbol,
-            strike          = strike,
-            entry_score     = score,
-            training_years  = BT_TRAINING_YEARS,
-            validation_years= BT_VALIDATION_YEARS,
-            n_simulations   = BT_N_SIMULATIONS,
-            risk_free_rate  = RISK_FREE_RATE,
-            use_atm_strike  = BT_USE_ATM_STRIKE,
+            symbol           = symbol,
+            strike           = strike,
+            entry_score      = score,
+            training_years   = BT_TRAINING_YEARS,
+            validation_years = BT_VALIDATION_YEARS,
+            n_simulations    = BT_N_SIMULATIONS,
+            risk_free_rate   = RISK_FREE_RATE,
+            use_atm_strike   = BT_USE_ATM_STRIKE,
         )
         result = engine.run()
         if result["status"] == "ok":
@@ -1835,8 +1867,8 @@ def run_backtest(all_results):
             atm_note = (" ATM=$" + str(result["strike"])
                         if BT_USE_ATM_STRIKE else "")
             print("   " + ev_label + atm_note +
-                  " P(ITM)=" + str(rv["p_itm_pct"]) + "%" +
-                  " EV=$"    + str(rv["expected_value_ev"]) +
+                  " P(ITM)="  + str(rv["p_itm_pct"]) + "%" +
+                  " EV=$"     + str(rv["expected_value_ev"]) +
                   " TermErr=" + str(rv["terminal_price_error_pct"]) + "%")
         else:
             print("   ERROR: " + result.get("error", "unknown"))
@@ -1870,15 +1902,13 @@ def save_snapshot(data, filename, snapshot_date):
 def build_tradingview_config(all_results, passed_tickers):
     if not all_results:
         return {"tickers": [], "ticker_details": {}}
-    # Use ATM option per ticker for the TradingView config so that the
-    # strike displayed on the dashboard matches the ATM trading rule.
     best_per_ticker = build_atm_per_ticker(all_results)
     tickers_ordered = sorted(
         best_per_ticker.keys(),
         key=lambda s: best_per_ticker[s]["composite_score"],
         reverse=True,
     )
-    ticker_details  = {}
+    ticker_details = {}
     for sym in tickers_ordered:
         opt  = best_per_ticker[sym]
         abcd = opt.get("abcd_pattern",    {})
@@ -1893,16 +1923,17 @@ def build_tradingview_config(all_results, passed_tickers):
             "best_expiry":       opt["expiry"],
             "best_premium":      opt["premium"],
             "delta":             opt["delta"],
+            "div_yield_pct":     opt.get("div_yield_pct"),
             "rsi_daily":         opt.get("rsi"),
             "rsi_weekly":        opt.get("rsi_weekly"),
             "iv_percentile":     opt.get("iv_percentile"),
-            "macd_bullish":      opt.get("macd",       {}).get("macd_above_signal"),
-            "stoch_oversold":    opt.get("stoch_rsi",  {}).get("oversold"),
-            "obv_divergence":    opt.get("obv",        {}).get("bullish_divergence"),
-            "above_50wk_ma":     opt.get("weekly_mas", {}).get("above_ma50_weekly"),
-            "above_200wk_ma":    opt.get("weekly_mas", {}).get("above_ma200_weekly"),
-            "ma50_weekly":       opt.get("weekly_mas", {}).get("ma50_weekly"),
-            "ma200_weekly":      opt.get("weekly_mas", {}).get("ma200_weekly"),
+            "macd_bullish":      opt.get("macd",      {}).get("macd_above_signal"),
+            "stoch_oversold":    opt.get("stoch_rsi", {}).get("oversold"),
+            "obv_divergence":    opt.get("obv",       {}).get("bullish_divergence"),
+            "above_50wk_ma":     opt.get("weekly_mas",{}).get("above_ma50_weekly"),
+            "above_200wk_ma":    opt.get("weekly_mas",{}).get("above_ma200_weekly"),
+            "ma50_weekly":       opt.get("weekly_mas",{}).get("ma50_weekly"),
+            "ma200_weekly":      opt.get("weekly_mas",{}).get("ma200_weekly"),
             "abcd_status":             abcd.get("status"),
             "abcd_A":                  abcd.get("A_price"),
             "abcd_A_date":             abcd.get("A_date"),
@@ -1943,20 +1974,23 @@ def build_portfolio_analysis(all_results):
     total      = len(best)
     sector_pct = {s: round(c / total * 100, 1) for s, c in sector_count.items()}
     concentrated_sectors = [s for s, pct in sector_pct.items() if pct > 30]
-    betas     = [opt.get("beta") for opt in best.values() if opt.get("beta")]
-    avg_beta  = round(sum(betas) / len(betas), 2) if betas else None
-    upsides   = [opt.get("analyst_upside_pct") for opt in best.values()
-                 if opt.get("analyst_upside_pct") is not None]
+    betas    = [opt.get("beta") for opt in best.values() if opt.get("beta")]
+    avg_beta = round(sum(betas) / len(betas), 2) if betas else None
+    upsides  = [opt.get("analyst_upside_pct") for opt in best.values()
+                if opt.get("analyst_upside_pct") is not None]
     avg_analyst_upside = round(sum(upsides) / len(upsides), 1) if upsides else None
     high_short_interest = [opt["ticker"] for opt in best.values()
                            if (opt.get("short_interest_pct") or 0) > 10]
+    div_yield_vals = [opt.get("div_yield_pct", 0.0) or 0.0 for opt in best.values()]
+    avg_div_yield  = round(sum(div_yield_vals) / len(div_yield_vals), 2) if div_yield_vals else 0.0
     return {
-        "total_tickers":            total,
-        "sector_breakdown":         sector_pct,
-        "concentrated_sectors":     concentrated_sectors,
-        "avg_portfolio_beta":       avg_beta,
-        "avg_analyst_upside_pct":   avg_analyst_upside,
-        "high_short_interest_tickers": high_short_interest,
+        "total_tickers":              total,
+        "sector_breakdown":           sector_pct,
+        "concentrated_sectors":       concentrated_sectors,
+        "avg_portfolio_beta":         avg_beta,
+        "avg_analyst_upside_pct":     avg_analyst_upside,
+        "avg_div_yield_pct":          avg_div_yield,
+        "high_short_interest_tickers":high_short_interest,
     }
 
 
@@ -1981,6 +2015,7 @@ def main():
     print("  EPS Growth     > +15%")
     print("  Revenue Growth > +8%")
     print("  EBITDA Margin  > 15%")
+    print("  Div Yield      < " + str(round(MAX_DIV_YIELD * 100, 1)) + "% (LEAP call drag filter)")
     print("")
     total = len(WATCHLIST)
     print("Screening " + str(total) + " tickers...")
@@ -1995,10 +2030,7 @@ def main():
             per_stock[symbol] = options[:20]
             all_results.extend(options)
     all_results.sort(key=lambda x: x["composite_score"], reverse=True)
-    # Top 20 overall: one ATM option per ticker, ranked by composite score.
-    # Without deduplication every slot would be filled by different strikes
-    # of the same ticker, hiding all other companies.
-    atm_by_ticker = build_atm_per_ticker(all_results)
+    atm_by_ticker  = build_atm_per_ticker(all_results)
     top_20_overall = sorted(
         atm_by_ticker.values(),
         key=lambda x: x["composite_score"],
@@ -2016,6 +2048,7 @@ def main():
             "min_eps_growth_pct":      MIN_EPS_GROWTH     * 100,
             "min_revenue_growth_pct":  MIN_REVENUE_GROWTH * 100,
             "min_ebitda_margin_pct":   MIN_EBITDA_MARGIN  * 100,
+            "max_div_yield_pct":       MAX_DIV_YIELD      * 100,
             "rsi_upper":               RSI_UPPER,
             "price_vs_200ma_range":    "+-" + str(PRICE_VS_200MA_RANGE * 100) + "%",
             "delta_range":             [DELTA_MIN, DELTA_MAX],
@@ -2075,7 +2108,8 @@ def main():
             " Expiry=" + opt["expiry"] +
             " Prem=$"  + str(opt["premium"]) +
             " Delta="  + str(opt["delta"]) +
-            " Score="  + str(opt["composite_score"])
+            " Score="  + str(opt["composite_score"]) +
+            " DivYld=" + str(opt.get("div_yield_pct", 0.0)) + "%"
         )
     print("=================================================================")
 
@@ -2108,8 +2142,9 @@ def main():
                             if r.get("atm_mode") else "")
                 print(" " + r["symbol"] + atm_note +
                       " | Strike=$" + str(r["strike"]) +
-                      " | Score="   + str(r["entry_score"]))
-                print("   Sigma(train)=" + str(cal["training_sigma_pct"])    + "%" +
+                      " | Score="   + str(r["entry_score"]) +
+                      " | DivYld="  + str(cal["dividend_yield_pct"]) + "%")
+                print("   Sigma(train)=" + str(cal["training_sigma_pct"])   + "%" +
                       " Sigma(val)="     + str(cal["validation_sigma_pct"]) + "%" +
                       " DivYield="       + str(cal["dividend_yield_pct"])   + "%")
                 print("   P(ITM)="    + str(rv["p_itm_pct"])               + "%" +
@@ -2135,7 +2170,9 @@ def main():
             "note": (
                 "Forward projections run from today to each option expiry "
                 "using implied volatility as sigma and historical mu as drift. "
-                "One projection per ticker using the highest-scoring option."
+                "Dividend yield (q) is applied in all Black-Scholes pricing "
+                "via the Merton continuous-dividend model. "
+                "One projection per ticker using the ATM option."
             ),
         }
         save_json({"meta": fp_meta, "forward_projections": fp_results},
@@ -2154,8 +2191,8 @@ def main():
                 print(" " + r["symbol"] +
                       " | Strike=$" + str(r["strike"]) +
                       " | Expiry="  + r["expiry"])
-                print("   Current=$"     + str(r["current_price"]) +
-                      " Median Proj=$"   + str(pp["median"]) +
+                print("   Current=$"   + str(r["current_price"]) +
+                      " Median Proj=$" + str(pp["median"]) +
                       " (" + str(ud["median_change_pct"]) + "%)")
                 print("   90pct Range: $" + str(pp["pct_5"]) +
                       " to $"            + str(pp["pct_95"]) +
