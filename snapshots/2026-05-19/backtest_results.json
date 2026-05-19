@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generated_at": "2026-05-19T14:51:41.375779Z",
+    "generated_at": "2026-05-19T15:07:31.374798Z",
     "training_years": 4,
     "validation_years": 2,
     "n_simulations": 5500,
     "atm_strike_mode": true,
     "risk_free_rate_pct": 3.88,
-    "tickers_backtested": 16,
+    "tickers_backtested": 17,
     "entry_signal": "composite_score (best option per ticker, all passing tickers)"
   },
   "backtest_results": [
@@ -15,7 +15,7 @@
       "strike": 78.42,
       "screener_strike": 140.0,
       "atm_mode": true,
-      "entry_score": 61.78,
+      "entry_score": 61.73,
       "entry_price": 78.42,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -29,50 +29,50 @@
         "dividend_yield_pct": 0.0,
         "training_sigma_pct": 43.31,
         "ewma_sigma_pct": 48.71,
-        "validation_sigma_pct": 53.4,
-        "blended_sigma_pct": 47.99,
+        "validation_sigma_pct": 53.38,
+        "blended_sigma_pct": 47.97,
         "coverage_correction_ratio": 1.1111,
         "in_sample_coverage_pct": 100.0,
         "risk_free_rate_pct": 3.88,
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 137.64,
-        "median_simulated_terminal": 82.62,
-        "sim_terminal_5th_pct": 26.84,
-        "sim_terminal_95th_pct": 252.36,
-        "terminal_price_error_pct": -39.97,
-        "sim_avg_max_drawdown_pct": -52.31,
+        "actual_terminal_price": 138.82,
+        "median_simulated_terminal": 82.63,
+        "sim_terminal_5th_pct": 26.85,
+        "sim_terminal_95th_pct": 252.3,
+        "terminal_price_error_pct": -40.47,
+        "sim_avg_max_drawdown_pct": -52.29,
         "actual_max_drawdown_pct": -50.42,
-        "drawdown_error_pct": -3.76,
-        "reality_iv_used_pct": 56.4,
-        "reality_option_premium": 26.43
+        "drawdown_error_pct": -3.73,
+        "reality_iv_used_pct": 56.38,
+        "reality_option_premium": 26.42
       },
       "greek_attribution": {
         "greek_timeline": [
           {
             "years_to_expiry": 2.0,
             "option_price": 23.1,
-            "delta": 0.675,
-            "gamma": 0.006764,
+            "delta": 0.6749,
+            "gamma": 0.006767,
             "theta_daily": -0.0163,
-            "vega_per_1pct_iv": 0.3991,
+            "vega_per_1pct_iv": 0.3992,
             "rho_per_1pct_rate": 0.5965
           },
           {
             "years_to_expiry": 1.0,
             "option_price": 16.12,
             "delta": 0.6258,
-            "gamma": 0.010071,
+            "gamma": 0.010075,
             "theta_daily": -0.023,
             "vega_per_1pct_iv": 0.2971,
             "rho_per_1pct_rate": 0.3295
           },
           {
             "years_to_expiry": 0.25,
-            "option_price": 7.84,
+            "option_price": 7.83,
             "delta": 0.5637,
-            "gamma": 0.020933,
+            "gamma": 0.020942,
             "theta_daily": -0.0445,
             "vega_per_1pct_iv": 0.1544,
             "rho_per_1pct_rate": 0.0909
@@ -82,17 +82,17 @@
         "return_checkpoints": [
           {
             "months_elapsed": 6,
-            "stock_price_for_100pct_return": 112.95,
+            "stock_price_for_100pct_return": 112.94,
             "pct_above_entry_price": 44.0
           },
           {
             "months_elapsed": 12,
-            "stock_price_for_100pct_return": 117.35,
-            "pct_above_entry_price": 49.7
+            "stock_price_for_100pct_return": 117.34,
+            "pct_above_entry_price": 49.6
           },
           {
             "months_elapsed": 18,
-            "stock_price_for_100pct_return": 121.8,
+            "stock_price_for_100pct_return": 121.79,
             "pct_above_entry_price": 55.3
           }
         ]
@@ -101,35 +101,35 @@
         "entry_price": 78.42,
         "strike": 78.42,
         "projected_entry_premium": 23.1,
-        "reality_premium": 26.43,
+        "reality_premium": 26.42,
         "p_itm_pct": 53.3,
         "p_otm_pct": 46.7,
-        "expected_payoff_if_itm": 74.24,
+        "expected_payoff_if_itm": 74.2,
         "expected_value_ev": 28.79,
         "ev_positive": "True",
-        "residual_variance": 3027.2004,
+        "residual_variance": 3157.3161,
         "pct_actual_within_90_band": 100.0,
-        "terminal_price_error_pct": -39.97,
-        "drawdown_error_pct": -3.76,
+        "terminal_price_error_pct": -40.47,
+        "drawdown_error_pct": -3.73,
         "kelly_criterion_pct": 19.4
       },
       "returns_analysis": {
         "entry_premium": 23.1,
-        "target_value_100pct": 46.21,
+        "target_value_100pct": 46.19,
         "sim_pct_paths_hit_100": 56.7,
         "sim_median_day_hit_100": 122,
         "sim_earliest_day_hit_100": 9,
         "sim_latest_day_hit_100": 503,
         "sim_median_max_return_pct": 131.0,
         "sim_avg_max_return_pct": 249.7,
-        "sim_top10pct_max_return": 620.2,
+        "sim_top10pct_max_return": 620.1,
         "sim_bottom10pct_max_return": 11.3,
         "actual_hit_100": true,
         "actual_day_hit_100": 148,
-        "actual_max_return_pct": 330.9,
+        "actual_max_return_pct": 331.0,
         "actual_max_return_day": 484,
-        "actual_terminal_option_value": 59.26,
-        "actual_terminal_return_pct": 156.5
+        "actual_terminal_option_value": 60.43,
+        "actual_terminal_return_pct": 161.6
       },
       "status": "ok"
     },
@@ -160,16 +160,16 @@
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 336.99,
-        "median_simulated_terminal": 386.93,
+        "actual_terminal_price": 336.75,
+        "median_simulated_terminal": 386.94,
         "sim_terminal_5th_pct": 174.27,
-        "sim_terminal_95th_pct": 854.33,
-        "terminal_price_error_pct": 14.82,
+        "sim_terminal_95th_pct": 854.31,
+        "terminal_price_error_pct": 14.9,
         "sim_avg_max_drawdown_pct": -40.63,
         "actual_max_drawdown_pct": -33.45,
         "drawdown_error_pct": -21.47,
         "reality_iv_used_pct": 40.88,
-        "reality_option_premium": 92.71
+        "reality_option_premium": 92.7
       },
       "greek_attribution": {
         "greek_timeline": [
@@ -177,7 +177,7 @@
             "years_to_expiry": 2.0,
             "option_price": 79.97,
             "delta": 0.6561,
-            "gamma": 0.002129,
+            "gamma": 0.00213,
             "theta_daily": -0.0601,
             "vega_per_1pct_iv": 1.8682,
             "rho_per_1pct_rate": 3.1114
@@ -189,7 +189,7 @@
             "gamma": 0.003136,
             "theta_daily": -0.0817,
             "vega_per_1pct_iv": 1.3755,
-            "rho_per_1pct_rate": 1.6492
+            "rho_per_1pct_rate": 1.6493
           },
           {
             "years_to_expiry": 0.25,
@@ -224,15 +224,15 @@
         "entry_price": 358.99,
         "strike": 358.99,
         "projected_entry_premium": 79.97,
-        "reality_premium": 92.71,
+        "reality_premium": 92.7,
         "p_itm_pct": 56.5,
         "p_otm_pct": 43.5,
         "expected_payoff_if_itm": 212.83,
         "expected_value_ev": 85.44,
         "ev_positive": "True",
-        "residual_variance": 2494.0036,
+        "residual_variance": 2519.0361,
         "pct_actual_within_90_band": 94.4,
-        "terminal_price_error_pct": 14.82,
+        "terminal_price_error_pct": 14.9,
         "drawdown_error_pct": -21.47,
         "kelly_criterion_pct": 20.1
       },
@@ -251,7 +251,7 @@
         "actual_day_hit_100": null,
         "actual_max_return_pct": 29.8,
         "actual_max_return_day": 177,
-        "actual_terminal_option_value": 0.15,
+        "actual_terminal_option_value": 0.14,
         "actual_terminal_return_pct": -99.8
       },
       "status": "ok"
@@ -265,11 +265,134 @@
       "error": "Insufficient historical data for PLTR"
     },
     {
+      "symbol": "NVDA",
+      "strike": 91.3,
+      "screener_strike": 220.0,
+      "atm_mode": true,
+      "entry_score": 50.76,
+      "entry_price": 91.3,
+      "div_yield_pct": 0.02,
+      "training_years": 4,
+      "validation_years": 2,
+      "n_simulations": 5500,
+      "calibration": {
+        "annualised_mu_pct": 15.0,
+        "mu_recent_2yr_raw_pct": 73.99,
+        "mu_after_anchor_pct": 48.39,
+        "drift_method": "recent_2yr + 60pct_longrun_anchor + 15pct_cap",
+        "dividend_yield_pct": 0.02,
+        "training_sigma_pct": 51.77,
+        "ewma_sigma_pct": 49.34,
+        "validation_sigma_pct": 48.58,
+        "blended_sigma_pct": 57.17,
+        "coverage_correction_ratio": 0.85,
+        "in_sample_coverage_pct": 32.5,
+        "risk_free_rate_pct": 3.88,
+        "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
+      },
+      "reality_check": {
+        "actual_terminal_price": 220.59,
+        "median_simulated_terminal": 87.05,
+        "sim_terminal_5th_pct": 22.8,
+        "sim_terminal_95th_pct": 329.27,
+        "terminal_price_error_pct": -60.54,
+        "sim_avg_max_drawdown_pct": -59.77,
+        "actual_max_drawdown_pct": -36.88,
+        "drawdown_error_pct": -62.07,
+        "reality_iv_used_pct": 51.58,
+        "reality_option_premium": 28.54
+      },
+      "greek_attribution": {
+        "greek_timeline": [
+          {
+            "years_to_expiry": 2.0,
+            "option_price": 31.1,
+            "delta": 0.6911,
+            "gamma": 0.004767,
+            "theta_daily": -0.0212,
+            "vega_per_1pct_iv": 0.4545,
+            "rho_per_1pct_rate": 0.6399
+          },
+          {
+            "years_to_expiry": 1.0,
+            "option_price": 21.92,
+            "delta": 0.6379,
+            "gamma": 0.007178,
+            "theta_daily": -0.0306,
+            "vega_per_1pct_iv": 0.3421,
+            "rho_per_1pct_rate": 0.3632
+          },
+          {
+            "years_to_expiry": 0.25,
+            "option_price": 10.77,
+            "delta": 0.5701,
+            "gamma": 0.015047,
+            "theta_daily": -0.0605,
+            "vega_per_1pct_iv": 0.1793,
+            "rho_per_1pct_rate": 0.1032
+          }
+        ],
+        "cumulative_theta_cost": 18.9,
+        "return_checkpoints": [
+          {
+            "months_elapsed": 6,
+            "stock_price_for_100pct_return": 137.23,
+            "pct_above_entry_price": 50.3
+          },
+          {
+            "months_elapsed": 12,
+            "stock_price_for_100pct_return": 143.24,
+            "pct_above_entry_price": 56.9
+          },
+          {
+            "months_elapsed": 18,
+            "stock_price_for_100pct_return": 149.52,
+            "pct_above_entry_price": 63.8
+          }
+        ]
+      },
+      "residual_variance_report": {
+        "entry_price": 91.3,
+        "strike": 91.3,
+        "projected_entry_premium": 31.1,
+        "reality_premium": 28.54,
+        "p_itm_pct": 47.9,
+        "p_otm_pct": 52.1,
+        "expected_payoff_if_itm": 106.04,
+        "expected_value_ev": 34.55,
+        "ev_positive": "True",
+        "residual_variance": 17832.9316,
+        "pct_actual_within_90_band": 96.0,
+        "terminal_price_error_pct": -60.54,
+        "drawdown_error_pct": -62.07,
+        "kelly_criterion_pct": 16.3
+      },
+      "returns_analysis": {
+        "entry_premium": 31.1,
+        "target_value_100pct": 62.2,
+        "sim_pct_paths_hit_100": 55.0,
+        "sim_median_day_hit_100": 112,
+        "sim_earliest_day_hit_100": 9,
+        "sim_latest_day_hit_100": 503,
+        "sim_median_max_return_pct": 121.1,
+        "sim_avg_max_return_pct": 260.2,
+        "sim_top10pct_max_return": 647.5,
+        "sim_bottom10pct_max_return": 10.3,
+        "actual_hit_100": true,
+        "actual_day_hit_100": 23,
+        "actual_max_return_pct": 364.6,
+        "actual_max_return_day": 500,
+        "actual_terminal_option_value": 129.32,
+        "actual_terminal_return_pct": 315.8
+      },
+      "status": "ok"
+    },
+    {
       "symbol": "AMD",
       "strike": 153.16,
       "screener_strike": 400.0,
       "atm_mode": true,
-      "entry_score": 40.15,
+      "entry_score": 40.48,
       "entry_price": 153.16,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -283,50 +406,50 @@
         "dividend_yield_pct": 0.0,
         "training_sigma_pct": 52.48,
         "ewma_sigma_pct": 46.68,
-        "validation_sigma_pct": 58.1,
-        "blended_sigma_pct": 65.57,
-        "coverage_correction_ratio": 0.8829,
-        "in_sample_coverage_pct": 79.5,
+        "validation_sigma_pct": 58.05,
+        "blended_sigma_pct": 65.58,
+        "coverage_correction_ratio": 0.882,
+        "in_sample_coverage_pct": 79.4,
         "risk_free_rate_pct": 3.88,
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 398.31,
-        "median_simulated_terminal": 131.33,
-        "sim_terminal_5th_pct": 28.25,
-        "sim_terminal_95th_pct": 603.87,
-        "terminal_price_error_pct": -67.03,
-        "sim_avg_max_drawdown_pct": -65.67,
+        "actual_terminal_price": 402.53,
+        "median_simulated_terminal": 131.3,
+        "sim_terminal_5th_pct": 28.24,
+        "sim_terminal_95th_pct": 603.95,
+        "terminal_price_error_pct": -67.38,
+        "sim_avg_max_drawdown_pct": -65.68,
         "actual_max_drawdown_pct": -57.49,
-        "drawdown_error_pct": -14.23,
-        "reality_iv_used_pct": 61.1,
-        "reality_option_premium": 55.19
+        "drawdown_error_pct": -14.25,
+        "reality_iv_used_pct": 61.05,
+        "reality_option_premium": 55.15
       },
       "greek_attribution": {
         "greek_timeline": [
           {
             "years_to_expiry": 2.0,
-            "option_price": 58.54,
+            "option_price": 58.55,
             "delta": 0.7079,
             "gamma": 0.002418,
             "theta_daily": -0.0387,
             "vega_per_1pct_iv": 0.7439,
-            "rho_per_1pct_rate": 0.9977
+            "rho_per_1pct_rate": 0.9976
           },
           {
             "years_to_expiry": 1.0,
             "option_price": 41.59,
             "delta": 0.6506,
-            "gamma": 0.003686,
+            "gamma": 0.003685,
             "theta_daily": -0.0571,
             "vega_per_1pct_iv": 0.5669,
             "rho_per_1pct_rate": 0.5806
           },
           {
             "years_to_expiry": 0.25,
-            "option_price": 20.59,
+            "option_price": 20.6,
             "delta": 0.5767,
-            "gamma": 0.007798,
+            "gamma": 0.007796,
             "theta_daily": -0.1149,
             "vega_per_1pct_iv": 0.2998,
             "rho_per_1pct_rate": 0.1693
@@ -336,17 +459,17 @@
         "return_checkpoints": [
           {
             "months_elapsed": 6,
-            "stock_price_for_100pct_return": 238.42,
+            "stock_price_for_100pct_return": 238.43,
             "pct_above_entry_price": 55.7
           },
           {
             "months_elapsed": 12,
-            "stock_price_for_100pct_return": 249.91,
+            "stock_price_for_100pct_return": 249.92,
             "pct_above_entry_price": 63.2
           },
           {
             "months_elapsed": 18,
-            "stock_price_for_100pct_return": 262.24,
+            "stock_price_for_100pct_return": 262.26,
             "pct_above_entry_price": 71.2
           }
         ]
@@ -354,36 +477,36 @@
       "residual_variance_report": {
         "entry_price": 153.16,
         "strike": 153.16,
-        "projected_entry_premium": 58.54,
-        "reality_premium": 55.19,
+        "projected_entry_premium": 58.55,
+        "reality_premium": 55.15,
         "p_itm_pct": 43.6,
         "p_otm_pct": 56.4,
-        "expected_payoff_if_itm": 211.96,
-        "expected_value_ev": 59.4,
+        "expected_payoff_if_itm": 212.07,
+        "expected_value_ev": 59.39,
         "ev_positive": "True",
-        "residual_variance": 71278.3204,
+        "residual_variance": 73565.7129,
         "pct_actual_within_90_band": 100.0,
-        "terminal_price_error_pct": -67.03,
-        "drawdown_error_pct": -14.23,
+        "terminal_price_error_pct": -67.38,
+        "drawdown_error_pct": -14.25,
         "kelly_criterion_pct": 14.0
       },
       "returns_analysis": {
-        "entry_premium": 58.54,
-        "target_value_100pct": 117.08,
+        "entry_premium": 58.55,
+        "target_value_100pct": 117.1,
         "sim_pct_paths_hit_100": 54.0,
         "sim_median_day_hit_100": 104,
         "sim_earliest_day_hit_100": 7,
         "sim_latest_day_hit_100": 503,
         "sim_median_max_return_pct": 117.4,
         "sim_avg_max_return_pct": 271.5,
-        "sim_top10pct_max_return": 678.2,
+        "sim_top10pct_max_return": 678.3,
         "sim_bottom10pct_max_return": 9.6,
         "actual_hit_100": true,
         "actual_day_hit_100": 365,
-        "actual_max_return_pct": 422.4,
+        "actual_max_return_pct": 422.3,
         "actual_max_return_day": 497,
-        "actual_terminal_option_value": 245.21,
-        "actual_terminal_return_pct": 318.9
+        "actual_terminal_option_value": 249.43,
+        "actual_terminal_return_pct": 326.0
       },
       "status": "ok"
     },
@@ -392,7 +515,7 @@
       "strike": 151.5,
       "screener_strike": 330.0,
       "atm_mode": true,
-      "entry_score": 48.06,
+      "entry_score": 47.76,
       "entry_price": 151.5,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -406,70 +529,70 @@
         "dividend_yield_pct": 0.0,
         "training_sigma_pct": 33.41,
         "ewma_sigma_pct": 19.23,
-        "validation_sigma_pct": 37.15,
-        "blended_sigma_pct": 33.16,
+        "validation_sigma_pct": 37.13,
+        "blended_sigma_pct": 33.15,
         "coverage_correction_ratio": 1.1102,
         "in_sample_coverage_pct": 99.9,
         "risk_free_rate_pct": 3.88,
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 327.85,
-        "median_simulated_terminal": 176.15,
-        "sim_terminal_5th_pct": 80.98,
-        "sim_terminal_95th_pct": 381.09,
-        "terminal_price_error_pct": -46.27,
-        "sim_avg_max_drawdown_pct": -38.28,
+        "actual_terminal_price": 329.03,
+        "median_simulated_terminal": 176.17,
+        "sim_terminal_5th_pct": 81.02,
+        "sim_terminal_95th_pct": 380.99,
+        "terminal_price_error_pct": -46.46,
+        "sim_avg_max_drawdown_pct": -38.26,
         "actual_max_drawdown_pct": -31.38,
-        "drawdown_error_pct": -21.98,
-        "reality_iv_used_pct": 40.15,
-        "reality_option_premium": 38.55
+        "drawdown_error_pct": -21.92,
+        "reality_iv_used_pct": 40.13,
+        "reality_option_premium": 38.53
       },
       "greek_attribution": {
         "greek_timeline": [
           {
             "years_to_expiry": 2.0,
-            "option_price": 33.06,
+            "option_price": 33.05,
             "delta": 0.6554,
-            "gamma": 0.005183,
+            "gamma": 0.005186,
             "theta_daily": -0.025,
-            "vega_per_1pct_iv": 0.789,
-            "rho_per_1pct_rate": 1.3247
+            "vega_per_1pct_iv": 0.7891,
+            "rho_per_1pct_rate": 1.3249
           },
           {
             "years_to_expiry": 1.0,
-            "option_price": 22.59,
+            "option_price": 22.58,
             "delta": 0.6113,
-            "gamma": 0.007629,
+            "gamma": 0.007633,
             "theta_daily": -0.0338,
             "vega_per_1pct_iv": 0.5807,
-            "rho_per_1pct_rate": 0.7003
+            "rho_per_1pct_rate": 0.7004
           },
           {
             "years_to_expiry": 0.25,
             "option_price": 10.71,
             "delta": 0.5562,
-            "gamma": 0.015723,
+            "gamma": 0.015731,
             "theta_daily": -0.0622,
             "vega_per_1pct_iv": 0.2992,
             "rho_per_1pct_rate": 0.1839
           }
         ],
-        "cumulative_theta_cost": 21.46,
+        "cumulative_theta_cost": 21.45,
         "return_checkpoints": [
           {
             "months_elapsed": 6,
-            "stock_price_for_100pct_return": 201.5,
+            "stock_price_for_100pct_return": 201.48,
             "pct_above_entry_price": 33.0
           },
           {
             "months_elapsed": 12,
-            "stock_price_for_100pct_return": 207.67,
+            "stock_price_for_100pct_return": 207.65,
             "pct_above_entry_price": 37.1
           },
           {
             "months_elapsed": 18,
-            "stock_price_for_100pct_return": 213.61,
+            "stock_price_for_100pct_return": 213.59,
             "pct_above_entry_price": 41.0
           }
         ]
@@ -477,36 +600,36 @@
       "residual_variance_report": {
         "entry_price": 151.5,
         "strike": 151.5,
-        "projected_entry_premium": 33.06,
-        "reality_premium": 38.55,
+        "projected_entry_premium": 33.05,
+        "reality_premium": 38.53,
         "p_itm_pct": 63.1,
         "p_otm_pct": 36.9,
-        "expected_payoff_if_itm": 95.43,
-        "expected_value_ev": 48.01,
+        "expected_payoff_if_itm": 95.41,
+        "expected_value_ev": 48.0,
         "ev_positive": "True",
-        "residual_variance": 23012.89,
+        "residual_variance": 23366.1796,
         "pct_actual_within_90_band": 100.0,
-        "terminal_price_error_pct": -46.27,
-        "drawdown_error_pct": -21.98,
+        "terminal_price_error_pct": -46.46,
+        "drawdown_error_pct": -21.92,
         "kelly_criterion_pct": 25.0
       },
       "returns_analysis": {
-        "entry_premium": 33.06,
-        "target_value_100pct": 66.12,
+        "entry_premium": 33.05,
+        "target_value_100pct": 66.09,
         "sim_pct_paths_hit_100": 59.5,
         "sim_median_day_hit_100": 140,
         "sim_earliest_day_hit_100": 11,
         "sim_latest_day_hit_100": 503,
         "sim_median_max_return_pct": 141.6,
         "sim_avg_max_return_pct": 228.6,
-        "sim_top10pct_max_return": 547.5,
+        "sim_top10pct_max_return": 547.4,
         "sim_bottom10pct_max_return": 13.6,
         "actual_hit_100": true,
         "actual_day_hit_100": 421,
-        "actual_max_return_pct": 551.6,
+        "actual_max_return_pct": 551.9,
         "actual_max_return_day": 494,
-        "actual_terminal_option_value": 176.4,
-        "actual_terminal_return_pct": 433.6
+        "actual_terminal_option_value": 177.59,
+        "actual_terminal_return_pct": 437.4
       },
       "status": "ok"
     },
@@ -515,7 +638,7 @@
       "strike": 187.07,
       "screener_strike": 260.0,
       "atm_mode": true,
-      "entry_score": 46.17,
+      "entry_score": 46.01,
       "entry_price": 187.07,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -529,41 +652,41 @@
         "dividend_yield_pct": 0.0,
         "training_sigma_pct": 35.15,
         "ewma_sigma_pct": 24.35,
-        "validation_sigma_pct": 32.13,
-        "blended_sigma_pct": 28.79,
+        "validation_sigma_pct": 32.12,
+        "blended_sigma_pct": 28.78,
         "coverage_correction_ratio": 1.1111,
         "in_sample_coverage_pct": 100.0,
         "risk_free_rate_pct": 3.88,
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 256.74,
-        "median_simulated_terminal": 230.01,
-        "sim_terminal_5th_pct": 117.15,
-        "sim_terminal_95th_pct": 449.43,
-        "terminal_price_error_pct": -10.41,
-        "sim_avg_max_drawdown_pct": -32.82,
+        "actual_terminal_price": 257.16,
+        "median_simulated_terminal": 230.02,
+        "sim_terminal_5th_pct": 117.18,
+        "sim_terminal_95th_pct": 449.38,
+        "terminal_price_error_pct": -10.56,
+        "sim_avg_max_drawdown_pct": -32.81,
         "actual_max_drawdown_pct": -30.88,
-        "drawdown_error_pct": -6.3,
-        "reality_iv_used_pct": 35.13,
+        "drawdown_error_pct": -6.27,
+        "reality_iv_used_pct": 35.12,
         "reality_option_premium": 42.73
       },
       "greek_attribution": {
         "greek_timeline": [
           {
             "years_to_expiry": 2.0,
-            "option_price": 36.55,
+            "option_price": 36.54,
             "delta": 0.6533,
-            "gamma": 0.004847,
+            "gamma": 0.004848,
             "theta_daily": -0.0284,
             "vega_per_1pct_iv": 0.9765,
-            "rho_per_1pct_rate": 1.7131
+            "rho_per_1pct_rate": 1.7133
           },
           {
             "years_to_expiry": 1.0,
             "option_price": 24.75,
             "delta": 0.6098,
-            "gamma": 0.007126,
+            "gamma": 0.007127,
             "theta_daily": -0.0378,
             "vega_per_1pct_iv": 0.7179,
             "rho_per_1pct_rate": 0.8932
@@ -572,7 +695,7 @@
             "years_to_expiry": 0.25,
             "option_price": 11.61,
             "delta": 0.5554,
-            "gamma": 0.014673,
+            "gamma": 0.014676,
             "theta_daily": -0.0681,
             "vega_per_1pct_iv": 0.3695,
             "rho_per_1pct_rate": 0.2307
@@ -582,17 +705,17 @@
         "return_checkpoints": [
           {
             "months_elapsed": 6,
-            "stock_price_for_100pct_return": 242.33,
+            "stock_price_for_100pct_return": 242.32,
             "pct_above_entry_price": 29.5
           },
           {
             "months_elapsed": 12,
-            "stock_price_for_100pct_return": 249.14,
+            "stock_price_for_100pct_return": 249.13,
             "pct_above_entry_price": 33.2
           },
           {
             "months_elapsed": 18,
-            "stock_price_for_100pct_return": 255.62,
+            "stock_price_for_100pct_return": 255.61,
             "pct_above_entry_price": 36.6
           }
         ]
@@ -600,22 +723,22 @@
       "residual_variance_report": {
         "entry_price": 187.07,
         "strike": 187.07,
-        "projected_entry_premium": 36.55,
+        "projected_entry_premium": 36.54,
         "reality_premium": 42.73,
         "p_itm_pct": 69.8,
         "p_otm_pct": 30.2,
-        "expected_payoff_if_itm": 108.49,
+        "expected_payoff_if_itm": 108.45,
         "expected_value_ev": 64.71,
         "ev_positive": "True",
-        "residual_variance": 714.4929,
+        "residual_variance": 736.5796,
         "pct_actual_within_90_band": 100.0,
-        "terminal_price_error_pct": -10.41,
-        "drawdown_error_pct": -6.3,
+        "terminal_price_error_pct": -10.56,
+        "drawdown_error_pct": -6.27,
         "kelly_criterion_pct": 25.0
       },
       "returns_analysis": {
-        "entry_premium": 36.55,
-        "target_value_100pct": 73.1,
+        "entry_premium": 36.54,
+        "target_value_100pct": 73.09,
         "sim_pct_paths_hit_100": 63.5,
         "sim_median_day_hit_100": 147,
         "sim_earliest_day_hit_100": 11,
@@ -626,10 +749,10 @@
         "sim_bottom10pct_max_return": 16.7,
         "actual_hit_100": true,
         "actual_day_hit_100": 486,
-        "actual_max_return_pct": 141.3,
+        "actual_max_return_pct": 141.4,
         "actual_max_return_day": 494,
-        "actual_terminal_option_value": 69.74,
-        "actual_terminal_return_pct": 90.8
+        "actual_terminal_option_value": 70.16,
+        "actual_terminal_return_pct": 92.0
       },
       "status": "ok"
     },
@@ -638,7 +761,7 @@
       "strike": 61.37,
       "screener_strike": 90.0,
       "atm_mode": true,
-      "entry_score": 44.24,
+      "entry_score": 44.34,
       "entry_price": 61.37,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -660,12 +783,12 @@
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 90.71,
+        "actual_terminal_price": 90.65,
         "median_simulated_terminal": 74.71,
         "sim_terminal_5th_pct": 36.68,
         "sim_terminal_95th_pct": 151.42,
-        "terminal_price_error_pct": -17.64,
-        "sim_avg_max_drawdown_pct": -34.63,
+        "terminal_price_error_pct": -17.58,
+        "sim_avg_max_drawdown_pct": -34.62,
         "actual_max_drawdown_pct": -43.35,
         "drawdown_error_pct": 20.13,
         "reality_iv_used_pct": 35.84,
@@ -686,7 +809,7 @@
             "years_to_expiry": 1.0,
             "option_price": 8.49,
             "delta": 0.6101,
-            "gamma": 0.020592,
+            "gamma": 0.020593,
             "theta_daily": -0.0129,
             "vega_per_1pct_iv": 0.2354,
             "rho_per_1pct_rate": 0.2895
@@ -695,7 +818,7 @@
             "years_to_expiry": 0.25,
             "option_price": 4.0,
             "delta": 0.5556,
-            "gamma": 0.04241,
+            "gamma": 0.042411,
             "theta_daily": -0.0234,
             "vega_per_1pct_iv": 0.1212,
             "rho_per_1pct_rate": 0.0752
@@ -730,9 +853,9 @@
         "expected_payoff_if_itm": 36.93,
         "expected_value_ev": 21.37,
         "ev_positive": "True",
-        "residual_variance": 256.0,
+        "residual_variance": 254.0836,
         "pct_actual_within_90_band": 82.9,
-        "terminal_price_error_pct": -17.64,
+        "terminal_price_error_pct": -17.58,
         "drawdown_error_pct": 20.13,
         "kelly_criterion_pct": 25.0
       },
@@ -751,8 +874,8 @@
         "actual_day_hit_100": 124,
         "actual_max_return_pct": 497.5,
         "actual_max_return_day": 280,
-        "actual_terminal_option_value": 29.37,
-        "actual_terminal_return_pct": 135.1
+        "actual_terminal_option_value": 29.31,
+        "actual_terminal_return_pct": 134.6
       },
       "status": "ok"
     },
@@ -761,7 +884,7 @@
       "strike": 73.49,
       "screener_strike": 55.0,
       "atm_mode": true,
-      "entry_score": 46.38,
+      "entry_score": 46.69,
       "entry_price": 73.49,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -783,11 +906,11 @@
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 56.93,
+        "actual_terminal_price": 56.92,
         "median_simulated_terminal": 91.97,
-        "sim_terminal_5th_pct": 50.3,
-        "sim_terminal_95th_pct": 167.44,
-        "terminal_price_error_pct": 61.55,
+        "sim_terminal_5th_pct": 50.31,
+        "sim_terminal_95th_pct": 167.43,
+        "terminal_price_error_pct": 61.58,
         "sim_avg_max_drawdown_pct": -29.22,
         "actual_max_drawdown_pct": -51.29,
         "drawdown_error_pct": 43.02,
@@ -800,7 +923,7 @@
             "years_to_expiry": 2.0,
             "option_price": 13.19,
             "delta": 0.6536,
-            "gamma": 0.013788,
+            "gamma": 0.013789,
             "theta_daily": -0.0105,
             "vega_per_1pct_iv": 0.3835,
             "rho_per_1pct_rate": 0.6969
@@ -818,7 +941,7 @@
             "years_to_expiry": 0.25,
             "option_price": 4.12,
             "delta": 0.5556,
-            "gamma": 0.041757,
+            "gamma": 0.041758,
             "theta_daily": -0.0244,
             "vega_per_1pct_iv": 0.1452,
             "rho_per_1pct_rate": 0.0918
@@ -853,9 +976,9 @@
         "expected_payoff_if_itm": 38.94,
         "expected_value_ev": 25.3,
         "ev_positive": "True",
-        "residual_variance": 1227.8016,
+        "residual_variance": 1228.5025,
         "pct_actual_within_90_band": 100.0,
-        "terminal_price_error_pct": 61.55,
+        "terminal_price_error_pct": 61.58,
         "drawdown_error_pct": 43.02,
         "kelly_criterion_pct": 25.0
       },
@@ -884,7 +1007,7 @@
       "strike": 125.97,
       "screener_strike": 65.0,
       "atm_mode": true,
-      "entry_score": 46.44,
+      "entry_score": 46.34,
       "entry_price": 125.97,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -906,14 +1029,14 @@
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 66.32,
+        "actual_terminal_price": 66.35,
         "median_simulated_terminal": 109.63,
         "sim_terminal_5th_pct": 24.21,
         "sim_terminal_95th_pct": 491.22,
-        "terminal_price_error_pct": 65.32,
+        "terminal_price_error_pct": 65.23,
         "sim_avg_max_drawdown_pct": -64.93,
         "actual_max_drawdown_pct": -58.43,
-        "drawdown_error_pct": -11.13,
+        "drawdown_error_pct": -11.14,
         "reality_iv_used_pct": 58.1,
         "reality_option_premium": 43.53
       },
@@ -933,7 +1056,7 @@
             "option_price": 33.68,
             "delta": 0.6489,
             "gamma": 0.004567,
-            "theta_daily": -0.0463,
+            "theta_daily": -0.0464,
             "vega_per_1pct_iv": 0.4671,
             "rho_per_1pct_rate": 0.4806
           },
@@ -973,13 +1096,13 @@
         "reality_premium": 43.53,
         "p_itm_pct": 44.2,
         "p_otm_pct": 55.8,
-        "expected_payoff_if_itm": 170.02,
+        "expected_payoff_if_itm": 170.03,
         "expected_value_ev": 48.75,
         "ev_positive": "True",
-        "residual_variance": 1875.7561,
+        "residual_variance": 1873.1584,
         "pct_actual_within_90_band": 97.4,
-        "terminal_price_error_pct": 65.32,
-        "drawdown_error_pct": -11.13,
+        "terminal_price_error_pct": 65.23,
+        "drawdown_error_pct": -11.14,
         "kelly_criterion_pct": 14.3
       },
       "returns_analysis": {
@@ -1007,7 +1130,7 @@
       "strike": 283.33,
       "screener_strike": 340.0,
       "atm_mode": true,
-      "entry_score": 45.97,
+      "entry_score": 45.52,
       "entry_price": 283.33,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -1029,11 +1152,11 @@
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 342.8,
+        "actual_terminal_price": 343.21,
         "median_simulated_terminal": 333.75,
-        "sim_terminal_5th_pct": 146.52,
-        "sim_terminal_95th_pct": 755.84,
-        "terminal_price_error_pct": -2.64,
+        "sim_terminal_5th_pct": 146.53,
+        "sim_terminal_95th_pct": 755.83,
+        "terminal_price_error_pct": -2.76,
         "sim_avg_max_drawdown_pct": -39.87,
         "actual_max_drawdown_pct": -29.05,
         "drawdown_error_pct": -37.23,
@@ -1046,16 +1169,16 @@
             "years_to_expiry": 2.0,
             "option_price": 64.72,
             "delta": 0.6571,
-            "gamma": 0.002611,
-            "theta_daily": -0.0484,
+            "gamma": 0.002612,
+            "theta_daily": -0.0483,
             "vega_per_1pct_iv": 1.4729,
-            "rho_per_1pct_rate": 2.4291
+            "rho_per_1pct_rate": 2.4292
           },
           {
             "years_to_expiry": 1.0,
             "option_price": 44.38,
             "delta": 0.6126,
-            "gamma": 0.003847,
+            "gamma": 0.003848,
             "theta_daily": -0.0659,
             "vega_per_1pct_iv": 1.085,
             "rho_per_1pct_rate": 1.2919
@@ -1099,15 +1222,15 @@
         "expected_payoff_if_itm": 195.0,
         "expected_value_ev": 99.8,
         "ev_positive": "True",
-        "residual_variance": 81.9025,
+        "residual_variance": 89.4916,
         "pct_actual_within_90_band": 100.0,
-        "terminal_price_error_pct": -2.64,
+        "terminal_price_error_pct": -2.76,
         "drawdown_error_pct": -37.23,
         "kelly_criterion_pct": 25.0
       },
       "returns_analysis": {
         "entry_premium": 64.72,
-        "target_value_100pct": 129.45,
+        "target_value_100pct": 129.44,
         "sim_pct_paths_hit_100": 60.5,
         "sim_median_day_hit_100": 137,
         "sim_earliest_day_hit_100": 11,
@@ -1120,8 +1243,8 @@
         "actual_day_hit_100": null,
         "actual_max_return_pct": 63.0,
         "actual_max_return_day": 301,
-        "actual_terminal_option_value": 59.58,
-        "actual_terminal_return_pct": -7.9
+        "actual_terminal_option_value": 59.99,
+        "actual_terminal_return_pct": -7.3
       },
       "status": "ok"
     },
@@ -1130,7 +1253,7 @@
       "strike": 384.19,
       "screener_strike": 440.0,
       "atm_mode": true,
-      "entry_score": 39.42,
+      "entry_score": 39.59,
       "entry_price": 384.19,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -1152,16 +1275,16 @@
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 444.12,
-        "median_simulated_terminal": 473.43,
-        "sim_terminal_5th_pct": 243.24,
-        "sim_terminal_95th_pct": 917.18,
-        "terminal_price_error_pct": 6.6,
-        "sim_avg_max_drawdown_pct": -32.39,
+        "actual_terminal_price": 445.16,
+        "median_simulated_terminal": 473.42,
+        "sim_terminal_5th_pct": 243.22,
+        "sim_terminal_95th_pct": 917.23,
+        "terminal_price_error_pct": 6.35,
+        "sim_avg_max_drawdown_pct": -32.4,
         "actual_max_drawdown_pct": -31.19,
-        "drawdown_error_pct": -3.86,
+        "drawdown_error_pct": -3.87,
         "reality_iv_used_pct": 34.79,
-        "reality_option_premium": 87.08
+        "reality_option_premium": 87.09
       },
       "greek_attribution": {
         "greek_timeline": [
@@ -1169,16 +1292,16 @@
             "years_to_expiry": 2.0,
             "option_price": 74.33,
             "delta": 0.6532,
-            "gamma": 0.002391,
+            "gamma": 0.00239,
             "theta_daily": -0.0578,
             "vega_per_1pct_iv": 2.0057,
-            "rho_per_1pct_rate": 3.5327
+            "rho_per_1pct_rate": 3.5326
           },
           {
             "years_to_expiry": 1.0,
             "option_price": 50.29,
             "delta": 0.6097,
-            "gamma": 0.003515,
+            "gamma": 0.003514,
             "theta_daily": -0.077,
             "vega_per_1pct_iv": 1.4743,
             "rho_per_1pct_rate": 1.8396
@@ -1187,7 +1310,7 @@
             "years_to_expiry": 0.25,
             "option_price": 23.56,
             "delta": 0.5554,
-            "gamma": 0.007237,
+            "gamma": 0.007236,
             "theta_daily": -0.1384,
             "vega_per_1pct_iv": 0.7589,
             "rho_per_1pct_rate": 0.4745
@@ -1197,17 +1320,17 @@
         "return_checkpoints": [
           {
             "months_elapsed": 6,
-            "stock_price_for_100pct_return": 496.54,
+            "stock_price_for_100pct_return": 496.55,
             "pct_above_entry_price": 29.2
           },
           {
             "months_elapsed": 12,
-            "stock_price_for_100pct_return": 510.39,
-            "pct_above_entry_price": 32.8
+            "stock_price_for_100pct_return": 510.4,
+            "pct_above_entry_price": 32.9
           },
           {
             "months_elapsed": 18,
-            "stock_price_for_100pct_return": 523.57,
+            "stock_price_for_100pct_return": 523.58,
             "pct_above_entry_price": 36.3
           }
         ]
@@ -1216,21 +1339,21 @@
         "entry_price": 384.19,
         "strike": 384.19,
         "projected_entry_premium": 74.33,
-        "reality_premium": 87.08,
+        "reality_premium": 87.09,
         "p_itm_pct": 70.4,
         "p_otm_pct": 29.6,
-        "expected_payoff_if_itm": 220.13,
+        "expected_payoff_if_itm": 220.14,
         "expected_value_ev": 132.87,
         "ev_positive": "True",
-        "residual_variance": 859.0761,
+        "residual_variance": 798.6276,
         "pct_actual_within_90_band": 99.6,
-        "terminal_price_error_pct": 6.6,
-        "drawdown_error_pct": -3.86,
+        "terminal_price_error_pct": 6.35,
+        "drawdown_error_pct": -3.87,
         "kelly_criterion_pct": 25.0
       },
       "returns_analysis": {
         "entry_premium": 74.33,
-        "target_value_100pct": 148.65,
+        "target_value_100pct": 148.66,
         "sim_pct_paths_hit_100": 63.8,
         "sim_median_day_hit_100": 148,
         "sim_earliest_day_hit_100": 11,
@@ -1243,8 +1366,8 @@
         "actual_day_hit_100": 68,
         "actual_max_return_pct": 235.3,
         "actual_max_return_day": 171,
-        "actual_terminal_option_value": 60.08,
-        "actual_terminal_return_pct": -19.2
+        "actual_terminal_option_value": 61.12,
+        "actual_terminal_return_pct": -17.8
       },
       "status": "ok"
     },
@@ -1253,7 +1376,7 @@
       "strike": 150.77,
       "screener_strike": 250.0,
       "atm_mode": true,
-      "entry_score": 38.18,
+      "entry_score": 38.21,
       "entry_price": 150.77,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -1267,50 +1390,50 @@
         "dividend_yield_pct": 0.0,
         "training_sigma_pct": 42.39,
         "ewma_sigma_pct": 34.14,
-        "validation_sigma_pct": 36.26,
-        "blended_sigma_pct": 32.91,
+        "validation_sigma_pct": 36.27,
+        "blended_sigma_pct": 32.92,
         "coverage_correction_ratio": 1.1005,
         "in_sample_coverage_pct": 99.0,
         "risk_free_rate_pct": 3.88,
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 246.31,
+        "actual_terminal_price": 244.95,
         "median_simulated_terminal": 180.44,
-        "sim_terminal_5th_pct": 83.44,
-        "sim_terminal_95th_pct": 388.11,
-        "terminal_price_error_pct": -26.74,
+        "sim_terminal_5th_pct": 83.43,
+        "sim_terminal_95th_pct": 388.15,
+        "terminal_price_error_pct": -26.34,
         "sim_avg_max_drawdown_pct": -37.48,
         "actual_max_drawdown_pct": -36.01,
-        "drawdown_error_pct": -4.09,
-        "reality_iv_used_pct": 39.26,
-        "reality_option_premium": 37.67
+        "drawdown_error_pct": -4.11,
+        "reality_iv_used_pct": 39.27,
+        "reality_option_premium": 37.68
       },
       "greek_attribution": {
         "greek_timeline": [
           {
             "years_to_expiry": 2.0,
-            "option_price": 32.7,
+            "option_price": 32.71,
             "delta": 0.6552,
-            "gamma": 0.005249,
+            "gamma": 0.005248,
             "theta_daily": -0.0247,
             "vega_per_1pct_iv": 0.7854,
-            "rho_per_1pct_rate": 1.3217
+            "rho_per_1pct_rate": 1.3216
           },
           {
             "years_to_expiry": 1.0,
-            "option_price": 22.33,
+            "option_price": 22.34,
             "delta": 0.6112,
-            "gamma": 0.007725,
+            "gamma": 0.007724,
             "theta_daily": -0.0335,
             "vega_per_1pct_iv": 0.578,
-            "rho_per_1pct_rate": 0.6982
+            "rho_per_1pct_rate": 0.6981
           },
           {
             "years_to_expiry": 0.25,
-            "option_price": 10.58,
+            "option_price": 10.59,
             "delta": 0.5562,
-            "gamma": 0.015919,
+            "gamma": 0.015916,
             "theta_daily": -0.0615,
             "vega_per_1pct_iv": 0.2978,
             "rho_per_1pct_rate": 0.1832
@@ -1325,12 +1448,12 @@
           },
           {
             "months_elapsed": 12,
-            "stock_price_for_100pct_return": 206.34,
+            "stock_price_for_100pct_return": 206.35,
             "pct_above_entry_price": 36.9
           },
           {
             "months_elapsed": 18,
-            "stock_price_for_100pct_return": 212.21,
+            "stock_price_for_100pct_return": 212.22,
             "pct_above_entry_price": 40.8
           }
         ]
@@ -1338,27 +1461,27 @@
       "residual_variance_report": {
         "entry_price": 150.77,
         "strike": 150.77,
-        "projected_entry_premium": 32.7,
-        "reality_premium": 37.67,
+        "projected_entry_premium": 32.71,
+        "reality_premium": 37.68,
         "p_itm_pct": 65.5,
         "p_otm_pct": 34.5,
-        "expected_payoff_if_itm": 97.76,
-        "expected_value_ev": 52.76,
+        "expected_payoff_if_itm": 97.77,
+        "expected_value_ev": 52.77,
         "ev_positive": "True",
-        "residual_variance": 4338.8569,
+        "residual_variance": 4161.5401,
         "pct_actual_within_90_band": 99.4,
-        "terminal_price_error_pct": -26.74,
-        "drawdown_error_pct": -4.09,
+        "terminal_price_error_pct": -26.34,
+        "drawdown_error_pct": -4.11,
         "kelly_criterion_pct": 25.0
       },
       "returns_analysis": {
-        "entry_premium": 32.7,
+        "entry_premium": 32.71,
         "target_value_100pct": 65.41,
         "sim_pct_paths_hit_100": 61.4,
         "sim_median_day_hit_100": 141,
         "sim_earliest_day_hit_100": 11,
         "sim_latest_day_hit_100": 503,
-        "sim_median_max_return_pct": 152.9,
+        "sim_median_max_return_pct": 152.8,
         "sim_avg_max_return_pct": 240.9,
         "sim_top10pct_max_return": 572.7,
         "sim_bottom10pct_max_return": 15.1,
@@ -1366,8 +1489,8 @@
         "actual_day_hit_100": 126,
         "actual_max_return_pct": 196.1,
         "actual_max_return_day": 502,
-        "actual_terminal_option_value": 95.6,
-        "actual_terminal_return_pct": 192.3
+        "actual_terminal_option_value": 94.24,
+        "actual_terminal_return_pct": 188.1
       },
       "status": "ok"
     },
@@ -1376,7 +1499,7 @@
       "strike": 54.48,
       "screener_strike": 87.5,
       "atm_mode": true,
-      "entry_score": 38.65,
+      "entry_score": 38.75,
       "entry_price": 54.48,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -1390,7 +1513,7 @@
         "dividend_yield_pct": 0.0,
         "training_sigma_pct": 26.46,
         "ewma_sigma_pct": 19.35,
-        "validation_sigma_pct": 25.72,
+        "validation_sigma_pct": 25.73,
         "blended_sigma_pct": 23.05,
         "coverage_correction_ratio": 1.1111,
         "in_sample_coverage_pct": 100.0,
@@ -1398,15 +1521,15 @@
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 86.72,
+        "actual_terminal_price": 86.66,
         "median_simulated_terminal": 62.75,
         "sim_terminal_5th_pct": 36.56,
         "sim_terminal_95th_pct": 107.28,
-        "terminal_price_error_pct": -27.64,
+        "terminal_price_error_pct": -27.59,
         "sim_avg_max_drawdown_pct": -27.96,
         "actual_max_drawdown_pct": -18.13,
-        "drawdown_error_pct": -54.22,
-        "reality_iv_used_pct": 28.72,
+        "drawdown_error_pct": -54.24,
+        "reality_iv_used_pct": 28.73,
         "reality_option_premium": 10.63
       },
       "greek_attribution": {
@@ -1415,7 +1538,7 @@
             "years_to_expiry": 2.0,
             "option_price": 9.01,
             "delta": 0.6558,
-            "gamma": 0.020731,
+            "gamma": 0.020729,
             "theta_daily": -0.0073,
             "vega_per_1pct_iv": 0.2836,
             "rho_per_1pct_rate": 0.5343
@@ -1424,7 +1547,7 @@
             "years_to_expiry": 1.0,
             "option_price": 6.01,
             "delta": 0.6116,
-            "gamma": 0.030521,
+            "gamma": 0.030518,
             "theta_daily": -0.0095,
             "vega_per_1pct_iv": 0.2088,
             "rho_per_1pct_rate": 0.2731
@@ -1433,7 +1556,7 @@
             "years_to_expiry": 0.25,
             "option_price": 2.76,
             "delta": 0.5564,
-            "gamma": 0.062911,
+            "gamma": 0.062904,
             "theta_daily": -0.0165,
             "vega_per_1pct_iv": 0.1076,
             "rho_per_1pct_rate": 0.0689
@@ -1468,10 +1591,10 @@
         "expected_payoff_if_itm": 22.4,
         "expected_value_ev": 12.2,
         "ev_positive": "True",
-        "residual_variance": 574.5609,
+        "residual_variance": 571.6881,
         "pct_actual_within_90_band": 99.2,
-        "terminal_price_error_pct": -27.64,
-        "drawdown_error_pct": -54.22,
+        "terminal_price_error_pct": -27.59,
+        "drawdown_error_pct": -54.24,
         "kelly_criterion_pct": 25.0
       },
       "returns_analysis": {
@@ -1489,17 +1612,17 @@
         "actual_day_hit_100": 374,
         "actual_max_return_pct": 278.1,
         "actual_max_return_day": 502,
-        "actual_terminal_option_value": 32.26,
-        "actual_terminal_return_pct": 257.9
+        "actual_terminal_option_value": 32.2,
+        "actual_terminal_return_pct": 257.2
       },
       "status": "ok"
     },
     {
       "symbol": "ORLY",
       "strike": 67.12,
-      "screener_strike": 90.0,
+      "screener_strike": 95.0,
       "atm_mode": true,
-      "entry_score": 42.64,
+      "entry_score": 39.71,
       "entry_price": 67.12,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -1513,32 +1636,32 @@
         "dividend_yield_pct": 0.0,
         "training_sigma_pct": 28.04,
         "ewma_sigma_pct": 17.56,
-        "validation_sigma_pct": 21.71,
-        "blended_sigma_pct": 19.66,
+        "validation_sigma_pct": 21.72,
+        "blended_sigma_pct": 19.67,
         "coverage_correction_ratio": 1.1005,
         "in_sample_coverage_pct": 99.0,
         "risk_free_rate_pct": 3.88,
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 92.31,
+        "actual_terminal_price": 92.66,
         "median_simulated_terminal": 86.54,
-        "sim_terminal_5th_pct": 54.59,
-        "sim_terminal_95th_pct": 136.75,
-        "terminal_price_error_pct": -6.25,
+        "sim_terminal_5th_pct": 54.58,
+        "sim_terminal_95th_pct": 136.76,
+        "terminal_price_error_pct": -6.61,
         "sim_avg_max_drawdown_pct": -21.63,
         "actual_max_drawdown_pct": -19.03,
-        "drawdown_error_pct": -13.64,
-        "reality_iv_used_pct": 24.71,
+        "drawdown_error_pct": -13.68,
+        "reality_iv_used_pct": 24.72,
         "reality_option_premium": 11.69
       },
       "greek_attribution": {
         "greek_timeline": [
           {
             "years_to_expiry": 2.0,
-            "option_price": 9.92,
-            "delta": 0.6621,
-            "gamma": 0.019587,
+            "option_price": 9.93,
+            "delta": 0.662,
+            "gamma": 0.019581,
             "theta_daily": -0.0083,
             "vega_per_1pct_iv": 0.347,
             "rho_per_1pct_rate": 0.6902
@@ -1547,7 +1670,7 @@
             "years_to_expiry": 1.0,
             "option_price": 6.53,
             "delta": 0.6162,
-            "gamma": 0.028937,
+            "gamma": 0.028929,
             "theta_daily": -0.0106,
             "vega_per_1pct_iv": 0.2563,
             "rho_per_1pct_rate": 0.3483
@@ -1556,7 +1679,7 @@
             "years_to_expiry": 0.25,
             "option_price": 2.96,
             "delta": 0.5588,
-            "gamma": 0.059803,
+            "gamma": 0.059786,
             "theta_daily": -0.0179,
             "vega_per_1pct_iv": 0.1324,
             "rho_per_1pct_rate": 0.0864
@@ -1571,8 +1694,8 @@
           },
           {
             "months_elapsed": 12,
-            "stock_price_for_100pct_return": 83.79,
-            "pct_above_entry_price": 24.8
+            "stock_price_for_100pct_return": 83.8,
+            "pct_above_entry_price": 24.9
           },
           {
             "months_elapsed": 18,
@@ -1584,36 +1707,36 @@
       "residual_variance_report": {
         "entry_price": 67.12,
         "strike": 67.12,
-        "projected_entry_premium": 9.92,
+        "projected_entry_premium": 9.93,
         "reality_premium": 11.69,
         "p_itm_pct": 82.6,
         "p_otm_pct": 17.4,
         "expected_payoff_if_itm": 29.86,
         "expected_value_ev": 22.94,
         "ev_positive": "True",
-        "residual_variance": 33.2929,
+        "residual_variance": 37.4544,
         "pct_actual_within_90_band": 100.0,
-        "terminal_price_error_pct": -6.25,
-        "drawdown_error_pct": -13.64,
+        "terminal_price_error_pct": -6.61,
+        "drawdown_error_pct": -13.68,
         "kelly_criterion_pct": 25.0
       },
       "returns_analysis": {
-        "entry_premium": 9.92,
+        "entry_premium": 9.93,
         "target_value_100pct": 19.85,
         "sim_pct_paths_hit_100": 71.6,
         "sim_median_day_hit_100": 164,
         "sim_earliest_day_hit_100": 14,
         "sim_latest_day_hit_100": 503,
-        "sim_median_max_return_pct": 197.6,
+        "sim_median_max_return_pct": 197.5,
         "sim_avg_max_return_pct": 252.2,
         "sim_top10pct_max_return": 543.6,
         "sim_bottom10pct_max_return": 27.1,
         "actual_hit_100": true,
         "actual_day_hit_100": 121,
-        "actual_max_return_pct": 327.9,
+        "actual_max_return_pct": 327.8,
         "actual_max_return_day": 331,
-        "actual_terminal_option_value": 25.22,
-        "actual_terminal_return_pct": 154.1
+        "actual_terminal_option_value": 25.57,
+        "actual_terminal_return_pct": 157.6
       },
       "status": "ok"
     },
@@ -1622,7 +1745,7 @@
       "strike": 60.2,
       "screener_strike": 125.0,
       "atm_mode": true,
-      "entry_score": 41.08,
+      "entry_score": 40.72,
       "entry_price": 60.2,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -1644,14 +1767,14 @@
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 125.64,
+        "actual_terminal_price": 126.4,
         "median_simulated_terminal": 65.89,
         "sim_terminal_5th_pct": 23.49,
-        "sim_terminal_95th_pct": 183.47,
-        "terminal_price_error_pct": -47.56,
+        "sim_terminal_95th_pct": 183.46,
+        "terminal_price_error_pct": -47.87,
         "sim_avg_max_drawdown_pct": -48.72,
         "actual_max_drawdown_pct": -35.07,
-        "drawdown_error_pct": -38.93,
+        "drawdown_error_pct": -38.92,
         "reality_iv_used_pct": 45.51,
         "reality_option_premium": 16.98
       },
@@ -1661,7 +1784,7 @@
             "years_to_expiry": 2.0,
             "option_price": 16.51,
             "delta": 0.6685,
-            "gamma": 0.009682,
+            "gamma": 0.009683,
             "theta_daily": -0.0118,
             "vega_per_1pct_iv": 0.3089,
             "rho_per_1pct_rate": 0.4746
@@ -1670,7 +1793,7 @@
             "years_to_expiry": 1.0,
             "option_price": 11.47,
             "delta": 0.621,
-            "gamma": 0.014359,
+            "gamma": 0.01436,
             "theta_daily": -0.0166,
             "vega_per_1pct_iv": 0.229,
             "rho_per_1pct_rate": 0.2592
@@ -1679,7 +1802,7 @@
             "years_to_expiry": 0.25,
             "option_price": 5.54,
             "delta": 0.5612,
-            "gamma": 0.02976,
+            "gamma": 0.029762,
             "theta_daily": -0.0316,
             "vega_per_1pct_iv": 0.1187,
             "rho_per_1pct_rate": 0.0706
@@ -1711,13 +1834,13 @@
         "reality_premium": 16.98,
         "p_itm_pct": 55.9,
         "p_otm_pct": 44.1,
-        "expected_payoff_if_itm": 51.99,
+        "expected_payoff_if_itm": 51.96,
         "expected_value_ev": 21.79,
         "ev_positive": "True",
-        "residual_variance": 3570.0625,
+        "residual_variance": 3661.4601,
         "pct_actual_within_90_band": 100.0,
-        "terminal_price_error_pct": -47.56,
-        "drawdown_error_pct": -38.93,
+        "terminal_price_error_pct": -47.87,
+        "drawdown_error_pct": -38.92,
         "kelly_criterion_pct": 21.0
       },
       "returns_analysis": {
@@ -1735,8 +1858,8 @@
         "actual_day_hit_100": 123,
         "actual_max_return_pct": 301.6,
         "actual_max_return_day": 502,
-        "actual_terminal_option_value": 65.46,
-        "actual_terminal_return_pct": 296.4
+        "actual_terminal_option_value": 66.22,
+        "actual_terminal_return_pct": 301.0
       },
       "status": "ok"
     },
@@ -1745,7 +1868,7 @@
       "strike": 231.14,
       "screener_strike": 175.0,
       "atm_mode": true,
-      "entry_score": 27.22,
+      "entry_score": 26.96,
       "entry_price": 231.14,
       "div_yield_pct": 0.0,
       "training_years": 4,
@@ -1760,23 +1883,23 @@
         "training_sigma_pct": 33.64,
         "ewma_sigma_pct": 26.95,
         "validation_sigma_pct": 37.28,
-        "blended_sigma_pct": 33.41,
+        "blended_sigma_pct": 33.4,
         "coverage_correction_ratio": 1.1102,
         "in_sample_coverage_pct": 99.9,
         "risk_free_rate_pct": 3.88,
         "calibration_method": "recent_drift + longrun_anchor + ewma_vol + coverage_correction"
       },
       "reality_check": {
-        "actual_terminal_price": 174.87,
+        "actual_terminal_price": 174.76,
         "median_simulated_terminal": 223.58,
-        "sim_terminal_5th_pct": 102.2,
-        "sim_terminal_95th_pct": 486.44,
-        "terminal_price_error_pct": 27.86,
+        "sim_terminal_5th_pct": 102.21,
+        "sim_terminal_95th_pct": 486.43,
+        "terminal_price_error_pct": 27.94,
         "sim_avg_max_drawdown_pct": -42.37,
         "actual_max_drawdown_pct": -45.54,
         "drawdown_error_pct": 6.96,
         "reality_iv_used_pct": 40.28,
-        "reality_option_premium": 58.97
+        "reality_option_premium": 58.96
       },
       "greek_attribution": {
         "greek_timeline": [
@@ -1787,7 +1910,7 @@
             "gamma": 0.003372,
             "theta_daily": -0.0383,
             "vega_per_1pct_iv": 1.2036,
-            "rho_per_1pct_rate": 2.0161
+            "rho_per_1pct_rate": 2.0162
           },
           {
             "years_to_expiry": 1.0,
@@ -1802,7 +1925,7 @@
             "years_to_expiry": 0.25,
             "option_price": 16.45,
             "delta": 0.5563,
-            "gamma": 0.01023,
+            "gamma": 0.010231,
             "theta_daily": -0.0955,
             "vega_per_1pct_iv": 0.4565,
             "rho_per_1pct_rate": 0.2803
@@ -1812,7 +1935,7 @@
         "return_checkpoints": [
           {
             "months_elapsed": 6,
-            "stock_price_for_100pct_return": 307.87,
+            "stock_price_for_100pct_return": 307.86,
             "pct_above_entry_price": 33.2
           },
           {
@@ -1831,21 +1954,21 @@
         "entry_price": 231.14,
         "strike": 231.14,
         "projected_entry_premium": 50.73,
-        "reality_premium": 58.97,
+        "reality_premium": 58.96,
         "p_itm_pct": 47.5,
         "p_otm_pct": 52.5,
-        "expected_payoff_if_itm": 117.05,
+        "expected_payoff_if_itm": 117.04,
         "expected_value_ev": 29.01,
         "ev_positive": "True",
-        "residual_variance": 2372.6641,
+        "residual_variance": 2383.3924,
         "pct_actual_within_90_band": 100.0,
-        "terminal_price_error_pct": 27.86,
+        "terminal_price_error_pct": 27.94,
         "drawdown_error_pct": 6.96,
         "kelly_criterion_pct": 12.4
       },
       "returns_analysis": {
         "entry_premium": 50.73,
-        "target_value_100pct": 101.46,
+        "target_value_100pct": 101.45,
         "sim_pct_paths_hit_100": 47.1,
         "sim_median_day_hit_100": 139,
         "sim_earliest_day_hit_100": 11,
