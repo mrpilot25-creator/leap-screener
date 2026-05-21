@@ -76,7 +76,7 @@ FP_N_SIMULATIONS = 1000          # Monte Carlo paths for forward projection
 
 # Fundamental thresholds
 MIN_MARKET_CAP     = 25e9
-MIN_AVG_VOLUME     = 0.999e6    #0.99 Million Trade Volume 
+MIN_AVG_VOLUME     = 0.9e6    #0.9 Million Trade Volume 
 MIN_INST_OWNERSHIP = 0.50
 MIN_EPS_GROWTH     = 0.15
 MIN_REVENUE_GROWTH = 0.08
