@@ -2010,7 +2010,7 @@ def main():
     print("")
     print("Fundamental criteria:")
     print("  Market Cap     > $25B")
-    print("  Avg Volume     > 1M shares/day")
+    print("  Avg Volume     > 900K shares/day")
     print("  Inst. Ownership> 50%")
     print("  EPS Growth     > +15%")
     print("  Revenue Growth > +8%")
