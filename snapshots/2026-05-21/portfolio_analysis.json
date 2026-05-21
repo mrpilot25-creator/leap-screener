@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-05-21T11:35:33.298271Z"
+    "generated_at": "2026-05-21T12:05:57.574519Z"
   },
   "portfolio_analysis": {
     "total_tickers": 82,
     "sector_breakdown": {
       "Technology": 35.4,
       "Healthcare": 7.3,
-      "Financial Services": 11.0,
       "Communication Services": 6.1,
       "Utilities": 4.9,
       "Consumer Cyclical": 9.8,
+      "Financial Services": 11.0,
       "Energy": 6.1,
       "Basic Materials": 3.7,
       "Real Estate": 6.1,
