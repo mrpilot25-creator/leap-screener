@@ -759,25 +759,24 @@ def passes_fundamental_screen(fund):
     rg = fund.get("revenue_growth")
     em = fund.get("ebitda_margin")
     dy = fund.get("div_yield", 0.0) or 0.0
+    failures = []
     if mc is None or mc < MIN_MARKET_CAP:
         label = "no data" if mc is None else ("$" + str(round(mc / 1e9, 1)) + "B < $25B")
-        return False, "MarketCap " + label
+        failures.append("MarketCap " + label)
     if av is not None and av < MIN_AVG_VOLUME:
-        return False, "AvgVol " + str(round(av / 1e6, 1)) + "M < 1M"
+        failures.append("AvgVol " + str(round(av / 1e6, 2)) + "M < 0.9M")
     if io is not None and io < MIN_INST_OWNERSHIP:
-        return False, "InstOwn " + str(round(io * 100)) + "% < 50%"
+        failures.append("InstOwn " + str(round(io * 100)) + "% < 50%")
     if eg is not None and eg < MIN_EPS_GROWTH:
-        return False, "EPSGrowth " + str(round(eg * 100, 1)) + "% < 15%"
+        failures.append("EPSGrowth " + str(round(eg * 100, 1)) + "% < 15%")
     if rg is not None and rg < MIN_REVENUE_GROWTH:
-        return False, "RevenueGrowth " + str(round(rg * 100, 1)) + "% < 8%"
+        failures.append("RevenueGrowth " + str(round(rg * 100, 1)) + "% < 8%")
     if em is not None and em < MIN_EBITDA_MARGIN:
-        return False, "EBITDAMargin " + str(round(em * 100, 1)) + "% < 15%"
-    # Hard dividend yield cap. High-yield stocks cause LEAP calls to trade
-    # below intrinsic value because dividends reduce the forward price that
-    # the call benefits from. At 3.5%+ annual yield on a 2-year LEAP the
-    # cumulative drag is material enough to warrant outright exclusion.
+        failures.append("EBITDAMargin " + str(round(em * 100, 1)) + "% < 15%")
     if dy > MAX_DIV_YIELD:
-        return False, "DivYield " + str(round(dy * 100, 1)) + "% > " + str(round(MAX_DIV_YIELD * 100, 1)) + "%"
+        failures.append("DivYield " + str(round(dy * 100, 1)) + "% > " + str(round(MAX_DIV_YIELD * 100, 1)) + "%")
+    if failures:
+        return False, " | ".join(failures)
     return True, ""
 
 
