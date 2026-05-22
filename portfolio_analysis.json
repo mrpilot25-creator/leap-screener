@@ -1,27 +1,27 @@
 {
   "meta": {
-    "generated_at": "2026-05-22T00:52:31.849048Z"
+    "generated_at": "2026-05-22T14:37:08.094917Z"
   },
   "portfolio_analysis": {
-    "total_tickers": 82,
+    "total_tickers": 81,
     "sector_breakdown": {
-      "Energy": 6.1,
+      "Energy": 6.2,
       "Basic Materials": 3.7,
-      "Communication Services": 6.1,
-      "Technology": 35.4,
-      "Healthcare": 7.3,
-      "Financial Services": 11.0,
+      "Communication Services": 6.2,
+      "Technology": 34.6,
+      "Healthcare": 7.4,
+      "Financial Services": 11.1,
       "Utilities": 4.9,
-      "Consumer Cyclical": 9.8,
-      "Real Estate": 6.1,
+      "Consumer Cyclical": 9.9,
+      "Real Estate": 6.2,
       "Industrials": 4.9,
       "Consumer Defensive": 4.9
     },
     "concentrated_sectors": [
       "Technology"
     ],
-    "avg_portfolio_beta": 1.1,
-    "avg_analyst_upside_pct": 16.9,
+    "avg_portfolio_beta": 1.11,
+    "avg_analyst_upside_pct": 15.3,
     "avg_div_yield_pct": 1.1,
     "high_short_interest_tickers": []
   }
