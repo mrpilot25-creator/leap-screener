@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-05-25T10:28:54.672899Z",
+    "generated_at": "2026-05-25T14:54:22.621341Z",
     "projection_date": "2026-05-25",
     "n_simulations": 1000,
     "risk_free_rate_pct": 3.88,
@@ -782,7 +782,7 @@
         "pct_5": 811.8,
         "pct_25": 1746.74,
         "pct_75": 4824.13,
-        "pct_95": 10391.96
+        "pct_95": 10391.97
       },
       "upside_downside": {
         "median_change_pct": 615.2,
@@ -2823,7 +2823,7 @@
       "p_otm_pct": 55.1,
       "p_100pct_return_pct": 25.7,
       "expected_payoff_if_itm": 310.82,
-      "pv_expected_payoff": 291.43,
+      "pv_expected_payoff": 291.42,
       "expected_value_ev": 88.75,
       "ev_positive": true,
       "kelly_criterion_pct": 15.7,
