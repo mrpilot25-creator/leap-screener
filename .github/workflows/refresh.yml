@@ -1,46 +1,35 @@
 name: Refresh LEAP Data
-
 on:
   schedule:
     - cron: "0 12 * * 1-5"
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   run:
     runs-on: ubuntu-latest
     timeout-minutes: 360
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Install dependencies
         run: pip install yfinance pandas numpy scipy
-
       - name: Run screener
         run: python leap_screener.py
-
       - name: Remove old top_10 files if they exist
         run: |
           git rm --ignore-unmatch top_10_per_stock.json top_10_overall.json
-
       - name: Commit updated JSON files
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add top_20_per_stock.json top_20_overall.json full_results.json backtest_results.json forward_projections.json weights_config.json tradingview_config.json portfolio_analysis.json snapshots/
           git diff --staged --quiet || git commit -m "chore: refresh LEAP data $(date -u +%Y-%m-%d)"
-                    git diff --staged --quiet || git commit -m "chore: refresh LEAP data $(date -u +%Y-%m-%d)"
           git pull --rebase origin main
           git push origin main
-
