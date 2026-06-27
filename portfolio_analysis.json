@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-06-26T14:22:15.145677Z"
+    "generated_at": "2026-06-27T12:16:45.540235Z"
   },
   "portfolio_analysis": {
     "total_tickers": 84,
@@ -10,8 +10,8 @@
       "Communication Services": 6.0,
       "Utilities": 4.8,
       "Energy": 6.0,
-      "Consumer Cyclical": 9.5,
       "Financial Services": 10.7,
+      "Consumer Cyclical": 9.5,
       "Healthcare": 9.5,
       "Real Estate": 6.0,
       "Industrials": 4.8,
@@ -21,7 +21,7 @@
       "Technology"
     ],
     "avg_portfolio_beta": 1.11,
-    "avg_analyst_upside_pct": 18.0,
+    "avg_analyst_upside_pct": 18.3,
     "avg_div_yield_pct": 1.18,
     "high_short_interest_tickers": [
       "FSLR",
