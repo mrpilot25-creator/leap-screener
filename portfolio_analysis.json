@@ -1,32 +1,31 @@
 {
   "meta": {
-    "generated_at": "2026-11-10T19:21:22.441655Z"
+    "generated_at": "2026-11-11T19:15:49.197428Z"
   },
   "portfolio_analysis": {
-    "total_tickers": 81,
+    "total_tickers": 83,
     "sector_breakdown": {
-      "Technology": 34.6,
-      "Communication Services": 4.9,
-      "Energy": 9.9,
-      "Utilities": 7.4,
-      "Real Estate": 3.7,
-      "Basic Materials": 4.9,
-      "Industrials": 12.3,
-      "Healthcare": 8.6,
-      "Financial Services": 9.9,
-      "Consumer Cyclical": 2.5,
+      "Communication Services": 6.0,
+      "Technology": 33.7,
+      "Energy": 10.8,
+      "Utilities": 7.2,
+      "Basic Materials": 4.8,
+      "Real Estate": 3.6,
+      "Industrials": 12.0,
+      "Healthcare": 8.4,
+      "Financial Services": 9.6,
+      "Consumer Cyclical": 2.4,
       "Consumer Defensive": 1.2
     },
     "concentrated_sectors": [
       "Technology"
     ],
-    "avg_portfolio_beta": 1.05,
-    "avg_analyst_upside_pct": 26.1,
-    "avg_div_yield_pct": 1.32,
+    "avg_portfolio_beta": 1.04,
+    "avg_analyst_upside_pct": 22.2,
+    "avg_div_yield_pct": 1.35,
     "high_short_interest_tickers": [
       "FOXA",
-      "ON",
-      "MDT"
+      "ON"
     ]
   }
 }
