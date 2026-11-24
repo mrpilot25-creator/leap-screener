@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "generated_at": "2026-11-24T21:59:29.120163Z"
+  },
+  "portfolio_analysis": {
+    "total_tickers": 83,
+    "sector_breakdown": {
+      "Technology": 33.7,
+      "Communication Services": 4.8,
+      "Energy": 9.6,
+      "Industrials": 12.0,
+      "Utilities": 7.2,
+      "Basic Materials": 4.8,
+      "Real Estate": 3.6,
+      "Financial Services": 9.6,
+      "Healthcare": 9.6,
+      "Consumer Cyclical": 3.6,
+      "Consumer Defensive": 1.2
+    },
+    "concentrated_sectors": [
+      "Technology"
+    ],
+    "avg_portfolio_beta": 1.03,
+    "avg_analyst_upside_pct": 31.3,
+    "avg_div_yield_pct": 1.34,
+    "high_short_interest_tickers": [
+      "FOXA"
+    ]
+  }
+}
